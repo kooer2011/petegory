@@ -1,0 +1,28 @@
+.color-nav {
+  background-color: #ffffff;
+  justify-content: center;
+  align-items: center;
+}
+.logo {
+  width: 49px;
+  height: 49px;
+  margin-right: 10px;
+}
+
+.link-hover:hover {
+  background-color: #cda274;
+  border-radius: 15px;
+  transition: 0.3s;
+}
+.link-hover {
+  padding: 10px;
+}
+.nav-container {
+  justify-content: flex-end;
+}
+.signin {
+  background-color: #cda274;
+  color: #ffffff;
+  border-radius: 10px;
+  /* margin-left: 40px; */
+}

@@ -14,6 +14,7 @@ import ConTact from '../page/ConTact';
 import GaLLery from '../page/GaLLery';
 import SignUp from '../page/SignUp';
 import { Button } from 'react-bootstrap';
+import Login from '../page/Login';
 
 function BasicExample() {
   return (
@@ -43,7 +44,7 @@ function BasicExample() {
                 <Nav.Link className="link-hover" href="/gallary">
                   GALLARY
                 </Nav.Link>
-                <Nav.Link className="link-hover signin" href="/signin_1">
+                <Nav.Link className="link-hover signin" href="/Login">
                   SIGNIN
                 </Nav.Link>
               </Nav>
@@ -58,7 +59,8 @@ function BasicExample() {
         <Route path="/hotel_1" element={<HoTel />} />
         <Route path="/contact_1" element={<ConTact />} />
         <Route path="/gallary" element={<GaLLery />} />
-        <Route path="/signin_1" element={<SignUp />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

@@ -16,6 +16,7 @@
 }
 .link-hover {
   padding: 10px;
+  border-radius: 15px;
 }
 .nav-container {
   justify-content: flex-end;
@@ -23,6 +24,6 @@
 .signin {
   background-color: #cda274;
   color: #ffffff;
-  border-radius: 10px;
+  border-radius: 15px;
   /* margin-left: 40px; */
 }

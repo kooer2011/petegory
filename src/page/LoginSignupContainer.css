@@ -1,0 +1,49 @@
+.LoginSignupcontainer {
+    display: grid;
+    grid-template-columns: 70% 30% 70%;
+    width: 60%;
+    height: 400px;
+    background-color: #c9c9c99b;
+    padding: 0;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+    overflow: hidden;
+    transition: 0.3s linear;
+    border-radius: 20px;
+}
+.LoginSignupcontainer.active {
+    grid-template-columns: 0% 30% 70%;
+    transition: 0.3s linear;
+}
+.bg {
+    background: url('../imgs/wallcat.jpg');
+    background-size: cover;
+    height: 100vh;
+}
+
+.LoginSignupcontainer .side-div {
+ height: 100%;
+ width: 100%;
+ display: flex;
+ align-items: center;
+ background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url('../imgs/logo.jpg');
+ background-size: contain;
+ /* background-position: center; */
+ justify-content: center;
+}
+.LoginSignupcontainer .side-div button {
+    padding: 10px 20px;
+    background-color: #cda274;
+    color: #fff;
+    border: 1px solid black;
+    cursor: pointer;
+    font-size: 20px;
+    transition: 0.3s linear;
+    margin-top: 200px;
+}
+.LoginSignupcontainer .side-div button:hover {
+    background-color: rgb(236, 162, 77);
+    border: 1px solid black;
+}

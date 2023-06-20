@@ -1,7 +1,7 @@
 import React from 'react';
-
+import NavbarHeader from '../components/Navbar';
 function ConTact() {
-  return <div> Contact now 0977784151</div>;
+  return <div><NavbarHeader/> </div>;
 }
 
 export default ConTact;

@@ -8,6 +8,7 @@
   max-width: 1300px;
   width: 100%;
   margin: auto;
+  margin-top: -5px;
 }
 section {
   min-height: 100vh;
@@ -28,14 +29,16 @@ h1 {
   flex-wrap: wrap;
   justify-content: space-between;
   /* margin-left: 50px; */
-  /* margin-top: 50px; */
-  margin-bottom: 500px;
+  
+  
 }
 .card {
   flex: 0 0 calc(33.33% - 20px);
   max-width: calc(33.33% - 20px);
   width: 100%;
-  background: #fff;
+  background: linear-gradient(90deg, rgba(246,241,241,1) 0%, rgba(233,216,201,1) 80%, rgba(205,162,116,1) 94%);
+  background-size: 180% 180%;
+  animation: gradient-animation 18s ease infinite;
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 20px;
@@ -68,4 +71,15 @@ h1 {
   color: #000000;
   border-radius: 10px;
   border: 2px solid black;
+}
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }

@@ -6,7 +6,7 @@
 .logo {
   width: 49px;
   height: 49px;
-  margin-right: 10px;
+  margin-right: 20px;
 }
 
 .link-hover:hover {
@@ -14,9 +14,11 @@
   border-radius: 15px;
   transition: 0.3s;
 }
+
 .link-hover {
   padding: 10px;
   border-radius: 15px;
+  margin: 8px;
 }
 .nav-container {
   justify-content: flex-end;
@@ -25,5 +27,7 @@
   background-color: #cda274;
   color: #ffffff;
   border-radius: 15px;
-  /* margin-left: 40px; */
+  width: 100px;
+  text-align: center;
+  font-size: 18px;
 }

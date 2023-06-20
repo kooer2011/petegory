@@ -1,7 +1,7 @@
 import React from 'react';
-
+import NavbarHeader from '../components/Navbar';
 function HoTel() {
-  return <div>BOOKING CAT HOTEL</div>;
+  return <div> <NavbarHeader/> BOOKING CAT HOTEL</div>;
 }
 
 export default HoTel;

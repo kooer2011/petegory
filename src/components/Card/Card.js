@@ -34,6 +34,7 @@ function GridExample() {
           </div>
         </div>
       </section>
+
     </div>
   );
 }

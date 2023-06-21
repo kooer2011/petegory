@@ -29,8 +29,8 @@
  display: flex;
  align-items: center;
  background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url('../imgs/logo.jpg');
- background-size: contain;
- /* background-position: center; */
+ background-size: cover;
+ background-position: center;
  justify-content: center;
 }
 .LoginSignupcontainer .side-div button {
@@ -41,9 +41,11 @@
     cursor: pointer;
     font-size: 20px;
     transition: 0.3s linear;
-    margin-top: 200px;
+    margin-top: 300px;
+    border-radius: 5px;
 }
 .LoginSignupcontainer .side-div button:hover {
     background-color: rgb(236, 162, 77);
     border: 1px solid black;
+    color: black;
 }

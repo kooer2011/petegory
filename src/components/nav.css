@@ -31,3 +31,6 @@
   text-align: center;
   font-size: 18px;
 }
+.hamberger {
+  transition: 0.3s;
+}

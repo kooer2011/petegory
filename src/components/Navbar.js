@@ -15,25 +15,25 @@ function NavbarHeader() {
           <img className="logo" src={img} />
           PET’EGORY
         </Navbar.Brand>
-        <Navbar.Toggle />
+        <Navbar.Toggle className='hamberger' />
         <Navbar.Collapse className="nav-container">
           <Nav>
             <Nav.Link className="link-hover" href="/">
               HOME
             </Nav.Link>
-            <Nav.Link className="link-hover" href="/groom1">
+            <Nav.Link className="link-hover" href="/grooming">
               GROOMING
             </Nav.Link>
-            <Nav.Link className="link-hover" href="/hotel_1">
+            <Nav.Link className="link-hover" href="/hotel">
               HOTEL
             </Nav.Link>
-            <Nav.Link className="link-hover" href="/contact_1">
+            <Nav.Link className="link-hover" href="/contact">
               CONTACT
             </Nav.Link>
             <Nav.Link className="link-hover" href="/gallary">
               GALLARY
             </Nav.Link>
-            <Nav.Link className="link-hover signin" href="/Login">
+            <Nav.Link className="link-hover signin" href="/login">
               SIGNIN
             </Nav.Link>
           </Nav>

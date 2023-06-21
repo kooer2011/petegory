@@ -1,29 +1,29 @@
 import React, { useRef, useState } from 'react'
-import './LoginSignupContainer.css'
-import Login from './Login'
 import SignUp from './SignUp'
 import NavbarHeader from '../components/Navbar'
+import './LoginSignupContainer.css'
 import { useNavigate } from 'react-router-dom'
 
-const LoginSignupContainer = () => {
 
+const SignupContainer = () => {
+    
     const navigate = useNavigate()
 
     const handleClick = () => {
-        navigate('/signup')
+        
+        navigate('/login')
     }
-    return (
-        <div className='bg'>
+  return (
+    <div className='bg'>
         <NavbarHeader/>
         <div className='LoginSignupcontainer' >
-            <Login/>
-            <div className='side-div'>
-                <button type='button' onClick={handleClick}>Signup</button>
-            </div>
             <SignUp/>
+            <div className='side-div'>
+                <button type='button' onClick={handleClick}>Login</button>
+            </div>
         </div>
         </div>
-    )
+  )
 }
 
-export default LoginSignupContainer
+export default SignupContainer

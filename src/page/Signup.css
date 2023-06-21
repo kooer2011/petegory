@@ -7,6 +7,7 @@
     align-items: center;
     flex-direction: column;
 }
+
 .signup h1 {
     font-size: 3.5rem;
     font-weight: bold;
@@ -15,6 +16,7 @@
     color: black;
     padding: 15px 0;
 }
+
 .signup form {
     width: 80%;
     display: flex;
@@ -22,6 +24,7 @@
     align-items: center;
     gap: 20px;
 }
+
 .signup form input:not([type='submit']) {
     width: 100%;
     padding: 10px;
@@ -35,6 +38,7 @@
     color: black;
     outline: none !important;
 }
+
 .signup form button {
     width: 100%;
     padding: 10px;
@@ -46,9 +50,12 @@
     outline: none !important;
     background: #fefefe;
     cursor: pointer;
-    transition: 0.3s linear ;
+    transition: 0.3s linear;
 }
+
 .signup form button:hover {
     background: #000;
     color: #fefefe;
 }
+
+

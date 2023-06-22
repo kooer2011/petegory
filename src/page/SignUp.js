@@ -15,7 +15,7 @@ const SignUp = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:3000/signup', data)
+    axios.post('http://localhost:8080/signup', data)
       .then(res => {
         if(res.data.Status === 'Success') {
           navigate('/login')
@@ -25,6 +25,7 @@ const SignUp = () => {
       })
       .catch(err => console.log(err))
   }
+
   return (
     <div className='signup'>
       <h1>SignUp</h1>

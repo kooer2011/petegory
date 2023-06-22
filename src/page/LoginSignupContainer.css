@@ -12,6 +12,7 @@
     overflow: hidden;
     transition: 0.3s linear;
     border-radius: 20px;
+    align-items: center;
 }
 .LoginSignupcontainer.active {
     grid-template-columns: 0% 30% 70%;

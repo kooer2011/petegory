@@ -1,8 +1,9 @@
-import React, { useRef, useState } from 'react'
+import React from 'react'
 import SignUp from './SignUp'
 import NavbarHeader from '../components/Navbar'
 import './LoginSignupContainer.css'
 import { useNavigate } from 'react-router-dom'
+
 
 
 const SignupContainer = () => {
@@ -10,7 +11,6 @@ const SignupContainer = () => {
     const navigate = useNavigate()
 
     const handleClick = () => {
-        
         navigate('/login')
     }
   return (

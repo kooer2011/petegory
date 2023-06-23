@@ -28,7 +28,7 @@ function GridExample() {
               <div key={i} className="card">
                 <h3>{card.title}</h3>
                 <p>{card.text}</p>
-                <button className="btn">Read more</button>
+                <button className="btnRead">Read more</button>
               </div>
             ))}
           </div>

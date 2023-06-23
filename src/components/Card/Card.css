@@ -58,8 +58,11 @@ h1 {
     flex: 0 0 100%;
     max-width: 100%;
   }
+  h1 {
+    display: inline-block;
+  }
 }
-.btn {
+.btnRead {
   border: none;
   outline: none;
   background: #cda274;
@@ -70,7 +73,7 @@ h1 {
   height: 40px;
   margin-top: 30px;
 }
-.btn:hover {
+.btnRead:hover {
   transition: 0.3;
   background-color: transparent;
   color: #000000;

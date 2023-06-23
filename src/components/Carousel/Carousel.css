@@ -1,13 +1,11 @@
 .size-img{
-    height: 500px;
     object-fit: contain;
+    max-height: 700px;
+
 }
 .show {
     
     height: 500px;
-    
-    
-    
 }
 
 

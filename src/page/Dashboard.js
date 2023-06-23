@@ -10,12 +10,12 @@ const Dashboard = () => {
 
     const handleLogout = () => {
         axios.get('http://localhost:8080/logout')
-        .then(res => {
-            navigate('/')
-        }).catch(err => console.log(err))
+            .then(res => {
+                navigate('/')
+            }).catch(err => console.log(err))
     }
-  return (
-    <div class="container-fluid">
+    return (
+        <div class="container-fluid">
             <div class="row flex-nowrap">
                 <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
                     <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
@@ -28,12 +28,16 @@ const Dashboard = () => {
                                     <i className="fs-4 bi-speedometer2 p-1"></i> <span className="ms-1 d-none d-sm-inline p-2">Dashboard</span> </Link>
                             </li>
                             <li>
-                                <Link to="/employee" className="nav-link px-0 align-middle text-white m-3 style">
-                                    <i className="fs-4 bi-people p-1"></i> <span className="ms-1 d-none d-sm-inline p-2">Manage Employees</span> </Link>
+                                <Link to="/admin/dashboard/employees" className="nav-link px-0 align-middle text-white m-3 style">
+                                    <i className="fs-4 bi-people p-1"></i> <span className="ms-1 d-none d-sm-inline p-2">Employees</span> </Link>
                             </li>
                             <li>
-                                <Link to="/profile" className="nav-link px-0 align-middle text-white m-3 style">
+                                <Link to="/admin/dashboard/users" className="nav-link px-0 align-middle text-white m-3 style">
                                     <i className="fs-4 bi-person p-1"></i> <span className="ms-1 d-none d-sm-inline p-2">Users</span></Link>
+                            </li>
+                            <li>
+                                <Link to="/" className="nav-link px-0 align-middle text-white m-3 style">
+                                    <i class="fs-4 bi bi-house p-1"></i> <span className="ms-1 d-none d-sm-inline p-2">Home</span></Link>
                             </li>
                             <li onClick={handleLogout}>
                                 <a href='#' className="nav-link px-0 align-middle text-white m-3 style">
@@ -50,7 +54,7 @@ const Dashboard = () => {
                 </div>
             </div>
         </div>
-  )
+    )
 }
 
 export default Dashboard

@@ -10,16 +10,16 @@ function UncontrolledExample() {
   return (
     <Carousel>
       <Carousel.Item className="size-img">
-        <img className="d-block w-100" src={imgs} alt="First slide" />
+        <img className="d-flex w-100" src={imgs} alt="First slide" />
         <Carousel.Caption></Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item className="size-img">
-        <img className="d-block w-100" src={imgs2} alt="Second slide" />
+        <img className="d-flex w-100" src={imgs2} alt="Second slide" />
 
         <Carousel.Caption></Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item className="size-img">
-        <img className="d-block w-100" src={imgs3} alt="Third slide" />
+        <img className="d-flex w-100" src={imgs3} alt="Third slide" />
 
         <Carousel.Caption></Carousel.Caption>
       </Carousel.Item>

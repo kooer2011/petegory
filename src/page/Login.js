@@ -19,7 +19,15 @@ const Login = () => {
     axios.post('http://localhost:8080/login', values)
       .then(res => {
         if (res.data.Status === 'Success') {
-          navigate('/')
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'WELCOME',
+            showConfirmButton: false,
+            timer: 1500
+          })
+            navigate('/')
+
         } else {
           setError(res.data.Error)
         }

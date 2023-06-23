@@ -58,6 +58,7 @@ const Gallr = () => {
   );
 };
 
+
 function GaLLery() {
   return (
     <div>

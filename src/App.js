@@ -10,6 +10,7 @@ import ConTact from './page/ConTact';
 import GaLLery from './page/GaLLery';
 import LoginSignupContainer from './page/LoginSignupContainer';
 import SignupContainer from './page/SignupContainer';
+import Dashboard from './page/Dashboard';
 
 
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/gallary" element={<GaLLery />} />
         <Route path="/signup" element={<SignupContainer />} />
         <Route path="/login" element={<LoginSignupContainer />} />
+        <Route path="/admin/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
   );

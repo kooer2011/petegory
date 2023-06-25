@@ -7,7 +7,7 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import './contact1.css';
 import { Link } from 'react-router-dom';
-
+import Map from './Map'
 
 function ContactSelection() {
   return (
@@ -18,15 +18,12 @@ function ContactSelection() {
             <div className='left'>
             <ContactInfoItem icon={<PhoneIcon/>} text='081 106 7896'   />
             <Link to="https://www.facebook.com/petegory.kps"  className='itemStyles'><div className='icon'><FacebookIcon /> </div><div className='info'>Grooming & Hotel อาบน้ำตัดขนแมวและสุนัข โรงแรมแมว กำแพงแสน</div></Link>
-            <ContactInfoItem text='กำแพงแสน
-u-avenue
-อำเภอกำแพงแสน
-นครปฐม 73140
-ประเทศไทย'/>
+            <ContactInfoItem icon={<EmailIcon/>} text='petegory.grooming@gmail.com'/>
             </div>
             <div className='right'> 
-        <ContactForm/>
+        <ContactForm />
             </div>
+     
         </div>
     </div>
     </div>

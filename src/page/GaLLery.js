@@ -5,6 +5,7 @@ import img2 from '../imgs/raw2.jpg';
 import img3 from '../imgs/CatHeros.jpg';
 import img4 from '../imgs/COUTER1.jpg';
 import './gallery.css';
+import '../index.css'
 const Gallr = () => {
   let data = [
     {

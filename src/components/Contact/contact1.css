@@ -23,7 +23,7 @@
 }
 .form-group{
     width: 100%;
-    margin-bottom: 2rem;
+    margin-bottom:1rem;
 }
 .label_content{
     font-size: 1.1rem;
@@ -42,6 +42,7 @@
 }
 .message_textarea{
     height: 300px;
+   
     
 }
 .content_button{
@@ -56,9 +57,7 @@
     cursor: pointer;
 
 }
-/* .sectionstyle{
-    padding: 10rem 0;
-} */
+
 .contactSection_wrapper{
     display:  flex;
     gap: 3rem;
@@ -84,11 +83,22 @@
     width: 100%;
 }
 
-@media only screen and(max-width: 768px) {
+.sectionstyle{
+    padding: 1rem 0;
+}
+
+
+@media only screen and (max-width: 768px) {
     .contactSection_wrapper{
         flex-direction: column;
     }
     .contactSection_wrapper ::after{
         display: none;
     }
-}
+    .left,.right{
+        max-width: 100%;
+    }
+    .right{
+        padding: 2rem 1rem 1rem 1rem;
+    }
+  }

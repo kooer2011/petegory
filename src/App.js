@@ -13,6 +13,7 @@ import SignupContainer from './page/SignupContainer';
 import Dashboard from './page/Dashboard';
 import Users from './page/Users';
 import Create from './page/Create';
+import Footer from './components/Footer/Footer';
 
 
 
@@ -32,6 +33,7 @@ function App() {
           <Route path="/admin/dashboard/users/create" element={<Create />} />
         </Route>
       </Routes>
+      <Footer/>
     </Router>
   );
 }

@@ -34,7 +34,7 @@ function NavbarHeader() {
               GALLARY
             </Nav.Link>
             <Nav.Link className="link-hover signin" href="/login">
-              SIGNIN
+              LOGIN
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

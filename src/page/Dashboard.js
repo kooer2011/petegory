@@ -1,17 +1,31 @@
-import React from 'react'
-import { Link, Outlet, useNavigate } from 'react-router-dom'
+import React,{useEffect, useState} from 'react'
+import { Link, Outlet } from 'react-router-dom'
 import axios from 'axios'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import '../index.css'
+import { useNavigate } from 'react-router-dom'
 
 const Dashboard = () => {
-
+    const [role, setRole] = useState('')
     const navigate = useNavigate();
+
+    axios.defaults.withCredentials = true;
+    useEffect(() => {
+        axios.get('http://localhost:8080')
+            .then(res => {
+                if(res.data.valid) {
+                    setRole(res.data.role)
+                } else {
+                    navigate('/login')
+                }
+            })
+            .catch(err => console.log(err))
+    }, [])
 
     const handleLogout = () => {
         axios.get('http://localhost:8080/logout')
             .then(res => {
-                navigate('/')
+                window.location.reload();
             }).catch(err => console.log(err))
     }
     return (
@@ -40,7 +54,7 @@ const Dashboard = () => {
                                     <i class="fs-4 bi bi-house p-1"></i> <span className="ms-1 d-none d-sm-inline p-2">Home</span></Link>
                             </li>
                             <li onClick={handleLogout}>
-                                <a href='#' className="nav-link px-0 align-middle text-white m-3 style">
+                                <a className="nav-link px-0 align-middle text-white m-3 style">
                                     <i className="fs-4 bi-power p-1"></i> <span className="ms-1 d-none d-sm-inline p-2">Logout</span></a>
                             </li>
                         </ul>

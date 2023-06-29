@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Login.css'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
@@ -14,12 +14,26 @@ const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+  axios.defaults.withCredentials = true;
+
+  useEffect(() => {
+    axios.get('http://localhost:8080')
+    .then(res => {
+      if(res.data.valid) {
+        navigate('/')
+      } else {
+        navigate('/login')
+      }
+    })
+    .catch(err => console.log(err))
+  }, [])
+
 
   const handleSubmit = (event) => {
     event.preventDefault()
     axios.post('http://localhost:8080/login', values)
       .then(res => {
-        if (res.data.Status === 'Success') {
+        if (res.data.Login) {
           Swal.fire({
             position: 'center',
             icon: 'success',

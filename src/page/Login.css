@@ -30,7 +30,7 @@
     border-left: 0;
     border-right: 0;
     border-radius: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     font-size: 1rem;
     color: black;
     outline: none !important;
@@ -47,6 +47,7 @@
     background: #fefefe;
     cursor: pointer;
     transition: 0.3s linear ;
+    margin-top: 3rem;
 }
 .login form button:hover {
     background: #000;

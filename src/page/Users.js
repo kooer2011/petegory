@@ -42,6 +42,8 @@ const Users = () => {
             <tr>
               <th>Name</th>
               <th>Email</th>
+              <th>Phone</th>
+              <th>Role</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -50,6 +52,8 @@ const Users = () => {
               return <tr key={index}>
                   <td>{Users.name}</td>
                   <td>{Users.email}</td>
+                  <td>{Users.phone}</td>
+                  <td>{Users.role}</td>
                   <td>
                     <Link to={`/UsersEdit/`+Users.id} className='btn btn-primary btn-sm me-2'>edit</Link>
                     <button onClick={e => handleDelete(Users.id)} className='btn btn-sm btn-danger'>delete</button>

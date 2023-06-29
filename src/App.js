@@ -14,6 +14,7 @@ import Dashboard from './page/Dashboard';
 import Users from './page/Users';
 import Create from './page/Create';
 import Footer from './components/Footer/Footer';
+import Userpage from './page/Userpage';
 
 
 
@@ -21,7 +22,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Userpage />} />
         <Route path="/grooming" element={<GrooMing />} />
         <Route path="/hotel" element={<HoTel />} />
         <Route path="/contact" element={<ConTact />} />
@@ -33,7 +34,7 @@ function App() {
           <Route path="/admin/dashboard/users/create" element={<Create />} />
         </Route>
       </Routes>
-      <Footer/>
+      <Footer />
     </Router>
   );
 }

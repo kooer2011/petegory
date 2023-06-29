@@ -9,6 +9,7 @@ const SignUp = () => {
   const [data, setData] = useState({
     name: '',
     email: '',
+    phone: '',
     password: ''
   })
 
@@ -49,6 +50,7 @@ const SignUp = () => {
       <form onSubmit={handleSubmit}>
         <input type='text' id='inputName' placeholder='Name' onChange={e => setData({ ...data, name: e.target.value })} />
         <input type='email' id='inputEmail' placeholder='Email' onChange={e => setData({ ...data, email: e.target.value })} />
+        <input type='number' id='inputNumber' placeholder='Phone Number' onChange={e => setData({ ...data, phone: e.target.value })} />
         <input type='password' id='inputPassword' placeholder='Password' onChange={e => setData({ ...data, password: e.target.value })} />
         <button type={'submit'} >SignUp</button>
       </form>

@@ -1,4 +1,47 @@
-.dateContainer {
-    text-align: center;
-    margin: 20px;
+.about {
+    margin: 30px auto;
+    padding: 20px;
+    background: #eeeeeeab;
+    border-radius: 30px;
 }
+.about img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    /* margin-top: -150px; */
+}
+h1{
+    font-weight: bold;
+    text-align: center;
+}
+.about .col-sm-5 h6 {
+    font-size: 40px;
+    font-weight: 600;
+    margin: 20px auto;
+}
+.about .col-sm-5 h6 span {
+    font-size: 50px;
+    font-weight: 600;
+    color: chocolate;
+}
+.about .col-sm-5 h6 p {
+    margin: 10px auto;
+    font-size: 16px;
+}
+.about .col-sm-5 p strong {
+    font-size: 20px;
+}
+@media screen and (max-width: 600px) {
+    h1 {
+      font-size: 40px;
+    }
+    .txtHead {
+        text-align: center;
+    }
+    .about .col-sm-5 h6 {
+        font-size: 20px;
+    }
+    .about .col-sm-5 h6 span {
+        font-size: 30px;
+    }
+  }

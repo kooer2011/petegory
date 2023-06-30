@@ -15,6 +15,7 @@ import Users from './page/Users';
 import Create from './page/Create';
 import Footer from './components/Footer/Footer';
 import Userpage from './page/Userpage';
+import HotelDetail from './page/HotelDetail';
 
 
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/" element={<Userpage />} />
         <Route path="/grooming" element={<GrooMing />} />
         <Route path="/hotel" element={<HoTel />} />
+        <Route path="/hotel/detail" element={<HotelDetail />} />
         <Route path="/contact" element={<ConTact />} />
         <Route path="/gallary" element={<GaLLery />} />
         <Route path="/signup" element={<SignupContainer />} />

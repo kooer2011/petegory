@@ -2,25 +2,48 @@ import React from 'react';
 import NavbarHeader from '../components/Navbar'
 import Gallr from '../components/Gallery/Gallr';
 import UncontrolledExample from '../components/Carousel/CarouSel';
-// import banner from '../components/Banner/banner';
+import {useNavigate} from 'react-router-dom'
+
 
 import img1 from '../imgs/raw.jpg'
+import img2 from '../imgs/timebussiness.PNG'
 import './grooming.css';
 function GrooMing() {
-return (
-<div>
-  <NavbarHeader/>
-  <div className='gloom_container'>
-  <div className='header_grooming'>
-      <h1>Grooming</h1>
-  </div>
+const navigate = useNavigate();
 
-    <p className='gloom_button'>BOOKNOW</p>
-    <img className='groomimg' src={img1}/>
-  
-  </div>
+
+const navigateToBooking = () =>{
+  navigate('/grooming/booking');
+}
+
+
+
+
+
+
+return (
+
+ <div className='gloom_container'>
+  <NavbarHeader/>
+  <section className='header_grooming'>
+    <h1>GROOMING</h1>
+  </section>
+  <section onClick={navigateToBooking} className='gloom_button'>
+   Bookning
+  </section>
+
+  <section className='ressponive'>
+    <img src={img1}/>
+    <img src={img2}/>
+  </section>
  
-  </div>);
+  
+ 
+ </div>
+
+)
+ 
+ 
 
 }
 

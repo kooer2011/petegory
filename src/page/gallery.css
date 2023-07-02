@@ -1,10 +1,10 @@
 .gallery {
-  -webkit-column-count: 5;
-  -moz-column-count: 5;
+  -webkit-column-count: 3 ;
+  -moz-column-count: 3;
   column-count: 4;
-  -webkit-column-width: 33%;
-  -moz-column-width: 33%;
-  column-width: 33%;
+  -webkit-column-width: 20%;
+  -moz-column-width: 20%;
+  column-width: 20%;
   padding: 0 12px;
   margin-left: 40px;
   justify-content: center;
@@ -19,6 +19,7 @@
 .pics-size {
   width: 300px;
   height: 300px;
+  object-fit: cover;
 }
 
 @media (max-width: 991px) {

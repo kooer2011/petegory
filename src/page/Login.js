@@ -1,53 +1,74 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './Login.css'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
+import { AuthContext } from '../context/AuthContext'
 
 
 const Login = () => {
 
-  const [values, setValues] = useState({
+  const [credentials, setCredentials] = useState({
     email: '',
     password: ''
   })
-  const [error, setError] = useState('');
+  const {loading, error, dispatch} = useContext(AuthContext);
+  const handleChange = (e) => {
+    setCredentials((prev) => ({...prev, [e.target.id]: e.target.value}))
+  }
+
+  // const [email, setEmail] = useState('')
+  // const [password, setPassword] = useState('')
   const navigate = useNavigate();
 
   axios.defaults.withCredentials = true;
 
-  useEffect(() => {
-    axios.get('http://localhost:8080')
+  // useEffect(() => {
+  //   axios.get('http://localhost:8080')
+  //   .then(res => {
+  //     if(res.data.valid) {
+  //       navigate('/')
+  //     } else {
+  //       navigate('/login')
+  //     }
+  //   })
+  //   .catch(err => console.log(err))
+  // }, [])
+
+  // if (res.data.Login) {
+  //   Swal.fire({
+  //     position: 'center',
+  //     icon: 'success',
+  //     title: 'WELCOME',
+  //     showConfirmButton: false,
+  //     timer: 1500
+  //   })
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    dispatch({type: 'LOGIN_START'})
+    try {
+      const res =  await axios.post('http://localhost:8080/api/auth/login', credentials);
+      dispatch({type: 'LOGIN_SUCCESS', payload: res.data})
+    } catch (error) {
+      dispatch({type: 'LOGIN_FAILURE', payload: error.response.data})
+    }
+
+    axios.post('http://localhost:8080/api/auth/login', credentials)
     .then(res => {
-      if(res.data.valid) {
-        navigate('/')
-      } else {
-        navigate('/login')
-      }
-    })
-    .catch(err => console.log(err))
-  }, [])
-
-
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    axios.post('http://localhost:8080/login', values)
-      .then(res => {
-        if (res.data.Login) {
+      if (res.data) {
           Swal.fire({
             position: 'center',
             icon: 'success',
             title: 'WELCOME',
             showConfirmButton: false,
             timer: 1500
-          })
-            navigate('/')
-
-        } else {
-          setError(res.data.Error)
-        }
-      })
-      .catch(err => console.log(err))
+          })}
+         navigate('/') 
+    }).catch(err => console.log(err))
+    
   }
 
   return (
@@ -56,10 +77,10 @@ const Login = () => {
         {error && error}
       </div>
       <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <input type={'email'} placeholder={'Email'} name='email' onChange={e => setValues({ ...values, email: e.target.value })} />
-        <input type={'password'} placeholder={'Password'} name='password' onChange={e => setValues({ ...values, password: e.target.value })} />
-        <button type={'submit'}>Login</button>
+      <form>
+        <input type={'email'} placeholder={'Email'} name='email' required onChange={handleChange} />
+        <input type={'password'} placeholder={'Password'} name='password' required onChange={handleChange} />
+        <button type={'submit'} onClick={handleSubmit}>Login</button>
       </form>
     </div>
   )

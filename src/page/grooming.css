@@ -2,7 +2,7 @@
     margin: 0;
     border: 0;
     background-color: #F1DEC9;
-    margin-bottom: 100px;
+   width: 100%;
 }
 
 
@@ -10,7 +10,7 @@
     display: flex;
    background-color: antiquewhite;
     margin: auto;
-    width: 25%;
+   width: 20%;
    border-radius: 30px;
     padding: 10px;
     box-shadow: 4px 6px;
@@ -20,7 +20,7 @@
   
 }
 .header_grooming h1{
-    font-size: 35px;
+    font-size:2.5vw;
     font-weight: bold;
 }
 .gloom_button{
@@ -33,10 +33,11 @@
     border-radius: 10px;
     font-weight: bold;
     box-shadow: 5px 5px;
-    margin-right: 50px;
-    display: flex;
+    margin-right: 100px;
+    
     justify-content: center;
     align-items: center;
+    font-size:1vw;
 
 
 }
@@ -47,22 +48,45 @@
   transform: scale(1.1);
   
 }
-.groomimg{
-    width: 500px;
+.ressponive{
+ 
+    max-width: 500px;
     height: auto;
-    padding: 10px;
-    box-shadow: #A4907C 20px 2px;
-    margin-top: 20px;
-    margin-left: 50px;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+    margin-top: 50px;
+    
+  
+    
 }
-.hours_groom{
-    background-color: #8D7B68;
-    width: 500px;
-    height: 600px;
-   display: inline-flex;
-   margin-left: 100px;
+img{
+    width: 100%;
+  
+}
+
 
     
 
-}
-/* @media only screen(max-width: ) */
+@media only screen and (min-width: 400px) and (max-width: 1024px) {
+   
+    .header_grooming {
+    display: flex;
+    }
+    .header_grooming h1{
+        font-size: 2vh;
+        font-weight: bold;
+    }
+    .ressponive{
+        width: 50%;
+        display: inline-block;
+        flex-direction: column;
+        
+    }
+    .gloom_button{
+        width: 25%;
+        font-size: 1.5vh;
+    }
+    }
+   

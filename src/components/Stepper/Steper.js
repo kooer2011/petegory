@@ -1,29 +1,58 @@
-import React, { Component } from 'react';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-
-class SimpleForm extends Component {
+import React from "react";
+import "react-step-progress-bar/styles.css";
+import { ProgressBar } from "react-step-progress-bar";
+ 
+class ProgressBar extends React.Component {
   render() {
     return (
-    <Container>
-      <Form>
-        <Form.Group controlId="form.Name">
-            <Form.Label>Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter name" />
-        </Form.Group>
-        <Form.Group controlId="form.Email">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="name@example.com" />
-        </Form.Group>
-        <Form.Group controlId="form.Textarea">
-            <Form.Label>Comment</Form.Label>
-            <Form.Control as="textarea" rows={3} />
-        </Form.Group>
-      </Form>
-    </Container>
+      <ProgressBar
+        percent={75}
+        filledBackground="linear-gradient(to right, #fefb72, #f0bb31)"
+      />
     );
   }
-       
 }
 
-export default SimpleForm;
+import React from "react";
+import "react-step-progress-bar/styles.css";
+import { ProgressBar, Step } from "react-step-progress-bar";
+ 
+class StepProgressBar extends React.Component {
+  render() {
+    return (
+      <ProgressBar
+        percent={75}
+        filledBackground="linear-gradient(to right, #fefb72, #f0bb31)"
+      >
+        <Step transition="scale">
+          {({ accomplished }) => (
+            <img
+              style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
+              width="30"
+              src="https://vignette.wikia.nocookie.net/pkmnshuffle/images/9/9d/Pichu.png/revision/latest?cb=20170407222851"
+            />
+          )}
+        </Step>
+        <Step transition="scale">
+          {({ accomplished }) => (
+            <img
+              style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
+              width="30"
+              src="https://vignette.wikia.nocookie.net/pkmnshuffle/images/9/97/Pikachu_%28Smiling%29.png/revision/latest?cb=20170410234508"
+            />
+          )}
+        </Step>
+        <Step transition="scale">
+          {({ accomplished }) => (
+            <img
+              style={{ filter: `grayscale(${accomplished ? 0 : 80}%)` }}
+              width="30"
+              src="https://orig00.deviantart.net/493a/f/2017/095/5/4/raichu_icon_by_pokemonshuffle_icons-db4ryym.png"
+            />
+          )}
+        </Step>
+      </ProgressBar>
+    );
+  }
+}
+export default StepProgressBar

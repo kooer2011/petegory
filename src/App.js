@@ -17,6 +17,7 @@ import Footer from './components/Footer/Footer';
 import Userpage from './page/Userpage';
 import HotelDetail from './page/HotelDetail';
 import GroomBooking from './page/GroomBooking';
+import HotelCreate from './page/HotelCreate';
 
 
 
@@ -36,6 +37,7 @@ function App() {
         <Route path="/admin/dashboard" element={<Dashboard />} >
           <Route path="/admin/dashboard/users" element={<Users />} />
           <Route path="/admin/dashboard/users/create" element={<Create />} />
+          <Route path="/admin/dashboard/hotel" element={<HotelCreate />} />
         </Route>
       </Routes>
       <Footer />

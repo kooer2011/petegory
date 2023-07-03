@@ -50,6 +50,10 @@ const Dashboard = () => {
                                     <i className="fs-4 bi-person p-1"></i> <span className="ms-1 d-none d-sm-inline p-2">Users</span></Link>
                             </li>
                             <li>
+                                <Link to="/admin/dashboard/hotel" className="nav-link px-0 align-middle text-white m-3 style">
+                                <i class="fs-4 bi bi-houses p-1"></i> <span className="ms-1 d-none d-sm-inline p-2">Hotels</span></Link>
+                            </li>
+                            <li>
                                 <Link to="/" className="nav-link px-0 align-middle text-white m-3 style">
                                     <i class="fs-4 bi bi-house p-1"></i> <span className="ms-1 d-none d-sm-inline p-2">Home</span></Link>
                             </li>

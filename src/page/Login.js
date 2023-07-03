@@ -9,78 +9,50 @@ import { AuthContext } from '../context/AuthContext'
 const Login = () => {
 
   const [credentials, setCredentials] = useState({
-    email: '',
-    password: ''
+    email: undefined,
+    password: undefined
   })
   const {loading, error, dispatch} = useContext(AuthContext);
+
   const handleChange = (e) => {
-    setCredentials((prev) => ({...prev, [e.target.id]: e.target.value}))
+    setCredentials((prev) => ({...prev,[e.target.id]: e.target.value}))
   }
 
-  // const [email, setEmail] = useState('')
-  // const [password, setPassword] = useState('')
   const navigate = useNavigate();
 
   axios.defaults.withCredentials = true;
-
-  // useEffect(() => {
-  //   axios.get('http://localhost:8080')
-  //   .then(res => {
-  //     if(res.data.valid) {
-  //       navigate('/')
-  //     } else {
-  //       navigate('/login')
-  //     }
-  //   })
-  //   .catch(err => console.log(err))
-  // }, [])
-
-  // if (res.data.Login) {
-  //   Swal.fire({
-  //     position: 'center',
-  //     icon: 'success',
-  //     title: 'WELCOME',
-  //     showConfirmButton: false,
-  //     timer: 1500
-  //   })
-
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
     dispatch({type: 'LOGIN_START'})
     try {
-      const res =  await axios.post('http://localhost:8080/api/auth/login', credentials);
+      const res =  await axios.post('/api/auth/login', credentials);
       dispatch({type: 'LOGIN_SUCCESS', payload: res.data})
+      Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'WELCOME',
+                showConfirmButton: false,
+                timer: 1500
+              })
+      navigate('/')
     } catch (error) {
       dispatch({type: 'LOGIN_FAILURE', payload: error.response.data})
     }
-
-    axios.post('http://localhost:8080/api/auth/login', credentials)
-    .then(res => {
-      if (res.data) {
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'WELCOME',
-            showConfirmButton: false,
-            timer: 1500
-          })}
-         navigate('/') 
-    }).catch(err => console.log(err))
-    
   }
 
   return (
     <div className='login'>
       <div className='text-danger mt-3 fs-4'>
-        {error && error}
+        {error && <span>{error.message}</span>}
       </div>
       <h1>Login</h1>
       <form>
-        <input type={'email'} placeholder={'Email'} name='email' required onChange={handleChange} />
-        <input type={'password'} placeholder={'Password'} name='password' required onChange={handleChange} />
-        <button type={'submit'} onClick={handleSubmit}>Login</button>
+        <input type={'email'} placeholder={'Email'} id='email' required onChange={handleChange} />
+        <input type={'password'} placeholder={'Password'} id='password' required onChange={handleChange} />
+        <button type={'submit'} disabled={loading} onClick={handleSubmit}>Login</button>
+         
       </form>
     </div>
   )

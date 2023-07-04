@@ -25,7 +25,7 @@ function GridExample() {
           <h1>WELCOME TO PET’EGORY </h1>
           <div className="cards">
             {cards.map((card, i) => (
-              <div key={i} className="card">
+              <div key={i} className="card_content">
                 <h3>{card.title}</h3>
                 <p>{card.text}</p>
                 <button className="btnRead" >Read more</button>

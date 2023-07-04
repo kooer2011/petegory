@@ -69,24 +69,39 @@ img{
 
     
 
-@media only screen and (min-width: 400px) and (max-width: 1024px) {
+@media only screen and (min-width: 300px) and (max-width: 1024px) {
    
     .header_grooming {
     display: flex;
+    width: 90%;
     }
     .header_grooming h1{
-        font-size: 2vh;
+        font-size: 4vh;
         font-weight: bold;
+        width: 90%;
     }
     .ressponive{
-        width: 50%;
+        width: 90%;
         display: inline-block;
         flex-direction: column;
         
     }
     .gloom_button{
-        width: 25%;
-        font-size: 1.5vh;
+        display: flex;
+        font-size: 2vh;
+        width: 50%;
+        
+        
+        
     }
     }
    
+
+
+
+
+
+.Grooming_booking{
+    text-align: center;
+    height: 100vh;
+}

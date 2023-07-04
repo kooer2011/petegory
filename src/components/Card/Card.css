@@ -30,7 +30,7 @@ h1 {
   justify-content: space-between;
   /* margin-left: 50px; */
 }
-.card {
+.card_content{
   flex: 0 0 calc(33.33% - 20px);
   max-width: calc(33.33% - 20px);
   width: 100%;
@@ -50,11 +50,11 @@ h1 {
   transition: 0.3s;
   border: 2px solid transparent;
 }
-.card:hover {
+.card_content:hover {
   border-color: black;
 }
 @media (max-width: 600px) {
-  .card {
+  .card_content {
     flex: 0 0 100%;
     max-width: 100%;
   }

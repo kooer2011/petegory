@@ -54,6 +54,10 @@ function HoTel() {
         <h1>CAT HOTEL</h1>
       </div>
       <section>
+        <div>
+          <h2>เงื่อนไขการเข้าใช้บริการ</h2>
+          <p></p>
+        </div>
       
       {data && images.map((img,i) => (
             <div className='about container'>

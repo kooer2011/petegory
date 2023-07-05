@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import './LoginSignupContainer.css'
 import Swal from 'sweetalert2'
+import { message, Form } from 'antd'
 
 const SignUp = () => {
 
@@ -26,31 +27,45 @@ const SignUp = () => {
         })
 
   //formhandler
-  const finishHandler = (e) => {
-    e.preventDefault()
+  // const finishHandler = (e) => {
+  //   e.preventDefault()
 
-    axios.post('http://localhost:8080/api/auth/signup', {name,email,phone,password})
-      .then(res => {
-        if(res.data){
-          Toast.fire({
-          icon: 'success',
-          title: 'Signed in successfully'
-        })
-        }
+  //   axios.post('http://localhost:8080/api/auth/signup', {name,email,phone,password})
+  //     .then(res => {
+  //       if(res.data){
+  //         Toast.fire({
+  //         icon: 'success',
+  //         title: 'Signed in successfully'
+  //       })
+  //       }
+  //       navigate('/login')
+  //     }).catch(err => console.log(err))
+  // }
+  const handleSubmit = async () => {
+    try {
+      const res = await axios.post('/api/v1/user/signup', {name,email,phone,password})
+      if(res.data.success){
+        message.success('Register Successfully')
         navigate('/login')
-      }).catch(err => console.log(err))
+      } else {
+        message.error(res.data.message)
+      }
+    } catch (error) {
+      console.log(error)
+      message.error('Someting Went Wrong')
+    }
   }
 
   return (
     <div className='signup'>
       <h1>SignUp</h1>
-      <form onSubmit={finishHandler}>
-        <input type='text' placeholder='Name' require onChange={e => setName(e.target.value)} />
-        <input type='email' placeholder='Email' require onChange={e => setEmail(e.target.value)} />
-        <input type='number' placeholder='Phone Number' require onChange={e => setPhone(e.target.value)} />
-        <input type='password' placeholder='Password' require onChange={e => setPassword(e.target.value)} />
+      <Form onFinish={handleSubmit}>
+        <input type='text' placeholder='Name' required onChange={(e) => setName(e.target.value)} />
+        <input type='email' placeholder='Email' required onChange={(e) => setEmail(e.target.value)} />
+        <input type='number' placeholder='Phone Number' required onChange={(e) => setPhone(e.target.value)} />
+        <input type='password' placeholder='Password' required onChange={(e) => setPassword(e.target.value)} />
         <button type='submit' >SignUp</button>
-      </form>
+      </Form>
     </div>
   )
 }

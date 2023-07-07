@@ -2,14 +2,16 @@ import React, { useContext, useEffect, useState } from 'react'
 import './Login.css'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import Swal from 'sweetalert2'
-import { AuthContext } from '../context/AuthContext'
-import { message,  Form } from 'antd'
+// import { AuthContext } from '../context/AuthContext'
+import { message, Form } from 'antd'
+import { useDispatch } from 'react-redux'
+import { showLoading, hideLoading } from '../redux/features/alertSlice'
 
 
 const Login = () => {
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [credentials, setCredentials] = useState({
     email: undefined,
@@ -18,21 +20,23 @@ const Login = () => {
 
   // const {loading, error, dispatch} = useContext(AuthContext);
   const handleChange = (e) => {
-    setCredentials((prev) => ({...prev,[e.target.id]: e.target.value}))
+    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }))
   }
-  axios.defaults.withCredentials = true;
 
   const finishHandle = async () => {
     try {
-      const res = await axios.post('http://localhost:8080/api/v1/user/login', credentials)
-      if(res.data.success) {
-        localStorage.setItem('token', res.data.token)
+      dispatch(showLoading());
+      const res = await axios.post('/api/v1/user/login', credentials)
+      dispatch(hideLoading());
+      if (res.data.success) {
+        localStorage.setItem("token", res.data.token)
         message.success('Login Successfully')
         navigate('/')
       } else {
         message.error(res.data.message)
       }
     } catch (error) {
+      dispatch(hideLoading());
       console.log(error)
       message.error('Someting Went Wrong')
     }
@@ -45,7 +49,7 @@ const Login = () => {
         <input type={'email'} placeholder={'Email'} id='email' required onChange={handleChange} />
         <input type={'password'} placeholder={'Password'} id='password' required onChange={handleChange} />
         <button type={'submit'}>Login</button>
-         
+
       </Form>
     </div>
   )

@@ -1,32 +1,36 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect} from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import axios from 'axios'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import '../index.css'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { message } from 'antd'
 
 const Dashboard = () => {
-    const [role, setRole] = useState('')
     const navigate = useNavigate();
-
-    axios.defaults.withCredentials = true;
-    useEffect(() => {
-        axios.get('http://localhost:8080')
-            .then(res => {
-                if(res.data.valid) {
-                    setRole(res.data.role)
-                } else {
-                    navigate('/login')
-                }
+    const {user} = useSelector(state => state.user)
+    const getUserData = async () => {
+        try {
+            const res = await axios.post('/api/v1/user/getUserData',{},
+            {
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('token'),
+                },
             })
-            .catch(err => console.log(err))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        getUserData();
     }, [])
 
     const handleLogout = () => {
-        axios.get('http://localhost:8080/api/logout')
-            .then(res => {
-                window.location.reload();
-            }).catch(err => console.log(err))
+        localStorage.clear();
+        message.success('Logout Successfully')
+        navigate('/login')
     }
     return (
         <div class="container-fluid">
@@ -57,16 +61,22 @@ const Dashboard = () => {
                                 <Link to="/" className="nav-link px-0 align-middle text-white m-3 style">
                                     <i class="fs-4 bi bi-house p-1"></i> <span className="ms-1 d-none d-sm-inline p-2">Home</span></Link>
                             </li>
-                            <li onClick={handleLogout}>
-                                <a className="nav-link px-0 align-middle text-white m-3 style">
-                                    <i className="fs-4 bi-power p-1"></i> <span className="ms-1 d-none d-sm-inline p-2">Logout</span></a>
+                            <li >
+                                <div onClick={handleLogout} className='logout'>
+                                <p className="nav-link px-0 align-middle text-white m-3 style">
+                                    <i className="fs-4 bi-power p-1"></i> <span className="ms-1 d-none d-sm-inline p-2">Logout</span></p>
+                                </div>    
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col p-0 m-0">
-                    <div className='p-2 d-flex justify-content-center shadow'>
-                        <h4>Management System</h4>
+                    <div className='p-2 d-flex justify-content-between shadow'>
+                        <h4 className='m-3'>Management System</h4>
+                        <div className='header-content'>
+                        <i class="fa-solid fa-bell"></i>
+                        <Link to='/profile'>{user?.name}</Link>
+                        </div>
                     </div>
                     <Outlet />
                 </div>

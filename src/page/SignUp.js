@@ -3,47 +3,25 @@ import './Signup.css'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import './LoginSignupContainer.css'
-import Swal from 'sweetalert2'
 import { message, Form } from 'antd'
+import { useDispatch } from 'react-redux'
+import { showLoading,hideLoading } from '../redux/features/alertSlice'
 
 const SignUp = () => {
 
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
 
-  const Toast = Swal.mixin({
-          toast: true,
-          position: 'bottom-start',
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-          }
-        })
 
-  //formhandler
-  // const finishHandler = (e) => {
-  //   e.preventDefault()
-
-  //   axios.post('http://localhost:8080/api/auth/signup', {name,email,phone,password})
-  //     .then(res => {
-  //       if(res.data){
-  //         Toast.fire({
-  //         icon: 'success',
-  //         title: 'Signed in successfully'
-  //       })
-  //       }
-  //       navigate('/login')
-  //     }).catch(err => console.log(err))
-  // }
   const handleSubmit = async () => {
     try {
+      dispatch(showLoading());
       const res = await axios.post('/api/v1/user/signup', {name,email,phone,password})
+      dispatch(hideLoading());
       if(res.data.success){
         message.success('Register Successfully')
         navigate('/login')
@@ -51,6 +29,7 @@ const SignUp = () => {
         message.error(res.data.message)
       }
     } catch (error) {
+      dispatch(hideLoading());
       console.log(error)
       message.error('Someting Went Wrong')
     }

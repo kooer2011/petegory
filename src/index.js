@@ -4,13 +4,15 @@ import './index.css';
 import App from './App';
 import { AuthContextProvider } from './context/AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { Provider } from 'react-redux'
+import stores from './redux/stores';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <AuthContextProvider>
+  <Provider store={stores}>
+    <React.StrictMode>
       <App />
-    </AuthContextProvider>
-  </React.StrictMode>
+    </React.StrictMode>
+  </Provider>
 );
 

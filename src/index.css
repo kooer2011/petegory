@@ -30,24 +30,6 @@ code {
   justify-content: center;
   z-index: 9999;
 }
-.header-content{
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  float: right;
-  margin: 0 15px;
-}
-.header-content i {
-  padding: 10px;
-  font-size: 24px;
-}
-.header-content a {
-  text-decoration: none;
-  font-size: 1.2rem;
-  color: blue;
-  text-transform: uppercase;
-  margin: 0 10px;
-}
 .logout{
   cursor: pointer;
 }

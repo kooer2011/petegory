@@ -19,6 +19,7 @@ import {
 
 import { Link } from 'react-router-dom'
 import './HotelDetail.css'
+import Footer from '../components/Footer/Footer'
 
 
 const HotelDetail = () => {
@@ -99,7 +100,7 @@ const HotelDetail = () => {
           </div>
         </div>
       </section >
-
+      <Footer/>
     </>
   )
 }

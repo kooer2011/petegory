@@ -9,6 +9,7 @@ import MultiStepProgressBar from '../components/Stepper/MultiStepProgressBar'
 import questions from '../components/Question/Questions'
 import {Container,Row,Col,Card,Button} from 'react-bootstrap'
 import './grooming.css';
+import Footer from '../components/Footer/Footer';
 function GroomBooking() {
   const [index, setIndex] = useState(1);
   const [submitted, setSubmitted] = useState(false);
@@ -44,7 +45,7 @@ function GroomBooking() {
   return (
     <div className="App">
       <NavbarHeader/>
-      <Container className="h-100">
+      <div className="h-100 w-50 container">
         <Row className="m-5">
           <Col className="align-self-center">
             <MultiStepProgressBar step={index} />
@@ -72,17 +73,20 @@ function GroomBooking() {
               </Card.Body>
               <Card.Footer className="d-flex justify-content-between"></Card.Footer>
               <AvailableTimeSlots />
-              <Button onClick={prevButton} disabled={index === 1}>
+              <div className='d-flex justify-content-around m-4'>
+              <Button onClick={prevButton} disabled={index === 1} className='w-25'>
                 Previous
               </Button>
 
-              <Button onClick={nextButton}>
+              <Button onClick={nextButton} className='w-25'>
                 {index === totalPagesCount ? 'Submit' : 'Next'}
               </Button>
+              </div>
             </Card>
           )}
         </Row>
-      </Container>
+      </div>
+      <Footer/>
     </div>
   );
 }

@@ -3,12 +3,12 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import img from '../imgs/petegory-logo.png';
 import './nav.css';
-
-
+import { Link } from 'react-router-dom';
 
 function NavbarHeader() {
+
+
   return (
-    
     <Navbar expand="lg" className="color-nav">
       <Container>
         <Navbar.Brand href="/">
@@ -33,16 +33,19 @@ function NavbarHeader() {
             <Nav.Link className="link-hover" href="/gallary">
               GALLARY
             </Nav.Link>
+
             <Nav.Link className="link-hover signin" href="/login">
               LOGIN
             </Nav.Link>
+
+
           </Nav>
         </Navbar.Collapse>
-      </Container>
-    </Navbar>
- 
+      </Container >
+    </Navbar >
 
-    
+
+
   );
 }
 

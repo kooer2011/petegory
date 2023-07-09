@@ -7,6 +7,7 @@ import NavbarHeader from '../components/Navbar';
 import Gallr from '../components/Gallery/Gallr';
 import './gallery.css';
 import '../index.css'
+import Footer from '../components/Footer/Footer';
  
 
 
@@ -16,6 +17,7 @@ function GaLLery() {
       {' '}
       <NavbarHeader /> <h1>GALLERY</h1>
       <Gallr />
+      <Footer/>
     </div>
   );
 }

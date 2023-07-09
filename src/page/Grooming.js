@@ -3,6 +3,7 @@ import NavbarHeader from '../components/Navbar'
 import Gallr from '../components/Gallery/Gallr';
 import UncontrolledExample from '../components/Carousel/CarouSel';
 import {useNavigate} from 'react-router-dom'
+import Footer from '../components/Footer/Footer';
 
 
 import img1 from '../imgs/raw.jpg'
@@ -22,25 +23,24 @@ const navigateToBooking = () =>{
 
 
 return (
-
+<>
  <div className='gloom_container'>
   <NavbarHeader/>
   <section className='header_grooming'>
     <h1>GROOMING</h1>
   </section>
   <section onClick={navigateToBooking} className='gloom_button'>
-   Bookning
+   Booking
   </section>
 
   <section className='ressponive'>
     <img src={img1}/>
     <img src={img2}/>
   </section>
- 
-  
- 
  </div>
-
+  
+  <Footer/>
+</>
 )
  
  

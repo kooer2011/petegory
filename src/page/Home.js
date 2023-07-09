@@ -28,7 +28,7 @@ const Home = () => {
 
     axios.defaults.withCredentials = true;
     useEffect(() => {
-        axios.get('http://localhost:8080')
+        axios.get('http://localhost:8080/api/v1/user')
             .then(res => {
                 if(res.data.valid) {
                     setRole(res.data.role)
@@ -41,8 +41,7 @@ const Home = () => {
 
   return (
     <div className='home_container'>
-      {/* <Fab actions={actions} /> */}
-      {role == '' && <Userpage/>}
+      {role == 'user' && <Userpage/>}
       {role === 'admin' && <Dashboard/>}
     
     </div>

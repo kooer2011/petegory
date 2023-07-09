@@ -8,6 +8,7 @@ import roomDeluxe from '../imgs/deluxe room.jpg'
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import axios from 'axios';
+import Footer from '../components/Footer/Footer';
 
 
 const { RangePicker } = DatePicker;
@@ -85,7 +86,7 @@ function HoTel() {
         ))}
         
       </section>
-
+        <Footer/>
     </>
   )
 }

@@ -1,16 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './Login.css'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
-// import { AuthContext } from '../context/AuthContext'
+import { useNavigate } from 'react-router-dom';
 import { message, Form } from 'antd'
 import { useDispatch } from 'react-redux'
 import { showLoading, hideLoading } from '../redux/features/alertSlice'
 
-
 const Login = () => {
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [credentials, setCredentials] = useState({
@@ -18,7 +15,6 @@ const Login = () => {
     password: undefined
   })
 
-  // const {loading, error, dispatch} = useContext(AuthContext);
   const handleChange = (e) => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }))
   }
@@ -31,7 +27,6 @@ const Login = () => {
       if (res.data.success) {
         localStorage.setItem("token", res.data.token)
         message.success('Login Successfully')
-        navigate('/')
       } else {
         message.error(res.data.message)
       }

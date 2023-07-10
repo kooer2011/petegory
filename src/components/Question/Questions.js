@@ -10,12 +10,12 @@ const questions = [
       {
         label: 'number',
         type: 'text',
-        value: 'password',
+        value: 'number',
       },
       {
         label: 'PetType',
         type: 'select',
-        value: 'select',
+        value: 'PetType',
         options: ['CAT', 'DOG'],
       },
     ],
@@ -25,13 +25,13 @@ const questions = [
     items: [
       {
         label: 'บริการเสริม',
-        type: 'add-on',
-        value: 'add-on',
+        type: 'addon',
+        value: 'addon',
       },
       {
         label: 'Breed',
         type: 'select',
-        value: 'select',
+        value: 'Breed',
         options: [
           'ปอม',
           'ชิวว่า',
@@ -47,6 +47,14 @@ const questions = [
       },
     ],
   },
-  {},
+  {
+    section: 3,
+    items: [
+      {
+        label: 'Confirm',
+        type: 'Confirm',
+        
+      },]
+  },
 ];
 export default questions;

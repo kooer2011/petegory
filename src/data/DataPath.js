@@ -48,3 +48,16 @@ export const adminMenu = [
         icon: 'fa-solid fa-hotel',
     },
 ];
+
+export const adminProfile = [
+    {
+        name: 'Dashboard',
+        path: '/admin/dashboard',
+    },
+]
+export const userProfile = [
+    {
+        name: 'Booking',
+        path: '/myBooking'
+    }
+]

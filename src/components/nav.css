@@ -25,7 +25,7 @@
 }
 .signin {
   background-color: #cda274;
-  color: #ffffff;
+  color: #fff;
   border-radius: 15px;
   width: 100px;
   text-align: center;
@@ -33,4 +33,10 @@
 }
 .hamberger {
   transition: 0.3s;
+}
+.profile {
+  align-self: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: rgb(34, 31, 248);
 }

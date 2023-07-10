@@ -18,14 +18,12 @@ const navigateToBooking = () =>{
 }
 
 
-
-
-
+const showNavbar = true
 
 return (
 <>
  <div className='gloom_container'>
-  <NavbarHeader/>
+ {showNavbar && <NavbarHeader />}
   <section className='header_grooming'>
     <h1>GROOMING</h1>
   </section>

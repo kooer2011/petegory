@@ -22,6 +22,7 @@ import { useSelector } from 'react-redux';
 import Spinner from './components/Spinner';
 import PrivateRoute from './components/ProtectedRoute/PrivateRoute';
 import PublicRoute from './components/ProtectedRoute/PublicRoute'
+import Profile from './components/Profile/Profile';
 
 
 
@@ -57,6 +58,12 @@ function App() {
           <Route path="/hotel/detail" element={<HotelDetail />} />
           <Route path="/contact" element={<ConTact />} />
           <Route path="/gallary" element={<GaLLery />} />
+          <Route path="/profile" element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          } />
+
 
           <Route path="/admin/dashboard"
             element={

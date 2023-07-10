@@ -50,6 +50,7 @@ export default function PrivateRoute ({ children }) {
       title: 'Something went wrong!',
       text: 'Please Login.',
     })
-    return <Navigate to='/login' />
+    // return <Navigate to='/login' />
+    return user ? children : <Navigate to="/login" />;
   }
 }

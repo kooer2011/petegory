@@ -3,8 +3,10 @@ import { useState } from 'react';
 import Select from 'react-select';
 import makeAnimate from 'react-select/animated';
 import AvailableTimeSlots from './AvailableTimeSlots';
-export const FormItem = ({ item, onChange, answer }) => {
+import { Confirm } from './Confirm';
+export const FormItem = ({ item, onChange, answer, items}) => {
   const [currentValue, setCurrentValue] = useState(answer || null);
+  //
   const animatedComponent = makeAnimate();
   const handleChange = value => {
     setCurrentValue(value);
@@ -65,10 +67,11 @@ export const FormItem = ({ item, onChange, answer }) => {
         </div>
       );
       break;
-    case 'add-on':
+    case 'addon':
       return (
         <div>
           <Select
+            aria-label={item.label}
             components={animatedComponent}
             className="select"
             isMulti
@@ -81,6 +84,13 @@ export const FormItem = ({ item, onChange, answer }) => {
           />
         </div>
       );
+      break;
+    case 'Confirm':
+      return(
+      <div>
+    
+     </div>
+      )
 
       return <></>;
   }

@@ -4,6 +4,9 @@ import GridExample from '../components/Card/Card';
 import NavbarHeader from '../components/Navbar';
 import Gallr from '../components/Gallery/Gallr';
 import Footer from '../components/Footer/Footer';
+import GrooMing from './Grooming';
+import HoTel from './Hotel';
+
 
 
 const Userpage = () => {
@@ -15,6 +18,8 @@ const Userpage = () => {
       <GridExample />
       <h1>Gallery</h1> 
       <Gallr className ='gallrcontainer'/>
+      <GrooMing />
+      <HoTel/>
       <Footer/>
     </>
   )

@@ -89,3 +89,8 @@
     user-select: none;
     /* object-fit: cover; */
 }
+
+.form-btn {
+    width: 250px !important;
+    margin-top: 30px !important;
+}

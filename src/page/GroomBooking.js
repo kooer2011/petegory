@@ -20,7 +20,7 @@ function GroomBooking() {
   const prevButton = () => {
     if (index > 1) {
       setIndex(prevIndex => prevIndex - 1);
-    }
+    } 
   };
 
   const nextButton = () => {

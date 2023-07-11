@@ -50,7 +50,6 @@ function HoTel() {
 
   return (
     <>
-      <NavbarHeader />
       <div className='txtHead'>
         <h1>CAT HOTEL</h1>
       </div>
@@ -86,7 +85,6 @@ function HoTel() {
         ))}
         
       </section>
-        <Footer/>
     </>
   )
 }

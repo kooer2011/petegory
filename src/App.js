@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './page/Home';
 import GrooMing from './page/Grooming';
-import HoTel from './page/Hotel';
 import ConTact from './page/ConTact';
 import GaLLery from './page/GaLLery';
 import LoginSignupContainer from './page/LoginSignupContainer';
@@ -13,7 +12,6 @@ import SignupContainer from './page/SignupContainer';
 import Dashboard from './page/Dashboard';
 import Users from './page/Users';
 import Create from './page/Create';
-import Footer from './components/Footer/Footer';
 import Userpage from './page/Userpage';
 import HotelDetail from './page/HotelDetail';
 import GroomBooking from './page/GroomBooking';
@@ -23,6 +21,7 @@ import Spinner from './components/Spinner';
 import PrivateRoute from './components/ProtectedRoute/PrivateRoute';
 import PublicRoute from './components/ProtectedRoute/PublicRoute'
 import Profile from './components/Profile/Profile';
+import HotelPage from './components/Hotel/HotelPage';
 
 
 
@@ -54,7 +53,7 @@ function App() {
                 <GroomBooking />
               </PrivateRoute>
             } />
-          <Route path="/hotel" element={<HoTel />} />
+          <Route path="/hotel" element={<HotelPage />} />
           <Route path="/hotel/detail" element={<HotelDetail />} />
           <Route path="/contact" element={<ConTact />} />
           <Route path="/gallary" element={<GaLLery />} />

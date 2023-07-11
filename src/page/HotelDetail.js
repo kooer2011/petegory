@@ -20,9 +20,15 @@ import {
 import { Link } from 'react-router-dom'
 import './HotelDetail.css'
 import Footer from '../components/Footer/Footer'
+import { Col, Form, Input, Row, TimePicker, message } from "antd";
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { hideLoading, showLoading } from '../redux/features/alertSlice'
 
 
 const HotelDetail = () => {
+
+
   const images = [
     { id: 0, value: roomstd },
     { id: 1, value: roomdeluxe },
@@ -63,6 +69,37 @@ const HotelDetail = () => {
   }
 
 
+  const { user } = useSelector(state => state.user)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const handleSubmit = async (values) => {
+    try {
+      dispatch(showLoading())
+      const res = await axios.post('/api/v1/user/bookHotel', 
+      { ...values, userId: user._id }, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
+      dispatch(hideLoading())
+      if (res.data.success) {
+        message.success(res.data.success)
+        navigate('/')
+      } else {
+        message.error(res.data.success)
+      }
+    } catch (error) {
+      dispatch(hideLoading())
+      console.log(error)
+      message.error('Someting Went Wrong')
+    }
+  }
+
+  // const [pet, setPet] = useState('')
+  // const [name, setName] = useState('')
+  // const [phone, setPhone] = useState('')
+  // const [time, setTime] = useState('')
 
 
 
@@ -100,7 +137,96 @@ const HotelDetail = () => {
           </div>
         </div>
       </section >
-      <Footer/>
+
+      {/* <section>
+      <div className='d-flex flex-column align-items-center pt-4'>
+            <h2>Booking Hotel</h2>
+            <form class="row g-3 w-50" onSubmit={handleSubmit}  >
+                <div class="col-12">
+                    <label for="inputName" class="form-label"><strong>Petname</strong></label>
+                    <input type="text" class="form-control" id="inputName" placeholder='Type Room' autoComplete='off'
+                    onChange={e => setPet(e.target.value)}
+                    />
+                </div>
+                <div class="col-12">
+                    <label for="price" class="form-label"><strong>Name</strong></label>
+                    <input type="text" class="form-control" id="price" placeholder='input price' autoComplete='off'
+                    onChange={e => setName(e.target.value)}
+                    />
+                </div>
+                <div class="col-12">
+                    <label for="price" class="form-label"><strong>Phone</strong></label>
+                    <input type="text" class="form-control" id="title1" placeholder='input price' autoComplete='off'
+                    onChange={e => setPhone(e.target.value)}
+                    />
+                </div>
+                <div class="col-12">
+                    <label for="title" class="form-label"><strong>Time</strong></label>
+                    <input type="text" class="form-control" id="title2" placeholder='Input Someting'
+                    onChange={e => setTime(e.target.value)}
+                    />
+                </div>
+
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+      </section> */}
+
+      <section>
+        <h1 className="text-center">Apply hotel</h1>
+        <Form layout="vertical" onFinish={handleSubmit} className="m-3">
+          <h4 className="">Personal Details : </h4>
+          <Row gutter={20}>
+            <Col xs={24} md={24} lg={8}>
+              <Form.Item
+                label="Name"
+                name="name"
+                required
+                rules={[{ required: true }]}
+              >
+                <Input type="text" placeholder="your name" />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={24} lg={8}>
+              <Form.Item
+                label="PetName"
+                name="petname"
+                required
+                rules={[{ required: true }]}
+              >
+                <Input type="text" placeholder="your petname" />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={24} lg={8}>
+              <Form.Item
+                label="Phone No"
+                name="phone"
+                required
+                rules={[{ required: true }]}
+              >
+                <Input type="text" placeholder="your contact no" />
+              </Form.Item>
+            </Col>
+
+            <Col xs={24} md={24} lg={8}>
+              <Form.Item label="Timings" name="time" required>
+                <TimePicker format="HH:mm" />
+              </Form.Item>
+            </Col>
+            <Col xs={24} md={24} lg={8}></Col>
+            <Col xs={24} md={24} lg={8}>
+              <button className="btn btn-primary form-btn" type="submit">
+                Submit
+              </button>
+            </Col>
+          </Row>
+
+        </Form>
+      </section>
+
+      <Footer />
     </>
   )
 }

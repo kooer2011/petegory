@@ -4,7 +4,7 @@ import Select from 'react-select';
 import makeAnimate from 'react-select/animated';
 import AvailableTimeSlots from './AvailableTimeSlots';
 import { Confirm } from './Confirm';
-export const FormItem = ({ item, onChange, answer, items}) => {
+export const FormItem = ({ item, onChange, answer,}) => {
   const [currentValue, setCurrentValue] = useState(answer || null);
   //
   const animatedComponent = makeAnimate();
@@ -85,12 +85,7 @@ export const FormItem = ({ item, onChange, answer, items}) => {
         </div>
       );
       break;
-    case 'Confirm':
-      return(
-      <div>
     
-     </div>
-      )
 
       return <></>;
   }

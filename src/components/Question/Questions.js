@@ -9,7 +9,7 @@ const questions = [
       },
       {
         label: 'number',
-        type: 'text',
+        type: 'password',
         value: 'number',
       },
       {

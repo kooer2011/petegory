@@ -6,6 +6,7 @@ import Gallr from '../components/Gallery/Gallr';
 import Footer from '../components/Footer/Footer';
 import GrooMing from './Grooming';
 import HoTel from './Hotel';
+import ContactSelection from '../components/Contact/ContactSelection';
 
 
 
@@ -18,8 +19,11 @@ const Userpage = () => {
       <GridExample />
       <h1>Gallery</h1> 
       <Gallr className ='gallrcontainer'/>
-      <GrooMing />
-      <HoTel/>
+      <br/>
+      <hr/>
+      <HoTel />
+      <hr/>
+      <ContactSelection />
       <Footer/>
     </>
   )

@@ -8,7 +8,7 @@
 }
 
 .itemStyles{
-    padding: 2rem;
+    padding: 1rem;
     background-color: black;
     display: flex;
     align-items: center;
@@ -30,23 +30,23 @@
 }
 .input_content,textarea{
     width: 100%;
-    font-size: 1rem;
-    padding: 1.2rem;
+    font-size: 0.5rem;
+    padding: 1rem;
     color: var(gray-1);
     background-color: wheat;
     outline: none;
     border: none;
     border-radius: 8px;
-    margin-top: 1rem;
+    margin-top: 0.1rem;
 
 }
 .message_textarea{
-    height: 300px;
+    height: 200px;
    
     
 }
 .content_button{
-    background-color: rgb(248, 0, 0);
+    background-color: #8D7B68;
     color: wheat;
     font-size: 1rem;
     display: inline-block;
@@ -57,6 +57,7 @@
     cursor: pointer;
 
 }
+
 
 .contactSection_wrapper{
     display:  flex;

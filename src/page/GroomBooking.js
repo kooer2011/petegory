@@ -1,51 +1,61 @@
 import React,{useState}  from 'react'
 import NavbarHeader from '../components/Navbar';
 
-import StepProgressBar from '../components/Stepper/Stepbar'
 
-import AvailableTimeSlots from '../components/Stepper/AvailableTimeSlots';
-import { MultiStepForm } from '../components/Stepper/MultiStepForm';
-import MultiStepProgressBar from '../components/Stepper/MultiStepProgressBar'
-import questions from '../components/Question/Questions'
-import {Container,Row,Col,Card,Button} from 'react-bootstrap'
+
+
+
+//Component
+import UserForm from '../components/FormGroming/UserForm'
+// import StepProgressBar from '../components/Stepper/Stepbar'
+
+// import AvailableTimeSlots from '../components/Stepper/AvailableTimeSlots';
+// import { MultiStepForm } from '../components/Stepper/MultiStepForm';
+// import MultiStepProgressBar from '../components/Stepper/MultiStepProgressBar'
+// import questions from '../components/Question/Questions'
+// import {Container,Row,Col,Card,Button} from 'react-bootstrap'
 import './grooming.css';
 import Footer from '../components/Footer/Footer';
 function GroomBooking() {
-  const [index, setIndex] = useState(1);
-  const [submitted, setSubmitted] = useState(false);
-  const totalPagesCount = questions?.length || 0;
-  // numbered by pages. for exampe { 1: [{"key" : "value"}], 2:["key": "value"], 3: []}
-  const [pagesAnswers, setPagesAnswers] = useState({});
+  // const [index, setIndex] = useState(1);
+  // const [submitted, setSubmitted] = useState(false);
+  // const totalPagesCount = questions?.length || 0;
+  // // numbered by pages. for exampe { 1: [{"key" : "value"}], 2:["key": "value"], 3: []}
+  // const [pagesAnswers, setPagesAnswers] = useState({});
 
-  const prevButton = () => {
-    if (index > 1) {
-      setIndex(prevIndex => prevIndex - 1);
-    } 
-  };
+  // const prevButton = () => {
+  //   if (index > 1) {
+  //     setIndex(prevIndex => prevIndex - 1);
+  //   } 
+  // };
 
-  const nextButton = () => {
-    if (index - 3) {
-      setIndex(prevIndex => prevIndex + 1);
-    } else {
-      // clear the form on submit
-      setPagesAnswers({});
-      setSubmitted(true);
-    }
-  };
+  // const nextButton = () => {
+  //   if (index - 3) {
+  //     setIndex(prevIndex => prevIndex + 1);
+  //   } else {
+  //     // clear the form on submit
+  //     setPagesAnswers({});
+  //     setSubmitted(true);
+  //   }
+  // };
 
-  const onPageAnswerUpdate = (step, answersObj) => {
-    setPagesAnswers({ ...pagesAnswers, [step]: answersObj });
-  };
+  // const onPageAnswerUpdate = (step, answersObj) => {
+  //   setPagesAnswers({ ...pagesAnswers, [step]: answersObj });
+  // };
 
-  const handleStart = () => {
-    setIndex(1);
-    setSubmitted(false);
-  };
+  // const handleStart = () => {
+  //   setIndex(1);
+  //   setSubmitted(false);
+  // };
 
   return (
-    <div className="App">
+    <div className>
       <NavbarHeader/>
-      <div className="h-100 w-50 container">
+      <div className='item_book'>
+      <UserForm/>
+      </div>
+     
+      {/* <div className="h-100 w-50 container">
         <Row className="m-5">
           <Col className="align-self-center">
             <MultiStepProgressBar step={index} />
@@ -86,7 +96,7 @@ function GroomBooking() {
           )}
         </Row>
       </div>
-      <Footer/>
+      <Footer/> */}
     </div>
   );
 }

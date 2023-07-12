@@ -1,22 +1,12 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import Layout from '../components/Layout/Layout'
 
 const Users = () => {
 
     const [data, setData] = useState([])
 
-    useEffect(()=> {
-        axios.get('http://localhost:8080/getUsers')
-        .then(res => {
-          if(res.data.Status === "Success") {
-            setData(res.data.Result);
-          } else {
-            alert("Error")
-          }
-        })
-        .catch(err => console.log(err));
-      }, [])
 
       const handleDelete = (id) => {
         axios.delete('http://localhost:8080/delete/'+id)
@@ -31,6 +21,7 @@ const Users = () => {
     }
 
   return (
+    <Layout>
     <div className='px-5 py-3'>
       <div className='d-flex justify-content-center mt-2'>
         <h3>Users List</h3>
@@ -64,6 +55,7 @@ const Users = () => {
         </table>
       </div>
     </div>
+    </Layout>
   )
 }
 

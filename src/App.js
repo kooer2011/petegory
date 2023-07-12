@@ -22,6 +22,7 @@ import PrivateRoute from './components/ProtectedRoute/PrivateRoute';
 import PublicRoute from './components/ProtectedRoute/PublicRoute'
 import Profile from './components/Profile/Profile';
 import HotelPage from './components/Hotel/HotelPage';
+import NotificationPage from './page/NotificationPage';
 
 
 
@@ -55,6 +56,7 @@ function App() {
             } />
           <Route path="/hotel" element={<HotelPage />} />
           <Route path="/hotel/detail" element={<HotelDetail />} />
+
           <Route path="/contact" element={<ConTact />} />
           <Route path="/gallary" element={<GaLLery />} />
           <Route path="/profile" element={
@@ -69,11 +71,31 @@ function App() {
               <PrivateRoute>
                 <Dashboard />
               </PrivateRoute>
-            } >
-            <Route path="/admin/dashboard/users" element={<Users />} />
-            <Route path="/admin/dashboard/users/create" element={<Create />} />
-            <Route path="/admin/dashboard/hotel" element={<HotelCreate />} />
-          </Route>
+            } />
+          <Route path="/admin/dashboard/users"
+            element={
+              <PrivateRoute>
+                <Users />
+              </PrivateRoute>
+            } />
+          <Route path="/admin/dashboard/users/create"
+            element={
+              <PrivateRoute>
+                <Create />
+              </PrivateRoute>
+            } />
+          <Route path="/admin/dashboard/hotel"
+            element={
+              <PrivateRoute>
+                <HotelCreate />
+              </PrivateRoute>
+            } />
+          <Route path="/admin/dashboard/notification"
+            element={
+              <PrivateRoute>
+                <NotificationPage />
+              </PrivateRoute>
+            } />
 
         </Routes>
       )}

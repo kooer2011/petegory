@@ -106,3 +106,13 @@ img{
     text-align: center;
     height: 100vh;
 }
+.item_book{
+    display: flex;
+  
+
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    
+}

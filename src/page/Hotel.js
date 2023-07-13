@@ -32,7 +32,7 @@ function HoTel() {
 
   const handleClick = () => {
     
-      navigate('/hotel/detail' )
+      navigate('/hotel/detail-booking' )
   }
 
   useEffect(() => {
@@ -77,7 +77,7 @@ function HoTel() {
               <p>{data[i]?.title4}</p>
               <p>{data[i]?.title5}</p>
               <button  className='btn btn-primary float-end' onClick={handleClick}>
-                Read More <i className='fas fa-long-arrow-alt-right'></i>
+                Read More or Booking
               </button>
             </div>
           </div>

@@ -60,12 +60,14 @@ const NotificationPage = () => {
                             onClick={handleMarkRead}>Mark All Read</h4>
                     </div>
                     {
-                        user?.notification.map(notificationMgs => (
+                        user?.notification.map((notificationMgs, index) => (
                             <div className='card mb-2'
                                 style={{ cursor: 'pointer' }}
+                                key={index}
                             >
                                 <div className='card-text p-2'
                                     onClick={() => navigate(notificationMgs.onClickPath)}
+                                    style={{ whiteSpace: 'pre-line' }}
                                 >
                                     {notificationMgs.message}
                                 </div>

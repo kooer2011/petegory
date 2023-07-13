@@ -55,7 +55,13 @@ function App() {
               </PrivateRoute>
             } />
           <Route path="/hotel" element={<HotelPage />} />
-          <Route path="/hotel/detail" element={<HotelDetail />} />
+
+          <Route path="/hotel/detail-booking"
+            element={
+              <PrivateRoute>
+                <HotelDetail />
+              </PrivateRoute>
+            } />
 
           <Route path="/contact" element={<ConTact />} />
           <Route path="/gallary" element={<GaLLery />} />

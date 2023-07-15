@@ -10,7 +10,7 @@ import GaLLery from './page/GaLLery';
 import LoginSignupContainer from './page/LoginSignupContainer';
 import SignupContainer from './page/SignupContainer';
 import Dashboard from './page/Dashboard';
-import Users from './page/Users';
+// import Users from './page/Users';
 import Create from './page/Create';
 import Userpage from './page/Userpage';
 import HotelDetail from './page/HotelDetail';
@@ -23,6 +23,8 @@ import PublicRoute from './components/ProtectedRoute/PublicRoute'
 import Profile from './components/Profile/Profile';
 import HotelPage from './components/Hotel/HotelPage';
 import NotificationPage from './page/NotificationPage';
+import Users from './page/Admin/Users';
+import Employees from './page/Admin/Employees';
 
 
 
@@ -82,6 +84,12 @@ function App() {
             element={
               <PrivateRoute>
                 <Users />
+              </PrivateRoute>
+            } />
+          <Route path="/admin/dashboard/employees"
+            element={
+              <PrivateRoute>
+                <Employees />
               </PrivateRoute>
             } />
           <Route path="/admin/dashboard/users/create"

@@ -40,7 +40,7 @@ export const adminMenu = [
     {
         name: 'Employees',
         path: '/admin/dashboard/employees',
-        icon: 'fa-solid fa-house',
+        icon: 'fa-solid fa-user-tie',
     },
     {
         name: 'Hotels',

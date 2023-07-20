@@ -17,8 +17,7 @@ import {
   faCircleXmark
 } from '@fortawesome/free-solid-svg-icons'
 
-import { Link } from 'react-router-dom'
-import './HotelDetail.css'
+import './styles/HotelDetail.css'
 import Footer from '../components/Footer/Footer'
 import BookingHotel from './BookingHotel'
 

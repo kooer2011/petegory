@@ -8,8 +8,6 @@ import GrooMing from './Grooming';
 import HoTel from './Hotel';
 import ContactSelection from '../components/Contact/ContactSelection';
 
-
-
 const Userpage = () => {
   
   return (

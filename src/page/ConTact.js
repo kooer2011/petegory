@@ -13,10 +13,6 @@ function ConTact() {
 
     </div>
   )
- 
-  
-
- 
 }
 
 export default ConTact;

@@ -2,8 +2,6 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-import Home from './page/Home';
 import GrooMing from './page/Grooming';
 import ConTact from './page/ConTact';
 import GaLLery from './page/GaLLery';
@@ -25,7 +23,7 @@ import HotelPage from './components/Hotel/HotelPage';
 import NotificationPage from './page/NotificationPage';
 import Users from './page/Admin/Users';
 import Employees from './page/Admin/Employees';
-
+import AddUser from './page/Admin/AddUser';
 
 
 function App() {
@@ -84,6 +82,12 @@ function App() {
             element={
               <PrivateRoute>
                 <Users />
+              </PrivateRoute>
+            } />
+          <Route path="/newusers"
+            element={
+              <PrivateRoute>
+                <AddUser />
               </PrivateRoute>
             } />
           <Route path="/admin/dashboard/employees"

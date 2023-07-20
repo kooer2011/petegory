@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
-import moment from 'moment';
-import './Hotel.css'
+import React, { useEffect, useState } from 'react';
+import './styles/Hotel.css'
 import roomStd from '../imgs/standard room.jpg'
 import roomDeluxe from '../imgs/deluxe room.jpg'
 import { useNavigate} from 'react-router-dom';

@@ -1,10 +1,8 @@
 import React from 'react'
 import SignUp from './SignUp'
 import NavbarHeader from '../components/Navbar'
-import './LoginSignupContainer.css'
+import './styles/LoginSignupContainer.css'
 import { useNavigate } from 'react-router-dom'
-
-
 
 const SignupContainer = () => {
     

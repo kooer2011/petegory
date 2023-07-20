@@ -8,15 +8,14 @@ import Footer from '../components/Footer/Footer';
 
 import img1 from '../imgs/raw.jpg'
 import img2 from '../imgs/timebussiness.PNG'
-import './grooming.css';
+import './styles/grooming.css';
 function GrooMing() {
-const navigate = useNavigate();
 
+const navigate = useNavigate();
 
 const navigateToBooking = () =>{
   navigate('/grooming/booking');
 }
-
 
 const showNavbar = true
 
@@ -41,8 +40,6 @@ return (
 </>
 )
  
- 
-
 }
 
 export default GrooMing;

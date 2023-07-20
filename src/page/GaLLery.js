@@ -2,7 +2,7 @@ import { React, useState } from 'react';
 import NavbarHeader from '../components/Navbar';
 
 import Gallr from '../components/Gallery/Gallr';
-import './gallery.css';
+import './styles/gallery.css';
 import '../index.css'
 import Footer from '../components/Footer/Footer';
  

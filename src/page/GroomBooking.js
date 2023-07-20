@@ -1,13 +1,13 @@
 import React,{useState}  from 'react'
 import NavbarHeader from '../components/Navbar';
 
-
-
-
-
 //Component
 import UserForm from '../components/FormGroming/UserForm'
 import StepProgressBar from '../components/Stepper/Stepbar'
+
+import { useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+
 
 import AvailableTimeSlots from '../components/Stepper/AvailableTimeSlots';
 import { MultiStepForm } from '../components/Stepper/MultiStepForm';
@@ -15,7 +15,7 @@ import MultiStepProgressBar from '../components/Stepper/MultiStepProgressBar'
 import questions from '../components/Question/Questions'
 import {Container,Row,Col,Card,Button} from 'react-bootstrap'
 import {  Form } from 'antd';
-import './grooming.css';
+import './styles/grooming.css';
 import Footer from '../components/Footer/Footer';
 function GroomBooking() {
   const [index, setIndex] = useState(1);
@@ -23,6 +23,11 @@ function GroomBooking() {
   const totalPagesCount = questions?.length || 0;
   // // numbered by pages. for exampe { 1: [{"key" : "value"}], 2:["key": "value"], 3: []}
   const [pagesAnswers, setPagesAnswers] = useState({});
+
+  const { user } = useSelector(state => state.user)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
 
   const prevButton = () => {
   if (index > 1) {
@@ -48,6 +53,17 @@ function GroomBooking() {
      setIndex(1);
      setSubmitted(false);
    };
+
+   const handleSubmit = async (values) =>{
+      try {
+        
+      } catch (error) {
+        
+      }
+
+   }
+    
+
 
   return (
     <div >

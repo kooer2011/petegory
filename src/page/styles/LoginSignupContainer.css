@@ -19,7 +19,7 @@
     transition: 0.3s linear;
 }
 .bg {
-    background: url('../imgs/wallcat.jpg');
+    background: url('../../imgs/wallcat.jpg');
     background-size: cover;
     height: 100vh;
 }
@@ -29,7 +29,7 @@
  width: 100%;
  display: flex;
  align-items: center;
- background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url('../imgs/logo.jpg');
+ background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url('../../imgs/logo.jpg');
  background-size: cover;
  background-position: center;
  justify-content: center;

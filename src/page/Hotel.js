@@ -1,52 +1,39 @@
 import React, { useContext, useEffect, useState } from 'react';
-import NavbarHeader from '../components/Navbar';
-import { DatePicker } from 'antd';
 import moment from 'moment';
 import './Hotel.css'
 import roomStd from '../imgs/standard room.jpg'
 import roomDeluxe from '../imgs/deluxe room.jpg'
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 
 import axios from 'axios';
-import Footer from '../components/Footer/Footer';
-
-
-const { RangePicker } = DatePicker;
-
 
 function HoTel() {
-  // const [dates, setDates] = useState([])
-  // const dateFormat = 'DD/MM/YYYY';
-  // const onChange = (date, dateString) => {
-  //   setDates(date)
-  //   console.log(date, dateString);
-  // };
 
+  const [details, setDetails] = useState([])
   const navigate = useNavigate()
-
-  const [data, setData] = useState([])
-    const images = [
-      roomStd,
-      roomDeluxe
-    ]
+  const images = [
+    roomStd,
+    roomDeluxe
+  ]
 
   const handleClick = () => {
-    
-      navigate('/hotel/detail-booking' )
+    navigate('/hotel/detail-booking')
+  }
+
+  const getDetails = async () => {
+    try {
+      const res = await axios.get('/api/v1/user/getDetailHotel')
+      if (res.data.success) {
+        setDetails(res.data.data)
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   useEffect(() => {
-    fetch('/api/hotels/getDetailHotels', {
-        method: 'GET',
-    })
-    .then((res) => res.json())
-    .then((data) => {
-        console.log(data)
-        setData(data.data)
-    })
-}, [])
-
-
+    getDetails()
+  }, [])
 
   return (
     <>
@@ -58,32 +45,32 @@ function HoTel() {
           <h2>เงื่อนไขการเข้าใช้บริการ</h2>
           <p></p>
         </div>
-      
-      {data && images.map((img,i) => (
-            <div className='about container'>
-          <div className='row justify-content-center'>
-            <div className='col-sm-5'>
-              <img src={img} className='img-fluid' />
-            </div>
-            <div className='col-sm-5'>
-              <h6>
-                About <span>{data[i]?.type}</span>
-              </h6>
-              <p><strong>💰ราคา {data[i]?.price} บาท/คืน รองรับแมวได้ 1-2 ตัว</strong></p>
-              <p>บริการฝากเลี้ยง (รายชั่วโมง)
-                ค่าบริการ ชั่วโมงละ {data[i]?.title1} บาท</p>
-              <p>{data[i]?.title2}</p>
-              <p>{data[i]?.title3}</p>
-              <p>{data[i]?.title4}</p>
-              <p>{data[i]?.title5}</p>
-              <button  className='btn btn-primary float-end' onClick={handleClick}>
-                Read More or Booking
-              </button>
+
+        {details && images.map((img, i) => (
+          <div className='about container'>
+            <div className='row justify-content-center'>
+              <div className='col-sm-5'>
+                <img src={img} className='img-fluid' alt={`Room ${i + 1}`} />
+              </div>
+              <div className='col-sm-5'>
+                <h6>
+                  About <span>{details[i]?.type}</span>
+                </h6>
+                <p><strong>💰ราคา {details[i]?.price} บาท/คืน รองรับแมวได้ 1-2 ตัว</strong></p>
+                <p>บริการฝากเลี้ยง (รายชั่วโมง)
+                  ค่าบริการ ชั่วโมงละ {details[i]?.title1} บาท</p>
+                <p>{details[i]?.title2}</p>
+                <p>{details[i]?.title3}</p>
+                <p>{details[i]?.title4}</p>
+                <p>{details[i]?.title5}</p>
+                <button className='btn btn-primary float-end' onClick={handleClick}>
+                  Read More or Booking
+                </button>
+              </div>
             </div>
           </div>
-        </div>
         ))}
-        
+
       </section>
     </>
   )

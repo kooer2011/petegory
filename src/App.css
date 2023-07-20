@@ -105,3 +105,46 @@
     font-size: 1rem;
     color: #fff;
 }
+
+
+.time-slot-booking {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.time-slot-booking label {
+    font-weight: bold;
+}
+
+.time-slot-booking button {
+    margin-top: 10px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.time-slot-booking .slots {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.time-slot-booking .slots>div {
+    background-color: #F7F7F7;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+@media (max-width: 600px) {
+    .time-slot-booking .slots {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

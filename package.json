@@ -23,6 +23,7 @@
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
+    "react-datetime-picker": "^5.2.2",
     "react-dom": "^18.2.0",
     "react-icons": "^4.9.0",
     "react-intersection-observer": "9.5.0",

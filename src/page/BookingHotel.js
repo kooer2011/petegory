@@ -1,10 +1,15 @@
-import React from 'react'
-import { Col, Form, Input, Row, TimePicker, message, Select } from "antd";
+import React, { useState } from 'react'
+import { Col, Form, Input, Row, DatePicker, message, Select } from "antd";
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { hideLoading, showLoading } from '../redux/features/alertSlice'
 import axios from 'axios';
+import TimeAvailable from './TimeAvailable';
 
+const availableHours = Array.from({ length: 12 }, (_, index) => index + 9);
+function formatTime(hour) {
+    return `${hour.toString().padStart(2, "0")}:00`;
+}
 
 const BookingHotel = () => {
     const { user } = useSelector(state => state.user)
@@ -34,6 +39,15 @@ const BookingHotel = () => {
             message.error('Someting Went Wrong')
         }
     }
+
+    //////
+    const [selectedTime, setSelectedTime] = useState("");
+
+    const dateFormat = 'DD/MM/YYYY';
+
+    const handleTimeChange = (event) => {
+        setSelectedTime(event.target.value);
+    };
     return (
         <div className='mt-3 bookBG'>
             <Form layout="vertical" onFinish={handleSubmit} className="m-3">
@@ -96,11 +110,36 @@ const BookingHotel = () => {
                     </Form.Item>
                 </Col>
 
-                <Col xs={24} md={24} lg={8}>
+                {/* <Col xs={24} md={24} lg={8}>
                     <Form.Item label="Timings" name="time" required>
                         <TimePicker format="HH:mm" />
                     </Form.Item>
+                </Col> */}
+                <Row >
+                    <Form.Item label="Start Date" name='startDate' required>
+                            <DatePicker
+                                format={dateFormat} 
+                            />
+                    </Form.Item>
+                    <Form.Item label="End Date" name='endDate' required>
+                            <DatePicker
+                                format={dateFormat} 
+                            />
+                    </Form.Item>
+                </Row>
+                <Col xs={24} md={24} lg={8}>
+                    <Form.Item label="Time" name='time' required>
+                        <select value={selectedTime} onChange={handleTimeChange} className='p-1'>
+                            <option>-- โปรดเลือกเวลา --</option>
+                            {availableHours.map((hour) => (
+                                <option key={hour} value={formatTime(hour)} className='m-1'>
+                                    {formatTime(hour)} น.
+                                </option>
+                            ))}
+                        </select>
+                    </Form.Item>
                 </Col>
+
 
                 <Col xs={24} md={24} lg={8}>
                     <button className="btn btn-primary form-btn" type="submit">

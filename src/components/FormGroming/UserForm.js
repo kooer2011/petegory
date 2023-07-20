@@ -59,7 +59,7 @@ handleChange = input => e =>{
                 )
             case 2:
                 return(
-                   <FormPersonalDetails/>
+                   <div>FormPersonal</div>
                 )
             case 3:
                 return(

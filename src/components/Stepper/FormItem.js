@@ -2,8 +2,10 @@ import { Form } from 'react-bootstrap';
 import { useState } from 'react';
 import Select from 'react-select';
 import makeAnimate from 'react-select/animated';
+import Confirm from './Confirm'
 import AvailableTimeSlots from './AvailableTimeSlots';
-import { Confirm } from './Confirm';
+import { DatePicker, Space,TimePicker } from 'antd';
+
 export const FormItem = ({ item, onChange, answer,}) => {
   const [currentValue, setCurrentValue] = useState(answer || null);
   //
@@ -12,6 +14,13 @@ export const FormItem = ({ item, onChange, answer,}) => {
     setCurrentValue(value);
     onChange(value, item.value);
   };
+  // const Formdata ={
+  //   itemValue: item.value,
+  //     currentValue: currentValue
+  // }
+
+
+
   const adding = [
     {
       value: 'product1',
@@ -85,6 +94,13 @@ export const FormItem = ({ item, onChange, answer,}) => {
         </div>
       );
       break;
+      case 'Confirm':
+        return(
+         <Form >
+             <DatePicker format="DD/MM/YYYY" bordered={false} />
+             <TimePicker  use12Hours format="h a"  />
+         </Form>
+        )
     
 
       return <></>;

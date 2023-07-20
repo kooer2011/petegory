@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Layout from '../components/Layout/Layout'
-import { Tabs, message } from 'antd'
+import { Tabs, message, Pagination } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
 import { hideLoading, showLoading } from '../redux/features/alertSlice'
 import axios from 'axios'
@@ -10,6 +10,41 @@ const NotificationPage = () => {
     const { user } = useSelector(state => state.user)
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    //
+    const itemsPerPage = 3; // จำนวนรายการที่ต้องการแสดงในหนึ่งหน้า
+    const [currentPage, setCurrentPage] = useState(1);
+    // นับจำนวน unread ที่มีใน state.user.notification
+    const unreadCount = user?.notification.filter(notificationMgs => !notificationMgs.isRead).length;
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+    };
+
+    const renderUnreadNotifications = () => {
+        // ตัวแปรในการหา index ของข้อมูลที่จะแสดงในหน้านั้น ๆ
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+
+        return user?.notification
+            .filter(notificationMgs => !notificationMgs.isRead)
+            .slice(startIndex, endIndex)
+            .map((notificationMgs, index) => (
+                <div
+                    className='card mb-2'
+                    style={{ cursor: 'pointer' }}
+                    key={index}
+                >
+                    <div
+                        className='card-text p-2'
+                        onClick={() => navigate(notificationMgs.onClickPath)}
+                        style={{ whiteSpace: 'pre-line' }}
+                    >
+                        {notificationMgs.message}
+                    </div>
+                </div>
+            ));
+    };
+    //
+
     const handleMarkRead = async () => {
         try {
             dispatch(showLoading());
@@ -30,6 +65,7 @@ const NotificationPage = () => {
             message.error('someting went wrong')
         }
     }
+
     const handleDeleteRead = async () => {
         try {
             dispatch(showLoading());
@@ -54,26 +90,25 @@ const NotificationPage = () => {
         <Layout>
             <h4 className='p-3 text-center'>Notification</h4>
             <Tabs>
-                <Tabs.TabPane tab='unRead' key={0}>
+                <Tabs.TabPane tab={`unRead (${unreadCount})`} key={0}>
                     <div className='d-flex justify-content-end'>
-                        <h4 className='p-2 text-primary' style={{ cursor: 'pointer' }}
-                            onClick={handleMarkRead}>Mark All Read</h4>
+                        <h4
+                            className='p-2 text-primary'
+                            style={{ cursor: 'pointer' }}
+                            onClick={handleMarkRead}
+                        >
+                            Mark All Read
+                        </h4>
                     </div>
-                    {
-                        user?.notification.map((notificationMgs, index) => (
-                            <div className='card mb-2'
-                                style={{ cursor: 'pointer' }}
-                                key={index}
-                            >
-                                <div className='card-text p-2'
-                                    onClick={() => navigate(notificationMgs.onClickPath)}
-                                    style={{ whiteSpace: 'pre-line' }}
-                                >
-                                    {notificationMgs.message}
-                                </div>
-                            </div>
-                        ))
-                    }
+                    {renderUnreadNotifications()}
+                    <div className='pagination-container'>
+                        <Pagination
+                            current={currentPage}
+                            total={user?.notification.filter(notificationMgs => !notificationMgs.isRead).length}
+                            pageSize={itemsPerPage}
+                            onChange={handlePageChange}
+                        />
+                    </div>
                 </Tabs.TabPane>
                 <Tabs.TabPane tab='Read' key={1}>
                     <div className='d-flex justify-content-end'>

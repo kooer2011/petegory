@@ -1,33 +1,34 @@
 import { useState, useEffect } from 'react';
 import { FormItem } from './FormItem';
-
+import { Form } from 'react-bootstrap';
 export const MultiStepForm = props => {
   // store index number with the answers?
   const [answers, setAnswers] = useState({ index: props.step });
 
   //เมื่อกดกลับมาข้อมูลที่กรอกไว้ก็ยังอยู่
-  // useEffect(() => {
-  //   // check if the answers isn't empty
-  //   if (Object.keys(answers).length > 1) {
-  //     // update page answers
-  //     props.onPageUpdate(answers.index, answers);
-  //     // update page number locally
-  //     setAnswers({ index: props.step });
-  //   } else {
-  //     // update page number locally
-  //     setAnswers({ index: props.step });
-  //   }
-  // }, [props.step]);
+  useEffect(() => {
+    // check if the answers isn't empty
+    if (Object.keys(answers).length > 1) {
+      // update page answers
+      props.onPageUpdate(answers.index, answers);
+      // update page number locally
+      setAnswers({ index: props.step });
+    } else {
+      // update page number locally
+      setAnswers({ index: props.step });
+    }
+  }, [props.step]);
 
   const updateAnswers = (value, category) => {
     setAnswers({ ...answers, [category]: value });
   };
 
   return (
-    <div className="text-left">
+    <Form className="text-left">
       {props.list[props.step - 1].items?.map((item, index) => {
         return (
-          <FormItem
+         
+            <FormItem
             key={`${index}_${item.label}`}
             item={item}
             onChange={updateAnswers}
@@ -36,10 +37,16 @@ export const MultiStepForm = props => {
                 ? props.pagesAnswers[props.step][item.value]
                 : null
             }
+            
           />
           
+            
+          
+          
+         
         );
       })}
-    </div>
+       
+    </Form>
   );
 };

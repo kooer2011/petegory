@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './datetime.css';
 
 import { TimePicker } from 'antd';
-
+import { DatePicker, Space } from 'antd';
 
 const AvailableTimeSlots = () => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -30,7 +30,7 @@ const AvailableTimeSlots = () => {
       <label>Select a date:</label>
       <input type="date" onChange={handleDateChange} />
       <input type="time" onChange={handleDateChange} />
-      <TimePicker format={format} showNow={false} />
+     
 
       {selectedDate && (
         <div>

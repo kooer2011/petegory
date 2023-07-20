@@ -9,7 +9,7 @@ const questions = [
       },
       {
         label: 'number',
-        type: 'password',
+        type: 'text',
         value: 'number',
       },
       {
@@ -52,7 +52,8 @@ const questions = [
     items: [
       {
         label: 'Confirm',
-        type: 'Confirm',
+        type: 'Confirm'
+        
         
       },]
   },

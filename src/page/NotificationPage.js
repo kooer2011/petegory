@@ -100,8 +100,8 @@ const NotificationPage = () => {
                             Mark All Read
                         </h4>
                     </div>
-                    {renderUnreadNotifications()}
                     <div className='pagination-container'>
+                        {renderUnreadNotifications()}
                         <Pagination
                             current={currentPage}
                             total={user?.notification.filter(notificationMgs => !notificationMgs.isRead).length}
@@ -109,6 +109,7 @@ const NotificationPage = () => {
                             onChange={handlePageChange}
                         />
                     </div>
+
                 </Tabs.TabPane>
                 <Tabs.TabPane tab='Read' key={1}>
                     <div className='d-flex justify-content-end'>
@@ -123,7 +124,6 @@ const NotificationPage = () => {
                                 <div className='card-text p-2 Msg'
                                     onClick={() => navigate(notificationMgs.onClickPath)}
                                 >
-                                    {/* {notificationMgs.message} */}
                                     {notificationMgs.message}
                                 </div>
                             </div>

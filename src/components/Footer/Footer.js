@@ -24,21 +24,21 @@ const Footer = () => {
                                     <a className="" href="/">Services</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="" href="/">Portfolio</a>
+                                    <a className="" href="/grooming">Grooming</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="" href="/">Contact Us</a>
+                                    <a className="" href="/hotel">Hotel</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="" href="/">Services</a>
+                                    <a className="" href="/gallery">Gallery</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="" href="/">Portfolio</a>
+                                    <a className="" href="/contact">Contact Us</a>
                                 </li>
                             </ul>
                         </div>
                         <div className="col-md-6 col-lg-4 col-12 ft-3">
-                            <h5>Quick Links</h5>
+                            <h5>Contact Us</h5>
                             <p><i class="fa-solid fa-phone-volume"></i> 081 106 7896</p>
                             <p><i class="fa-solid fa-envelope"></i> petegory.grooming@gmail.com</p>
                             <p><i class="fa-solid fa-calendar"></i> Opening every day 9.00 - 20.00

@@ -58,7 +58,7 @@ function NavbarHeader() {
             <Nav.Link className="link-hover" href="/contact">
               CONTACT
             </Nav.Link>
-            <Nav.Link className="link-hover" href="/gallary">
+            <Nav.Link className="link-hover" href="/gallery">
               GALLERY
             </Nav.Link>
 

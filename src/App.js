@@ -65,7 +65,7 @@ function App() {
             } />
 
           <Route path="/contact" element={<ConTact />} />
-          <Route path="/gallary" element={<GaLLery />} />
+          <Route path="/gallery" element={<GaLLery />} />
           <Route path="/profile" element={
             <PrivateRoute>
               <Profile />

@@ -24,7 +24,7 @@ const Layout = ({ children }) => {
         <>
             <div className='p-2 vh-100'>
                 <div className='d-flex'>
-                    <div className='sidebar'>
+                    <div className='col-md-4 col-lg-2 sidebar'>
                         <div className='fs-3 text-center m-3'>
                             Menagement
                         </div>
@@ -63,6 +63,7 @@ const Layout = ({ children }) => {
                     </div>
                 </div>
             </div>
+            
         </>
     )
 }

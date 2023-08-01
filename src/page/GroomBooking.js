@@ -1,118 +1,27 @@
-import React,{useState}  from 'react'
-import NavbarHeader from '../components/Navbar';
-
-//Component
-import UserForm from '../components/FormGroming/UserForm'
-import StepProgressBar from '../components/Stepper/Stepbar'
-
-import { useNavigate } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
+import React from 'react';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import Container from '@mui/material/Container';
+import Paper from '@mui/material/Paper';
+import StepForm from '../components/StepForm'
 
 
-import AvailableTimeSlots from '../components/Stepper/AvailableTimeSlots';
-import { MultiStepForm } from '../components/Stepper/MultiStepForm';
-import MultiStepProgressBar from '../components/Stepper/MultiStepProgressBar'
-import questions from '../components/Question/Questions'
-import {Container,Row,Col,Card,Button} from 'react-bootstrap'
-import {  Form } from 'antd';
-import './styles/grooming.css';
-import Footer from '../components/Footer/Footer';
-function GroomBooking() {
-  const [index, setIndex] = useState(1);
-  const [submitted, setSubmitted] = useState(false);
-  const totalPagesCount = questions?.length || 0;
-  // // numbered by pages. for exampe { 1: [{"key" : "value"}], 2:["key": "value"], 3: []}
-  const [pagesAnswers, setPagesAnswers] = useState({});
-
-  const { user } = useSelector(state => state.user)
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
 
 
-  const prevButton = () => {
-  if (index > 1) {
-  setIndex(prevIndex => prevIndex - 1);
-    } 
-  };
-
-   const nextButton = () => {
-    if (index - 3) {
-       setIndex(prevIndex => prevIndex + 1);
-    } else {
-  //     // clear the form on submit
-       setPagesAnswers({});
-       setSubmitted(true);
-     }
- };
-
-   const onPageAnswerUpdate = (step, answersObj) => {
-     setPagesAnswers({ ...pagesAnswers, [step]: answersObj });
-   };
-
-   const handleStart = () => {
-     setIndex(1);
-     setSubmitted(false);
-   };
-
-   const handleSubmit = async (values) =>{
-      try {
-        
-      } catch (error) {
-        
-      }
-
-   }
-    
-
-
+ function GroomBooking() {
   return (
-    <div >
-      <NavbarHeader/>
-      
-     
-      <Form className="h-100 w-50 container">
-        <Row className="m-5">
-          <Col className="align-self-center">
-            <MultiStepProgressBar step={index} />
-          </Col>
-        </Row>
-        <Row>
-          {submitted ? (
-            <Card>
-              <Card.Body>
-                <p>Your answers have been submitted!</p>
-              </Card.Body>
-              <Card.Footer>
-                <Button onClick={handleStart}>Start Over</Button>
-              </Card.Footer>
-            </Card>
-          ) : (
-            <Card className="card_body">
-              <Card.Body>
-                <MultiStepForm
-                  list={questions}
-                  step={index}
-                  onPageUpdate={onPageAnswerUpdate}
-                  pagesAnswers={pagesAnswers}
-                />
-              </Card.Body>
-              <Card.Footer className="d-flex justify-content-between"></Card.Footer>
-             
-              <div className='d-flex justify-content-around m-4'>
-              <Button onClick={prevButton} disabled={index === 1} className='w-25'>
-                Previous
-              </Button>
-
-              <Button onClick={nextButton} className='w-25'>
-                {index === totalPagesCount ? 'Submit' : 'Next'}
-              </Button>
-              </div>
-            </Card>
-          )}
-        </Row>
-      </Form>
-      <Footer/>
-    </div>
+    
+    
+    <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
+      <Paper
+        variant="outlined"
+        sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
+      >
+        <StepForm />
+      </Paper>
+    </Container>
+   
+    
   );
 }
 export default GroomBooking

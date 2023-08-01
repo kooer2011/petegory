@@ -24,6 +24,7 @@ import NotificationPage from './page/NotificationPage';
 import Users from './page/Admin/Users';
 import Employees from './page/Admin/Employees';
 import AddUser from './page/Admin/AddUser';
+import Hotels from './page/Admin/Hotels';
 
 
 function App() {
@@ -103,6 +104,12 @@ function App() {
               </PrivateRoute>
             } />
           <Route path="/admin/dashboard/hotel"
+            element={
+              <PrivateRoute>
+                <Hotels />
+              </PrivateRoute>
+            } />
+          <Route path="/admin/dashboard/create-hotel"
             element={
               <PrivateRoute>
                 <HotelCreate />

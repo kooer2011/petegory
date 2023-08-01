@@ -13,8 +13,8 @@ function GridExample() {
       text: 'HOTEL',
     },
     {
-      title: 'FEEDBACK',
-      text: 'ALL FEEDBACK',
+      title: 'Contact',
+      text: 'Contact',
     },
   ]);
 

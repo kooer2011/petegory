@@ -109,11 +109,6 @@ const BookingHotel = () => {
                     </Form.Item>
                 </Col>
 
-                {/* <Col xs={24} md={24} lg={8}>
-                    <Form.Item label="Timings" name="time" required>
-                        <TimePicker format="HH:mm" />
-                    </Form.Item>
-                </Col> */}
                 <Row >
                     <Form.Item label="Start Date" name='startDate' required>
                             <DatePicker

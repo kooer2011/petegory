@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Layout from '../components/Layout/Layout'
+import Swal from 'sweetalert2';
 
 const HotelCreate = () => {
     const navigate = useNavigate()
@@ -34,7 +35,14 @@ const HotelCreate = () => {
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 },
             })
-            navigate('/admin/dashboard')
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Created has been success',
+                showConfirmButton: false,
+                timer: 1000
+              })
+            navigate('/admin/dashboard/hotel')
         } catch (error) {
             console.log(error)
         }

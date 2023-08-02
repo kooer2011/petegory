@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Layout from '../../components/Layout/Layout'
 import axios from 'axios'
-import { Table } from 'antd'
+import { Table} from 'antd'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { deleteUser } from '../../redux/features/userSlice'
@@ -96,9 +96,9 @@ const Users = () => {
 
     return (
         <Layout>
-            <h1 className='mt-1'>Users List</h1>
+            <h1 className='mt-1 m-0'>Users List</h1>
             <button className='btn btn-success m-2' onClick={handleClick}>Add +</button>
-            <Table columns={columns} dataSource={users} />
+            <Table columns={columns} dataSource={users} pagination={{ pageSize: 5, total: users.length }}/>
         </Layout>
     )
 }

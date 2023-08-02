@@ -11,8 +11,8 @@ const Footer = () => {
                             <h3><span>PET'E</span>GORY</h3>
                             <p>โครงการ U-AVENUE, Amphoe Kamphaeng Saen, Thailand, Nakhon Pathom 73140</p>
                             <div className="footer-icons">
-                                <a href="https://www.facebook.com/petegory.kps" target="_blank"><i class="fa-brands fa-facebook" /></a>
-                                <a href="https://line.me/R/ti/p/@706mfqsc"><i class="fa-brands fa-line" /></a>
+                                <a href="https://www.facebook.com/petegory.grooming" target="_blank"><i class="fa-brands fa-facebook" /></a>
+                                <a href="https://line.me/R/ti/p/@706mfqsc" target="_blank"><i class="fa-brands fa-line" /></a>
                                 <a href="mailto:petegory.grooming@gmail.com"><i class="fa-solid fa-envelope" /></a>
                                 <a href="tel:081 106 7896"><i class="fa-solid fa-phone" /></a>
                             </div>

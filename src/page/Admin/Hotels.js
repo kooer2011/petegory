@@ -67,9 +67,9 @@ const Hotels = () => {
     ]
   return (
     <Layout>
-            <h1 className='mt-1'>Hotels List</h1>
+            <h1 className='mt-1 m-0'>Hotels List</h1>
             <button className='btn btn-success m-2' onClick={addHotels}>Add +</button>
-            <Table columns={columns} dataSource={hotels}/>
+            <Table columns={columns} dataSource={hotels} pagination={{ pageSize: 3, total: hotels.length }}/>
         </Layout>
   )
 }

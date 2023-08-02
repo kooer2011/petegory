@@ -6,41 +6,32 @@ import Layout from '../components/Layout/Layout'
 
 const getUserData = async () => {
     try {
-        const res = await axios.post('/api/v1/user/getUserData', {},
+        const token = localStorage.getItem('token');
+        if (!token) {
+            throw new Error('No token found in localStorage');
+        }
+
+        const res = await axios.post(
+            '/api/v1/user/getUserData',
+            {},
             {
                 headers: {
-                    Authorization: 'Bearer ' + localStorage.getItem('token'),
+                    Authorization: 'Bearer ' + token,
                 },
-            })
-        return res.data
+            }
+        );
+        return res.data;
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
-}
+};
 
 const Dashboard = () => {
     const [userCount, setUserCount] = useState(0)
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get('/api/v1/admin/getUserCount');
-                console.log(response.data)
-                setUserCount(response.data.data[0]?.user || 0); // กำหนดค่า userCount จาก response.data.data[0]?.user หากไม่พบให้เป็น 0
-            } catch (error) {
-                console.log(error);
-            }
-        };
-
-        fetchData();
-
+        
         getUserData()
-            .then((res) => {
-                console.log(res);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
     }, []);
 
     return (

@@ -58,9 +58,9 @@ const Employees = () => {
     ]
     return (
         <Layout>
-            <h1 className='mt-1'>Employees</h1>
+            <h1 className='mt-1 m-0'>Employees</h1>
             <button className='btn btn-success m-2'>Add +</button>
-            <Table columns={columns} dataSource={employees} />
+            <Table columns={columns} dataSource={employees} pagination={{ pageSize: 5, total: employees.length }} />
         </Layout>
     )
 }

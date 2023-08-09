@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&family=Space+Mono:wght@400;700&display=swap');
+
+:root{
+    --bg-theme: #fff;
+    --btn-bg: #333;
+
+    --text-1-color: #333;
+    --text-2-color: #4F4F4F;
+
+    --footer-text: #BDBDBD;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+/* Content PART */
+#content{
+    padding: 5rem;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+#content .part_1 img{
+    width: 500px;
+}
+
+#content .part_2 .text_1 h2{
+    font-size: 64px;
+    font-weight: 700;
+    letter-spacing: -2.24px;
+    color: var(--text-1-color);
+    font-family: 'Space Mono', sans-serif;
+}
+
+#content .part_2 .button_part .btn{
+    outline: none;
+    padding: 0.8rem 1.5rem; 
+    background: var(--btn-bg);
+    border: 1px solid transparent;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -0.49px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    margin-top: 3rem;
+    font-family: 'Space Mono', sans-serif;
+}
+#content .part_2 .button_part .btn:hover{
+    background: transparent;
+    border: 1px solid var(--btn-bg);
+    color: #333;
+}
+
+
+/* Medium to Small Screen Viewers */
+
+@media (max-width: 800px){
+    #header{
+        padding: 1rem;
+    }
+    #content{
+        flex-direction: column;
+        padding: 1rem;
+    }
+    #content .part_2 .text_1 h2{
+        font-size: 48px;
+        letter-spacing: -1.68px;
+    }
+
+    #content .part_2 .text_2{
+        width: 328px;
+    }
+    #content .part_2 .text_2 p{
+        font-size: 18px;
+        letter-spacing: -0.63px;
+    }
+
+    #footer{
+        padding: 1rem;
+    }
+}

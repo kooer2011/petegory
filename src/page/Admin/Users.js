@@ -7,8 +7,6 @@ import { useDispatch } from 'react-redux'
 import { deleteUser } from '../../redux/features/userSlice'
 import Swal from 'sweetalert2';
 
-
-
 const Users = () => {
     const [users, setUsers] = useState([])
     const navigate = useNavigate()

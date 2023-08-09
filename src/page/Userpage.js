@@ -7,6 +7,7 @@ import Footer from '../components/Footer/Footer';
 import GrooMing from './Grooming';
 import HoTel from './Hotel';
 import ContactSelection from '../components/Contact/ContactSelection';
+import { FloatButton } from 'antd';
 
 const Userpage = () => {
   
@@ -23,6 +24,10 @@ const Userpage = () => {
       <hr/>
       <ContactSelection />
       <Footer/>
+      <FloatButton.BackTop 
+        tooltip={<div>Back to top</div>} 
+        type="primary"
+      />
     </>
   )
 }

@@ -26,7 +26,7 @@ const Layout = ({ children }) => {
                 <div className='d-flex'>
                     <div className='col-md-4 col-lg-2 sidebar'>
                         <div className='fs-3 text-center m-3'>
-                            Menagement
+                            Management
                         </div>
                         <hr />
                         <div className='menu'>

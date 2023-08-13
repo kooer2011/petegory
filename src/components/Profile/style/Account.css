@@ -1,0 +1,10 @@
+h2 {
+    text-align: center;
+    margin: 2rem;
+    font-weight: bold;
+    font-size: 36px;
+    color: brown;
+}
+.form {
+    padding: 10px;
+}

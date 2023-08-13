@@ -26,6 +26,7 @@ import Employees from "./page/Admin/Employees";
 import AddUser from "./page/Admin/AddUser";
 import Hotels from "./page/Admin/Hotels";
 import Error from "./components/404error/Errror"
+import AddEmployees from "./page/Admin/AddEmployees";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -75,7 +76,7 @@ function App() {
           <Route path="/contact" element={<ConTact />} />
           <Route path="/gallery" element={<GaLLery />} />
           <Route
-            path="/profile"
+            path="/profile/:activepage"
             element={
               <PrivateRoute>
                 <Profile />
@@ -112,6 +113,14 @@ function App() {
             element={
               <PrivateRoute>
                 <Employees />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/newemployees"
+            element={
+              <PrivateRoute>
+                <AddEmployees />
               </PrivateRoute>
             }
           />

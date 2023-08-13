@@ -62,7 +62,7 @@ const AddUser = () => {
                         required
                         rules={[{ required: true }]}
                     >
-                        <Input type="text" placeholder="input password" />
+                        <Input.Password type="text" placeholder="input password" />
                     </Form.Item>
                         <button className="btn btn-primary form-btn" type="submit">
                             Submit

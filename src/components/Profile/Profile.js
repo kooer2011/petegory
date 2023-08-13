@@ -1,13 +1,19 @@
 import React, { useEffect } from "react";
 import NavbarHeader from "../Navbar";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { message } from "antd";
 import { useSelector } from "react-redux";
 import { adminProfile, userProfile } from "../../data/DataPath";
+import UserSidebar from "./UserSidebar";
+import Account from "./Account";
+import "./style/Profile.css";
+import MyBooking from "./MyBooking";
+import ChangePassword from "./ChangePassword";
 
 const Profile = () => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.user);
+  const { activepage } = useParams();
 
   const handleLogout = () => {
     localStorage.clear();
@@ -15,30 +21,21 @@ const Profile = () => {
     navigate("/");
   };
 
-  const menuItems =
-    user?.isAdmin || user?.isEmployee ? adminProfile : userProfile;
 
   return (
-    <>
+    <div className="userprofile">
       <NavbarHeader />
-      {menuItems.map((item) => (
-        <div
-          key={item.path}
-          className="d-flex justify-content-center align-items-center m-4 mb-5"
-        >
-          <Link to={item.path}>{item.name}</Link>
+      <div className="userprofilein">
+        <div className="left">
+          <UserSidebar activepage={activepage} />
         </div>
-      ))}
-      <div className="d-flex justify-content-center align-items-center m-5">
-        Welcome: {user?.name}
+        <div className="right">
+          {activepage === "account" && <Account />}
+          {activepage === "mybooking" && <MyBooking />}
+          {activepage === "changepassword" && <ChangePassword />}
+        </div>
       </div>
-
-      <div className="text-center " onClick={handleLogout}>
-        <a href="" className="text-decoration-none text-bg-danger p-3 mt-2">
-          Logout
-        </a>
-      </div>
-    </>
+    </div>
   );
 };
 

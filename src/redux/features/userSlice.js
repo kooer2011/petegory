@@ -13,11 +13,6 @@ export const userSlice = createSlice({
             const id = action.payload.id; // Change `_id` to `id`
             state.user = state.user.filter(u => u.id !== id); // Change `_id` to `id`
           },
-        //   const {id} = action.payload; 
-        //     const uu = state.find(user => user.id == id); 
-        //     if(uu) {
-        //         return state.filter (f => f.id !== id)
-        //     }
     }
 })
 

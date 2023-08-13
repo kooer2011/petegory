@@ -63,7 +63,7 @@ function NavbarHeader() {
             </Nav.Link>
 
             {user ? 
-              <Nav.Link href="/profile" className='profile'>
+              <Nav.Link href="/profile/account" className='profile'>
                 {user.name}
               </Nav.Link>
              : 

@@ -50,11 +50,12 @@
 }
 
 .footer-icons i {
-    padding: 0.4rem 0.5rem;
+    padding: 0.6rem 0.7rem;
     background: #e1e1e1;
     color: #f60838;
     margin: 0 0.5rem;
     border-radius: 50%;
+    font-size: 30px;
 }
 
 .footer-icons i:hover {

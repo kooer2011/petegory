@@ -2,9 +2,11 @@ import React,{useState, useEffect} from 'react'
 import Layout from '../../components/Layout/Layout'
 import axios from 'axios'
 import { Table } from 'antd'
+import { useNavigate } from 'react-router-dom'
 
 const Employees = () => {
     const [employees, setEmployees] = useState([])
+    const navigate = useNavigate()
 
     const getEmployees = async () => {
         try {
@@ -23,6 +25,10 @@ const Employees = () => {
     useEffect(() => {
         getEmployees()
     }, [])
+
+    const handleClick = () => {
+        navigate('/newemployees')
+    }
 
     const columns = [
         {
@@ -59,7 +65,7 @@ const Employees = () => {
     return (
         <Layout>
             <h1 className='mt-1 m-0'>Employees</h1>
-            <button className='btn btn-success m-2'>Add +</button>
+            <button className='btn btn-success m-2' onClick={handleClick}>Add +</button>
             <Table columns={columns} dataSource={employees} pagination={{ pageSize: 5, total: employees.length }} />
         </Layout>
     )

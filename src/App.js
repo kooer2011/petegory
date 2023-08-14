@@ -5,8 +5,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import GrooMing from "./page/Grooming";
 import ConTact from "./page/ConTact";
 import GaLLery from "./page/GaLLery";
-import LoginSignupContainer from "./page/LoginSignupContainer";
-import SignupContainer from "./page/SignupContainer";
 import Dashboard from "./page/Dashboard";
 // import Users from './page/Users';
 import Create from "./page/Create";
@@ -27,6 +25,8 @@ import AddUser from "./page/Admin/AddUser";
 import Hotels from "./page/Admin/Hotels";
 import Error from "./components/404error/Errror"
 import AddEmployees from "./page/Admin/AddEmployees";
+import Login from "./page/Login";
+import SignUp from "./page/SignUp";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -40,7 +40,7 @@ function App() {
             path="/signup"
             element={
               <PublicRoute>
-                <SignupContainer />
+                <SignUp />
               </PublicRoute>
             }
           />
@@ -48,7 +48,7 @@ function App() {
             path="/login"
             element={
               <PublicRoute>
-                <LoginSignupContainer />
+                <Login />
               </PublicRoute>
             }
           />

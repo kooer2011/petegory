@@ -1,26 +1,21 @@
 import React, { useState } from 'react'
 import './styles/Signup.css'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
-import './styles/LoginSignupContainer.css'
-import { message, Form } from 'antd'
+import { Link, useNavigate } from 'react-router-dom'
+import { message, Form, Input, Divider } from 'antd'
 import { useDispatch } from 'react-redux'
 import { showLoading,hideLoading } from '../redux/features/alertSlice'
+import NavbarHeader from '../components/Navbar'
 
 const SignUp = () => {
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [phone, setPhone] = useState('')
-  const [password, setPassword] = useState('')
-
-
-  const handleSubmit = async () => {
+ 
+  const handleSubmit = async (values) => {
     try {
       dispatch(showLoading());
-      const res = await axios.post('/api/v1/user/signup', {name,email,phone,password})
+      const res = await axios.post('/api/v1/user/signup', values)
       dispatch(hideLoading());
       if(res.data.success){
         message.success('Register Successfully')
@@ -36,16 +31,67 @@ const SignUp = () => {
   }
 
   return (
+    <>
+    <NavbarHeader/>
     <div className='signup'>
+      <Form className='signupForm' onFinish={handleSubmit}>
       <h1>SignUp</h1>
-      <Form onFinish={handleSubmit}>
-        <input type='text' placeholder='Name' required onChange={(e) => setName(e.target.value)} />
-        <input type='email' placeholder='Email' required onChange={(e) => setEmail(e.target.value)} />
-        <input type='number' placeholder='Phone Number' required onChange={(e) => setPhone(e.target.value)} />
-        <input type='password' placeholder='Password' required onChange={(e) => setPassword(e.target.value)} />
+      <Form.Item
+          name='name'
+          rules={[
+            {
+              required: true,
+              message: 'Please enter valid name'
+            }
+          ]}
+        >
+        <Input className='input' placeholder='Enter Your name' />
+        </Form.Item>
+
+        <Form.Item
+          name='email'
+          rules={[
+            {
+              required: true,
+              type: 'email',
+              message: 'Please enter valid email'
+            }
+          ]}
+        >
+        <Input className='input' placeholder='Enter Your Email' />
+        </Form.Item>
+
+        <Form.Item
+          name='phone'
+          rules={[
+            {
+              required: true,
+              message: 'Please enter valid Phone'
+            }
+          ]}
+        >
+        <Input className='input' placeholder='Enter Your Phone Number' />
+        </Form.Item>
+
+        <Form.Item
+          name='password'
+          rules={[
+            {
+              required: true,
+              message: 'Please enter your password'
+            }
+          ]}
+        >
+        <Input.Password className='input' placeholder='Enter Your Password' />
+        </Form.Item>
         <button type='submit' >SignUp</button>
+        <Divider style={{ borderColor: "black" }}>or</Divider>
+        <div className='fs-5 text-center m-2'>
+          <span>Already a user? <Link to='/login'>Login</Link></span>
+        </div>
       </Form>
     </div>
+    </>
   )
 }
 

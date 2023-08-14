@@ -1,45 +1,34 @@
 .signup {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    background: #fff;
     display: flex;
-    align-items: center;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background: #fff; 
+    background: url('../../imgs/wallcat.jpg');
+    background-size: cover;
 }
-
-.signup h1 {
+.signupForm {
+    background-color: rgba(255, 255, 255, 0.33);
+    box-shadow: 0px 8px 32px 0 rgba(153, 76, 0, 0.3);
+    backdrop-filter: blur(3px);
+    padding: 0px 25px 25px 25px;
+    border-radius: 16px;
+    width: 60%;
+    align-items: center;
+}
+h1 {
     font-size: 3.5rem;
     font-weight: bold;
     margin-top: 10px;
-    margin-bottom: 0;
+    margin-bottom: 10px;
     color: black;
     padding: 15px 0;
 }
 
-.signup Form {
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.signup Form Input:not([type='submit']) {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid black;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    font-size: 1rem;
-    color: black;
-    outline: none !important;
-}
-
-.signup Form button {
+.signup button {
     width: 100%;
     padding: 10px;
     border: 2px solid black;
@@ -53,9 +42,11 @@
     transition: 0.3s linear;
 }
 
-.signup Form button:hover {
+.signup button:hover {
     background: #000;
     color: #fefefe;
 }
-
-
+  
+.input {
+    padding: 10px;
+  }

@@ -61,7 +61,7 @@ const Login = () => {
             />
           </Form.Item>
           <div className="mb-2 mt-0 float-end fs-6">
-            <Link to="">Forgot Password?</Link>
+            <Link to="/forgot-password">Forgot Password?</Link>
           </div>
           <button type={"submit"}>Login</button>
 

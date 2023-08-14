@@ -27,6 +27,8 @@ import Error from "./components/404error/Errror"
 import AddEmployees from "./page/Admin/AddEmployees";
 import Login from "./page/Login";
 import SignUp from "./page/SignUp";
+import ForgotPassword from "./components/Profile/ForgotPassword";
+import ResetPassword from "./components/Profile/ResetPassword";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -49,6 +51,22 @@ function App() {
             element={
               <PublicRoute>
                 <Login />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/forgot-password"
+            element={
+              <PublicRoute>
+                <ForgotPassword />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/reset-password/:id/:token"
+            element={
+              <PublicRoute>
+                <ResetPassword />
               </PublicRoute>
             }
           />

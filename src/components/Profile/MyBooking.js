@@ -14,6 +14,7 @@ const MyBooking = () => {
         })
         if (res.data.success) {
           setBookings(res.data.data)
+          console.log(res.data.data)
         }
     } catch (error) {
         console.log(error)
@@ -25,11 +26,11 @@ useEffect(() => {
 
 const columns = [
   {
-      title: 'Pet Name',
-      dataIndex: 'petname',
+      title: 'Name',
+      dataIndex: 'name',
       render: (text, record) => (
         <span>
-          {record.userId.pername}
+          {record.name}
         </span>
       )
   },

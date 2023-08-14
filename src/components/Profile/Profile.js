@@ -3,7 +3,6 @@ import NavbarHeader from "../Navbar";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { message } from "antd";
 import { useSelector } from "react-redux";
-import { adminProfile, userProfile } from "../../data/DataPath";
 import UserSidebar from "./UserSidebar";
 import Account from "./Account";
 import "./style/Profile.css";

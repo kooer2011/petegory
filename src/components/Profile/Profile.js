@@ -8,6 +8,7 @@ import Account from "./Account";
 import "./style/Profile.css";
 import MyBooking from "./MyBooking";
 import ChangePassword from "./ChangePassword";
+import AccountSetting from "./AccountSetting";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ const Profile = () => {
         </div>
         <div className="right">
           {activepage === "account" && <Account />}
+          {activepage === "accountSetting" && <AccountSetting />}
           {activepage === "mybooking" && <MyBooking />}
           {activepage === "changepassword" && <ChangePassword />}
         </div>

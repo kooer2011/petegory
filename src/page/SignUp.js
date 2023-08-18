@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './styles/Signup.css'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
-import { message, Form, Input, Divider } from 'antd'
+import { message, Form, Input, Divider, Typography } from 'antd'
 import { useDispatch } from 'react-redux'
 import { showLoading,hideLoading } from '../redux/features/alertSlice'
 import NavbarHeader from '../components/Navbar'
@@ -35,7 +35,7 @@ const SignUp = () => {
     <NavbarHeader/>
     <div className='signup'>
       <Form className='signupForm' onFinish={handleSubmit}>
-      <h1>SignUp</h1>
+      <Typography.Title>SignUp</Typography.Title>
       <Form.Item
           name='name'
           rules={[

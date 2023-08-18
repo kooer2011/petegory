@@ -1,51 +1,68 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./style/Account.css";
-import { Col, Form, Input } from "antd";
-import { useSelector } from "react-redux";
+import { message } from "antd";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Account = () => {
-  const { user } = useSelector((state) => state.user);
-  return (
-    <div className="account">
-      <h2>{user?.name}</h2>
-      <Form layout="vertical" className="form">
-        <Col xs={{ span: 24, offset: 0 }} md={{ span: 24, offset: 0 }} lg={{ span: 15, offset: 5 }}>
-          <Form.Item
-            label="Name"
-            name="name"
-            required
-            rules={[{ required: true }]}
-          >
-            <Input type="text" placeholder="Your Name" />
-          </Form.Item>
-        </Col>
-        <Col xs={{ span: 24, offset: 0 }} md={{ span: 24, offset: 0 }} lg={{ span: 15, offset: 5 }}>
-          <Form.Item
-            label="Email"
-            name="email"
-            required
-            rules={[{ required: true }]}
-          >
-            <Input type="text" placeholder="Your Email" />
-          </Form.Item>
-        </Col>
-        <Col xs={{ span: 24, offset: 0 }} md={{ span: 24, offset: 0 }} lg={{ span: 15, offset: 5 }}>
-          <Form.Item
-            label="Phone"
-            name="phone"
-            required
-            rules={[{ required: true }]}
-          >
-            <Input type="text" placeholder="Your Phone Number" />
-          </Form.Item>
-        </Col>
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate()
 
-        <Col xs={{ span: 24, offset: 0 }} md={{ span: 24, offset: 0 }} lg={{ span: 15, offset: 5 }}>
-          <button className="btn btn-primary" type="submit">
-            Save Change
-          </button>
-        </Col>
-      </Form>
+  const getUser = async () => {
+    try {
+      const res = await axios.get("/api/v1/user/getUserProfile", {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      });
+      if (res.data.success) {
+        setUser(res.data.data);
+      }
+    } catch (error) {
+      console.log(error);
+      message.error("error get user detail");
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
+  const edit = () => {
+    navigate('/profile/accountSetting')
+  }
+
+  return (
+    <div className="d-flex flex-column align-items-center">
+      {user ? (
+        <div>
+          <h2 className="text-center text-black mb-4">Personal Profile</h2>
+          <div className="userProfile">
+            <div className="mb-3">
+              <p className="text-black fs-5 fw-bold">
+                Name: <span className="text-info">{user.name}</span>
+              </p>
+            </div>
+            <div className="mb-3">
+              <p className="text-black fs-5 fw-bold">
+                Email: <span className="text-info">{user.email}</span>
+              </p>
+            </div>
+            <div className="mb-3">
+              <p className="text-black fs-5 fw-bold">
+                Phone: <span className="text-info">{user.phone}</span>
+              </p>
+            </div>
+            <div>
+              <button className="btn btn-warning" type="submit" onClick={edit}>
+                Edit Profile
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="d-flex justify-content-center text-center">
+          <p>Loading...</p>
+        </div>
+      )}
     </div>
   );
 };

@@ -87,7 +87,7 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="mt-4 px-5 pt-3 d-flex justify-content-around">
-        <div style={{ width: 500 }}>
+        <div style={{ width: 400 }}>
           <PieChart chartData={userData} />
         </div>
         <div style={{ width: 700 }}>

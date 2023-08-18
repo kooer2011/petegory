@@ -4,19 +4,17 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../../redux/features/alertSlice";
 
-
-
 const UserSidebar = ({ activepage }) => {
   const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleLogout = () => {
-    dispatch(showLoading())
+    dispatch(showLoading());
     localStorage.clear();
-    dispatch(hideLoading())
+    dispatch(hideLoading());
     navigate("/");
-    window.location.reload()
+    window.location.reload();
   };
   return (
     <div className="usersidebar">
@@ -33,6 +31,7 @@ const UserSidebar = ({ activepage }) => {
           </div>
         </Link>
       )}
+
       {activepage === "mybooking" ? (
         <div className="s2">
           <i class="fa-solid fa-clock-rotate-left"></i>
@@ -46,6 +45,7 @@ const UserSidebar = ({ activepage }) => {
           </div>
         </Link>
       )}
+
       {activepage === "changepassword" ? (
         <div className="s2">
           <i class="fa-regular fa-eye"></i>
@@ -59,6 +59,21 @@ const UserSidebar = ({ activepage }) => {
           </div>
         </Link>
       )}
+
+      {activepage === "accountSetting" ? (
+        <div className="s2">
+          <i class="fa-solid fa-gear"></i>
+          <span>AccountSetting</span>
+        </div>
+      ) : (
+        <Link to="/profile/accountSetting" className="txtstyle">
+          <div className="s1">
+            <i class="fa-solid fa-gear"></i>
+            <span>AccountSetting</span>
+          </div>
+        </Link>
+      )}
+
       {(user?.isAdmin || user?.isEmployee) &&
         (activepage === "dashboard" ? (
           <div className="s2">

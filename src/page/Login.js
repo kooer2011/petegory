@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./styles/Login.css";
 import axios from "axios";
-import { message, Form, Input, Divider } from "antd";
+import { message, Form, Input, Divider, Typography } from "antd";
 import { useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../redux/features/alertSlice";
 import { Link } from "react-router-dom";
@@ -31,9 +31,10 @@ const Login = () => {
   return (
     <>
       <NavbarHeader />
+      <div className="main-content">
       <div className="login">
         <Form className="loginForm" onFinish={finishHandle}>
-          <h1>Login</h1>
+          <Typography.Title>Login</Typography.Title>
           <Form.Item
             name="email"
             rules={[
@@ -73,6 +74,7 @@ const Login = () => {
             </span>
           </div>
         </Form>
+      </div>
       </div>
     </>
   );

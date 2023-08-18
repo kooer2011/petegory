@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Select, Form, Input, message } from "antd";
 import Layout from "../../components/Layout/Layout";
 import { useDispatch } from "react-redux";
@@ -76,9 +76,11 @@ const AddEmployees = () => {
           >
             <Input.Password type="text" placeholder="input password" />
           </Form.Item>
-          <button className="btn btn-primary form-btn" type="submit">
-            Submit
-          </button>
+          
+            <button className="btn btn-primary w-50" type="submit">
+              Submit
+            </button>
+        
         </Form>
       </div>
     </Layout>

@@ -41,15 +41,15 @@ const Users = () => {
       confirmButtonText: "ใช่",
       cancelButtonText: "ยกเลิก",
     });
-    // const confirmed = window.confirm('คุณต้องการลบผู้ใช้นี้ใช่หรือไม่?');
     if (confirmed.isConfirmed) {
       try {
-        const res = await axios.delete(`/api/v1/user/deleteUser/${id}`, {
+        const res = await axios.delete(`/api/v1/admin/deleteUser/${id}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
         if (res.data.success) {
+          message.success(res.data.message)
           window.location.reload();
           dispatch(deleteUser({ id: id }));
         }
@@ -58,6 +58,10 @@ const Users = () => {
       }
     }
   };
+
+  const handleEdit = (userId) => {
+    navigate(`/edituser/${userId}`)
+  }
 
   const handleStatus = async (record,role) => {
     try {
@@ -99,7 +103,7 @@ const Users = () => {
       render: (text, record) => (
         <div className="d-flex">
           <div className="m-1">
-            <button className="btn btn-primary">Edit</button>
+            <button className="btn btn-primary" onClick={() => handleEdit(record._id)}>Edit</button>
           </div>
           <div className="m-1">
             {record.role === "barber" ? (

@@ -29,6 +29,7 @@ import Login from "./page/Login";
 import SignUp from "./page/SignUp";
 import ForgotPassword from "./components/Profile/ForgotPassword";
 import ResetPassword from "./components/Profile/ResetPassword";
+import EditUser from "./page/Admin/EditUser";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -38,6 +39,7 @@ function App() {
         <Spinner />
       ) : (
         <Routes>
+
           <Route
             path="/signup"
             element={
@@ -123,6 +125,14 @@ function App() {
             element={
               <PrivateRoute>
                 <AddUser />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/edituser/:id"
+            element={
+              <PrivateRoute>
+                <EditUser />
               </PrivateRoute>
             }
           />

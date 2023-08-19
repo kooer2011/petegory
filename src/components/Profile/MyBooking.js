@@ -39,7 +39,7 @@ const columns = [
       dataIndex: 'phone',
   },
   {
-      title: 'Roome',
+      title: 'Room',
       dataIndex: 'room',
   },
   {

@@ -38,7 +38,12 @@ const BookingHotel = () => {
     } catch (error) {
       dispatch(hideLoading());
       console.log(error);
-      message.error("Someting Went Wrong");
+      if (error.response && error.response.data && error.response.data.message) {
+        // Handle API error message
+        message.error(error.response.data.message);
+      } else {
+        message.error("Something Went Wrong");
+      }
     }
   };
 

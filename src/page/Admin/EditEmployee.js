@@ -1,38 +1,59 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Select, Form, Input, message } from "antd";
 import Layout from "../../components/Layout/Layout";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { showLoading, hideLoading } from "../../redux/features/alertSlice";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const { Option } = Select;
 
-const AddEmployees = () => {
-  const dispatch = useDispatch();
+const EditEmployee = () => {
+  const { id } = useParams();
+  const [form] = Form.useForm();
+  const [userData, setUserData] = useState({});
   const navigate = useNavigate();
-  const handleSubmit = async (values) => {
+
+  const getUser = async () => {
     try {
-      dispatch(showLoading());
-      const res = await axios.post("/api/v1/user/signup", values);
-      dispatch(hideLoading());
-      if (res.data.success) {
-        message.success("Add New Employee");
-        navigate("/admin/dashboard/users");
-      } else {
-        message.error(res.data.message);
-      }
+      const res = await axios.get(`/api/v1/admin/editEmployee/${id}`,{
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+    });
+
+      const user = res.data.data;
+      setUserData(user);
+      form.setFieldsValue(user); 
     } catch (error) {
-      dispatch(hideLoading());
-      console.log(error);
-      message.error("Someting Went Wrong");
+      console.error(error);
     }
   };
+
+  useEffect(() => {
+    getUser();
+  }, [id]);
+
+  const handleUpdate = async (values) => {
+    try {
+      const res = await axios.put(`/api/v1/admin/updateEmployee/${id}`, values, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      if (res.data.success) {
+        message.success(res.data.message)
+        navigate('/admin/dashboard/employees')
+      }
+    } catch (error) {
+      console.error(error);
+      message.error('Update User Error')
+    }
+  }
+
   return (
     <Layout>
       <div className="mt-3 d-flex justify-content-center">
-        <Form layout="vertical" onFinish={handleSubmit} className="m-3">
-          <h1 className="text-center">New Employees</h1>
+        <Form layout="vertical" form={form} onFinish={handleUpdate} className="m-3">
+          <h1 className="text-center">Edit Employees</h1>
 
           <Form.Item
             label="Name"
@@ -69,23 +90,13 @@ const AddEmployees = () => {
               <Option value="user">User</Option>
             </Select>
           </Form.Item>
-          <Form.Item
-            label="Password"
-            name="password"
-            required
-            rules={[{ required: true }]}
-          >
-            <Input.Password type="text" placeholder="input password" />
-          </Form.Item>
-          
-            <button className="btn btn-primary w-50" type="submit">
-              Submit
-            </button>
-        
+          <button className="btn btn-primary form-btn" type="submit">
+            Update
+          </button>
         </Form>
       </div>
     </Layout>
   );
 };
 
-export default AddEmployees;
+export default EditEmployee;

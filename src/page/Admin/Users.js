@@ -73,6 +73,7 @@ const Users = () => {
         })
         if(res.data.success) {
             message.success(res.data.message)
+            navigate('/admin/dashboard/employees')
         }
     } catch (error) {
         console.log(error)

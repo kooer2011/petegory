@@ -30,6 +30,7 @@ import SignUp from "./page/SignUp";
 import ForgotPassword from "./components/Profile/ForgotPassword";
 import ResetPassword from "./components/Profile/ResetPassword";
 import EditUser from "./page/Admin/EditUser";
+import EditEmployee from "./page/Admin/EditEmployee";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -149,6 +150,14 @@ function App() {
             element={
               <PrivateRoute>
                 <AddEmployees />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/editemployee/:id"
+            element={
+              <PrivateRoute>
+                <EditEmployee />
               </PrivateRoute>
             }
           />

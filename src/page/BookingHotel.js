@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { hideLoading, showLoading } from "../redux/features/alertSlice";
 import axios from "axios";
+import moment from "moment";
 
 const availableHours = Array.from({ length: 12 }, (_, index) => index + 9);
 function formatTime(hour) {
@@ -15,12 +16,33 @@ const BookingHotel = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [selectedTime, setSelectedTime] = useState("");
+  const [startDate,setStartDate] = useState('')
+  const [endDate,setEndDate] = useState('')
+
+  const dateFormat = "DD/MM/YYYY";
+
+  const handleStartDateChange = (date, dateString) => {
+    const formattedStartDate = moment(dateString, dateFormat).format("DD-MM-YYYY");
+    setStartDate(formattedStartDate);
+  };
+  
+  const handleEndDateChange = (date, dateString) => {
+    const formattedEndDate = moment(dateString, dateFormat).format("DD-MM-YYYY");
+    setEndDate(formattedEndDate);
+  };
+
   const handleSubmit = async (values) => {
     try {
       dispatch(showLoading());
       const res = await axios.post(
         "/api/v1/user/bookHotel",
-        { ...values, userId: user._id  },
+        {
+          ...values,
+          userId: user._id,
+          startDate: startDate,
+          endDate: endDate,
+        },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -38,7 +60,11 @@ const BookingHotel = () => {
     } catch (error) {
       dispatch(hideLoading());
       console.log(error);
-      if (error.response && error.response.data && error.response.data.message) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
         // Handle API error message
         message.error(error.response.data.message);
       } else {
@@ -46,11 +72,6 @@ const BookingHotel = () => {
       }
     }
   };
-
-  //////
-  const [selectedTime, setSelectedTime] = useState("");
-
-  const dateFormat = "DD/MM/YYYY";
 
   const handleTimeChange = (event) => {
     setSelectedTime(event.target.value);
@@ -119,12 +140,13 @@ const BookingHotel = () => {
 
         <Row>
           <Form.Item label="Start Date" name="startDate" required>
-            <DatePicker format={dateFormat} />
+            <DatePicker format={dateFormat} onChange={handleStartDateChange} />
           </Form.Item>
           <Form.Item label="End Date" name="endDate" required>
-            <DatePicker format={dateFormat} />
+            <DatePicker format={dateFormat} onChange={handleEndDateChange}/>
           </Form.Item>
         </Row>
+
         <Col xs={24} md={24} lg={8}>
           <Form.Item label="Time" name="time" required>
             <select

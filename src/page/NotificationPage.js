@@ -103,7 +103,7 @@ const NotificationPage = () => {
               Mark All Read
             </h4>
           </div>
-          <div className="float-end">
+          <div className="">
             {renderUnreadNotifications()}
             <Pagination
               current={currentPage}
@@ -143,7 +143,7 @@ const NotificationPage = () => {
                 </div>
               </div>
             ))}
-          <div className="float-end">
+          <div className="">
             <Pagination
               current={currentPage}
               total={user?.seenotification.length}

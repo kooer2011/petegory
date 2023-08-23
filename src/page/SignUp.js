@@ -66,11 +66,12 @@ const SignUp = () => {
           rules={[
             {
               required: true,
-              message: 'Please enter valid Phone'
+              message: 'Please enter valid Phone',
+              len: 10, message: "Phone number must be exactly 10 digits" 
             }
           ]}
         >
-        <Input className='input' placeholder='Enter Your Phone Number' />
+        <Input className='input' type='number' placeholder='Enter Your Phone Number' />
         </Form.Item>
 
         <Form.Item

@@ -8,19 +8,19 @@ const EditUser = () => {
   const { id } = useParams();
   const [form] = Form.useForm();
   const [userData, setUserData] = useState({});
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const getUser = async () => {
     try {
-      const res = await axios.get(`/api/v1/admin/editUser/${id}`,{
+      const res = await axios.get(`/api/v1/admin/editUser/${id}`, {
         headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-    });
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
 
       const user = res.data.data;
       setUserData(user);
-      form.setFieldsValue(user); 
+      form.setFieldsValue(user);
     } catch (error) {
       console.error(error);
     }
@@ -38,32 +38,31 @@ const EditUser = () => {
         },
       });
       if (res.data.success) {
-        message.success(res.data.message)
-        navigate('/admin/dashboard/users')
+        message.success(res.data.message);
+        navigate("/admin/dashboard/users");
       }
     } catch (error) {
       console.error(error);
-      message.error('Update User Error')
+      message.error("Update User Error");
     }
-  }
+  };
 
   return (
     <Layout>
       <div className="mt-3 d-flex justify-content-center">
-        <Form layout="vertical" className="m-3" form={form} onFinish={handleUpdate}>
+        <Form
+          layout="vertical"
+          className="m-3"
+          form={form}
+          onFinish={handleUpdate}
+        >
           <h1 className="text-center">Edit User</h1>
 
           <Form.Item label="Name" name="name">
-            <Input
-              type="text"
-              placeholder="input name"
-            />
+            <Input type="text" placeholder="input name" />
           </Form.Item>
           <Form.Item label="Email" name="email">
-            <Input
-              type="text"
-              placeholder="input email"
-            />
+            <Input type="text" placeholder="input email" />
           </Form.Item>
           <Form.Item label="Phone" name="phone">
             <Input

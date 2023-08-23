@@ -39,12 +39,12 @@ const columns = [
       dataIndex: 'phone',
   },
   {
-      title: 'Room',
-      dataIndex: 'room',
+      title: 'Room Type',
+      dataIndex: 'roomType',
   },
   {
-      title: 'Time',
-      dataIndex: 'time',
+      title: 'Room number',
+      dataIndex: 'roomNumber',
   },
   {
       title: 'Actions',

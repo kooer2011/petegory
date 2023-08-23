@@ -54,7 +54,10 @@ const AddEmployees = () => {
             label="Phone"
             name="phone"
             required
-            rules={[{ required: true }]}
+            rules={[
+              { required: true },
+              { len: 10, message: "Phone number must be exactly 10 digits" },
+            ]}
           >
             <Input type="number" placeholder="input phone" />
           </Form.Item>
@@ -77,11 +80,10 @@ const AddEmployees = () => {
           >
             <Input.Password type="text" placeholder="input password" />
           </Form.Item>
-          
-            <button className="btn btn-primary w-50" type="submit">
-              Submit
-            </button>
-        
+
+          <button className="btn btn-primary w-50" type="submit">
+            Submit
+          </button>
         </Form>
       </div>
     </Layout>

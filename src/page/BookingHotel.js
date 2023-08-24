@@ -69,7 +69,7 @@ const BookingHotel = () => {
       return response.data.isBooked;
     } catch (error) {
       console.error(error);
-      return false; 
+      return false;
     }
   };
 
@@ -99,6 +99,12 @@ const BookingHotel = () => {
       if (isRoomAlreadyBooked) {
         dispatch(hideLoading());
         message.error("This room is already booked.");
+        return;
+      }
+
+      if (!user || !user._id) {
+        dispatch(hideLoading());
+        message.error("User information is missing.");
         return;
       }
 
@@ -175,8 +181,12 @@ const BookingHotel = () => {
     <div className="mt-3 bookBG">
       <Form layout="vertical" onFinish={handleSubmit} className="m-3">
         <h1 className="text-center">Booking hotel</h1>
-        <h4 className="">Personal Details : </h4>
 
+        <Col xs={24} md={12} lg={15}>
+          <Form.Item label="User ID" required>
+            <Input type="text" value={user._id} disabled />
+          </Form.Item>
+        </Col>
         <Col xs={24} md={24} lg={15}>
           <Form.Item
             label="Name"

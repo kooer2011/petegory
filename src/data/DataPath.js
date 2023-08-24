@@ -47,6 +47,11 @@ export const adminMenu = [
         path: '/admin/dashboard/hotel',
         icon: 'fa-solid fa-hotel',
     },
+    {
+        name: 'All Bookings',
+        path: '/admin/dashboard/all-bookings',
+        icon: 'fa-solid fa-calendar-days',
+    },
 ];
 
 export const adminProfile = [

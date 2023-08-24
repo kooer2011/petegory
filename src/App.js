@@ -31,6 +31,7 @@ import ForgotPassword from "./components/Profile/ForgotPassword";
 import ResetPassword from "./components/Profile/ResetPassword";
 import EditUser from "./page/Admin/EditUser";
 import EditEmployee from "./page/Admin/EditEmployee";
+import AllBookings from "./page/Admin/AllBookings";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -190,6 +191,14 @@ function App() {
             element={
               <PrivateRoute>
                 <NotificationPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/admin/dashboard/all-bookings"
+            element={
+              <PrivateRoute>
+                <AllBookings />
               </PrivateRoute>
             }
           />

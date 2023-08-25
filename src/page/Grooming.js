@@ -1,54 +1,38 @@
 import React from 'react';
 import NavbarHeader from '../components/Navbar';
-import Gallr from '../components/Gallery/Gallr';
-import UncontrolledExample from '../components/Carousel/CarouSel';
-import { useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer/Footer';
-
-import img1 from '../imgs/raw.jpg';
-import img2 from '../imgs/timebussiness.PNG';
+import Paper from '@mui/material/Paper';
+import img2 from '../imgs/promotion_1.jpg';
+import img3 from '../imgs/dog.jpg'
+import img4 from '../imgs/dog2.jpg'
+import img5 from '../imgs/dog3.jpg'
+import Button from '@mui/material/Button';
 import './styles/grooming.css';
 
 function GrooMing() {
-  const navigate = useNavigate();
-
-  const navigateToBooking = () => {
-    navigate('/grooming/booking');
-  };
-
-  const showNavbar = true;
-
   return (
     <>
-      <div className="gloom_container">
-        {showNavbar && <NavbarHeader />}
-        <section className="header_grooming">
-          <h1>GROOMING</h1>
-        </section>
-        <section onClick={navigateToBooking} className="gloom_button">
-          Booking
-        </section>
-
-        <section className="responsive_gallery">
-          <div className="responsive_img">
-            <img
-              style={{ width: 500 }}
-              className="fade-in"
-              src={img1}
-              alt="Grooming Image 1"
-            />
+      <NavbarHeader />
+      <div className='ContainerBooking'>
+        <div className='HeaderBooking'>
+          <p className='headerText'>GroomBooking</p>
+          <div className='imageBooking'>
+            <Paper elevation={3} className='imagePaper'>
+              <img className='responsiveImage' src={img2} alt='Time Business' />
+            </Paper>
+            
+            <Paper elevation={3} className='imagePaper'>
+            <Button variant="contained">BOOKING</Button>
+            
+              <p>Photo</p>
+              
+              <img className='responsiveImage2' src={img3} alt='Time Business' />
+              <img className='responsiveImage2' src={img4} alt='Time Business' />
+              <img className='responsiveImage2' src={img5} alt='Time Business' />
+            </Paper>
           </div>
-          <div className="responsive_img">
-            <img
-              style={{ width: 500 }}
-              className="fade-in"
-              src={img2}
-              alt="Grooming Image 2"
-            />
-          </div>
-        </section>
+        </div>
       </div>
-
       <Footer />
     </>
   );

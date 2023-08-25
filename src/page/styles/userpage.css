@@ -1,0 +1,14 @@
+/* userpage.css */
+
+/* Apply a fade-in animation to the entire page */
+.fade-in {
+    opacity: 0;
+    animation: fadeInAnimation 1s ease-in forwards;
+  }
+  
+  @keyframes fadeInAnimation {
+    to {
+      opacity: 1;
+    }
+  }
+  

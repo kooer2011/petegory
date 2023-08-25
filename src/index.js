@@ -12,8 +12,9 @@ root.render(
   <Provider store={stores}>
     <React.StrictMode>
       <App />
+      
     </React.StrictMode>
-  </Provider>, React.createElement(StepsProvider, null, React.createElement(GroomBooking, null))
+  </Provider>
   
 );
 

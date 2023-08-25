@@ -51,16 +51,16 @@ function getStyles(name, personName, theme) {
   const theme = useTheme();
   const { formValues, handleChange, handleBack, handleNext, variant, margin } =
     useContext(AppContext);
-  const { city, date, time, phone, agreenemt } = formValues;
+  const { addon, date, time, phone, agreenemt } = formValues;
 
   const isError = useCallback(
     () =>
-      Object.keys({ city, date, time, phone, agreenemt }).some(
+      Object.keys({ addon, date, time, phone, agreenemt }).some(
         name =>
           (formValues[name].required && !formValues[name].value) ||
           formValues[name].error
       ),
-    [formValues, city, date, time, phone, agreenemt]
+    [formValues, addon, date, time, phone, agreenemt]
   );
 
   return (
@@ -71,10 +71,10 @@ function getStyles(name, personName, theme) {
             variant={variant}
             margin={margin}
             fullWidth
-            label="City"
-            name="city"
+            label="Add-on"
+            name="addon"
             multiple={true}
-            value={city.value}
+            value={addon.value}
             onChange={handleChange}
             input={<OutlinedInput label="Name" />}
             MenuProps={MenuProps}
@@ -83,7 +83,7 @@ function getStyles(name, personName, theme) {
               <MenuItem
                 key={name}
                 value={name}
-                style={getStyles(name, city.value, theme)}
+                style={getStyles(name, addon.value, theme)}
               >
                 {name}
               </MenuItem>
@@ -101,7 +101,8 @@ function getStyles(name, personName, theme) {
             label="Date of book"
             name="date"
             type="date"
-            defaultValue={date.value}
+            // defaultValue={date.value}
+            value={date.value}
             onChange={handleChange}
             required={date.required}
           />
@@ -115,7 +116,8 @@ function getStyles(name, personName, theme) {
             label="Time of book"
             name="time"
             type="time"
-            defaultValue={time.value}
+            // defaultValue={time.value}
+            value={time.value}
             onChange={handleChange}
             required={time.required}
           />

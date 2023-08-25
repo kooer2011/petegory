@@ -27,15 +27,15 @@ export const initialValues = {
     validate: 'select',
   },
   date: {
-    value: 'asd',
+    value: '',
     error: '',
   },
   time: {
-    value: 'sasd',
+    value: '',
     error: '',
   },
-  city: {
-    value: [''],
+  addon: {
+    value: [],
     error: '',
     validate: 'select',
   },

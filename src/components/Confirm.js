@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -6,12 +6,17 @@ import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import {AppContext} from '../page/Context';
 import Button from '@mui/material/Button';
-export default function Confirm() {
-  const { formValues, handleBack, handleNext } = useContext(AppContext);
-  const { PetName, Name, email, pet_type, date, time, city, phone } =
-    formValues;
+import axios from 'axios';
+import { message } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
-  const handleSubmit = e => {
+export default function Confirm() {
+  const navigate = useNavigate();
+  const { formValues, handleBack, handleNext } = useContext(AppContext);
+  const { PetName, Name, email, pet_type, date, time, addon, phone } =
+  formValues;
+
+  const handleSubmit = async () => {
     // Remove unwanted properties from formValue object
     let form = {};
 
@@ -23,10 +28,25 @@ export default function Confirm() {
       return form;
     });
   
-    // Do whatever with the values
-    console.log(form);
-    // Show last component or success message
-    handleNext();
+    try {
+      const res = await axios.post('/api/v1/user/bookGrooming', form,{
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      
+      if (res.data.success) {
+        message.success(res.data.message);
+        handleNext();
+        navigate('/grooming')
+      } else {
+        message.error(res.data.message);
+      }
+      
+    } catch (error) {
+      console.log(error);
+    }   
+    
   };
 
   return (
@@ -84,7 +104,7 @@ export default function Confirm() {
         <ListItem>
           <ListItemText
             primary="City"
-            secondary={city.value + '' || 'Not Provided'}
+            secondary={addon.value + '' || 'Not Provided'}
           />
         </ListItem>
 

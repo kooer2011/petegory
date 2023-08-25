@@ -11,8 +11,8 @@ const NotificationPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   //
-  const itemsPerPage = 3; // จำนวนรายการที่ต้องการแสดงในหนึ่งหน้า
-  const readPage = 12;
+  const itemsPerPage = 2; // จำนวนรายการที่ต้องการแสดงในหนึ่งหน้า
+  const readPage = 8;
   const [currentPage, setCurrentPage] = useState(1);
   // นับจำนวน unread ที่มีใน state.user.notification
   const unreadCount = user?.notification.filter(

@@ -31,6 +31,19 @@ h1{
 .about .col-sm-5 p strong {
     font-size: 20px;
 }
+.alert {
+    width: 100%;
+    display:  inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.head__alert{
+    display: inline-flex;
+    justify-content: center;
+   
+
+}
 @media screen and (max-width: 600px) {
     h1 {
       font-size: 40px;

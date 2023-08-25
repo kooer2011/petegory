@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './styles/Hotel.css'
-import roomStd from '../imgs/standard room.jpg'
-import roomDeluxe from '../imgs/deluxe room.jpg'
 import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
@@ -35,10 +33,10 @@ function HoTel() {
       <div className='txtHead'>
         <h1>CAT HOTEL</h1>
       </div>
-      <section>
+      <section className='info'>
         <div className='fs-5 p-4'>
           <h2>เงื่อนไขการเข้าใช้บริการ</h2>
-          <p>
+          <p className='d-flex justify-content-center'>
             1.น้องแมวต้องมีอายุ 4 เดือนขึ้นไปและได้รับวัคซีนป้องกันโรคติดต่อพื้นฐานครบแล้ว
             <br />
             2.น้องแมวต้องได้รับการหยดยาป้องกันปรสิตภายนอกและภายในเรียบร้อยแล้ว
@@ -74,16 +72,16 @@ function HoTel() {
             </div>
           </div>
         ))}
-        <div className='w-75 p-5'>
-          <p className='text-danger fs-4'>
-            <span className='fw-bold fs-1'>*โปรดอ่าน*</span>
+        <div className='alert p-5 '>
+          <div  className='text-danger fs-4 ' >
+            <span className='head__alert fw-bold fs-1'>*โปรดอ่าน*</span>
             <br/>
             -หากเจ้าของทิ้ง/ไม่มารับน้องแมว จะถูกดำเนินคดีกฎหมาย ตาม พ.ร.บ.คุ้มครองสัตว์
             <br/>
             -ทางร้านจะดูแลน้องแมวอย่างดีที่สุด แต่หากเกิดเหตุการณ์ที่อยู่นอกเหนือการควบคุม ทางร้านขอสวนสิทธิ์ ไม่รับผิดชอบทุกกรณี
             <br/>
             -หากพบว่าน้องแมวผิดไปจากเงื่อนไขในวันที่เข้าพัก <u>ขอปฎิเสธการเข้าพักทันทีและสงวนสิทธิ์การคืนเงินทั้งหมด</u>
-          </p>
+          </div>
         </div>
 
       </section>

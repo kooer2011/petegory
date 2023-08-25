@@ -32,6 +32,8 @@ import ResetPassword from "./components/Profile/ResetPassword";
 import EditUser from "./page/Admin/EditUser";
 import EditEmployee from "./page/Admin/EditEmployee";
 import AllBookings from "./page/Admin/AllBookings";
+import { StepsProvider } from './page/Context';
+import EditBooking from "./page/Admin/EditBooking";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -80,7 +82,10 @@ function App() {
             path="/grooming/booking"
             element={
               <PrivateRoute>
+                <StepsProvider>
                 <GroomBooking />
+                </StepsProvider>
+                
               </PrivateRoute>
             }
           />
@@ -199,6 +204,14 @@ function App() {
             element={
               <PrivateRoute>
                 <AllBookings />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/editbookhotel/:id"
+            element={
+              <PrivateRoute>
+                <EditBooking />
               </PrivateRoute>
             }
           />

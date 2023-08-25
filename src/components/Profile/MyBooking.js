@@ -3,6 +3,8 @@ import "./style/Mybooking.css";
 import axios from "axios";
 import { Table, message } from "antd";
 import Swal from "sweetalert2";
+import moment from "moment";
+
 
 const MyBooking = () => {
   const [bookings, setBookings] = useState([]);
@@ -57,13 +59,8 @@ const MyBooking = () => {
 
   const columns = [
     {
-      title: "Name",
-      dataIndex: "name",
-      render: (text, record) => <span>{record.name}</span>,
-    },
-    {
-      title: "Phone",
-      dataIndex: "phone",
+      title: "Pet Name",
+      dataIndex: "petname",
     },
     {
       title: "Room Type",
@@ -72,6 +69,19 @@ const MyBooking = () => {
     {
       title: "Room number",
       dataIndex: "roomNumber",
+    },
+    {
+      title: "Start Date",
+      dataIndex: "startDate",
+    },
+    {
+      title: "End Date",
+      dataIndex: "endDate",
+    },
+    {
+      title: "Time",
+      dataIndex: "time",
+      render: (time) => moment(time).format('HH:mm')
     },
     {
       title: "Actions",

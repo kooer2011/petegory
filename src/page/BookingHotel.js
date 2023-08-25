@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Col, Form, Input, Row, DatePicker, message, Select } from "antd";
+import { Col, Form, Input, Row, DatePicker, message, Select, TimePicker } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { hideLoading, showLoading } from "../redux/features/alertSlice";
@@ -32,6 +32,7 @@ const BookingHotel = () => {
 
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [userId, setUserId] = useState("");
 
   const [selectedRoomType, setSelectedRoomType] = useState("");
   const [roomOptions, setRoomOptions] = useState([]);
@@ -102,12 +103,6 @@ const BookingHotel = () => {
         return;
       }
 
-      if (!user || !user._id) {
-        dispatch(hideLoading());
-        message.error("User information is missing.");
-        return;
-      }
-
       const res = await axios.post(
         "/api/v1/user/bookHotel",
         {
@@ -172,21 +167,23 @@ const BookingHotel = () => {
 
         setRoomOptions(updatedOptions);
       };
-
       updateRoomOptions();
     }
-  }, [selectedRoomType, startDate, endDate]);
+    if (user) {
+      setUserId(user._id);
+    }
+  }, [selectedRoomType, startDate, endDate, user]);
 
   return (
     <div className="mt-3 bookBG">
       <Form layout="vertical" onFinish={handleSubmit} className="m-3">
         <h1 className="text-center">Booking hotel</h1>
 
-        <Col xs={24} md={12} lg={15}>
+        {/* <Col xs={24} md={12} lg={15}>
           <Form.Item label="User ID" required>
-            <Input type="text" value={user._id} disabled />
+            <Input type="text" value={userId} disabled />
           </Form.Item>
-        </Col>
+        </Col> */}
         <Col xs={24} md={24} lg={15}>
           <Form.Item
             label="Name"
@@ -240,7 +237,7 @@ const BookingHotel = () => {
           </Form.Item>
         </Row>
 
-        {/* <Row gutter={15}> */}
+        <Row gutter={15}>
         <Col xs={24} md={12} lg={10}>
           <Form.Item
             label="Room Type"
@@ -277,7 +274,15 @@ const BookingHotel = () => {
             </Select>
           </Form.Item>
         </Col>
-        {/* </Row> */}
+        </Row>
+        <Form.Item
+            label="Check-in Time"
+            name="time"
+            required
+            rules={[{ required: true, message: "Please select time" }]}
+          >
+            <TimePicker format='HH:mm' />
+          </Form.Item>
 
         <Col xs={24} md={24} lg={8}>
           <button className="btn btn-primary form-btn" type="submit">

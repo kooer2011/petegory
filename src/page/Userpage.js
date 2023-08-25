@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React from 'react';
 import UncontrolledExample from '../components/Carousel/CarouSel';
 import GridExample from '../components/Card/Card';
 import NavbarHeader from '../components/Navbar';
@@ -8,28 +8,27 @@ import GrooMing from './Grooming';
 import HoTel from './Hotel';
 import ContactSelection from '../components/Contact/ContactSelection';
 import { FloatButton } from 'antd';
+import './styles/userpage.css'; // Import the CSS file
 
 const Userpage = () => {
-  
   return (
-    <>
-      <NavbarHeader/>
+    <div className="fade-in">
+      {' '}
+      {/* Add fade-in class to trigger animation */}
+      <NavbarHeader />
       <UncontrolledExample />
       <GridExample />
-      <h1>Gallery</h1> 
-      <Gallr className ='gallrcontainer'/>
-      <br/>
-      <hr/>
+      <h1>Gallery</h1>
+      <Gallr className="gallrcontainer" />
+      <br />
+      <hr />
       <HoTel />
-      <hr/>
+      <hr />
       <ContactSelection />
-      <Footer/>
-      <FloatButton.BackTop 
-        tooltip={<div>Back to top</div>} 
-        type="primary"
-      />
-    </>
-  )
-}
+      <Footer />
+      <FloatButton.BackTop tooltip={<div>Back to top</div>} type="primary" />
+    </div>
+  );
+};
 
-export default Userpage
+export default Userpage;

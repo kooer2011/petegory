@@ -187,7 +187,7 @@ const BookingHotel = () => {
         <Col xs={24} md={24} lg={15}>
           <Form.Item
             label="Name"
-            name="name"
+            name="Name"
             required
             rules={[{ required: true }]}
           >
@@ -197,7 +197,7 @@ const BookingHotel = () => {
         <Col xs={24} md={24} lg={15}>
           <Form.Item
             label="PetName"
-            name="petname"
+            name="PetName"
             required
             rules={[{ required: true }]}
           >

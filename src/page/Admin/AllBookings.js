@@ -8,13 +8,12 @@ import EditBooking from "./EditBooking";
 import Swal from "sweetalert2";
 
 const AllBookings = () => {
-
   const [bookedHotels, setBookedHotels] = useState([]);
   const [bookedGrooming, setBookedGrooming] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [statusFilter, setStatusFilter] = useState(null);
-  const [statusFilterValue, setStatusFilterValue] = useState(null)
-  const [petTypeFilterValue, setPetTypeFilterValue] = useState(null)
+  const [statusFilterValue, setStatusFilterValue] = useState(null);
+  const [petTypeFilterValue, setPetTypeFilterValue] = useState(null);
 
   const [selectedBooking, setSelectedBooking] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -27,7 +26,7 @@ const AllBookings = () => {
     } else if (filterType === "pet_type") {
       setPetTypeFilterValue(value);
     }
-  }
+  };
 
   const getBookedHotels = async () => {
     try {
@@ -118,11 +117,14 @@ const AllBookings = () => {
     });
     if (confirmed.isConfirmed) {
       try {
-        const res = await axios.delete(`/api/v1/admin/deleteBookedGrooming/${id}`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
+        const res = await axios.delete(
+          `/api/v1/admin/deleteBookedGrooming/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
         if (res.data.success) {
           message.success(res.data.message);
           window.location.reload();
@@ -146,6 +148,31 @@ const AllBookings = () => {
       );
       if (res.data.success) {
         message.success(res.data.message);
+        record.status = "success";
+        
+        window.location.reload();
+      }
+    } catch (error) {
+      console.log(error);
+      message.error("Someting Went Wrong");
+    }
+  };
+
+  const handleStatusGrooming = async (record, status) => {
+    try {
+      const res = await axios.post(
+        "/api/v1/admin/statusBookGrooming",
+        { status: record._id, userId: record.userId },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      if (res.data.success) {
+        message.success(res.data.message);
+        // record.status = "success";
+        
         window.location.reload();
       }
     } catch (error) {
@@ -162,12 +189,12 @@ const AllBookings = () => {
   const hotels = [
     {
       title: "Name",
-      dataIndex: "name",
+      dataIndex: "Name",
       filteredValue: [searchText],
       onFilter: (value, record) => {
         return (
           (String(record.name).toLowerCase().includes(value.toLowerCase()) ||
-            String(record.petname)
+            String(record.PetName)
               .toLowerCase()
               .includes(value.toLowerCase()) ||
             String(record.phone).toLowerCase().includes(value.toLowerCase()) ||
@@ -177,13 +204,13 @@ const AllBookings = () => {
             String(record.roomNumber)
               .toLowerCase()
               .includes(value.toLowerCase())) &&
-          (!statusFilter || record.status === statusFilter )
+          (!statusFilter || record.status === statusFilter)
         );
       },
     },
     {
       title: "Pet Name",
-      dataIndex: "petname",
+      dataIndex: "PetName",
       filteredValue: [searchText],
     },
     {
@@ -305,10 +332,7 @@ const AllBookings = () => {
       dataIndex: "pet_type",
       filteredValue: [petTypeFilterValue],
       onFilter: (value, record) => {
-        return (
-          !petTypeFilterValue ||
-          record.pet_type === petTypeFilterValue
-        );
+        return !petTypeFilterValue || record.pet_type === petTypeFilterValue;
       },
       render: (text, record) => (
         <div className="text-center fw-bold">
@@ -326,7 +350,7 @@ const AllBookings = () => {
       dataIndex: "addon",
       filteredValue: [searchText],
       render: (text, record) => (
-        <div>
+        <div style={{maxWidth: '200px'}}>
           {record.addon.map((item, index) => (
             <span key={index}>
               {item}
@@ -350,10 +374,7 @@ const AllBookings = () => {
       dataIndex: "status",
       filteredValue: [statusFilterValue],
       onFilter: (value, record) => {
-        return (
-          !statusFilterValue ||
-        record.status === statusFilterValue
-        )
+        return !statusFilterValue || record.status === statusFilterValue;
       },
       render: (text, record) => (
         <div>
@@ -391,7 +412,7 @@ const AllBookings = () => {
             {record.status === "pending" ? (
               <button
                 className="btn btn-success"
-                onClick={() => handleStatus(record, "approve")}
+                onClick={() => handleStatusGrooming(record, "approve")}
               >
                 Approve
               </button>
@@ -406,10 +427,10 @@ const AllBookings = () => {
 
   return (
     <Layout>
-      <h3 className="p-3 text-center">All Bookings</h3>
+      <h3 className="p-3 text-center pb-0">All Bookings</h3>
       <Tabs>
         <Tabs.TabPane tab={"Grooming"} key={0}>
-          <div className="d-flex w-25 mb-3">
+          <div className="d-flex w-50 mb-3">
             <Input.Search
               type="text"
               placeholder="Search..."
@@ -438,7 +459,7 @@ const AllBookings = () => {
           <Table
             columns={groomings}
             dataSource={bookedGrooming}
-            pagination={{ pageSize: 3 }}
+            pagination={{ pageSize: 4 }}
           />
         </Tabs.TabPane>
 

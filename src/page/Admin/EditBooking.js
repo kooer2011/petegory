@@ -1,18 +1,8 @@
 import React, { useState, useEffect } from "react";
-import {
-  Col,
-  Form,
-  Input,
-  Row,
-  DatePicker,
-  message,
-  TimePicker,
-} from "antd";
+import { Col, Form, Input, Row, DatePicker, message, TimePicker } from "antd";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import moment from "moment";
-
-
 
 const EditBooking = ({ bookingId, onClose }) => {
   const { user } = useSelector((state) => state.user);
@@ -46,11 +36,16 @@ const EditBooking = ({ bookingId, onClose }) => {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
-      // const user = {userId: user}
 
       const user = res.data.data;
       setBookingData(user);
-      form.setFieldsValue(user);
+      form.setFieldsValue({
+        Name: user.data.Name,
+        PetName: user.data.PetName,
+        startDate: moment(user.data.startDate, "DD-MM-YYYY"),
+        endDate: moment(user.data.endDate, "DD-MM-YYYY"),
+        time: moment(user.data.Time, "HH:mm"),
+      });
     } catch (error) {
       console.error(error);
     }
@@ -60,7 +55,7 @@ const EditBooking = ({ bookingId, onClose }) => {
     try {
       const res = await axios.put(
         `/api/v1/admin/updateBookHotel/${bookingId}`,
-        {values,startDate,endDate},
+        { values, startDate, endDate },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -91,7 +86,7 @@ const EditBooking = ({ bookingId, onClose }) => {
         onFinish={handleUpdate}
       >
         <h2 className="text-center">Edit Booking hotel</h2>
-        <br/>
+        <br />
         <div className="ms-4">
           <Col xs={24} md={12} lg={15}>
             <Form.Item label="User ID" required>
@@ -100,32 +95,51 @@ const EditBooking = ({ bookingId, onClose }) => {
           </Col>
           <Row>
             <Form.Item label="Name" name="name" required>
-              <Input type="text" placeholder="your name" disabled />
+              <Input
+                type="text"
+                placeholder="your name"
+                defaultValue={bookingData?.Name}
+                disabled
+              />
             </Form.Item>
             <Form.Item label="PetName" name="petname" required>
-              <Input type="text" placeholder="your petname" disabled />
+              <Input
+                type="text"
+                placeholder="your petname"
+                value={bookingData?.PetName}
+                disabled
+              />
             </Form.Item>
           </Row>
           <Row>
-            <Form.Item label="Start Date" name="startDate" required>
+            <Form.Item
+              label="Start Date"
+              name="startDate"
+              required
+              rules={[{ required: true, message: "Select Date" }]}
+            >
               <DatePicker
                 format={dateFormat}
                 onChange={handleStartDateChange}
                 value={bookingData?.startDate}
               />
             </Form.Item>
-            <Form.Item label="End Date" name="endDate" required>
-              <DatePicker format={dateFormat} onChange={handleEndDateChange} />
+            <Form.Item
+              label="End Date"
+              name="endDate"
+              required
+              rules={[{ required: true, message: "Select Date" }]}
+            >
+              <DatePicker
+                format={dateFormat}
+                onChange={handleEndDateChange}
+                value={bookingData?.endDate}
+              />
             </Form.Item>
           </Row>
 
           <Form.Item label="Check-in Time" name="time" required>
-            <TimePicker
-              format="HH:mm"
-              //   value={
-              //     bookingData?.time ? moment(bookingData.time, "HH:mm") : null
-              //   }
-            />
+            <TimePicker format="HH:mm" />
           </Form.Item>
 
           <Col xs={24} md={24} lg={8}>

@@ -50,6 +50,6 @@ export const initialValues = {
     value: '',
     error: '',
     validate: 'phone',
-    maxLength: 15,
+    maxLength: 10,
   },
 };

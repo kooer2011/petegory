@@ -16,6 +16,25 @@ export default function Confirm() {
   const { PetName, Name, email, pet_type, date, time, addon, phone } =
   formValues;
 
+  const isTimeBooking = async (time, date) => {
+    try {
+      const response = await axios.get("/api/v1/user/isTimeBooked", {
+        params: {
+          time,
+          date
+        },
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      return response.data.isBooked;
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
+  };
+
   const handleSubmit = async () => {
     // Remove unwanted properties from formValue object
     let form = {};
@@ -27,6 +46,16 @@ export default function Confirm() {
       };
       return form;
     });
+
+    const isTimeAlreadyBooked = await isTimeBooking(
+      time.value,
+      date.value,
+    );
+
+    if (isTimeAlreadyBooked) {
+      message.error("This time is already booked.");
+      return;
+    }
   
     try {
       const res = await axios.post('/api/v1/user/bookGrooming', form,{
@@ -46,8 +75,8 @@ export default function Confirm() {
     } catch (error) {
       console.log(error);
     }   
-    
   };
+  
 
   return (
     <>
@@ -103,7 +132,7 @@ export default function Confirm() {
 
         <ListItem>
           <ListItemText
-            primary="City"
+            primary="Add on"
             secondary={addon.value + '' || 'Not Provided'}
           />
         </ListItem>

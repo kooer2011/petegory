@@ -11,7 +11,7 @@ const Users = () => {
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  
   const getUsers = async () => {
     try {
       const res = await axios.get("/api/v1/admin/getAllUsers", {

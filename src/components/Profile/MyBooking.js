@@ -125,7 +125,6 @@ const MyBooking = () => {
     {
       title: "Time",
       dataIndex: "time",
-      render: (time) => moment(time).format("HH:mm"),
     },
     {
       title: "Actions",
@@ -157,7 +156,7 @@ const MyBooking = () => {
       title: "Add on",
       dataIndex: "addon",
       render: (text, record) => (
-        <div style={{maxWidth: '350px'}}>
+        <div style={{maxWidth: '250px'}}>
           {record.addon.map((item, index) => (
             <span key={index}>
               {item}

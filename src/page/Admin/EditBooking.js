@@ -7,10 +7,12 @@ const EditBooking = ({ bookingId, onClose }) => {
   const [form] = Form.useForm();
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [time, setTime] = useState("");
 
   const [bookingData, setBookingData] = useState(null);
 
-  const dateFormat = "DD/MM/YYYY";
+  const dateFormat = "DD-MM-YYYY";
+  const timeFormat = "HH:mm";
 
   const handleStartDateChange = (date, dateString) => {
     const formattedStartDate = moment(dateString, dateFormat).format(
@@ -26,6 +28,11 @@ const EditBooking = ({ bookingId, onClose }) => {
     setEndDate(formattedEndDate);
   };
 
+  const handleTimeChange = (time, timeString) => {
+    const formattedTime = moment(timeString, timeFormat).format("HH:mm");
+    setTime(formattedTime);
+  };
+
   const getUserBooking = async () => {
     try {
       const res = await axios.get(`/api/v1/admin/editBookHotel/${bookingId}`, {
@@ -36,21 +43,41 @@ const EditBooking = ({ bookingId, onClose }) => {
 
       const user = res.data.data;
       setBookingData(user);
+      console.log(user);
+
       form.setFieldsValue({
-        startDate: moment(user.data.startDate, "DD-MM-YYYY"),
-        endDate: moment(user.data.endDate, "DD-MM-YYYY"),
-        time: moment(user.data.Time, "HH:mm"),
+        userId: user.userId,
+        startDate: moment(user.startDate, "DD-MM-YYYY"),
+        endDate: moment(user.endDate, "DD-MM-YYYY"),
+        time: moment(user.time, "HH:mm"),
       });
     } catch (error) {
       console.error(error);
     }
   };
 
-  const handleUpdate = async (values) => {
+  const handleUpdate = async () => {
     try {
+      if (
+        bookingData.startDate === startDate &&
+        bookingData.endDate === endDate &&
+        bookingData.time === time
+      ) {
+        message.warning("No changes detected.");
+        return;
+      }
+
+      // ตรวจสอบว่าค่าวันที่ไม่ถูกกำหนดในฟอร์ม ให้ใช้ค่าวันที่เดิม
+      const updatedStartDate = startDate || bookingData.startDate;
+      const updatedEndDate = endDate || bookingData.endDate;
+      const updatedTime = time || bookingData.time;
       const res = await axios.put(
         `/api/v1/admin/updateBookHotel/${bookingId}`,
-        { values, startDate, endDate },
+        {
+          startDate:updatedStartDate,
+          endDate:updatedEndDate,
+          time:updatedTime,
+        },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -77,8 +104,8 @@ const EditBooking = ({ bookingId, onClose }) => {
       <Form
         layout="vertical"
         className="m-3"
-        form={form}
         onFinish={handleUpdate}
+        form={form}
       >
         <h2 className="text-center">Edit Booking hotel</h2>
         <br />
@@ -106,15 +133,12 @@ const EditBooking = ({ bookingId, onClose }) => {
               required
               rules={[{ required: true, message: "Select Date" }]}
             >
-              <DatePicker
-                format={dateFormat}
-                onChange={handleEndDateChange}
-              />
+              <DatePicker format={dateFormat} onChange={handleEndDateChange} />
             </Form.Item>
           </Row>
 
           <Form.Item label="Check-in Time" name="time" required>
-            <TimePicker format="HH:mm" />
+            <TimePicker format={timeFormat} onChange={handleTimeChange} />
           </Form.Item>
 
           <Col xs={24} md={24} lg={8}>

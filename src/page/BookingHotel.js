@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Col, Form, Input, Row, DatePicker, message, Select, TimePicker } from "antd";
+import {
+  Col,
+  Form,
+  Input,
+  Row,
+  DatePicker,
+  message,
+  Select,
+  TimePicker,
+} from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { hideLoading, showLoading } from "../redux/features/alertSlice";
@@ -103,6 +112,8 @@ const BookingHotel = () => {
         return;
       }
 
+      const checkInTime = values.time.format("HH:mm");
+
       const res = await axios.post(
         "/api/v1/user/bookHotel",
         {
@@ -110,6 +121,7 @@ const BookingHotel = () => {
           userId: user._id,
           startDate: startDate,
           endDate: endDate,
+          time: checkInTime,
         },
         {
           headers: {
@@ -225,7 +237,13 @@ const BookingHotel = () => {
             required
             rules={[{ required: true, message: "Please select date" }]}
           >
-            <DatePicker format={dateFormat} onChange={handleStartDateChange} />
+            <DatePicker
+              format={dateFormat}
+              onChange={handleStartDateChange}
+              disabledDate={(current) =>
+                current && current < moment().startOf("day")
+              }
+            />
           </Form.Item>
           <Form.Item
             label="End Date"
@@ -233,56 +251,68 @@ const BookingHotel = () => {
             required
             rules={[{ required: true, message: "Please select date" }]}
           >
-            <DatePicker format={dateFormat} onChange={handleEndDateChange} />
+            <DatePicker
+              format={dateFormat}
+              onChange={handleEndDateChange}
+              disabledDate={(current) =>
+                current && current < moment().startOf("day")
+              }
+            />
           </Form.Item>
         </Row>
 
         <Row gutter={15}>
-        <Col xs={24} md={12} lg={10}>
-          <Form.Item
-            label="Room Type"
-            name="roomType"
-            required
-            rules={[{ required: true, message: "Please select room type" }]}
-          >
-            <Select
-              placeholder="Select Room Type"
-              onChange={handleRoomTypeChange}
+          <Col xs={24} md={12} lg={10}>
+            <Form.Item
+              label="Room Type"
+              name="roomType"
+              required
+              rules={[{ required: true, message: "Please select room type" }]}
             >
-              <Option value="Standard">Standard</Option>
-              <Option value="Deluxe">Deluxe</Option>
-            </Select>
-          </Form.Item>
-        </Col>
-        <Col xs={24} md={12} lg={10}>
-          <Form.Item
-            label="Room Number"
-            name="roomNumber"
-            required
-            rules={[{ required: true, message: "Please select room number" }]}
-          >
-            <Select placeholder="Select Room Number">
-              {roomOptions.map((room) => (
-                <Option
-                  key={room.value}
-                  value={room.value}
-                  disabled={room.disabled}
-                >
-                  {room.label}
-                </Option>
-              ))}
-            </Select>
-          </Form.Item>
-        </Col>
+              <Select
+                placeholder="Select Room Type"
+                onChange={handleRoomTypeChange}
+              >
+                <Option value="Standard">Standard</Option>
+                <Option value="Deluxe">Deluxe</Option>
+              </Select>
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={12} lg={10}>
+            <Form.Item
+              label="Room Number"
+              name="roomNumber"
+              required
+              rules={[{ required: true, message: "Please select room number" }]}
+            >
+              <Select placeholder="Select Room Number">
+                {roomOptions.map((room) => (
+                  <Option
+                    key={room.value}
+                    value={room.value}
+                    disabled={room.disabled}
+                  >
+                    {room.label}
+                  </Option>
+                ))}
+              </Select>
+            </Form.Item>
+          </Col>
         </Row>
         <Form.Item
-            label="Check-in Time"
-            name="time"
-            required
-            rules={[{ required: true, message: "Please select time" }]}
-          >
-            <TimePicker format='HH:mm' />
-          </Form.Item>
+          label="Check-in Time"
+          name="time"
+          required
+          rules={[{ required: true, message: "Please select time" }]}
+        >
+          <TimePicker
+            format="HH:mm"
+            hideDisabledOptions
+            disabledHours={() =>
+              [...Array(24).keys()].filter((h) => h < 9 || h > 20)
+            }
+          />
+        </Form.Item>
 
         <Col xs={24} md={24} lg={8}>
           <button className="btn btn-primary form-btn" type="submit">

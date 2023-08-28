@@ -242,7 +242,7 @@ const AllBookings = () => {
       title: "Check-in Time",
       dataIndex: "time",
       filteredValue: [searchText],
-      render: (time) => moment(time).format("HH:mm"),
+      // render: (time) => moment(time).format("HH:mm"),
     },
     {
       title: "Status",

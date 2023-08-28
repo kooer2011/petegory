@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Col, Form, Input, Row, DatePicker, message, TimePicker } from "antd";
-import { useSelector } from "react-redux";
 import axios from "axios";
 import moment from "moment";
 
 const EditBooking = ({ bookingId, onClose }) => {
-  const { user } = useSelector((state) => state.user);
   const [form] = Form.useForm();
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-  const [userId, setUserId] = useState("");
 
   const [bookingData, setBookingData] = useState(null);
 
@@ -40,8 +37,6 @@ const EditBooking = ({ bookingId, onClose }) => {
       const user = res.data.data;
       setBookingData(user);
       form.setFieldsValue({
-        Name: user.data.Name,
-        PetName: user.data.PetName,
         startDate: moment(user.data.startDate, "DD-MM-YYYY"),
         endDate: moment(user.data.endDate, "DD-MM-YYYY"),
         time: moment(user.data.Time, "HH:mm"),
@@ -94,24 +89,6 @@ const EditBooking = ({ bookingId, onClose }) => {
             </Form.Item>
           </Col>
           <Row>
-            <Form.Item label="Name" name="name" required>
-              <Input
-                type="text"
-                placeholder="your name"
-                defaultValue={bookingData?.Name}
-                disabled
-              />
-            </Form.Item>
-            <Form.Item label="PetName" name="petname" required>
-              <Input
-                type="text"
-                placeholder="your petname"
-                value={bookingData?.PetName}
-                disabled
-              />
-            </Form.Item>
-          </Row>
-          <Row>
             <Form.Item
               label="Start Date"
               name="startDate"
@@ -121,7 +98,6 @@ const EditBooking = ({ bookingId, onClose }) => {
               <DatePicker
                 format={dateFormat}
                 onChange={handleStartDateChange}
-                value={bookingData?.startDate}
               />
             </Form.Item>
             <Form.Item
@@ -133,7 +109,6 @@ const EditBooking = ({ bookingId, onClose }) => {
               <DatePicker
                 format={dateFormat}
                 onChange={handleEndDateChange}
-                value={bookingData?.endDate}
               />
             </Form.Item>
           </Row>

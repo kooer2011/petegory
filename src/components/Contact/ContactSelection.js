@@ -5,7 +5,7 @@ import ContactForm from "./ContactForm";
 import "./contact1.css";
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
-import { Form, Input } from "antd";
+import { Form, Input, message } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -30,8 +30,17 @@ function ContactSelection() {
           showConfirmButton: false,
           timer: 1500
         })
+        
         window.location.reload();
-      }  
+      } else {
+        Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Please Login!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      }
     } catch (error) {
       console.log(error)
     }
@@ -108,59 +117,6 @@ function ContactSelection() {
         </Col>
       </Row>
     </Container>
-    //////////
-    //     <section>
-    //   <h1>ConTact Us</h1>
-    // <div className="frame">
-    //       <div className="mask-group-wrapper">
-    //         <div className="mask-group">
-    //           <div className="desktop">
-    //             <div className="overlap-group">
-    //               <img
-    //                 className="img"
-    //                 alt="Img"
-    //                 src="https://generation-sessions.s3.amazonaws.com/d0c9fd4fbbbd2f4afe87d489c647d8f6/img/img-15-1686576689916-1@2x.png"
-    //               />
-    //             </div>
-    //             <h1 className="let-s-discuss-on">
-    //               <span className="text-wrapper">
-    //                 Let’s discuss <br />
-    //                 on something{" "}
-    //               </span>
-    //               <span className="span">cool </span>
-    //               <span className="text-wrapper">together</span>
-    //             </h1>
-    //             <div className="div">
-    //               <div className="div-2">
-    //                 <img
-    //                   className="envelope-fill"
-    //                   alt="Envelope fill"
-    //                   src="https://generation-sessions.s3.amazonaws.com/d0c9fd4fbbbd2f4afe87d489c647d8f6/img/envelopefill.svg"
-    //                 />
-    //                 <div className="text-wrapper-2">SaulDesign@gmail.com</div>
-    //               </div>
-    //               <div className="div-3">
-    //                 <img
-    //                   className="telephone-fill"
-    //                   alt="Telephone fill"
-    //                   src="https://generation-sessions.s3.amazonaws.com/d0c9fd4fbbbd2f4afe87d489c647d8f6/img/telephonefill.svg"
-    //                 />
-    //                 <div className="text-wrapper-3">+123 456 789</div>
-    //               </div>
-    //               <div className="div-4">
-    //                 <img
-    //                   className="vector"
-    //                   alt="Vector"
-    //                   src="https://generation-sessions.s3.amazonaws.com/d0c9fd4fbbbd2f4afe87d489c647d8f6/img/vector.svg"
-    //                 />
-    //                 <div className="text-wrapper-4">123 Street 456 House</div>
-    //               </div>
-    //             </div>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //     </section>
   );
 }
 export default ContactSelection;

@@ -63,6 +63,14 @@ export default function Confirm() {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
+
+      //api google sheet
+      await axios
+        .post("https://sheet.best/api/sheets/ddd04150-204d-4a71-a61d-24fa5e82b004", form )
+        .then((res) => {
+          console.log(res);
+          alert('ส่งเข้าsheetแล้ว')
+        });
       
       if (res.data.success) {
         message.success(res.data.message);

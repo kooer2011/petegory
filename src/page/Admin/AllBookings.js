@@ -455,6 +455,7 @@ const AllBookings = () => {
               <Select.Option value="cat">Cat</Select.Option>
               <Select.Option value="dog">Dog</Select.Option>
             </Select>
+            <a href="https://docs.google.com/spreadsheets/d/1BN3LENidjKQr-HWtIsI1VQOK1gVRz4HufAk8R2N-wVE/edit#gid=0" target="_blank" className="w-50 ms-3 d-flex align-items-center text-decoration-none">เพิ่มเวลาการจอง</a>
           </div>
           <Table
             columns={groomings}
@@ -464,7 +465,7 @@ const AllBookings = () => {
         </Tabs.TabPane>
 
         <Tabs.TabPane tab={"Hotel"} key={1}>
-          <div className="d-flex w-25 mb-3">
+          <div className="d-flex w-50 mb-3">
             <Input.Search
               type="text"
               placeholder="Search..."
@@ -480,6 +481,7 @@ const AllBookings = () => {
               <Select.Option value="pending">Pending</Select.Option>
               <Select.Option value="success">Success</Select.Option>
             </Select>
+            <a href="https://docs.google.com/spreadsheets/d/14kwdx9zkKZ7a61OgtSdXPBCTBzb2vH36HkZUVlcjkZM/edit#gid=0" target="_blank" className="w-50 ms-3 d-flex align-items-center text-decoration-none">เพิ่มเวลาการจอง</a>
           </div>
 
           <Table

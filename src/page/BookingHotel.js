@@ -132,6 +132,21 @@ const BookingHotel = () => {
       console.log(values);
       dispatch(hideLoading());
 
+      //api google sheet
+      await axios
+        .post(
+          "https://sheet.best/api/sheets/b6637ac6-fc44-49a7-bd13-a4bfd7561c99",
+          {
+            ...values,
+            startDate: startDate,
+            endDate: endDate,
+            time: checkInTime,
+          }
+        )
+        .then((res) => {
+          console.log(res);
+        });
+
       if (res.data.success) {
         message.success(res.data.message);
         navigate("/");

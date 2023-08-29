@@ -65,7 +65,7 @@ const Users = () => {
 
   const handleStatus = async (record,role) => {
     try {
-        const res = await axios.post('/api/v1/admin/changeStatus', {isEmployee: record._id, userId: record.userId},
+        const res = await axios.post('/api/v1/admin/changeStatus',{userId: record.userId, isEmployee: record._id} ,
         {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -108,7 +108,7 @@ const Users = () => {
           </div>
           <div className="m-1">
             {record.role === "barber" ? (
-              <button className="btn btn-success" onClick={() => handleStatus(record, 'approve')}>Approve</button>
+              <button className="btn btn-success" onClick={() => handleStatus(record)}>Approve</button>
             ) : (
               <button className="btn btn-danger" onClick={() => handleDelete(record._id)}>Delete</button>
             )}

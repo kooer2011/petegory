@@ -92,6 +92,9 @@ function NavbarHeader() {
             onClick={handleOpenNavMenu}
             color="inherit"
             edge="start"
+            sx={{
+              display: { xs: 'flex', md: 'none' }, // Show on small screens
+            }}
           >
             <MenuIcon />
           </IconButton>

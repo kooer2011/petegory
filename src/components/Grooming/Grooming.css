@@ -1,0 +1,48 @@
+.grroming__imgs {
+  margin: 4px;
+}
+.grroming__imgs:hover {
+  transform: scale(1.5); /* Increase size on hover */
+  transition: transform 0.4s ease-in-out; /* Add a smooth transition */
+}
+.grooming__section .MuiButton-root:hover {
+  background-color: #ff5733; /* Change background color on hover */
+  color: white; /* Change text color on hover */
+}
+/* groomingAnimations.css */
+
+/* Define fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px); /* Slide up effect */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Define button pop effect */
+@keyframes popIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.pop-in {
+  animation: popIn 1s ease-in-out;
+}
+.cathotel__image {
+  border-radius: 50% 20% / 10% 40%;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}

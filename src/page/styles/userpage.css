@@ -1,14 +1,132 @@
-/* userpage.css */
+.read-the-docs {
+  color: #888;
+}
+.dialog__section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('https://scontent.fbkk22-8.fna.fbcdn.net/v/t39.30808-6/324272717_578504110299232_6671049236692552674_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=19026a&_nc_eui2=AeFFYP0XlSWpeLSa05XCg7StWi-kOnMNTQ9aL6Q6cw1ND1et1nXpTMvfMWRdwKzo6n07Dg6K08rgp8v3PbKw2_Qg&_nc_ohc=qjw2Tonssq4AX_fyRHO&_nc_ht=scontent.fbkk22-8.fna&oh=00_AfCh26mMCApN_rEagMhCnHWUWfdgTnyKa7pX9r6s131GaA&oe=64F2046B');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: -25px;
+}
 
-/* Apply a fade-in animation to the entire page */
-.fade-in {
-    opacity: 0;
-    animation: fadeInAnimation 1s ease-in forwards;
+.navbar__section {
+  margin-bottom: 5rem;
+}
+.grid__section {
+  background-color: #eadbc8;
+  border-radius: 25% 10%;
+}
+.Header_news {
+  text-align: center;
+}
+.Header__grooming {
+  text-align: center;
+}
+.grooming__section {
+  border-radius: 10px 100px / 120px;
+  background-color: #eadbc8;
+}
+.hotelcat__section {
+  background-color: #eadbc8;
+  border-radius: 10% 30% 50% 70%;
+}
+
+.custom_text {
+  text-align: center;
+}
+
+/* NewsHeader.css */
+
+/* Define the typing animation */
+@keyframes typing {
+  from {
+    width: 0;
   }
-  
-  @keyframes fadeInAnimation {
-    to {
-      opacity: 1;
-    }
+  to {
+    width: 100%;
   }
-  
+}
+
+/* Apply the typing animation to the header */
+.Header_news::after {
+  content: '';
+  display: inline-block;
+  vertical-align: bottom;
+  width: 0;
+  height: 2px;
+  background-color: #000; /* Change the color as needed */
+  animation: typing 2s steps(30) infinite, blink-caret 0.5s step-end infinite;
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #000; /* Change the color as needed */
+  }
+}
+@media (max-width: 768px) {
+  body {
+    background-size: contain;
+    background-position: top;
+  }
+}
+/* article {
+  max-width: 500px;
+  padding: 20px;
+  margin: 0 auto;
+} */
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: #102c57;
+  transform-origin: 0%;
+}
+/* YourComponent.css */
+.register__register {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 6rem;
+  height: 100vh;
+  width: 100vw;
+}
+.login__section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 6rem;
+  height: 100vh;
+  width: 100vw;
+}
+
+.login__section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://scontent.fbkk22-2.fna.fbcdn.net/v/t39.30808-6/325204102_4176826972542925_7708232417522904586_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeFeYCvg12FHsXiW00HXtbj-We69BlPaWLBZ7r0GU9pYsO2QCyyvx8UisdfH-RvsyEFQxmRsfq95kNSphgiOzlkR&_nc_ohc=iiGOo7F77pUAX_r8uTp&_nc_ht=scontent.fbkk22-2.fna&oh=00_AfAmB0ksVHIVq3oQgfjJMiRs8SvgjSTbOYrfqLQneDF9Fw&oe=64F3E705');
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.5; /* Initial opacity value */
+  transition: opacity 0.5s ease; /* Add a smooth transition for opacity change */
+  z-index: -1; /* Place the pseudo-element behind the content */
+}
+
+.login__section:hover::before {
+  opacity: 1; /* Change opacity on hover */
+}

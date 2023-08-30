@@ -1,0 +1,18 @@
+.dialog__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dialog__button1 {
+  margin: 10px;
+}
+.Button__colors1 {
+  background-color: rgb(255, 227, 18);
+  color: black;
+  font-weight: bold;
+}
+.Button__colors2 {
+  background-color: rgb(27, 224, 231);
+  color: black;
+  font-weight: bold;
+}

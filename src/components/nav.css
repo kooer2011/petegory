@@ -40,3 +40,8 @@
   font-weight: bold;
   color: rgb(34, 31, 248);
 }
+.color-nav.scrolled {
+  background-color: #fff; /* Change background color on scroll */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow on scroll */
+  /* You can adjust other styles as needed */
+}

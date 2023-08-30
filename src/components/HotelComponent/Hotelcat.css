@@ -1,0 +1,29 @@
+.cathotel__image {
+  border-radius: 10% 30% 50% 70%;
+}
+.cathotel_detail {
+  background-color: #102c57;
+  color: #ffff;
+}
+/* Hotelcat.css */
+
+.cathotel__image:hover {
+  background-color: #102c57; /* Change to your desired hover color */
+  color: white;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Add hover effect to the text inside cathotel_detail */
+.cathotel_detail:hover {
+  background-color: #102c57; /* Change to your desired hover color */
+  color: white;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.cathotel__image img {
+  cursor: pointer;
+  transition: transform 0.3s ease; /* Add transition for transform property */
+}
+
+.cathotel__image:hover img {
+  transform: scale(1.05); /* Increase scale on hover */
+}

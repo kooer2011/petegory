@@ -3,9 +3,6 @@ import axios from "axios";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "../index.css";
 import Layout from "../components/Layout/Layout";
-import PieChart from "../components/Chart/PieChart";
-import BarChart from "../components/Chart/BarChart";
-import { UserData } from "../data/ChartData";
 import { Modal, Table } from "antd";
 import ViewBookingDetail from "./Admin/ViewBookingDetail";
 import { useNavigate } from "react-router-dom";
@@ -19,24 +16,6 @@ const Dashboard = () => {
 
   const [selectedBooking, setSelectedBooking] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [userData, setUserData] = useState({
-    labels: UserData.map((data) => data.year),
-    datasets: [
-      {
-        label: "Users Gained",
-        data: UserData.map((data) => data.userGain),
-        backgroundColor: [
-          "rgba(75,192,192,1)",
-          "#ecf0f1",
-          "#50AF95",
-          "#f3ba2f",
-          "#2a71d0",
-        ],
-        borderColor: "black",
-        borderWidth: 2,
-      },
-    ],
-  });
 
   const getUserCount = async () => {
     try {
@@ -121,10 +100,10 @@ const Dashboard = () => {
     }
   };
 
-  const handleView = (userId) => {
-    setSelectedBooking(userId);
-    showModal();
-  };
+  // const handleView = (userId) => {
+  //   setSelectedBooking(userId);
+  //   showModal();
+  // };
 
   const showModal = () => {
     setIsModalVisible(true);

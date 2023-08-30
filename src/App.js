@@ -34,6 +34,7 @@ import EditEmployee from "./page/Admin/EditEmployee";
 import AllBookings from "./page/Admin/AllBookings";
 import { StepsProvider } from './page/Context';
 import EditBooking from "./page/Admin/EditBooking";
+import EditHotel from "./page/Admin/EditHotel";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -188,6 +189,14 @@ function App() {
             element={
               <PrivateRoute>
                 <HotelCreate />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/edithotel/:id"
+            element={
+              <PrivateRoute>
+                <EditHotel />
               </PrivateRoute>
             }
           />

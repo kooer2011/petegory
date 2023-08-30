@@ -58,6 +58,10 @@ const Hotels = () => {
         }
     }
 
+    const handleEdit = (id) => {
+        navigate(`/edithotel/${id}`)
+      }
+
     useEffect(() => {
         getHotels()
     }, [])
@@ -107,7 +111,7 @@ const Hotels = () => {
             render: (text, record) => (
                 <div className='d-flex'>
                     <div className='m-1'>
-                        <button className='btn btn-primary'>Edit</button>
+                        <button className='btn btn-primary' onClick={() => handleEdit(record._id)}>Edit</button>
                     </div>
                     <div className='m-1'>
                         <button className='btn btn-danger' onClick={() => handleDelete(record._id)}>Delete</button>

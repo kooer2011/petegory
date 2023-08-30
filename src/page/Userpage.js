@@ -13,8 +13,10 @@ import TokenExpirationChecker from '../components/CheckToken/TokenExpirationChec
 import BasicGrid from '../components/News/New';
 import { TypeAnimation } from 'react-type-animation';
 import AlertDialog from '../components/dialog/Dialog';
+import { motion, useScroll } from 'framer-motion';
 import Hotelcat from '../components/HotelComponent/Hotelcat';
 const Userpage = () => {
+  const { scrollYProgress } = useScroll();
   const [token, setToken] = useState(localStorage.getItem('token'));
   const handleTokenExpired = () => {
     localStorage.removeItem('token');
@@ -26,6 +28,10 @@ const Userpage = () => {
         onTokenExpired={handleTokenExpired}
       />{' '}
       {/* Add fade-in class to trigger animation */}
+      <motion.div
+        className="progress-bar"
+        style={{ scaleX: scrollYProgress }}
+      />
       <section>
         <NavbarHeader />
       </section>

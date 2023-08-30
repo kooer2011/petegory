@@ -135,7 +135,7 @@ const BookingHotel = () => {
       //api google sheet
       await axios
         .post(
-          "https://sheet.best/api/sheets/b6637ac6-fc44-49a7-bd13-a4bfd7561c99",
+          "https://sheet.best/api/sheets/cf3ac1d9-a6ba-40bd-9fd9-3644b116aaf8",
           {
             ...values,
             startDate: startDate,
@@ -143,9 +143,6 @@ const BookingHotel = () => {
             time: checkInTime,
           }
         )
-        .then((res) => {
-          console.log(res);
-        });
 
       if (res.data.success) {
         message.success(res.data.message);
@@ -231,7 +228,7 @@ const BookingHotel = () => {
             <Input type="text" placeholder="your petname" />
           </Form.Item>
         </Col>
-        <Col xs={24} md={24} lg={15}>
+        <Row>
           <Form.Item
             label="Phone No"
             name="phone"
@@ -243,7 +240,15 @@ const BookingHotel = () => {
           >
             <Input type="number" placeholder="your contact no" />
           </Form.Item>
-        </Col>
+          <Form.Item
+            label="id line"
+            name="lineId"
+            required
+            rules={[{ required: true, message: "Input id line" }]}
+          >
+            <Input type="text" placeholder="your contact no" />
+          </Form.Item>
+        </Row>
 
         <Row>
           <Form.Item

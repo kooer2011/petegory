@@ -8,8 +8,13 @@ import img4 from '../imgs/dog2.jpg'
 import img5 from '../imgs/dog3.jpg'
 import Button from '@mui/material/Button';
 import './styles/grooming.css';
+import { useNavigate } from 'react-router-dom';
 
 function GrooMing() {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate('/grooming/booking')
+  }
   return (
     <>
       <NavbarHeader />
@@ -22,7 +27,7 @@ function GrooMing() {
             </Paper>
             
             <Paper elevation={3} className='imagePaper'>
-            <Button variant="contained">BOOKING</Button>
+            <Button variant="contained" onClick={handleClick}>BOOKING</Button>
             
               <p>Photo</p>
               

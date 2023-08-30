@@ -219,6 +219,11 @@ const AllBookings = () => {
       filteredValue: [searchText],
     },
     {
+      title: "ID line",
+      dataIndex: "lineId",
+      filteredValue: [searchText],
+    },
+    {
       title: "Room Type",
       dataIndex: "roomType",
       filteredValue: [searchText],

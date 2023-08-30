@@ -82,10 +82,6 @@ const Userpage = () => {
         <Hotelcat />
       </section>
       <br />
-      <section>
-        <ContactSelection />
-      </section>
-      <br />
       <div className="custom_text">
         <TypeAnimation
           sequence={['GALLERY', 100]}
@@ -99,6 +95,11 @@ const Userpage = () => {
       <section>
         <Gallr />
       </section>
+      <br />
+      <section>
+        <ContactSelection />
+      </section>
+      
       <Footer />
       <FloatButton.BackTop tooltip={<div>Back to top</div>} type="primary" />
     </div>

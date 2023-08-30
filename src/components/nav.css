@@ -45,3 +45,11 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow on scroll */
   /* You can adjust other styles as needed */
 }
+.hide-on-large-screen {
+  display: none;
+}
+@media (max-width: 767px) { /* ปรับขนาดตามที่คุณต้องการ */
+  .hide-on-large-screen {
+    display: block;
+  }
+}

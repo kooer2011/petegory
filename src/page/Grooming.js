@@ -10,11 +10,13 @@ import img2 from '../imgs/grooming2.jpg';
 import Button from '@mui/material/Button';
 import NavbarHeader from '../components/Navbar';
 import GroomingComponent from '../components/Grooming/GroomingComponent';
+import Footer from '../components/Footer/Footer';
 export default function Grooming() {
   return (
     <>
       <NavbarHeader />
       <GroomingComponent />
+      <Footer />
     </>
   );
 }

@@ -13,10 +13,9 @@ function GaLLery() {
   return (
     <div>
       <NavbarHeader />
-      <StyledGrooming>
-        <h1>GALLERY</h1>
-        <Gallr />
-      </StyledGrooming>
+
+      <h1>GALLERY</h1>
+      <Gallr />
 
       <Footer />
     </div>

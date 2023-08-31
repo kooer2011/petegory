@@ -74,7 +74,7 @@ function NavbarHeader() {
 
   return (
     <AppBar
-      position="fixed"
+      position="static"
       sx={{
         background: 'white',
         color: 'black',
@@ -96,7 +96,7 @@ function NavbarHeader() {
               display: { xs: 'flex', md: 'none' }, // Show on small screens
             }}
           >
-            <MenuIcon/>
+            <MenuIcon />
           </IconButton>
           <Typography
             variant="h6"

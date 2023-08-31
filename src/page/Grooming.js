@@ -20,9 +20,8 @@ export default function Grooming() {
   return (
     <>
       <NavbarHeader />
-      <StyledGrooming>
-        <GroomingComponent />
-      </StyledGrooming>
+
+      <GroomingComponent />
 
       <Footer />
     </>

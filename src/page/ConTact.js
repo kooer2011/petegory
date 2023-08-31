@@ -12,10 +12,9 @@ function ConTact() {
   return (
     <div>
       <NavbarHeader />
-      <StyledGrooming>
-        <ContactSelection />
-        <Map />
-      </StyledGrooming>
+
+      <ContactSelection />
+      <Map />
 
       <Footer />
     </div>

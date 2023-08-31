@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import UncontrolledExample from '../components/Carousel/CarouSel';
 import GridExample from '../components/Card/Card';
 import NavbarHeader from '../components/Navbar';
@@ -8,7 +8,7 @@ import GroomingComponent from '../components/Grooming/GroomingComponent';
 import HoTel from './Hotel';
 import ContactSelection from '../components/Contact/ContactSelection';
 import { FloatButton } from 'antd';
-
+import { Link, useNavigate } from 'react-router-dom';
 import './styles/userpage.css'; // Import the CSS file
 import TokenExpirationChecker from '../components/CheckToken/TokenExpirationChecker';
 import BasicGrid from '../components/News/New';
@@ -20,6 +20,12 @@ import Hotelcat from '../components/HotelComponent/Hotelcat';
 const Userpage = () => {
   const { scrollYProgress } = useScroll();
   const [token, setToken] = useState(localStorage.getItem('token'));
+  const navigate = useNavigate();
+
+  const handlenavigate = () => {
+    navigate('/hotel');
+  };
+
   const handleTokenExpired = () => {
     localStorage.removeItem('token');
   };
@@ -28,8 +34,7 @@ const Userpage = () => {
       <TokenExpirationChecker
         token={token}
         onTokenExpired={handleTokenExpired}
-      />{' '}
-      {/* Add fade-in class to trigger animation */}
+      />
       <motion.div
         className="progress-bar"
         style={{ scaleX: scrollYProgress }}
@@ -37,7 +42,6 @@ const Userpage = () => {
       <section>
         <NavbarHeader />
       </section>
-      <br />
       <br />
       <section className="dialog__section">
         <UncontrolledExample />
@@ -102,7 +106,6 @@ const Userpage = () => {
       <section>
         <ContactSelection />
       </section>
-      
       <Footer />
       <FloatButton.BackTop tooltip={<div>Back to top</div>} type="primary" />
     </div>

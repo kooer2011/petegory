@@ -34,9 +34,8 @@ const hoverButtonStyles = {
 };
 
 export default function Hotelcat() {
-  const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
-
+  const navigate = useNavigate();
   const handleOpenModal = () => {
     setOpen(true);
   };
@@ -44,23 +43,18 @@ export default function Hotelcat() {
   const handleCloseModal = () => {
     setOpen(false);
   };
+  const handlenavigate = () => {
+    navigate('/hotel/detail-booking');
+    window.scrollTo(0, 0);
+  };
 
   return (
     <Box sx={{ flexGrow: 1, padding: 3 }}>
-      <Grid container spacing={2}>
+      <Grid container spacing={1}>
         <Grid xs={4}>
           <Item className="cathotel__image">
-            {/* <Button
-              color="secondary"
-              style={hoverButtonStyles}
-              onClick={() => navigate('/hotel')}
-
-              
-            >
-              Booking now
-            </Button> */}
             <motion.div
-              onClick={() => navigate('/hotel/detail-booking')}
+              onClick={handlenavigate}
               className="box"
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}

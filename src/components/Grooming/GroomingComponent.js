@@ -43,6 +43,10 @@ export default function GroomingComponent() {
     setOpen(false);
     setSelectedImage(null);
   };
+  const handlenavigate = () => {
+    navigate('/grooming/booking');
+    window.scrollTo(0, 0);
+  };
 
   return (
     <Box
@@ -91,7 +95,7 @@ export default function GroomingComponent() {
               BOOKING NOW
             </Button> */}
             <motion.div
-              onClick={() => navigate('/grooming/booking')}
+              onClick={handlenavigate}
               className="box"
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}

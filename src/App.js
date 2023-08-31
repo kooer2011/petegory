@@ -1,50 +1,49 @@
-import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import GrooMing from "./page/Grooming";
-import ConTact from "./page/ConTact";
-import GaLLery from "./page/GaLLery";
-import Dashboard from "./page/Dashboard";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import GrooMing from './page/Grooming';
+import ConTact from './page/ConTact';
+import GaLLery from './page/GaLLery';
+import Dashboard from './page/Dashboard';
 // import Users from './page/Users';
-import Create from "./page/Create";
-import Userpage from "./page/Userpage";
-import HotelDetail from "./page/HotelDetail";
-import GroomBooking from "./page/GroomBooking";
-import HotelCreate from "./page/HotelCreate";
-import { useSelector } from "react-redux";
-import Spinner from "./components/Spinner";
-import PrivateRoute from "./components/ProtectedRoute/PrivateRoute";
-import PublicRoute from "./components/ProtectedRoute/PublicRoute";
-import Profile from "./components/Profile/Profile";
-import HotelPage from "./components/Hotel/HotelPage";
-import NotificationPage from "./page/NotificationPage";
-import Users from "./page/Admin/Users";
-import Employees from "./page/Admin/Employees";
-import AddUser from "./page/Admin/AddUser";
-import Hotels from "./page/Admin/Hotels";
-import Error from "./components/404error/Errror"
-import AddEmployees from "./page/Admin/AddEmployees";
-import Login from "./page/Login";
-import SignUp from "./page/SignUp";
-import ForgotPassword from "./components/Profile/ForgotPassword";
-import ResetPassword from "./components/Profile/ResetPassword";
-import EditUser from "./page/Admin/EditUser";
-import EditEmployee from "./page/Admin/EditEmployee";
-import AllBookings from "./page/Admin/AllBookings";
+import Create from './page/Create';
+import Userpage from './page/Userpage';
+import HotelDetail from './page/HotelDetail';
+import GroomBooking from './page/GroomBooking';
+import HotelCreate from './page/HotelCreate';
+import { useSelector } from 'react-redux';
+import Spinner from './components/Spinner';
+import PrivateRoute from './components/ProtectedRoute/PrivateRoute';
+import PublicRoute from './components/ProtectedRoute/PublicRoute';
+import Profile from './components/Profile/Profile';
+import HotelPage from './components/Hotel/HotelPage';
+import NotificationPage from './page/NotificationPage';
+import Users from './page/Admin/Users';
+import Employees from './page/Admin/Employees';
+import AddUser from './page/Admin/AddUser';
+import Hotels from './page/Admin/Hotels';
+import Error from './components/404error/Errror';
+import AddEmployees from './page/Admin/AddEmployees';
+import Login from './page/Login';
+import SignUp from './page/SignUp';
+import ForgotPassword from './components/Profile/ForgotPassword';
+import ResetPassword from './components/Profile/ResetPassword';
+import EditUser from './page/Admin/EditUser';
+import EditEmployee from './page/Admin/EditEmployee';
+import AllBookings from './page/Admin/AllBookings';
 import { StepsProvider } from './page/Context';
-import EditBooking from "./page/Admin/EditBooking";
-import EditHotel from "./page/Admin/EditHotel";
+import EditBooking from './page/Admin/EditBooking';
+import EditHotel from './page/Admin/EditHotel';
 
 function App() {
-  const { loading } = useSelector((state) => state.alerts);
+  const { loading } = useSelector(state => state.alerts);
   return (
     <Router>
       {loading ? (
         <Spinner />
       ) : (
         <Routes>
-
           <Route
             path="/signup"
             element={
@@ -84,9 +83,8 @@ function App() {
             element={
               <PrivateRoute>
                 <StepsProvider>
-                <GroomBooking />
+                  <GroomBooking />
                 </StepsProvider>
-                
               </PrivateRoute>
             }
           />

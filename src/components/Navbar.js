@@ -74,7 +74,7 @@ function NavbarHeader() {
 
   return (
     <AppBar
-      position="static"
+      position="fixed"
       sx={{
         background: 'white',
         color: 'black',
@@ -127,43 +127,43 @@ function NavbarHeader() {
             }}
           >
             <Button href="/" sx={{ mx: 2, color: 'black' }} color="inherit">
-              HOME
+              <strong>HOME</strong>
             </Button>
             <Button
               href="/grooming"
               sx={{ mx: 2, color: 'black' }}
               color="inherit"
             >
-              GROOMING
+              <strong>GROOMING</strong>
             </Button>
             <Button
               href="/hotel"
               sx={{ mx: 2, color: 'black' }}
               color="inherit"
             >
-              HOTEL
+              <strong>HOTEL</strong>
             </Button>
             <Button
               href="/contact"
               sx={{ mx: 2, color: 'black' }}
               color="inherit"
             >
-              CONTACT
+              <strong>CONTACT</strong>
             </Button>
             <Button
               href="/gallery"
               sx={{ mx: 2, color: 'black' }}
               color="inherit"
             >
-              GALLERY
+              <strong>GALLERY</strong>
             </Button>
             {user ? (
               <Button href="/profile/account" className="profile">
-                {user.name}
+                <strong>{user.name}</strong>
               </Button>
             ) : (
               <Button className="link-hover signin" href="/login">
-                LOGIN
+                <strong>LOGIN</strong>
               </Button>
             )}
           </Box>

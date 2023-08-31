@@ -1,5 +1,5 @@
 .grroming__imgs {
-  margin: 4px;
+  margin-top: 4px;
 }
 .grroming__imgs:hover {
   transform: scale(1.5); /* Increase size on hover */
@@ -39,10 +39,26 @@
   }
 }
 
+@font-face {
+  font-family: 'RobotoBoldItalic';
+  src: local('RobotoBoldItalic'),
+    url('../../fonts/Roboto-BoldItalic.ttf') format('ttf');
+}
+
 .pop-in {
   animation: popIn 1s ease-in-out;
 }
 .cathotel__image {
+  font-family: RobotoBoldItalic;
   border-radius: 50% 20% / 10% 40%;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.box {
+  background: var(--accent);
+  cursor: pointer;
+}
+.detail__grooming {
+  font-family: RobotoBoldItalic;
+  font-size: 1rem;
+  font-weight: 600;
 }

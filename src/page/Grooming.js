@@ -8,13 +8,22 @@ import DialogContent from '@mui/material/DialogContent';
 import img1 from '../imgs/grooming1.jpg';
 import img2 from '../imgs/grooming2.jpg';
 import Button from '@mui/material/Button';
+import Footer from '../components/Footer/Footer';
 import NavbarHeader from '../components/Navbar';
 import GroomingComponent from '../components/Grooming/GroomingComponent';
+
+const StyledGrooming = styled('div')(({ theme }) => ({
+  marginTop: theme.spacing(8), // Adjust the margin as needed
+}));
+
 export default function Grooming() {
   return (
     <>
       <NavbarHeader />
-      <GroomingComponent />
+      <StyledGrooming>
+        <GroomingComponent />
+      </StyledGrooming>
+      <Footer />
     </>
   );
 }

@@ -25,6 +25,7 @@
     "framer-motion": "^10.16.2",
     "jwt-decode": "^3.1.2",
     "moment": "^2.29.4",
+    "popmotion": "^11.0.5",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
     "react-chartjs-2": "^5.2.0",

@@ -9,7 +9,7 @@ import img1 from '../../imgs/grooming1.jpg';
 import img2 from '../../imgs/grooming2.jpg';
 import Button from '@mui/material/Button';
 import { Link, useNavigate } from 'react-router-dom';
-
+import { motion } from 'framer-motion';
 import './Grooming.css';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -18,8 +18,16 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: 'center',
   color: theme.palette.text.secondary,
-  borderRadius: '50% 20% / 10% 40%',
 }));
+
+const hoverButtonStyles = {
+  backgroundColor: '#FF4081', // Change to your desired hover color
+  color: 'white',
+  transition: 'background-color 0.3s ease, color 0.3s ease',
+  '&:hover': {
+    backgroundColor: '#E91E63', // Change to your desired hover color
+  },
+};
 
 export default function GroomingComponent() {
   const navigate = useNavigate();
@@ -75,15 +83,24 @@ export default function GroomingComponent() {
         <Grid item xs={4}>
           <Item className="cathotel__image">
             {' '}
-            <Button
+            {/* <Button
               onClick={() => navigate('/grooming/booking')}
               className="pop-in"
-              color="secondary"
+              style={hoverButtonStyles}
             >
               BOOKING NOW
-            </Button>
+            </Button> */}
+            <motion.div
+              onClick={() => navigate('/grooming/booking')}
+              className="box"
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+            >
+              BOOKING NOW
+            </motion.div>
           </Item>
-          <Item className="cathotel__image cathotel_detail">
+          <Item className="cathotel__image">
             Petegory บริการอาบน้ำตัดขนสำหรับ สุนัข และ แมว ของคุณ
             มีบริการเสริมให้เลือกมากมาย ให้เลือก
           </Item>

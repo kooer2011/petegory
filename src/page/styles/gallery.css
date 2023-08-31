@@ -1,14 +1,13 @@
 .gallery {
-  -webkit-column-count: 3 ;
+  -webkit-column-count: 3;
   -moz-column-count: 3;
   column-count: 4;
   -webkit-column-width: 20%;
   -moz-column-width: 20%;
   column-width: 20%;
   padding: 0 12px;
-  margin-left: 40px;
-  justify-content: center;
 
+  justify-content: center;
 }
 .gallery .pics {
   transition: all 350ms ease;

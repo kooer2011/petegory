@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'CaveatVarialbleFont';
+  src: local('CaveatVarialbleFont'),
+    url('../../fonts/Caveat-VariableFont_wght.ttf') format('ttf');
+}
+.profile_section {
+  font-family: CaveatVarialbleFont;
+}
 .read-the-docs {
   color: #888;
 }
@@ -6,6 +14,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  max-width: 100vw;
   background-image: url('https://scontent.fbkk22-8.fna.fbcdn.net/v/t39.30808-6/324272717_578504110299232_6671049236692552674_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=19026a&_nc_eui2=AeFFYP0XlSWpeLSa05XCg7StWi-kOnMNTQ9aL6Q6cw1ND1et1nXpTMvfMWRdwKzo6n07Dg6K08rgp8v3PbKw2_Qg&_nc_ohc=qjw2Tonssq4AX_fyRHO&_nc_ht=scontent.fbkk22-8.fna&oh=00_AfCh26mMCApN_rEagMhCnHWUWfdgTnyKa7pX9r6s131GaA&oe=64F2046B');
   background-size: cover;
   background-position: center;
@@ -18,7 +27,6 @@
 }
 .grid__section {
   background-color: #eadbc8;
-  border-radius: 25% 10%;
 }
 .Header_news {
   text-align: center;
@@ -27,14 +35,14 @@
   text-align: center;
 }
 .grooming__section {
-  border-radius: 10px 100px / 120px;
   background-color: #eadbc8;
 }
 .hotelcat__section {
   background-color: #eadbc8;
-  border-radius: 10% 30% 50% 70%;
 }
-
+.gallery__sections {
+  border: 1px solid red;
+}
 .custom_text {
   text-align: center;
 }

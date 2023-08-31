@@ -10,6 +10,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
 import imgs1 from '../../imgs/cathotel1.jpg';
+import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import './Hotelcat.css';
 const Item = styled(Paper)(({ theme }) => ({
@@ -18,7 +19,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
   padding: theme.spacing(1),
   textAlign: 'center',
-  borderRadius: '50% 20% / 10% 40%',
+
   color: theme.palette.text.secondary,
 }));
 
@@ -49,16 +50,24 @@ export default function Hotelcat() {
       <Grid container spacing={2}>
         <Grid xs={4}>
           <Item className="cathotel__image">
-            {/* Apply the hover effect styles to the button */}
-            <Button
+            {/* <Button
               color="secondary"
               style={hoverButtonStyles}
               onClick={() => navigate('/hotel')}
 
-              // Apply hover effect styles
+              
             >
               Booking now
-            </Button>
+            </Button> */}
+            <motion.div
+              onClick={() => navigate('/hotel/detail-booking')}
+              className="box"
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+            >
+              BOOKING NOW
+            </motion.div>
           </Item>
           <Item className="cathotel__image ">
             <p>

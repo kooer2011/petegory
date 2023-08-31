@@ -8,9 +8,6 @@ body {
   background: #ece2ce;
 }
 
-
-
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -30,6 +27,6 @@ code {
   justify-content: center;
   z-index: 9999;
 }
-.logout{
+.logout {
   cursor: pointer;
 }

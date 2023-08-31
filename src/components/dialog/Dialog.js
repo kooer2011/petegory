@@ -56,24 +56,8 @@ export default function AlertDialog() {
 
   return (
     <div className="dialog__container">
-      <div className="dialog__button1">
-        <Button
-          variant="contained"
-          onClick={() => handleClickOpen('cathotel')}
-          className="Button__colors1"
-        >
-          Booking Cathotel
-        </Button>
-      </div>
-      <div className="dialog__button2">
-        <Button
-          variant="contained"
-          onClick={() => handleClickOpen('grooming')}
-          className="Button__colors2"
-        >
-          Booking Grooming
-        </Button>
-      </div>
+      <div className="dialog__button1"></div>
+      <div className="dialog__button2"></div>
 
       {dialogType === 'cathotel' && (
         <CustomDialog

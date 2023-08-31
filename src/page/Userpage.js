@@ -8,11 +8,13 @@ import GroomingComponent from '../components/Grooming/GroomingComponent';
 import HoTel from './Hotel';
 import ContactSelection from '../components/Contact/ContactSelection';
 import { FloatButton } from 'antd';
+
 import './styles/userpage.css'; // Import the CSS file
 import TokenExpirationChecker from '../components/CheckToken/TokenExpirationChecker';
 import BasicGrid from '../components/News/New';
+
 import { TypeAnimation } from 'react-type-animation';
-import AlertDialog from '../components/dialog/Dialog';
+
 import { motion, useScroll } from 'framer-motion';
 import Hotelcat from '../components/HotelComponent/Hotelcat';
 const Userpage = () => {
@@ -36,8 +38,9 @@ const Userpage = () => {
         <NavbarHeader />
       </section>
       <br />
+      <br />
       <section className="dialog__section">
-        <AlertDialog />
+        <UncontrolledExample />
       </section>
       <br />
       <div className="custom_text">
@@ -96,7 +99,7 @@ const Userpage = () => {
         />
       </div>
       <br />
-      <section>
+      <section className="gallery__section">
         <Gallr />
       </section>
       <Footer />

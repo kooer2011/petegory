@@ -85,7 +85,7 @@ function NavbarHeader() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <IconButton
-            size="large"
+            // size="large"
             aria-label="menu"
             aria-controls="menu-appbar"
             aria-haspopup="true"
@@ -96,7 +96,7 @@ function NavbarHeader() {
               display: { xs: 'flex', md: 'none' }, // Show on small screens
             }}
           >
-            <MenuIcon />
+            <MenuIcon/>
           </IconButton>
           <Typography
             variant="h6"

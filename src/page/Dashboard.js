@@ -105,9 +105,9 @@ const Dashboard = () => {
   //   showModal();
   // };
 
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
+  // const showModal = () => {
+  //   setIsModalVisible(true);
+  // };
   const handleCancel = () => {
     setSelectedBooking(null);
     setIsModalVisible(false);

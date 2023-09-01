@@ -16,7 +16,9 @@ import './Hotelcat.css';
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: '#DAC0A3',
   ...theme.typography.body2,
-
+  fontFamily: 'CaveatVarialbleFont',
+  fontWeight: 'bold',
+  fontSize: '16px',
   padding: theme.spacing(1),
   textAlign: 'center',
 

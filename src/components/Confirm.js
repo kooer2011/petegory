@@ -4,7 +4,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
-import {AppContext} from '../page/Context';
+import { AppContext } from '../page/Context';
 import Button from '@mui/material/Button';
 import axios from 'axios';
 import { message } from 'antd';
@@ -13,18 +13,28 @@ import { useNavigate } from 'react-router-dom';
 export default function Confirm() {
   const navigate = useNavigate();
   const { formValues, handleBack, handleNext } = useContext(AppContext);
-  const { PetName, Name, email, pet_type, date, time, addon, phone } =
-  formValues;
+  const {
+    PetName,
+    Name,
+    email,
+    pet_type,
+    date,
+    time,
+    addon,
+    phone,
+    grooming,
+    breed,
+  } = formValues;
 
   const isTimeBooking = async (time, date) => {
     try {
-      const response = await axios.get("/api/v1/user/isTimeBooked", {
+      const response = await axios.get('/api/v1/user/isTimeBooked', {
         params: {
           time,
-          date
+          date,
         },
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
 
@@ -47,44 +57,42 @@ export default function Confirm() {
       return form;
     });
 
-    const isTimeAlreadyBooked = await isTimeBooking(
-      time.value,
-      date.value,
-    );
+    const isTimeAlreadyBooked = await isTimeBooking(time.value, date.value);
 
     if (isTimeAlreadyBooked) {
-      message.error("This time is already booked.");
+      message.error('This time is already booked.');
       return;
     }
-  
+
     try {
-      const res = await axios.post('/api/v1/user/bookGrooming', form,{
+      const res = await axios.post('/api/v1/user/bookGrooming', form, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
 
       //api google sheet
       await axios
-        .post("https://sheet.best/api/sheets/ddd04150-204d-4a71-a61d-24fa5e82b004", form )
-        .then((res) => {
+        .post(
+          'https://sheet.best/api/sheets/ddd04150-204d-4a71-a61d-24fa5e82b004',
+          form
+        )
+        .then(res => {
           console.log(res);
-          alert('ส่งเข้าsheetแล้ว')
+          alert('ส่งเข้าsheetแล้ว');
         });
-      
+
       if (res.data.success) {
         message.success(res.data.message);
         handleNext();
-        navigate('/grooming')
+        navigate('/grooming');
       } else {
         message.error(res.data.message);
       }
-      
     } catch (error) {
       console.log(error);
-    }   
+    }
   };
-  
 
   return (
     <>
@@ -109,8 +117,8 @@ export default function Confirm() {
 
         <ListItem>
           <ListItemText
-            primary="Email Address"
-            secondary={email.value || 'Not Provided'}
+            primary="Breed Pet"
+            secondary={breed.value || 'Not Provided'}
           />
         </ListItem>
 
@@ -137,6 +145,13 @@ export default function Confirm() {
         </ListItem>
 
         <Divider />
+
+        <ListItem>
+          <ListItemText
+            primary="Grooming"
+            secondary={grooming.value + '' || 'Not Provided'}
+          />
+        </ListItem>
 
         <ListItem>
           <ListItemText

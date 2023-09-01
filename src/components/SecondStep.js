@@ -7,13 +7,13 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import Checkbox from '@mui/material/Checkbox';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import {AppContext} from '../page/Context'
+import { AppContext } from '../page/Context';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import { useTheme } from '@mui/material/styles';
 import Chip from '@mui/material/Chip';
 import MenuItem from '@mui/material/MenuItem';
 import { DatePicker } from 'antd';
-
+import { Typography } from '@mui/material';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -34,6 +34,8 @@ const names = [
   'แปรงฟัน',
 ];
 
+const groomdetail = ['อาบน้ำ', 'ตัดขน'];
+
 function getStyles(name, personName, theme) {
   return {
     fontWeight:
@@ -43,27 +45,57 @@ function getStyles(name, personName, theme) {
   };
 }
 
- function SecondStep() {
+function SecondStep() {
   const [personName, setPersonName] = React.useState([]);
   const theme = useTheme();
   const { formValues, handleChange, handleBack, handleNext, variant, margin } =
     useContext(AppContext);
-  const { addon, date, time, phone, agreenemt } = formValues;
+  const { addon, date, time, phone, agreenemt, grooming } = formValues;
 
   const isError = useCallback(
     () =>
-      Object.keys({ addon, date, time, phone, agreenemt }).some(
+      Object.keys({ addon, date, time, phone, agreenemt, grooming }).some(
         name =>
           (formValues[name].required && !formValues[name].value) ||
           formValues[name].error
       ),
-    [formValues, addon, date, time, phone, agreenemt]
+    [formValues, addon, date, time, phone, agreenemt, grooming]
   );
 
   return (
     <>
       <Grid container spacing={2}>
         <Grid item xs={12}>
+          <Typography variant="h7" style={{ color: 'rgba(0, 0, 0, 0.5)' }}>
+            บริการหลัก
+          </Typography>
+          <Select
+            variant={variant}
+            margin={margin}
+            fullWidth
+            label="Grooming"
+            name="grooming"
+            multiple={true}
+            value={grooming.value}
+            onChange={handleChange}
+            input={<OutlinedInput label="Name" />}
+            MenuProps={MenuProps}
+          >
+            {groomdetail.map(groom => (
+              <MenuItem
+                key={groom}
+                value={groom}
+                style={getStyles(groom, grooming.value, theme)}
+              >
+                {groom}
+              </MenuItem>
+            ))}
+          </Select>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography variant="h7" style={{ color: 'rgba(0, 0, 0, 0.5)' }}>
+            บริการเสริม
+          </Typography>
           <Select
             variant={variant}
             margin={margin}
@@ -169,4 +201,4 @@ function getStyles(name, personName, theme) {
     </>
   );
 }
-export default SecondStep
+export default SecondStep;

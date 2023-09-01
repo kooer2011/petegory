@@ -26,6 +26,11 @@ export const initialValues = {
     error: '',
     validate: 'select',
   },
+  breed: {
+    value: '',
+    error: '',
+    validate: 'select',
+  },
   date: {
     value: '',
     error: '',
@@ -33,6 +38,11 @@ export const initialValues = {
   time: {
     value: '',
     error: '',
+  },
+  grooming: {
+    value: [],
+    error: '',
+    validate: 'select',
   },
   addon: {
     value: [],

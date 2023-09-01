@@ -15,6 +15,9 @@ import './Grooming.css';
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: '#DAC0A3',
   ...theme.typography.body2,
+  fontFamily: 'CaveatVarialbleFont',
+  fontWeight: 'bold',
+  fontSize: '16px',
   padding: theme.spacing(1),
   textAlign: 'center',
   color: theme.palette.text.secondary,
@@ -86,14 +89,6 @@ export default function GroomingComponent() {
         </Grid>
         <Grid item xs={4}>
           <Item className="cathotel__image">
-            {' '}
-            {/* <Button
-              onClick={() => navigate('/grooming/booking')}
-              className="pop-in"
-              style={hoverButtonStyles}
-            >
-              BOOKING NOW
-            </Button> */}
             <motion.div
               onClick={handlenavigate}
               className="box"

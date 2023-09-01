@@ -1,4 +1,4 @@
-.cathotel__image{
+.cathotel__image {
   border-radius: 10% 30% 50% 70%;
 }
 .cathotel_detail {
@@ -26,4 +26,14 @@
 
 .cathotel__image:hover img {
   transform: scale(1.05); /* Increase scale on hover */
+}
+@font-face {
+  font-family: 'RobotoBoldItalic';
+  src: local('RobotoBoldItalic'),
+    url('../../fonts/Roboto-BoldItalic.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'CaveatVarialbleFont';
+  src: local('CaveatVarialbleFont'),
+    url('../../fonts/Caveat-VariableFont_wght.ttf') format('ttf');
 }

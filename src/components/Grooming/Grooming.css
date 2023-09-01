@@ -44,6 +44,11 @@
   src: local('RobotoBoldItalic'),
     url('../../fonts/Roboto-BoldItalic.ttf') format('ttf');
 }
+@font-face {
+  font-family: 'CaveatVarialbleFont';
+  src: local('CaveatVarialbleFont'),
+    url('../../fonts/Caveat-VariableFont_wght.ttf') format('ttf');
+}
 
 .pop-in {
   animation: popIn 1s ease-in-out;

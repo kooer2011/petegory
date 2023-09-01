@@ -4,22 +4,22 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import {AppContext} from '../page/Context'
+import { AppContext } from '../page/Context';
 
 export default function FirstStep() {
   const { formValues, handleChange, handleNext, variant, margin } =
     useContext(AppContext);
-  const { PetName, Name, email, pet_type } = formValues;
+  const { PetName, Name, email, pet_type, breed } = formValues;
 
   // Check if all values are not empty and if there are some errors
   const isError = useCallback(
     () =>
-      Object.keys({ PetName, Name, email, pet_type }).some(
+      Object.keys({ PetName, Name, email, pet_type, breed }).some(
         name =>
           (formValues[name].required && !formValues[name].value) ||
           formValues[name].error
       ),
-    [formValues, PetName, Name, email, pet_type]
+    [formValues, PetName, Name, email, pet_type, breed]
   );
 
   return (
@@ -61,16 +61,22 @@ export default function FirstStep() {
             variant={variant}
             margin={margin}
             fullWidth
-            label="Email"
-            name="email"
-            placeholder="Your email address"
-            type="email"
-            value={email.value}
+            select
+            SelectProps={{
+              native: true,
+            }}
+            label="Breed"
+            name="breed"
+            value={breed.value}
             onChange={handleChange}
-            error={!!email.error}
-            helperText={email.error}
-            required={email.required}
-          />
+            error={!!breed.error}
+            helperText={breed.error}
+            required={breed.required}
+          >
+            <option value=""> </option>
+            <option value="ชิวาว่า">ชิวาว่า</option>
+            <option value="บลูด็อก">บลูด็อก</option>
+          </TextField>
         </Grid>
 
         <Grid item xs={12} sm={6}>

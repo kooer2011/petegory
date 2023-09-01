@@ -340,13 +340,33 @@ const AllBookings = () => {
         return !petTypeFilterValue || record.pet_type === petTypeFilterValue;
       },
       render: (text, record) => (
-        <div className="text-center fw-bold">
+        <div className="fw-bold">
           {text === "cat" && (
             <span className="text-info text p-2 rounded-1">Cat</span>
           )}
           {text === "dog" && (
             <span className="text-warning text p-2 rounded-1">Dog</span>
           )}
+        </div>
+      ),
+    },
+    {
+      title: "Breed",
+      dataIndex: "breed",
+      filteredValue: [searchText],
+    },
+    {
+      title: "Service",
+      dataIndex: "grooming",
+      filteredValue: [searchText],
+      render: (text, record) => (
+        <div style={{maxWidth: '200px'}}>
+          {record.grooming.map((item, index) => (
+            <span key={index}>
+              {item}
+              {index < record.grooming.length - 1 && ", "}
+            </span>
+          ))}
         </div>
       ),
     },

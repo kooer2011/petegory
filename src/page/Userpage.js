@@ -122,8 +122,8 @@ const Userpage = () => {
       <section>
         <ContactSelection />
       </section>
-      <Footer />
       <FloatButton.BackTop tooltip={<div>Back to top</div>} type="primary" />
+      <Footer />
     </div>
   );
 };

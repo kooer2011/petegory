@@ -1,19 +1,19 @@
-import React, { useCallback, useContext, useState, useEffect } from 'react';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormHelperText from '@mui/material/FormHelperText';
-import Checkbox from '@mui/material/Checkbox';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { AppContext } from '../page/Context';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import { useTheme } from '@mui/material/styles';
-import Chip from '@mui/material/Chip';
-import MenuItem from '@mui/material/MenuItem';
-import { DatePicker } from 'antd';
-import { Typography } from '@mui/material';
+import React, { useCallback, useContext, useState, useEffect } from "react";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormHelperText from "@mui/material/FormHelperText";
+import Checkbox from "@mui/material/Checkbox";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { AppContext } from "../page/Context";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import { useTheme } from "@mui/material/styles";
+import Chip from "@mui/material/Chip";
+import MenuItem from "@mui/material/MenuItem";
+import { DatePicker } from "antd";
+import { Typography } from "@mui/material";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -27,14 +27,14 @@ const MenuProps = {
 };
 
 const names = [
-  'ตัดเล็บ+ตะไบเล็บ',
-  'เช็ดหู',
-  'ฟอกน้ำยา Malaceb เชื้อรา',
-  'ฟอกน้ำยา Hexine ลดแบคทีเรีย',
-  'แปรงฟัน',
+  "ตัดเล็บ+ตะไบเล็บ",
+  "เช็ดหู",
+  "ฟอกน้ำยา Malaceb เชื้อรา",
+  "ฟอกน้ำยา Hexine ลดแบคทีเรีย",
+  "แปรงฟัน",
 ];
 
-const groomdetail = ['อาบน้ำ', 'ตัดขน'];
+const groomdetail = ["อาบน้ำ", "ตัดขน"];
 
 function getStyles(name, personName, theme) {
   return {
@@ -64,7 +64,7 @@ function SecondStep() {
         grooming,
         idline,
       }).some(
-        name =>
+        (name) =>
           (formValues[name].required && !formValues[name].value) ||
           formValues[name].error
       ),
@@ -75,13 +75,19 @@ function SecondStep() {
     // ตรวจสอบว่า grooming ไม่เป็น empty array
     const groomingIsValid = grooming.value.length > 0;
     setIsValid(groomingIsValid);
-  }, [grooming]);
+    // ตรวจสอบและตั้งค่า error ถ้าไม่มีการเลือกข้อมูล
+    if (!groomingIsValid) {
+      formValues.grooming.error = "โปรดเลือกข้อมูล Grooming";
+    } else {
+      formValues.grooming.error = ""; // ลบข้อความแจ้งเตือนถ้าเลือกข้อมูล
+    }
+  }, [grooming, formValues]);
 
   return (
     <>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Typography variant="h7" style={{ color: 'rgba(0, 0, 0, 0.5)' }}>
+          <Typography variant="h7" style={{ color: "rgba(0, 0, 0, 0.5)" }}>
             บริการหลัก
           </Typography>
           <Select
@@ -96,10 +102,12 @@ function SecondStep() {
             input={<OutlinedInput label="Name" />}
             MenuProps={MenuProps}
             error={!isValid}
-            // helperText={grooming.error || (!isValid && 'โปรดเลือกข้อมูล')}
             required={grooming.required}
           >
-            {groomdetail.map(groom => (
+            <MenuItem value="" disabled>
+              <em>โปรดเลือกข้อมูล</em>
+            </MenuItem>
+            {groomdetail.map((groom) => (
               <MenuItem
                 key={groom}
                 value={groom}
@@ -111,7 +119,7 @@ function SecondStep() {
           </Select>
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="h7" style={{ color: 'rgba(0, 0, 0, 0.5)' }}>
+          <Typography variant="h7" style={{ color: "rgba(0, 0, 0, 0.5)" }}>
             บริการเสริม
           </Typography>
           <Select
@@ -126,7 +134,7 @@ function SecondStep() {
             input={<OutlinedInput label="Name" />}
             MenuProps={MenuProps}
           >
-            {names.map(name => (
+            {names.map((name) => (
               <MenuItem
                 key={name}
                 value={name}
@@ -218,7 +226,7 @@ function SecondStep() {
         </Grid>
       </Grid>
 
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 3 }}>
+      <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 3 }}>
         <Button onClick={handleBack} sx={{ mr: 1 }}>
           Back
         </Button>

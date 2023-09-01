@@ -24,6 +24,7 @@ export default function Confirm() {
     phone,
     grooming,
     breed,
+    idline,
   } = formValues;
 
   const isTimeBooking = async (time, date) => {
@@ -166,6 +167,12 @@ export default function Confirm() {
           <ListItemText
             primary="phone"
             secondary={phone.value || 'Not Provided'}
+          />
+        </ListItem>
+        <ListItem>
+          <ListItemText
+            primary="ID LINE"
+            secondary={idline.value || 'Not Provided'}
           />
         </ListItem>
       </List>

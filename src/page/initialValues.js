@@ -25,11 +25,13 @@ export const initialValues = {
     value: '',
     error: '',
     validate: 'select',
+    required: true,
   },
   breed: {
     value: '',
     error: '',
     validate: 'select',
+    required: true,
   },
   date: {
     value: '',
@@ -43,11 +45,13 @@ export const initialValues = {
     value: [],
     error: '',
     validate: 'select',
+    required: true,
   },
   addon: {
     value: [],
     error: '',
     validate: 'select',
+    required: true,
   },
   agreenemt: {
     value: false,
@@ -59,7 +63,15 @@ export const initialValues = {
   phone: {
     value: '',
     error: '',
+    required: true,
     validate: 'phone',
     maxLength: 10,
+  },
+  idline: {
+    value: '',
+    error: '',
+    required: true,
+    validate: 'text',
+    helperText: 'Plese input ID LINE',
   },
 };

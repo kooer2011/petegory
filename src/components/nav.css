@@ -48,8 +48,22 @@
 .hide-on-large-screen {
   display: none;
 }
-@media (max-width: 767px) { /* ปรับขนาดตามที่คุณต้องการ */
+@media (max-width: 767px) {
+  /* ปรับขนาดตามที่คุณต้องการ */
   .hide-on-large-screen {
     display: block;
   }
+}
+@font-face {
+  font-family: 'CaveatVarialbleFont';
+  src: local('CaveatVarialbleFont'),
+    url('../fonts/Caveat-VariableFont_wght.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'ChakraPetchBold';
+  src: local('ChakraPetchBold'),
+    url('../fonts/ChakraPetch-Bold.ttf') format('ttf');
+}
+strong {
+  font-family: CaveatVarialbleFont;
 }

@@ -105,7 +105,7 @@ function NavbarHeader() {
             href="/"
             sx={{
               flexGrow: 1,
-              fontFamily: 'monospace',
+              fontFamily: 'CaveatVarialbleFont',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
@@ -183,23 +183,43 @@ function NavbarHeader() {
             open={Boolean(anchorElNav)}
             onClose={handleCloseNavMenu}
           >
-            <MenuItem href="/" onClick={handleCloseNavMenu} component="a">
+            <MenuItem
+              href="/"
+              onClick={handleCloseNavMenu}
+              component="a"
+              sx={{
+                fontFamily: 'ChakraPetchBold', // Add fontFamily style here
+              }}
+            >
               HOME
             </MenuItem>
             <MenuItem
               href="/grooming"
               onClick={handleCloseNavMenu}
               component="a"
+              sx={{
+                fontFamily: 'ChakraPetchBold', // Add fontFamily style here
+              }}
             >
               GROOMING
             </MenuItem>
-            <MenuItem href="/hotel" onClick={handleCloseNavMenu} component="a">
+            <MenuItem
+              href="/hotel"
+              onClick={handleCloseNavMenu}
+              component="a"
+              sx={{
+                fontFamily: 'ChakraPetchBold', // Add fontFamily style here
+              }}
+            >
               HOTEL
             </MenuItem>
             <MenuItem
               href="/contact"
               onClick={handleCloseNavMenu}
               component="a"
+              sx={{
+                fontFamily: 'ChakraPetchBold', // Add fontFamily style here
+              }}
             >
               CONTACT
             </MenuItem>
@@ -207,19 +227,27 @@ function NavbarHeader() {
               href="/gallery"
               onClick={handleCloseNavMenu}
               component="a"
+              sx={{
+                fontFamily: 'ChakraPetchBold', // Add fontFamily style here
+              }}
             >
               GALLERY
             </MenuItem>
-
-            {user ? (
-              <Button href="/profile/account" className="profile">
-                {user.name}
-              </Button>
-            ) : (
-              <Button className="link-hover signin" href="/login">
-                LOGIN
-              </Button>
-            )}
+            <MenuItem
+              sx={{
+                fontFamily: 'ChakraPetchBold', // Add fontFamily style here
+              }}
+            >
+              {user ? (
+                <Button href="/profile/account" className="profile">
+                  {user.name}
+                </Button>
+              ) : (
+                <Button className="link-hover signin" href="/login">
+                  LOGIN
+                </Button>
+              )}
+            </MenuItem>
           </Menu>
         </Toolbar>
       </Container>

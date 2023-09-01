@@ -94,3 +94,12 @@
 .model.open svg:hover {
   color: blue;
 }
+@font-face {
+  font-family: 'CaveatVarialbleFont';
+  src: local('CaveatVarialbleFont'),
+    url('../../fonts/Caveat-VariableFont_wght.ttf') format('ttf');
+}
+
+.container__gallery {
+  font-family: CaveatVarialbleFont;
+}

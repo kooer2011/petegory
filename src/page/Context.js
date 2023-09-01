@@ -1,5 +1,5 @@
 import React, { createContext, useCallback, useMemo, useReducer } from 'react';
-import {initialValues} from './initialValues'
+import { initialValues } from './initialValues';
 
 const isText = /^[A-Z ]+$/i;
 const isEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;

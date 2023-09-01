@@ -1,55 +1,51 @@
-import React from "react";
-import "bootstrap-icons/font/bootstrap-icons.css";
-import ContactInfoItem from "./ContactInfoItem";
-import ContactForm from "./ContactForm";
-import "./contact1.css";
-import { Link } from "react-router-dom";
-import { Container, Row, Col } from "react-bootstrap";
-import { Form, Input, message } from "antd";
-import TextArea from "antd/es/input/TextArea";
-import axios from "axios";
-import Swal from "sweetalert2";
-
+import React from 'react';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import ContactInfoItem from './ContactInfoItem';
+import ContactForm from './ContactForm';
+import './contact1.css';
+import { Link } from 'react-router-dom';
+import { Container, Row, Col } from 'react-bootstrap';
+import { Form, Input, message } from 'antd';
+import TextArea from 'antd/es/input/TextArea';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 function ContactSelection() {
-
-  const handleSend = async ( values) => {
+  const handleSend = async values => {
     try {
-      const res = await axios.post('/api/v1/user/sendContact',values,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      )
+      const res = await axios.post('/api/v1/user/sendContact', values, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
       if (res.data.success) {
         Swal.fire({
           position: 'center',
           icon: 'success',
           title: 'thank you',
           showConfirmButton: false,
-          timer: 1500
-        })
-        
+          timer: 1500,
+        });
+
         window.location.reload();
       } else {
         Swal.fire({
-        position: 'center',
-        icon: 'error',
-        title: 'Please Login!',
-        showConfirmButton: false,
-        timer: 1500
-      })
+          position: 'center',
+          icon: 'error',
+          title: 'Please Login!',
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
   return (
     <Container className="mb-3">
       <Row className="mb-5 mt-3">
         <Col lg="12">
-          <h1 className="text-center">Contact Us</h1>
+          <h2 className="text-center">Contact Us</h2>
           <hr className="t_border my-4 ml-0 text-left" />
         </Col>
       </Row>
@@ -96,21 +92,18 @@ function ContactSelection() {
               </Col>
               <Col lg="6" className="form-group">
                 <Form.Item name="email" required>
-                <Input  placeholder="Email" type="email"  />
+                  <Input placeholder="Email" type="email" />
                 </Form.Item>
               </Col>
             </Row>
             <Form.Item name="message" required>
-            <TextArea
-              placeholder="Message"
-              rows="5"
-            ></TextArea>
+              <TextArea placeholder="Message" rows="5"></TextArea>
             </Form.Item>
             <div className="mt-4">
               {/* <Col lg="12" className="form-group"> */}
-                <button className="btnSub w-50" type="submit">
-                  <i class="fa-solid fa-location-arrow" /> send
-                </button>
+              <button className="btnSub w-50" type="submit">
+                <i class="fa-solid fa-location-arrow" /> send
+              </button>
               {/* </Col> */}
             </div>
           </Form>

@@ -138,3 +138,9 @@
 .login__section:hover::before {
   opacity: 1; /* Change opacity on hover */
 }
+
+@font-face {
+  font-family: 'ChakraPetchBold';
+  src: local('ChakraPetchBold'),
+    url('../../fonts/ChakraPetch-Bold.ttf ') format('ttf');
+}

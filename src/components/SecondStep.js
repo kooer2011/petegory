@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useState, useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -46,21 +46,43 @@ function getStyles(name, personName, theme) {
 }
 
 function SecondStep() {
+  const [isValid, setIsValid] = useState(true);
   const [personName, setPersonName] = React.useState([]);
   const theme = useTheme();
   const { formValues, handleChange, handleBack, handleNext, variant, margin } =
     useContext(AppContext);
-  const { addon, date, time, phone, agreenemt, grooming } = formValues;
+  const { addon, date, time, phone, agreenemt, grooming, idline } = formValues;
 
   const isError = useCallback(
     () =>
-      Object.keys({ addon, date, time, phone, agreenemt, grooming }).some(
+      Object.keys({
+        addon,
+        date,
+        time,
+        phone,
+        agreenemt,
+        grooming,
+        idline,
+      }).some(
         name =>
           (formValues[name].required && !formValues[name].value) ||
           formValues[name].error
       ),
-    [formValues, addon, date, time, phone, agreenemt, grooming]
+    [formValues, addon, date, time, phone, agreenemt, grooming, idline]
   );
+
+  useEffect(() => {
+    // ตรวจสอบว่า grooming ไม่เป็น empty array
+    const groomingIsValid = grooming.value.length > 0;
+    setIsValid(groomingIsValid);
+    if (!groomingIsValid) {
+      // ถ้าไม่ถูกต้องให้ตั้งข้อความแจ้งเตือน
+      formValues.grooming.error = 'โปรดเลือกข้อมูล';
+    } else {
+      // ถ้าถูกต้องให้ลบข้อความแจ้งเตือน
+      formValues.grooming.error = '';
+    }
+  }, [grooming, formValues]);
 
   return (
     <>
@@ -80,6 +102,9 @@ function SecondStep() {
             onChange={handleChange}
             input={<OutlinedInput label="Name" />}
             MenuProps={MenuProps}
+            error={!!grooming.error || !isValid}
+            helperText={grooming.error || (!isValid && 'โปรดเลือกข้อมูล')}
+            required={grooming.required}
           >
             {groomdetail.map(groom => (
               <MenuItem
@@ -167,6 +192,21 @@ function SecondStep() {
           />
         </Grid>
         <Grid item xs={12}>
+          <TextField
+            variant={variant}
+            margin={margin}
+            fullWidth
+            label="ID LINE"
+            name="idline"
+            placeholder="please input ID LINE"
+            value={idline.value}
+            onChange={handleChange}
+            error={!!idline.error}
+            helperText={idline.error}
+            required={idline.required}
+          />
+        </Grid>
+        <Grid item xs={12}>
           <FormControlLabel
             control={
               <Checkbox
@@ -177,7 +217,7 @@ function SecondStep() {
                 required={agreenemt.required}
               />
             }
-            label="Agree to terms and conditions"
+            label="กรุณา เช็คข้อมูล ที่กรอกให้ครับถ้วน และ ถูกต้อง"
           />
           <FormHelperText error={!!agreenemt.error}>
             {agreenemt.error}
@@ -191,7 +231,7 @@ function SecondStep() {
         </Button>
         <Button
           variant="contained"
-          disabled={isError()}
+          disabled={!isValid || isError()}
           color="primary"
           onClick={!isError() ? handleNext : () => null}
         >

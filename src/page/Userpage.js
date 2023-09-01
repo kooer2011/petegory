@@ -52,7 +52,11 @@ const Userpage = () => {
           sequence={['NEW', 100]}
           wrapper="span"
           speed={50}
-          style={{ fontSize: '2em', display: 'inline-block' }}
+          style={{
+            fontSize: '2em',
+            display: 'inline-block',
+            fontFamily: 'ChakraPetchBold',
+          }}
           repeat={Infinity}
         />
       </div>
@@ -66,7 +70,11 @@ const Userpage = () => {
           sequence={['GROOMING', 100]}
           wrapper="span"
           speed={50}
-          style={{ fontSize: '2em', display: 'inline-block' }}
+          style={{
+            fontSize: '2em',
+            display: 'inline-block',
+            fontFamily: 'ChakraPetchBold',
+          }}
           repeat={Infinity}
         />
       </div>
@@ -80,7 +88,11 @@ const Userpage = () => {
           sequence={['CATHOTEL', 100]}
           wrapper="span"
           speed={50}
-          style={{ fontSize: '2em', display: 'inline-block' }}
+          style={{
+            fontSize: '2em',
+            display: 'inline-block',
+            fontFamily: 'ChakraPetchBold',
+          }}
           repeat={Infinity}
         />
       </div>
@@ -94,7 +106,11 @@ const Userpage = () => {
           sequence={['GALLERY', 100]}
           wrapper="span"
           speed={50}
-          style={{ fontSize: '2em', display: 'inline-block' }}
+          style={{
+            fontSize: '2em',
+            display: 'inline-block',
+            fontFamily: 'ChakraPetchBold',
+          }}
           repeat={Infinity}
         />
       </div>

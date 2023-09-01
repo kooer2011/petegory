@@ -11,10 +11,10 @@ const StyledGrooming = styled('div')(({ theme }) => ({
 
 function GaLLery() {
   return (
-    <div>
+    <div className="container__gallery">
       <NavbarHeader />
 
-      <h1>GALLERY</h1>
+      <h2>GALLERY</h2>
       <Gallr />
 
       <Footer />

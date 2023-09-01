@@ -75,14 +75,7 @@ function SecondStep() {
     // ตรวจสอบว่า grooming ไม่เป็น empty array
     const groomingIsValid = grooming.value.length > 0;
     setIsValid(groomingIsValid);
-    if (!groomingIsValid) {
-      // ถ้าไม่ถูกต้องให้ตั้งข้อความแจ้งเตือน
-      formValues.grooming.error = 'โปรดเลือกข้อมูล';
-    } else {
-      // ถ้าถูกต้องให้ลบข้อความแจ้งเตือน
-      formValues.grooming.error = '';
-    }
-  }, [grooming, formValues]);
+  }, [grooming]);
 
   return (
     <>
@@ -102,8 +95,8 @@ function SecondStep() {
             onChange={handleChange}
             input={<OutlinedInput label="Name" />}
             MenuProps={MenuProps}
-            error={!!grooming.error || !isValid}
-            helperText={grooming.error || (!isValid && 'โปรดเลือกข้อมูล')}
+            error={!isValid}
+            // helperText={grooming.error || (!isValid && 'โปรดเลือกข้อมูล')}
             required={grooming.required}
           >
             {groomdetail.map(groom => (

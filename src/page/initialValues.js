@@ -71,7 +71,7 @@ export const initialValues = {
     value: '',
     error: '',
     required: true,
-    validate: 'text',
+    validate: 'line',
     helperText: 'Plese input ID LINE',
   },
 };

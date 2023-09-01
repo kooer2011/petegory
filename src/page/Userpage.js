@@ -12,6 +12,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import './styles/userpage.css'; // Import the CSS file
 import TokenExpirationChecker from '../components/CheckToken/TokenExpirationChecker';
 import BasicGrid from '../components/News/New';
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 import { TypeAnimation } from 'react-type-animation';
 
@@ -29,8 +31,12 @@ const Userpage = () => {
   const handleTokenExpired = () => {
     localStorage.removeItem('token');
   };
+
+  useEffect(() => {
+    AOS.init({duration: 2000})
+  }, []);
   return (
-    <div className="">
+    <>
       <TokenExpirationChecker
         token={token}
         onTokenExpired={handleTokenExpired}
@@ -43,7 +49,7 @@ const Userpage = () => {
         <NavbarHeader />
       </section>
       <br />
-      <section className="dialog__section">
+      <section className="dialog__section" data-aos='fade'>
         <UncontrolledExample />
       </section>
       <br />
@@ -61,7 +67,7 @@ const Userpage = () => {
         />
       </div>
       <br />
-      <section className="grid__section">
+      <section className="grid__section" data-aos='fade-up'>
         <BasicGrid />
       </section>
       <br />
@@ -79,7 +85,7 @@ const Userpage = () => {
         />
       </div>
       <br />
-      <section className="grooming__section">
+      <section className="grooming__section" data-aos='fade-left'>
         <GroomingComponent />
       </section>
       <br />
@@ -97,7 +103,7 @@ const Userpage = () => {
         />
       </div>
       <br />
-      <section className="hotelcat__section">
+      <section className="hotelcat__section" data-aos='fade-right'>
         <Hotelcat />
       </section>
       <br />
@@ -115,16 +121,16 @@ const Userpage = () => {
         />
       </div>
       <br />
-      <section className="gallery__section">
+      <section className="gallery__section" data-aos='zoom-in'>
         <Gallr />
       </section>
       <br />
-      <section>
+      <section data-aos='fade-up'>
         <ContactSelection />
       </section>
-      <FloatButton.BackTop tooltip={<div>Back to top</div>} type="primary" />
-      <Footer />
-    </div>
+      <FloatButton.BackTop tooltip={<div>Back to top</div>} type="primary"  />
+      <Footer/>
+    </>
   );
 };
 

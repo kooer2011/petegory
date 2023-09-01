@@ -58,6 +58,8 @@ export default function GroomingComponent() {
         padding: 3,
       }}
     >
+      <h1>GROOMING</h1>
+      <br/>
       <Grid container spacing={2}>
         <Grid item xs={8}>
           <Item className="cathotel__image">

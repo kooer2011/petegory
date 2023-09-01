@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles/Login.css";
 import axios from "axios";
 import { message, Form, Input, Divider, Typography } from "antd";
@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../redux/features/alertSlice";
 import { Link } from "react-router-dom";
 import NavbarHeader from "../components/Navbar";
+import AOS from 'aos'
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -28,12 +29,16 @@ const Login = () => {
     }
   };
 
+  useEffect(() => {
+    AOS.init({duration: 1500})
+  }, []);
+
   return (
     <>
       <NavbarHeader />
       <div className="main-content">
       <div className="login">
-        <Form className="loginForm" onFinish={finishHandle}>
+        <Form className="loginForm" onFinish={finishHandle} data-aos='zoom-in'>
           <Typography.Title>Login</Typography.Title>
           <Form.Item
             name="email"

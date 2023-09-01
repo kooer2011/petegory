@@ -1,10 +1,10 @@
-import React from "react";
+import React, {useEffect} from "react";
 import axios from "axios";
 import { message, Form, Input, Typography } from "antd";
 import "./style/ForgotPassword.css";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-
+import AOS from 'aos'
 
 const ForgotPassword = () => {
   const finishHandle = async (values) => {
@@ -27,10 +27,14 @@ const ForgotPassword = () => {
     }
   };
 
+  useEffect(() => {
+    AOS.init({duration: 1500})
+  }, []);
+
   return (
     <>
       <div className="forgot">
-        <Form className="Form" onFinish={finishHandle}>
+        <Form className="Form" onFinish={finishHandle} data-aos='fade'>
           <Typography.Title>Forgot Password</Typography.Title>
           <Form.Item
             name="email"

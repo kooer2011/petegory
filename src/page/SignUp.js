@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './styles/Signup.css'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
@@ -6,6 +6,7 @@ import { message, Form, Input, Divider, Typography } from 'antd'
 import { useDispatch } from 'react-redux'
 import { showLoading,hideLoading } from '../redux/features/alertSlice'
 import NavbarHeader from '../components/Navbar'
+import AOS from 'aos'
 
 const SignUp = () => {
 
@@ -30,11 +31,15 @@ const SignUp = () => {
     }
   }
 
+  useEffect(() => {
+    AOS.init({duration: 1500})
+  }, []);
+
   return (
     <>
     <NavbarHeader/>
     <div className='signup'>
-      <Form className='signupForm' onFinish={handleSubmit}>
+      <Form className='signupForm' onFinish={handleSubmit} data-aos='zoom-in'>
       <Typography.Title>SignUp</Typography.Title>
       <Form.Item
           name='name'

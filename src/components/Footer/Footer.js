@@ -4,7 +4,7 @@ import '../../App.css'
 const Footer = () => {
     return (
         <>
-            <div className="Footer">
+            <div className="Footer" >
                 <div className="container">
                     <div className="row ">
                         <div className="col-md-6 col-lg-5 col-12 ft-1">

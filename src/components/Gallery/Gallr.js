@@ -21,10 +21,7 @@ const Gallr = () => {
     { id: 8, imgSrc: img8 },
   ];
 
-  const handleImageClick = imgSrc => {
-    // Do something when an image is clicked, e.g., navigate to a new page or show a detailed view
-    console.log('Image clicked:', imgSrc);
-  };
+  
 
   return (
     <div className="gallery">
@@ -32,7 +29,7 @@ const Gallr = () => {
         <div
           className="pics"
           key={index}
-          onClick={() => handleImageClick(item.imgSrc)}
+          
         >
           <img className="pics-size" src={item.imgSrc} alt={`Image ${index}`} />
         </div>

@@ -19,6 +19,12 @@ import { setUser } from '../redux/features/userSlice';
 import PetsIcon from '@mui/icons-material/Pets';
 import { Button, Stack } from '@mui/material';
 // const { setUser } = userSlice.actions;
+
+
+
+
+
+
 import { AnimatePresence } from 'framer-motion';
 function NavbarHeader() {
   const { user } = useSelector(state => state.user);
@@ -72,9 +78,27 @@ function NavbarHeader() {
     };
   }, []);
 
+
+  const linkStyle = {
+    textDecoration: 'none', // Remove underline
+    color: 'black', // Set text color
+    fontWeight: 'bold', // Add bold font weight
+    fontFamily: 'CaveatVarialbleFont',
+  };
+  const link = {
+    textDecoration: 'none', // Remove underline
+    color: '#C0392B', // Set text color
+    fontWeight: 'bold', // Add bold font weight
+    fontFamily: 'CaveatVarialbleFont',
+  };
+
+
+
+
+
   return (
     <AppBar
-      position="static"
+      position="sticky"
       sx={{
         background: 'white',
         color: 'black',
@@ -98,11 +122,12 @@ function NavbarHeader() {
           >
             <MenuIcon />
           </IconButton>
+         
           <Typography
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            
             sx={{
               flexGrow: 1,
               fontFamily: 'CaveatVarialbleFont',
@@ -112,8 +137,14 @@ function NavbarHeader() {
               textDecoration: 'none',
             }}
           >
+            <Link style={linkStyle} to="/">
             PETEGORY
+            </Link>
+            
           </Typography>
+          
+          
+          
           <Box
             sx={{
               display: {
@@ -126,44 +157,63 @@ function NavbarHeader() {
               },
             }}
           >
-            <Button href="/" sx={{ mx: 2, color: 'black' }} color="inherit">
-              <strong>HOME</strong>
+            <Button  sx={{ mx: 2, color: 'black' }} color="inherit">
+            <Link style={linkStyle} to="/">
+            HOME
+            </Link>
             </Button>
             <Button
-              href="/grooming"
+            
               sx={{ mx: 2, color: 'black' }}
               color="inherit"
             >
-              <strong>GROOMING</strong>
+              <Link style={linkStyle} to="/grooming">
+            GROOMING
+            </Link>
+             
             </Button>
             <Button
-              href="/hotel"
+             
               sx={{ mx: 2, color: 'black' }}
               color="inherit"
             >
-              <strong>HOTEL</strong>
+           <Link style={linkStyle} to="/hotel">
+            HOTEL
+            </Link>
+              
             </Button>
             <Button
-              href="/contact"
+             
               sx={{ mx: 2, color: 'black' }}
               color="inherit"
             >
-              <strong>CONTACT</strong>
+               <Link style={linkStyle} to="/contact">
+            CONTACT
+            </Link>
             </Button>
             <Button
-              href="/gallery"
+             
               sx={{ mx: 2, color: 'black' }}
               color="inherit"
             >
-              <strong>GALLERY</strong>
+              <Link style={linkStyle} to="/gallery">
+              GALLERY
+            </Link>
+             
             </Button>
             {user ? (
-              <Button href="/profile/account" className="profile">
-                <strong>{user.name}</strong>
+              <Button  className="profile">
+                 <Link style={link} to="/profile/account">
+                 {user.name}
+            </Link>
+                
               </Button>
             ) : (
-              <Button className="link-hover signin" href="/login">
-                <strong>LOGIN</strong>
+              <Button className="link-hover signin" >
+                 <Link style={link} to="/login">
+                 LOGIN
+            </Link>
+                
               </Button>
             )}
           </Box>
@@ -184,54 +234,64 @@ function NavbarHeader() {
             onClose={handleCloseNavMenu}
           >
             <MenuItem
-              href="/"
+             
               onClick={handleCloseNavMenu}
               component="a"
               sx={{
                 fontFamily: 'ChakraPetchBold', // Add fontFamily style here
               }}
             >
-              HOME
+              <Link style={linkStyle} to="/">
+            HOME
+            </Link>
             </MenuItem>
             <MenuItem
-              href="/grooming"
+              
               onClick={handleCloseNavMenu}
               component="a"
               sx={{
                 fontFamily: 'ChakraPetchBold', // Add fontFamily style here
               }}
             >
-              GROOMING
+                <Link style={linkStyle} to="/grooming">
+            GROOMING
+            </Link>
             </MenuItem>
             <MenuItem
-              href="/hotel"
+              
               onClick={handleCloseNavMenu}
               component="a"
               sx={{
                 fontFamily: 'ChakraPetchBold', // Add fontFamily style here
               }}
             >
-              HOTEL
+              <Link style={linkStyle} to="/hotel">
+            HOTEL
+            </Link>
             </MenuItem>
             <MenuItem
-              href="/contact"
+              
               onClick={handleCloseNavMenu}
               component="a"
               sx={{
                 fontFamily: 'ChakraPetchBold', // Add fontFamily style here
               }}
             >
-              CONTACT
+                   <Link style={linkStyle} to="/contact">
+            CONTACT
+            </Link>
             </MenuItem>
             <MenuItem
-              href="/gallery"
+              
               onClick={handleCloseNavMenu}
               component="a"
               sx={{
                 fontFamily: 'ChakraPetchBold', // Add fontFamily style here
               }}
             >
+                <Link style={linkStyle} to="/gallery">
               GALLERY
+            </Link>
             </MenuItem>
             <MenuItem
               sx={{
@@ -239,12 +299,16 @@ function NavbarHeader() {
               }}
             >
               {user ? (
-                <Button href="/profile/account" className="profile">
-                  {user.name}
+                <Button  className="profile">
+                 <Link style={linkStyle} to="/profile/account">
+                 {user.name}
+                 </Link>
                 </Button>
               ) : (
-                <Button className="link-hover signin" href="/login">
-                  LOGIN
+                <Button className="link-hover signin" >
+                 <Link style={linkStyle} to="/login">
+                 LOGIN
+                 </Link>
                 </Button>
               )}
             </MenuItem>
@@ -252,42 +316,7 @@ function NavbarHeader() {
         </Toolbar>
       </Container>
 
-      {/* <Container>
-        <Navbar.Brand href="/">
-          <img className="logo" src={img} alt="Logo" />
-          PET’EGORY
-        </Navbar.Brand>
-        <Navbar.Toggle className="hamberger" />
-        <Navbar.Collapse className="nav-container">
-          <Nav>
-            <Nav.Link className="link-hover" href="/">
-              HOME
-            </Nav.Link>
-            <Nav.Link className="link-hover" href="/grooming">
-              GROOMING
-            </Nav.Link>
-            <Nav.Link className="link-hover" href="/hotel">
-              HOTEL
-            </Nav.Link>
-            <Nav.Link className="link-hover" href="/contact">
-              CONTACT
-            </Nav.Link>
-            <Nav.Link className="link-hover" href="/gallery">
-              GALLERY
-            </Nav.Link>
 
-            {user ? (
-              <Nav.Link href="/profile/account" className="profile">
-                {user.name}
-              </Nav.Link>
-            ) : (
-              <Nav.Link className="link-hover signin" href="/login">
-                LOGIN
-              </Nav.Link>
-            )}
-          </Nav>
-        </Navbar.Collapse>
-      </Container> */}
     </AppBar>
   );
 }

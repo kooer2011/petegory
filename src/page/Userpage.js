@@ -36,7 +36,7 @@ const Userpage = () => {
     AOS.init({ duration: 2000 });
   }, []);
   return (
-    <>
+    <div className='homepage'>
       <TokenExpirationChecker
         token={token}
         onTokenExpired={handleTokenExpired}
@@ -73,9 +73,9 @@ const Userpage = () => {
           />
         </div>
         <br />
-        <section className="grid__section" data-aos="fade-up">
+        <div className="grid__section" data-aos="fade-up">
           <BasicGrid />
-        </section>
+        </div>
         <br />
         <div className="custom_text">
           <TypeAnimation
@@ -91,9 +91,9 @@ const Userpage = () => {
           />
         </div>
         <br />
-        <section className="grooming__section" data-aos="fade-left">
+        <div className="grooming__section" data-aos="fade-left">
           <GroomingComponent />
-        </section>
+        </div>
         <br />
         <div className="custom_text">
           <TypeAnimation
@@ -109,9 +109,9 @@ const Userpage = () => {
           />
         </div>
         <br />
-        <section className="hotelcat__section" data-aos="fade-right">
+        <div className="hotelcat__section" data-aos="fade-right">
           <Hotelcat />
-        </section>
+        </div>
         <br />
         <div className="custom_text">
           <TypeAnimation
@@ -127,23 +127,23 @@ const Userpage = () => {
           />
         </div>
         <br />
-        <section className="gallery__section" data-aos="zoom-in">
+        <div className="gallery__section" data-aos="zoom-in">
           <Gallr />
-        </section>
+        </div>
         <br />
-        <section data-aos="fade-up">
+        <div data-aos="fade-up">
           <ContactSelection />
-        </section>
-        <section>
+        </div>
+        <div>
           <FloatButton.BackTop
             tooltip={<div>Back to top</div>}
             type="primary"
           />
-        </section>
+        </div>
 
         <Footer />
       </motion.div>
-    </>
+    </div>
   );
 };
 

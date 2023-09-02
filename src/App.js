@@ -38,6 +38,7 @@ import EditHotel from './page/Admin/EditHotel';
 import News from './page/Admin/News';
 import CreateNews from './page/Admin/CreateNews';
 import { motion, AnimatePresence } from 'framer-motion';
+import EditNews from './page/Admin/EditNews';
 function App() {
   const { loading } = useSelector(state => state.alerts);
   return (
@@ -222,6 +223,14 @@ function App() {
               element={
                 <PrivateRoute>
                   <CreateNews />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/editNews/:id"
+              element={
+                <PrivateRoute>
+                  <EditNews />
                 </PrivateRoute>
               }
             />

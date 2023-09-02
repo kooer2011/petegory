@@ -9,22 +9,11 @@
 .read-the-docs {
   color: #888;
 }
-.dialog__section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  max-width: 100vw;
-  background-image: url('https://scontent.fbkk22-8.fna.fbcdn.net/v/t39.30808-6/324272717_578504110299232_6671049236692552674_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=19026a&_nc_eui2=AeFFYP0XlSWpeLSa05XCg7StWi-kOnMNTQ9aL6Q6cw1ND1et1nXpTMvfMWRdwKzo6n07Dg6K08rgp8v3PbKw2_Qg&_nc_ohc=qjw2Tonssq4AX_fyRHO&_nc_ht=scontent.fbkk22-8.fna&oh=00_AfCh26mMCApN_rEagMhCnHWUWfdgTnyKa7pX9r6s131GaA&oe=64F2046B');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin-top: -25px;
+.homepage{
+  padding: 0;
+  margin: 0;
 }
 
-.navbar__section {
-  margin-bottom: 5rem;
-}
 .grid__section {
   background-color: #eadbc8;
 }
@@ -45,11 +34,6 @@
 }
 .custom_text {
   text-align: center;
-}
-.ant-back-top {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
 }
 
 /* NewsHeader.css */
@@ -84,12 +68,12 @@
     border-color: #000; /* Change the color as needed */
   }
 }
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   body {
     background-size: contain;
     background-position: top;
   }
-}
+} */
 /* article {
   max-width: 500px;
   padding: 20px;

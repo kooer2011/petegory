@@ -29,7 +29,7 @@ const Hotels = () => {
     }
   };
 
-  const handleDelete = async id => {
+  const handleDelete = async (id) => {
     console.log('ID=', id);
     const confirmed = await Swal.fire({
       title: 'คุณต้องการลบใช่หรือไม่?',
@@ -57,7 +57,7 @@ const Hotels = () => {
     }
   };
 
-  const handleEdit = id => {
+  const handleEdit = (id) => {
     navigate(`/edithotel/${id}`);
   };
 

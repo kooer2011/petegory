@@ -5,6 +5,7 @@ import Map from '../components/Contact/Map';
 import { styled } from '@mui/material/styles';
 import Footer from '../components/Footer/Footer';
 import AOS from 'aos'
+import { motion, useScroll } from 'framer-motion';
 const StyledGrooming = styled('div')(({ theme }) => ({
   marginTop: theme.spacing(8), // Adjust the margin as needed
 }));

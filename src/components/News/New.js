@@ -82,10 +82,7 @@ export default function BasicGrid() {
             <Item onClick={() => handleImageClick(data.image)}>
               <img
                 className="img-hover-effect"
-                // src={imgs1}
                 src={`http://localhost:3000/images/${data.image}`}
-                width="100%"
-                height="auto"
                 alt="Image"
               />
             </Item>

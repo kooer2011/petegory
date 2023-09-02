@@ -2,7 +2,8 @@ import React, { createContext, useCallback, useMemo, useReducer } from 'react';
 import { initialValues } from './initialValues';
 
 const isText = /^[A-Z ]+$/i;
-const isTextOrNumber = /^[A-Z0-9 ]+$/i;
+const pattern = /^\d{4}-\d{2}-\d{2}$/;
+const isTextOrNumber = /^[A-Za-z0-9]+$/;
 const isEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 const isPhone = /^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4,6})$/; // us
 const isZip = /^[0-9]{5}([- /]?[0-9]{4})?$/; // us
@@ -98,7 +99,15 @@ export function StepsProvider({ children }) {
             error = helperText || 'This field accepts text only.';
           break;
         case 'line':
-          if (value && !isTextOrNumber.test(value))
+          if (value && !fieldValue)
+            error = helperText || 'This field accepts text only.';
+          break;
+        case 'date':
+          if (value && !fieldValue)
+            error = helperText || 'This field accepts text only.';
+          break;
+        case 'time':
+          if (value && !fieldValue)
             error = helperText || 'This field accepts text only.';
           break;
         case 'number':

@@ -21,9 +21,6 @@ function GroomBooking() {
           variant="outlined"
           sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
         >
-          <Typography variant="outlined" align="center">
-            <h3>GROOMING</h3>
-          </Typography>
           <StepForm />
         </Paper>
       </Container>

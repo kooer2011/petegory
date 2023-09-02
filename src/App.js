@@ -35,7 +35,9 @@ import AllBookings from './page/Admin/AllBookings';
 import { StepsProvider } from './page/Context';
 import EditBooking from './page/Admin/EditBooking';
 import EditHotel from './page/Admin/EditHotel';
-
+import News from './page/Admin/News';
+import CreateNews from './page/Admin/CreateNews';
+import { motion, AnimatePresence } from 'framer-motion';
 function App() {
   const { loading } = useSelector(state => state.alerts);
   return (
@@ -43,188 +45,206 @@ function App() {
       {loading ? (
         <Spinner />
       ) : (
-        <Routes>
-          <Route
-            path="/signup"
-            element={
-              <PublicRoute>
-                <SignUp />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <PublicRoute>
-                <Login />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="/forgot-password"
-            element={
-              <PublicRoute>
-                <ForgotPassword />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="/reset-password/:id/:token"
-            element={
-              <PublicRoute>
-                <ResetPassword />
-              </PublicRoute>
-            }
-          />
-          <Route path="/" element={<Userpage />} />
-          <Route path="/grooming" element={<GrooMing />} />
-          <Route
-            path="/grooming/booking"
-            element={
-              <PrivateRoute>
-                <StepsProvider>
-                  <GroomBooking />
-                </StepsProvider>
-              </PrivateRoute>
-            }
-          />
-          <Route path="/hotel" element={<HotelPage />} />
+        <AnimatePresence>
+          <Routes>
+            <Route
+              path="/signup"
+              element={
+                <PublicRoute>
+                  <SignUp />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <PublicRoute>
+                  <Login />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/forgot-password"
+              element={
+                <PublicRoute>
+                  <ForgotPassword />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/reset-password/:id/:token"
+              element={
+                <PublicRoute>
+                  <ResetPassword />
+                </PublicRoute>
+              }
+            />
+            <Route path="/" element={<Userpage />} />
+            <Route path="/grooming" element={<GrooMing />} />
+            <Route
+              path="/grooming/booking"
+              element={
+                <PrivateRoute>
+                  <StepsProvider>
+                    <GroomBooking />
+                  </StepsProvider>
+                </PrivateRoute>
+              }
+            />
+            <Route path="/hotel" element={<HotelPage />} />
 
-          <Route
-            path="/hotel/detail-booking"
-            element={
-              <PrivateRoute>
-                <HotelDetail />
-              </PrivateRoute>
-            }
-          />
+            <Route
+              path="/hotel/detail-booking"
+              element={
+                <PrivateRoute>
+                  <HotelDetail />
+                </PrivateRoute>
+              }
+            />
 
-          <Route path="/contact" element={<ConTact />} />
-          <Route path="/gallery" element={<GaLLery />} />
-          <Route
-            path="/profile/:activepage"
-            element={
-              <PrivateRoute>
-                <Profile />
-              </PrivateRoute>
-            }
-          />
+            <Route path="/contact" element={<ConTact />} />
+            <Route path="/gallery" element={<GaLLery />} />
+            <Route
+              path="/profile/:activepage"
+              element={
+                <PrivateRoute>
+                  <Profile />
+                </PrivateRoute>
+              }
+            />
 
-          <Route
-            path="/admin/dashboard"
-            element={
-              <PrivateRoute>
-                <Dashboard />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/admin/dashboard/users"
-            element={
-              <PrivateRoute>
-                <Users />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/newusers"
-            element={
-              <PrivateRoute>
-                <AddUser />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/edituser/:id"
-            element={
-              <PrivateRoute>
-                <EditUser />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/admin/dashboard/employees"
-            element={
-              <PrivateRoute>
-                <Employees />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/newemployees"
-            element={
-              <PrivateRoute>
-                <AddEmployees />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/editemployee/:id"
-            element={
-              <PrivateRoute>
-                <EditEmployee />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/admin/dashboard/users/create"
-            element={
-              <PrivateRoute>
-                <Create />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/admin/dashboard/hotel"
-            element={
-              <PrivateRoute>
-                <Hotels />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/admin/dashboard/create-hotel"
-            element={
-              <PrivateRoute>
-                <HotelCreate />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/edithotel/:id"
-            element={
-              <PrivateRoute>
-                <EditHotel />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/admin/dashboard/notification"
-            element={
-              <PrivateRoute>
-                <NotificationPage />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/admin/dashboard/all-bookings"
-            element={
-              <PrivateRoute>
-                <AllBookings />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/editbookhotel/:id"
-            element={
-              <PrivateRoute>
-                <EditBooking />
-              </PrivateRoute>
-            }
-          />
+            <Route
+              path="/admin/dashboard"
+              element={
+                <PrivateRoute>
+                  <Dashboard />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/admin/dashboard/users"
+              element={
+                <PrivateRoute>
+                  <Users />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/newusers"
+              element={
+                <PrivateRoute>
+                  <AddUser />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/edituser/:id"
+              element={
+                <PrivateRoute>
+                  <EditUser />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/admin/dashboard/employees"
+              element={
+                <PrivateRoute>
+                  <Employees />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/newemployees"
+              element={
+                <PrivateRoute>
+                  <AddEmployees />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/editemployee/:id"
+              element={
+                <PrivateRoute>
+                  <EditEmployee />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/admin/dashboard/users/create"
+              element={
+                <PrivateRoute>
+                  <Create />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/admin/dashboard/hotel"
+              element={
+                <PrivateRoute>
+                  <Hotels />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/admin/dashboard/create-hotel"
+              element={
+                <PrivateRoute>
+                  <HotelCreate />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/edithotel/:id"
+              element={
+                <PrivateRoute>
+                  <EditHotel />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/admin/dashboard/notification"
+              element={
+                <PrivateRoute>
+                  <NotificationPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/admin/dashboard/news"
+              element={
+                <PrivateRoute>
+                  <News />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/createnews"
+              element={
+                <PrivateRoute>
+                  <CreateNews />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/admin/dashboard/all-bookings"
+              element={
+                <PrivateRoute>
+                  <AllBookings />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/editbookhotel/:id"
+              element={
+                <PrivateRoute>
+                  <EditBooking />
+                </PrivateRoute>
+              }
+            />
 
-          <Route path="*" element={<Error />} />
-        </Routes>
+            <Route path="*" element={<Error />} />
+          </Routes>
+        </AnimatePresence>
       )}
       {/* <Footer /> */}
     </Router>

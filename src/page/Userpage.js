@@ -12,8 +12,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import './styles/userpage.css'; // Import the CSS file
 import TokenExpirationChecker from '../components/CheckToken/TokenExpirationChecker';
 import BasicGrid from '../components/News/New';
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 import { TypeAnimation } from 'react-type-animation';
 
@@ -33,7 +33,7 @@ const Userpage = () => {
   };
 
   useEffect(() => {
-    AOS.init({duration: 2000})
+    AOS.init({ duration: 2000 });
   }, []);
   return (
     <>
@@ -48,88 +48,101 @@ const Userpage = () => {
       <section>
         <NavbarHeader />
       </section>
-      <br />
-      <section className="dialog__section" data-aos='fade'>
-        <UncontrolledExample />
-      </section>
-      <br />
-      <div className="custom_text">
-        <TypeAnimation
-          sequence={['NEW', 100]}
-          wrapper="span"
-          speed={50}
-          style={{
-            fontSize: '2em',
-            display: 'inline-block',
-            fontFamily: 'ChakraPetchBold',
-          }}
-          repeat={Infinity}
-        />
-      </div>
-      <br />
-      <section className="grid__section" data-aos='fade-up'>
-        <BasicGrid />
-      </section>
-      <br />
-      <div className="custom_text">
-        <TypeAnimation
-          sequence={['GROOMING', 100]}
-          wrapper="span"
-          speed={50}
-          style={{
-            fontSize: '2em',
-            display: 'inline-block',
-            fontFamily: 'ChakraPetchBold',
-          }}
-          repeat={Infinity}
-        />
-      </div>
-      <br />
-      <section className="grooming__section" data-aos='fade-left'>
-        <GroomingComponent />
-      </section>
-      <br />
-      <div className="custom_text">
-        <TypeAnimation
-          sequence={['CATHOTEL', 100]}
-          wrapper="span"
-          speed={50}
-          style={{
-            fontSize: '2em',
-            display: 'inline-block',
-            fontFamily: 'ChakraPetchBold',
-          }}
-          repeat={Infinity}
-        />
-      </div>
-      <br />
-      <section className="hotelcat__section" data-aos='fade-right'>
-        <Hotelcat />
-      </section>
-      <br />
-      <div className="custom_text">
-        <TypeAnimation
-          sequence={['GALLERY', 100]}
-          wrapper="span"
-          speed={50}
-          style={{
-            fontSize: '2em',
-            display: 'inline-block',
-            fontFamily: 'ChakraPetchBold',
-          }}
-          repeat={Infinity}
-        />
-      </div>
-      <br />
-      <section className="gallery__section" data-aos='zoom-in'>
-        <Gallr />
-      </section>
-      <br />
-      <section data-aos='fade-up'>
-        <ContactSelection />
-      </section>
-      <FloatButton.BackTop tooltip={<div>Back to top</div>} type="primary"  />
-      <Footer/>
+      <motion.div
+        initial={{ opacity: 0, x: 100 }} // Initial animation state
+        animate={{ opacity: 1, x: 0 }} // Animation when a new page enters
+        exit={{ opacity: 0, x: -100 }} // Animation when a page exits
+        transition={{ duration: 0.5 }} // Animation duration
+      >
+        <br />
+        <section className="dialog__section" data-aos="fade">
+          <UncontrolledExample />
+        </section>
+        <br />
+        <div className="custom_text">
+          <TypeAnimation
+            sequence={['NEW', 100]}
+            wrapper="span"
+            speed={50}
+            style={{
+              fontSize: '2em',
+              display: 'inline-block',
+              fontFamily: 'ChakraPetchBold',
+            }}
+            repeat={Infinity}
+          />
+        </div>
+        <br />
+        <section className="grid__section" data-aos="fade-up">
+          <BasicGrid />
+        </section>
+        <br />
+        <div className="custom_text">
+          <TypeAnimation
+            sequence={['GROOMING', 100]}
+            wrapper="span"
+            speed={50}
+            style={{
+              fontSize: '2em',
+              display: 'inline-block',
+              fontFamily: 'ChakraPetchBold',
+            }}
+            repeat={Infinity}
+          />
+        </div>
+        <br />
+        <section className="grooming__section" data-aos="fade-left">
+          <GroomingComponent />
+        </section>
+        <br />
+        <div className="custom_text">
+          <TypeAnimation
+            sequence={['CATHOTEL', 100]}
+            wrapper="span"
+            speed={50}
+            style={{
+              fontSize: '2em',
+              display: 'inline-block',
+              fontFamily: 'ChakraPetchBold',
+            }}
+            repeat={Infinity}
+          />
+        </div>
+        <br />
+        <section className="hotelcat__section" data-aos="fade-right">
+          <Hotelcat />
+        </section>
+        <br />
+        <div className="custom_text">
+          <TypeAnimation
+            sequence={['GALLERY', 100]}
+            wrapper="span"
+            speed={50}
+            style={{
+              fontSize: '2em',
+              display: 'inline-block',
+              fontFamily: 'ChakraPetchBold',
+            }}
+            repeat={Infinity}
+          />
+        </div>
+        <br />
+        <section className="gallery__section" data-aos="zoom-in">
+          <Gallr />
+        </section>
+        <br />
+        <section data-aos="fade-up">
+          <ContactSelection />
+        </section>
+        <section>
+          <FloatButton.BackTop
+            tooltip={<div>Back to top</div>}
+            type="primary"
+          />
+        </section>
+
+        <Footer />
+      </motion.div>
     </>
   );
 };

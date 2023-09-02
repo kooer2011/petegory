@@ -3,9 +3,9 @@ import './styles/Hotel.css';
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import axios from 'axios';
-import AOS from 'aos'
-import 'aos/dist/aos.css'
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { motion, useScroll } from 'framer-motion';
 const StyledGrooming = styled('div')(({ theme }) => ({
   marginTop: theme.spacing(7), // Adjust the margin as needed
 }));
@@ -31,7 +31,7 @@ function HoTel() {
 
   useEffect(() => {
     getDetails();
-    AOS.init({duration: 2000})
+    AOS.init({ duration: 2000 });
   }, []);
 
   // useEffect(() => {
@@ -39,12 +39,16 @@ function HoTel() {
   // }, []);
 
   return (
-    <>
-      <div className="txtHead" data-aos='fade-up'>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <div className="txtHead" data-aos="fade-up">
         <h1>CAT HOTEL</h1>
       </div>
       <section className="info">
-        <div className="fs-5 p-4" data-aos='fade-up'>
+        <div className="fs-5 p-4" data-aos="fade-up">
           <h2>เงื่อนไขการเข้าใช้บริการ</h2>
           <p className="d-flex justify-content-center">
             1.น้องแมวต้องมีอายุ 4
@@ -60,7 +64,7 @@ function HoTel() {
         </div>
 
         {details.map((data, i) => (
-          <div className="about container" data-aos='zoom-in'>
+          <div className="about container" data-aos="zoom-in">
             <div className="row justify-content-center">
               <div className="col-sm-5">
                 <img
@@ -96,7 +100,7 @@ function HoTel() {
             </div>
           </div>
         ))}
-        <div className="alert p-5" data-aos='fade-up'>
+        <div className="alert p-5" data-aos="fade-up">
           <div className="text-danger fs-4 ">
             <span className="head__alert fw-bold fs-1">*โปรดอ่าน*</span>
             <br />
@@ -112,7 +116,7 @@ function HoTel() {
           </div>
         </div>
       </section>
-    </>
+    </motion.div>
   );
 }
 

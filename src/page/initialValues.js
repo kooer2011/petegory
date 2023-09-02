@@ -36,10 +36,14 @@ export const initialValues = {
   date: {
     value: '',
     error: '',
+    validate: 'date',
+    required: true,
   },
   time: {
     value: '',
     error: '',
+    validate: 'time',
+    required: true,
   },
   grooming: {
     value: [],

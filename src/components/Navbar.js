@@ -19,7 +19,7 @@ import { setUser } from '../redux/features/userSlice';
 import PetsIcon from '@mui/icons-material/Pets';
 import { Button, Stack } from '@mui/material';
 // const { setUser } = userSlice.actions;
-
+import { AnimatePresence } from 'framer-motion';
 function NavbarHeader() {
   const { user } = useSelector(state => state.user);
   const [anchorElNav, setAnchorElNav] = React.useState(null);

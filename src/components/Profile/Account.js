@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from "react";
-import "./style/Account.css";
-import { message } from "antd";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import './style/Account.css';
+import { message } from 'antd';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Account = () => {
   const [user, setUser] = useState(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const getUser = async () => {
     try {
-      const res = await axios.get("/api/v1/user/getUserProfile", {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      const res = await axios.get('/api/v1/user/getUserProfile', {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       if (res.data.success) {
         setUser(res.data.data);
       }
     } catch (error) {
       console.log(error);
-      message.error("error get user detail");
+      message.error('error get user detail');
     }
   };
 
@@ -27,15 +27,21 @@ const Account = () => {
   }, []);
 
   const edit = () => {
-    navigate('/profile/accountSetting')
-  }
+    navigate('/profile/accountSetting');
+  };
+
+  const linkStyle = {
+    fontFamily: 'CaveatVarialbleFont',
+  };
 
   return (
     <div className="d-flex flex-column align-items-center">
       {user ? (
         <div>
-          <h2 className="text-center text-black mb-4">Personal Profile</h2>
-          <div className="userProfile">
+          <h2 style={linkStyle} className="text-center text-black mb-4">
+            Personal Profile
+          </h2>
+          <div style={linkStyle} className="userProfile">
             <div className="mb-3">
               <p className="text-black fs-5 fw-bold">
                 Name: <span className="text-info">{user.name}</span>

@@ -48,7 +48,7 @@ function HoTel() {
         <h1>CAT HOTEL</h1>
       </div>
       <section className="info">
-        <div className="fs-5 p-4" data-aos="fade-up">
+        <div className=" fs-5 p-4" data-aos="fade-up">
           <h2>เงื่อนไขการเข้าใช้บริการ</h2>
           <p className="d-flex justify-content-center">
             1.น้องแมวต้องมีอายุ 4

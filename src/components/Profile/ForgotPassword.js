@@ -1,48 +1,50 @@
-import React, {useEffect} from "react";
-import axios from "axios";
-import { message, Form, Input, Typography } from "antd";
-import "./style/ForgotPassword.css";
-import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
-import AOS from 'aos'
+import React, { useEffect } from 'react';
+import axios from 'axios';
+import { message, Form, Input, Typography } from 'antd';
+import './style/ForgotPassword.css';
+import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import AOS from 'aos';
 
 const ForgotPassword = () => {
-  const finishHandle = async (values) => {
+  const finishHandle = async values => {
     try {
-      const res = await axios.post("/api/v1/user/forgotPassword", values);
+      const res = await axios.post('/api/v1/user/forgotPassword', values);
       if (res.data.success) {
         Swal.fire({
           position: 'center',
           icon: 'success',
           title: 'Check Your Email',
           showConfirmButton: false,
-          timer: 2000
-        })
+          timer: 2000,
+        });
       } else {
         message.error(res.data.message);
       }
     } catch (error) {
       console.log(error);
-      message.error("Send Email Error");
+      message.error('Send Email Error');
     }
   };
 
   useEffect(() => {
-    AOS.init({duration: 1500})
+    AOS.init({ duration: 1500 });
   }, []);
-
+  const linkStyle = {
+    fontFamily: 'CaveatVarialbleFont',
+  };
   return (
     <>
-      <div className="forgot">
-        <Form className="Form" onFinish={finishHandle} data-aos='fade'>
+      <div style={linkStyle} className="forgot">
+        <Form className="Form" onFinish={finishHandle} data-aos="fade">
           <Typography.Title>Forgot Password</Typography.Title>
           <Form.Item
             name="email"
             rules={[
               {
                 required: true,
-                type: "email",
-                message: "Please enter valid email",
+                type: 'email',
+                message: 'Please enter valid email',
               },
             ]}
           >

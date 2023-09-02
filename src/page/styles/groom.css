@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'CaveatVarialbleFont';
+  src: local('CaveatVarialbleFont'),
+    url('../../fonts/Caveat-VariableFont_wght.ttf') format('ttf');
+}
+.header__groom {
+  font-family: CaveatVarialbleFont;
+}
+.formGrooming {
+  height: 100vh;
+  background-image: url('https://i.pinimg.com/564x/5b/57/eb/5b57eb63b892e50231b9ecc6f54dd7e5.jpg'); /* Replace 'your-image-url.jpg' with the path to your background image */
+  background-size: cover; /* Ensures the image covers the entire element */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+@media (max-width: 768px) {
+  .formGrooming {
+    background-size: contain; /* Change to 'contain' to fit the image within the element */
+    /* You can further customize the background properties for smaller screens */
+  }
+  .groomCon {
+    background-size: contain;
+  }
+}
+.groomCon {
+  height: 100vh;
+  background-image: url('https://c4.wallpaperflare.com/wallpaper/938/503/588/anime-manga-minimalism-simple-background-wallpaper-preview.jpg'); /* Replace 'your-image-url.jpg' with the path to your background image */
+  background-size: cover; /* Ensures the image covers the entire element */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+}

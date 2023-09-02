@@ -9,7 +9,7 @@ const CreateNews = () => {
   const [data, setData] = useState({
     image: '',
   });
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     try {
       e.preventDefault();
       const formData = new FormData();

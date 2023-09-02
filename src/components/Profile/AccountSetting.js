@@ -1,31 +1,35 @@
-import React from "react";
-import "./style/AccountSetting.css";
-import { Col, Form, Input, message } from "antd";
-import { useSelector } from "react-redux";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import './style/AccountSetting.css';
+import { Col, Form, Input, message } from 'antd';
+import { useSelector } from 'react-redux';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const AccountSetting = () => {
-  const { user } = useSelector((state) => state.user);
-  const navigate = useNavigate()
+  const { user } = useSelector(state => state.user);
+  const navigate = useNavigate();
 
-  const onSubmit = async (values) => {
+  const onSubmit = async values => {
     try {
-      const res = await axios.post("/api/v1/user/editUser", values, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      const res = await axios.post('/api/v1/user/editUser', values, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       if (res.data.success) {
         message.success(res.data.message);
-        navigate('/profile/account')
+        navigate('/profile/account');
       }
     } catch (error) {
       console.log(error);
-      message.error("error update");
+      message.error('error update');
     }
   };
 
+  const linkStyle = {
+    fontFamily: 'CaveatVarialbleFont',
+  };
+
   return (
-    <div className="account">
+    <div style={linkStyle} className="account">
       <h2>{user?.name}</h2>
       <Form layout="vertical" className="form" onFinish={onSubmit}>
         <Col

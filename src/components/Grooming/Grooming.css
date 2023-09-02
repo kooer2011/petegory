@@ -1,5 +1,5 @@
 .grroming__imgs {
-  margin-top: 4px;
+  margin: 5px;
 }
 .grroming__imgs:hover {
   transform: scale(1.5); /* Increase size on hover */

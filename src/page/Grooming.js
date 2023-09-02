@@ -11,6 +11,7 @@ import Button from '@mui/material/Button';
 import NavbarHeader from '../components/Navbar';
 import GroomingComponent from '../components/Grooming/GroomingComponent';
 import Footer from '../components/Footer/Footer';
+import './styles/groom.css';
 import Typography from '@mui/material/Typography';
 import { motion, useScroll } from 'framer-motion';
 const StyledGrooming = styled('div')(({ theme }) => ({
@@ -19,7 +20,7 @@ const StyledGrooming = styled('div')(({ theme }) => ({
 
 export default function Grooming() {
   return (
-    <>
+    <div className="groomCon">
       <NavbarHeader />
       <br />
       <motion.div
@@ -29,12 +30,13 @@ export default function Grooming() {
         transition={{ duration: 0.5 }} // Animation duration
       >
         <Typography variant="outlined" align="center">
-          <h3>GROOMING</h3>
+          <h2 className="header__groom">GROOMING</h2>
         </Typography>
+        <hr className="t_border my-4 ml-0 text-left" />
         <GroomingComponent />
 
         <Footer />
       </motion.div>
-    </>
+    </div>
   );
 }

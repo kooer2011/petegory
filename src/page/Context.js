@@ -1,5 +1,12 @@
-import React, { createContext, useCallback, useMemo, useReducer } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useMemo,
+  useReducer,
+  useState,
+} from 'react';
 import { initialValues } from './initialValues';
+import moment from 'moment';
 
 const isText = /^[A-Z ]+$/i;
 const pattern = /^\d{4}-\d{2}-\d{2}$/;
@@ -82,6 +89,13 @@ export function StepsProvider({ children }) {
 
     const fieldName = initialValues[name];
     if (!fieldName) return;
+
+    // if (name === 'date' && fieldValue) {
+    //   const formattedDate = moment(fieldValue).format('MM-DD-YYYY');
+    //   dispatch({ type: 'form-value', name, fieldValue: formattedDate });
+    // } else {
+    //   dispatch({ type: 'form-value', name, fieldValue });
+    // }
 
     const { required, validate, minLength, maxLength, helperText } = fieldName;
 

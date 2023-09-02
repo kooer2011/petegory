@@ -20,11 +20,6 @@ import PetsIcon from '@mui/icons-material/Pets';
 import { Button, Stack } from '@mui/material';
 // const { setUser } = userSlice.actions;
 
-
-
-
-
-
 import { AnimatePresence } from 'framer-motion';
 function NavbarHeader() {
   const { user } = useSelector(state => state.user);
@@ -78,7 +73,6 @@ function NavbarHeader() {
     };
   }, []);
 
-
   const linkStyle = {
     textDecoration: 'none', // Remove underline
     color: 'black', // Set text color
@@ -92,13 +86,9 @@ function NavbarHeader() {
     fontFamily: 'CaveatVarialbleFont',
   };
 
-
-
-
-
   return (
     <AppBar
-      position="sticky"
+      position="static"
       sx={{
         background: 'white',
         color: 'black',
@@ -122,12 +112,11 @@ function NavbarHeader() {
           >
             <MenuIcon />
           </IconButton>
-         
+
           <Typography
             variant="h6"
             noWrap
             component="a"
-            
             sx={{
               flexGrow: 1,
               fontFamily: 'CaveatVarialbleFont',
@@ -138,13 +127,10 @@ function NavbarHeader() {
             }}
           >
             <Link style={linkStyle} to="/">
-            PETEGORY
+              PETEGORY
             </Link>
-            
           </Typography>
-          
-          
-          
+
           <Box
             sx={{
               display: {
@@ -157,63 +143,42 @@ function NavbarHeader() {
               },
             }}
           >
-            <Button  sx={{ mx: 2, color: 'black' }} color="inherit">
-            <Link style={linkStyle} to="/">
-            HOME
-            </Link>
+            <Button sx={{ mx: 2, color: 'black' }} color="inherit">
+              <Link style={linkStyle} to="/">
+                HOME
+              </Link>
             </Button>
-            <Button
-            
-              sx={{ mx: 2, color: 'black' }}
-              color="inherit"
-            >
+            <Button sx={{ mx: 2, color: 'black' }} color="inherit">
               <Link style={linkStyle} to="/grooming">
-            GROOMING
-            </Link>
-             
+                GROOMING
+              </Link>
             </Button>
-            <Button
-             
-              sx={{ mx: 2, color: 'black' }}
-              color="inherit"
-            >
-           <Link style={linkStyle} to="/hotel">
-            HOTEL
-            </Link>
-              
+            <Button sx={{ mx: 2, color: 'black' }} color="inherit">
+              <Link style={linkStyle} to="/hotel">
+                HOTEL
+              </Link>
             </Button>
-            <Button
-             
-              sx={{ mx: 2, color: 'black' }}
-              color="inherit"
-            >
-               <Link style={linkStyle} to="/contact">
-            CONTACT
-            </Link>
+            <Button sx={{ mx: 2, color: 'black' }} color="inherit">
+              <Link style={linkStyle} to="/contact">
+                CONTACT
+              </Link>
             </Button>
-            <Button
-             
-              sx={{ mx: 2, color: 'black' }}
-              color="inherit"
-            >
+            <Button sx={{ mx: 2, color: 'black' }} color="inherit">
               <Link style={linkStyle} to="/gallery">
-              GALLERY
-            </Link>
-             
+                GALLERY
+              </Link>
             </Button>
             {user ? (
-              <Button  className="profile">
-                 <Link style={link} to="/profile/account">
-                 {user.name}
-            </Link>
-                
+              <Button className="profile">
+                <Link style={link} to="/profile/account">
+                  {user.name}
+                </Link>
               </Button>
             ) : (
-              <Button className="link-hover signin" >
-                 <Link style={link} to="/login">
-                 LOGIN
-            </Link>
-                
+              <Button className="link-hover signin">
+                <Link style={link} to="/login">
+                  LOGIN
+                </Link>
               </Button>
             )}
           </Box>
@@ -234,7 +199,6 @@ function NavbarHeader() {
             onClose={handleCloseNavMenu}
           >
             <MenuItem
-             
               onClick={handleCloseNavMenu}
               component="a"
               sx={{
@@ -242,23 +206,21 @@ function NavbarHeader() {
               }}
             >
               <Link style={linkStyle} to="/">
-            HOME
-            </Link>
+                HOME
+              </Link>
             </MenuItem>
             <MenuItem
-              
               onClick={handleCloseNavMenu}
               component="a"
               sx={{
                 fontFamily: 'ChakraPetchBold', // Add fontFamily style here
               }}
             >
-                <Link style={linkStyle} to="/grooming">
-            GROOMING
-            </Link>
+              <Link style={linkStyle} to="/grooming">
+                GROOMING
+              </Link>
             </MenuItem>
             <MenuItem
-              
               onClick={handleCloseNavMenu}
               component="a"
               sx={{
@@ -266,32 +228,30 @@ function NavbarHeader() {
               }}
             >
               <Link style={linkStyle} to="/hotel">
-            HOTEL
-            </Link>
+                HOTEL
+              </Link>
             </MenuItem>
             <MenuItem
-              
               onClick={handleCloseNavMenu}
               component="a"
               sx={{
                 fontFamily: 'ChakraPetchBold', // Add fontFamily style here
               }}
             >
-                   <Link style={linkStyle} to="/contact">
-            CONTACT
-            </Link>
+              <Link style={linkStyle} to="/contact">
+                CONTACT
+              </Link>
             </MenuItem>
             <MenuItem
-              
               onClick={handleCloseNavMenu}
               component="a"
               sx={{
                 fontFamily: 'ChakraPetchBold', // Add fontFamily style here
               }}
             >
-                <Link style={linkStyle} to="/gallery">
-              GALLERY
-            </Link>
+              <Link style={linkStyle} to="/gallery">
+                GALLERY
+              </Link>
             </MenuItem>
             <MenuItem
               sx={{
@@ -299,24 +259,22 @@ function NavbarHeader() {
               }}
             >
               {user ? (
-                <Button  className="profile">
-                 <Link style={linkStyle} to="/profile/account">
-                 {user.name}
-                 </Link>
+                <Button className="profile">
+                  <Link style={link} to="/profile/account">
+                    {user.name}
+                  </Link>
                 </Button>
               ) : (
-                <Button className="link-hover signin" >
-                 <Link style={linkStyle} to="/login">
-                 LOGIN
-                 </Link>
+                <Button className="link-hover signin">
+                  <Link style={link} to="/login">
+                    LOGIN
+                  </Link>
                 </Button>
               )}
             </MenuItem>
           </Menu>
         </Toolbar>
       </Container>
-
-
     </AppBar>
   );
 }

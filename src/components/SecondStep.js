@@ -48,6 +48,7 @@ function getStyles(name, personName, theme) {
 function SecondStep() {
   const [isValid, setIsValid] = useState(true);
   const [personName, setPersonName] = React.useState([]);
+
   const theme = useTheme();
   const { formValues, handleChange, handleBack, handleNext, variant, margin } =
     useContext(AppContext);
@@ -150,7 +151,7 @@ function SecondStep() {
             label="Date of book"
             name="date"
             type="date"
-            // defaultValue={date.value}
+            defaultValue={date.value}
             value={date.value}
             onChange={handleChange}
             required={date.required}

@@ -4,11 +4,11 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Typography from '@mui/material/Typography';
-import FirstStep from './FirstStep'
-import SecondStep from './SecondStep'
-import Success from './Success'
-import Confirm from './Confirm'
-import {AppContext} from '../page/Context'
+import FirstStep from './FirstStep';
+import SecondStep from './SecondStep';
+import Success from './Success';
+import Confirm from './Confirm';
+import { AppContext } from '../page/Context';
 
 // Step titles
 const labels = ['First Step', 'Second Step', 'Confirmation'];
@@ -25,7 +25,7 @@ const handleSteps = (step: number) => {
       throw new Error('Unknown step');
   }
 };
- function StepForm() {
+function StepForm() {
   const { activeStep } = useContext(AppContext);
 
   return (
@@ -34,15 +34,7 @@ const handleSteps = (step: number) => {
         <Success />
       ) : (
         <>
-          <Box sx={{ my: 5 }}>
-            {/* <Typography variant="h4" align="center">
-              Multi Step Form
-            </Typography> */}
-            {/* <Typography variant="subtitle2" align="center" sx={{ mt: 2 }}>
-              React Material UI multi step form with basic form validation
-              logic.
-            </Typography> */}
-          </Box>
+          <Box sx={{ my: 5 }}></Box>
           <Stepper activeStep={activeStep} sx={{ py: 3 }} alternativeLabel>
             {labels.map(label => (
               <Step key={label}>
@@ -57,4 +49,4 @@ const handleSteps = (step: number) => {
     </>
   );
 }
-export default StepForm
+export default StepForm;

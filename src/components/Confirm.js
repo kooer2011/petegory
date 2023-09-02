@@ -1,15 +1,15 @@
-import React, { useContext, useState } from "react";
-import Box from "@mui/material/Box";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import Divider from "@mui/material/Divider";
-import { AppContext } from "../page/Context";
-import Button from "@mui/material/Button";
-import axios from "axios";
-import { message } from "antd";
-import { useNavigate } from "react-router-dom";
-
+import React, { useContext, useState } from 'react';
+import Box from '@mui/material/Box';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import Divider from '@mui/material/Divider';
+import { AppContext } from '../page/Context';
+import Button from '@mui/material/Button';
+import axios from 'axios';
+import { message } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import { format } from 'date-fns';
 export default function Confirm() {
   const navigate = useNavigate();
   const { formValues, handleBack, handleNext } = useContext(AppContext);
@@ -29,13 +29,13 @@ export default function Confirm() {
 
   const isTimeBooking = async (time, date) => {
     try {
-      const response = await axios.get("/api/v1/user/isTimeBooked", {
+      const response = await axios.get('/api/v1/user/isTimeBooked', {
         params: {
           time,
           date,
         },
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
 
@@ -50,7 +50,7 @@ export default function Confirm() {
     // Remove unwanted properties from formValue object
     let form = {};
 
-    Object.keys(formValues).map((name) => {
+    Object.keys(formValues).map(name => {
       form = {
         ...form,
         [name]: formValues[name].value,
@@ -61,24 +61,28 @@ export default function Confirm() {
     const isTimeAlreadyBooked = await isTimeBooking(time.value, date.value);
 
     if (isTimeAlreadyBooked) {
-      message.error("This time is already booked.");
+      message.error('This time is already booked.');
       return;
     }
 
     try {
-      const res = await axios.post("/api/v1/user/bookGrooming", form, {
+      const res = await axios.post('/api/v1/user/bookGrooming', form, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
 
       //api google sheet
-      await axios.post("https://sheet.best/api/sheets/045a6e1f-dd99-49d1-9afb-4159a0084ecc",form);
+      await axios.post(
+        'https://sheet.best/api/sheets/045a6e1f-dd99-49d1-9afb-4159a0084ecc',
+        form
+      );
 
       if (res.data.success) {
         message.success(res.data.message);
         handleNext();
-        navigate("/grooming");
+        navigate('/grooming');
+        window.scrollTo(0, 0);
       } else {
         message.error(res.data.message);
       }
@@ -93,7 +97,7 @@ export default function Confirm() {
         <ListItem>
           <ListItemText
             primary="Pet Name"
-            secondary={PetName.value || "Not Provided"}
+            secondary={PetName.value || 'Not Provided'}
           />
         </ListItem>
 
@@ -102,7 +106,7 @@ export default function Confirm() {
         <ListItem>
           <ListItemText
             primary="Name"
-            secondary={Name.value || "Not Provided"}
+            secondary={Name.value || 'Not Provided'}
           />
         </ListItem>
 
@@ -111,7 +115,7 @@ export default function Confirm() {
         <ListItem>
           <ListItemText
             primary="Breed Pet"
-            secondary={breed.value || "Not Provided"}
+            secondary={breed.value || 'Not Provided'}
           />
         </ListItem>
 
@@ -120,7 +124,7 @@ export default function Confirm() {
         <ListItem>
           <ListItemText
             primary="Pet type"
-            secondary={pet_type.value || "Not Provided"}
+            secondary={pet_type.value || 'Not Provided'}
           />
         </ListItem>
 
@@ -129,11 +133,11 @@ export default function Confirm() {
         <ListItem>
           <ListItemText
             primary="Date of book"
-            secondary={date.value || "Not Provided"}
+            secondary={date.value || 'Not Provided'}
           />
           <ListItemText
             primary="Time of book"
-            secondary={time.value || "Not Provided"}
+            secondary={time.value || 'Not Provided'}
           />
         </ListItem>
 
@@ -142,14 +146,14 @@ export default function Confirm() {
         <ListItem>
           <ListItemText
             primary="Grooming"
-            secondary={grooming.value + "" || "Not Provided"}
+            secondary={grooming.value + '' || 'Not Provided'}
           />
         </ListItem>
 
         <ListItem>
           <ListItemText
             primary="Add on"
-            secondary={addon.value + "" || "Not Provided"}
+            secondary={addon.value + '' || 'Not Provided'}
           />
         </ListItem>
 
@@ -158,18 +162,18 @@ export default function Confirm() {
         <ListItem>
           <ListItemText
             primary="phone"
-            secondary={phone.value || "Not Provided"}
+            secondary={phone.value || 'Not Provided'}
           />
         </ListItem>
         <ListItem>
           <ListItemText
             primary="ID LINE"
-            secondary={idline.value || "Not Provided"}
+            secondary={idline.value || 'Not Provided'}
           />
         </ListItem>
       </List>
 
-      <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 3 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 3 }}>
         <Button sx={{ mr: 1 }} onClick={handleBack}>
           Back
         </Button>

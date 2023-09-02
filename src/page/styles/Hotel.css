@@ -1,16 +1,30 @@
+@font-face {
+  font-family: 'MamuBold';
+  src: local('MamuBold'), url('../../fonts/MamuBold.ttf') format('ttf');
+}
+.info {
+  font-family: MamuBold;
+}
+.txtHead {
+  font-family: MamuBold;
+}
+
 .about {
+  font-family: MamuBold;
   margin: 30px auto;
   padding: 20px;
   background: #eeeeeeab;
   border-radius: 30px;
 }
 .about img {
+  font-family: MamuBold;
   height: 100%;
   width: 100%;
   object-fit: cover;
   /* margin-top: -150px; */
 }
 h1 {
+  font-family: MamuBold;
   font-weight: bold;
   text-align: center;
 }

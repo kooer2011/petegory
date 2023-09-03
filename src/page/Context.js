@@ -84,18 +84,11 @@ export function StepsProvider({ children }) {
   const handleChange = useCallback((event, checked) => {
     const { type, name, value } = event.target;
     const fieldValue = type === 'checkbox' ? checked : value;
-
     dispatch({ type: 'form-value', name, fieldValue });
+
 
     const fieldName = initialValues[name];
     if (!fieldName) return;
-
-    // if (name === 'date' && fieldValue) {
-    //   const formattedDate = moment(fieldValue).format('MM-DD-YYYY');
-    //   dispatch({ type: 'form-value', name, fieldValue: formattedDate });
-    // } else {
-    //   dispatch({ type: 'form-value', name, fieldValue });
-    // }
 
     const { required, validate, minLength, maxLength, helperText } = fieldName;
 

@@ -1,19 +1,20 @@
-import React, { useCallback, useContext, useState, useEffect } from 'react';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormHelperText from '@mui/material/FormHelperText';
-import Checkbox from '@mui/material/Checkbox';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { AppContext } from '../page/Context';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import { useTheme } from '@mui/material/styles';
-import Chip from '@mui/material/Chip';
-import MenuItem from '@mui/material/MenuItem';
-import { DatePicker } from 'antd';
-import { Typography } from '@mui/material';
+import React, { useCallback, useContext, useState, useEffect } from "react";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormHelperText from "@mui/material/FormHelperText";
+import Checkbox from "@mui/material/Checkbox";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { AppContext } from "../page/Context";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import { useTheme } from "@mui/material/styles";
+import Chip from "@mui/material/Chip";
+import MenuItem from "@mui/material/MenuItem";
+import { DatePicker } from "antd";
+import { FormControl, InputLabel, Typography } from "@mui/material";
+import axios from "axios";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -27,14 +28,29 @@ const MenuProps = {
 };
 
 const names = [
-  'ตัดเล็บ+ตะไบเล็บ',
-  'เช็ดหู',
-  'ฟอกน้ำยา Malaceb เชื้อรา',
-  'ฟอกน้ำยา Hexine ลดแบคทีเรีย',
-  'แปรงฟัน',
+  "ตัดเล็บ+ตะไบเล็บ",
+  "เช็ดหู",
+  "ฟอกน้ำยา Malaceb เชื้อรา",
+  "ฟอกน้ำยา Hexine ลดแบคทีเรีย",
+  "แปรงฟัน",
 ];
 
-const groomdetail = ['อาบน้ำ', 'ตัดขน'];
+const timeSlots = [
+  "09:00",
+  "10:00",
+  "11:00",
+  "12:00",
+  "13:00",
+  "14:00",
+  "15:00",
+  "16:00",
+  "17:00",
+  "18:00",
+  "19:00",
+  "20:00",
+];
+
+const groomdetail = ["อาบน้ำ", "ตัดขน"];
 
 function getStyles(name, personName, theme) {
   return {
@@ -48,11 +64,13 @@ function getStyles(name, personName, theme) {
 function SecondStep() {
   const [isValid, setIsValid] = useState(true);
   const [personName, setPersonName] = React.useState([]);
-
+  const [availableTimeSlots, setAvailableTimeSlots] = useState([]);
+  const [selectedTimeSlot, setSelectedTimeSlot] = useState("");
   const theme = useTheme();
   const { formValues, handleChange, handleBack, handleNext, variant, margin } =
     useContext(AppContext);
-  const { addon, date, time, phone, agreenemt, grooming, idline } = formValues;
+  const { addon, date, phone, agreenemt, grooming, idline } = formValues;
+  const time = formValues.time || { value: "", required: true };
 
   const isError = useCallback(
     () =>
@@ -65,24 +83,62 @@ function SecondStep() {
         grooming,
         idline,
       }).some(
-        name =>
+        (name) =>
           (formValues[name].required && !formValues[name].value) ||
           formValues[name].error
       ),
     [formValues, addon, date, time, phone, agreenemt, grooming, idline]
   );
 
+  const isTimeBooking = async (date, time) => {
+    try {
+      const response = await axios.get("/api/v1/user/isTimeBooked", {
+        params: {
+          date,
+          time,
+        },
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      return response.data.isBooked || [];
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  };
+
+  const updateRoomOptions = async () => {
+    if (date && date.value) {
+      const bookedTimes = await isTimeBooking(date.value, selectedTimeSlot);
+      
+      if (Array.isArray(bookedTimes)) {
+        const updatedOptions = timeSlots.map((slot) => ({
+          value: slot,
+          disabled: bookedTimes.includes(slot),
+        }));
+        setAvailableTimeSlots(updatedOptions);
+      } else {
+        console.error('bookedTimes is not an array:', bookedTimes);
+      }
+    }
+  };
+
   useEffect(() => {
     // ตรวจสอบว่า grooming ไม่เป็น empty array
-    const groomingIsValid = grooming.value.length > 0;
+    const groomingIsValid =
+      grooming.value.length > 0 || selectedTimeSlot !== "";
     setIsValid(groomingIsValid);
-  }, [grooming]);
+
+    // updateRoomOptions();
+  }, [grooming, selectedTimeSlot, date]);
 
   return (
     <>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Typography variant="h7" style={{ color: 'rgba(0, 0, 0, 0.5)' }}>
+          <Typography variant="h7" style={{ color: "rgba(0, 0, 0, 0.5)" }}>
             บริการหลัก
           </Typography>
           <Select
@@ -102,7 +158,7 @@ function SecondStep() {
             <MenuItem value="" disabled>
               <em>โปรดเลือกข้อมูล</em>
             </MenuItem>
-            {groomdetail.map(groom => (
+            {groomdetail.map((groom) => (
               <MenuItem
                 key={groom}
                 value={groom}
@@ -114,7 +170,7 @@ function SecondStep() {
           </Select>
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="h7" style={{ color: 'rgba(0, 0, 0, 0.5)' }}>
+          <Typography variant="h7" style={{ color: "rgba(0, 0, 0, 0.5)" }}>
             บริการเสริม
           </Typography>
           <Select
@@ -129,7 +185,7 @@ function SecondStep() {
             input={<OutlinedInput label="Name" />}
             MenuProps={MenuProps}
           >
-            {names.map(name => (
+            {names.map((name) => (
               <MenuItem
                 key={name}
                 value={name}
@@ -156,7 +212,7 @@ function SecondStep() {
             onChange={handleChange}
             required={date.required}
           />
-          <TextField
+          {/* <TextField
             variant={variant}
             margin={margin}
             fullWidth
@@ -166,11 +222,36 @@ function SecondStep() {
             label="Time of book"
             name="time"
             type="time"
-            // defaultValue={time.value}
             value={time.value}
             onChange={handleChange}
             required={time.required}
-          />
+          /> */}
+          <FormControl variant={variant} fullWidth required={time.required}>
+            <InputLabel>Time of book</InputLabel>
+            <Select
+              name="time"
+              value={time.value}
+              // value={selectedTimeSlot}
+              onChange={handleChange}
+              // onChange={(event) => setSelectedTimeSlot(event.target.value)}
+              input={<OutlinedInput label="Time of book" />}
+            >
+              {timeSlots.map((slot) => (
+                <MenuItem key={slot} value={slot} disabled={slot.disabled}>
+                  {slot}
+                </MenuItem>
+              ))}
+              {/* {availableTimeSlots.map((slot) => (
+                <MenuItem
+                  key={slot.value}
+                  value={slot.value}
+                  disabled={slot.disabled}
+                >
+                  {slot.value}
+                </MenuItem>
+              ))} */}
+            </Select>
+          </FormControl>
         </Grid>
         <Grid item xs={12}>
           <TextField
@@ -221,7 +302,7 @@ function SecondStep() {
         </Grid>
       </Grid>
 
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 3 }}>
+      <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 3 }}>
         <Button onClick={handleBack} sx={{ mr: 1 }}>
           Back
         </Button>

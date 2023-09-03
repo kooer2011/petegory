@@ -83,7 +83,7 @@ const BookingHotel = () => {
     }
   };
 
-  const handleSubmit = async values => {
+  const handleSubmit = async (values) => {
     try {
       dispatch(showLoading());
       // ตรวจสอบว่าผู้ใช้ได้ทำการเลือก Room Type และ Room Number แล้ว

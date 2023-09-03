@@ -35,19 +35,20 @@ const names = [
   "แปรงฟัน",
 ];
 
-const timeSlots = [
-  "09:00",
-  "10:00",
-  "11:00",
-  "12:00",
-  "13:00",
-  "14:00",
-  "15:00",
-  "16:00",
-  "17:00",
-  "18:00",
-  "19:00",
-  "20:00",
+const timeSlotsOption = [
+  {value:"09:00",lebel:"09:00"},
+  {value:"10:00",lebel:"10:00"},
+  {value:"11:00",lebel:"11:00"},
+  {value:"12:00",lebel:"12:00"},
+  {value:"13:00",lebel:"13:00"},
+  {value:"14:00",lebel:"14:00"},
+  {value:"15:00",lebel:"15:00"},
+  {value:"16:00",lebel:"16:00"},
+  {value:"17:00",lebel:"17:00"},
+  {value:"18:00",lebel:"18:00"},
+  {value:"19:00",lebel:"19:00"},
+  {value:"20:00",lebel:"20:00"},
+
 ];
 
 const groomdetail = ["อาบน้ำ", "ตัดขน"];
@@ -63,14 +64,15 @@ function getStyles(name, personName, theme) {
 
 function SecondStep() {
   const [isValid, setIsValid] = useState(true);
+  const [timeValid, setTimeValid] = useState(true);
   const [personName, setPersonName] = React.useState([]);
-  const [availableTimeSlots, setAvailableTimeSlots] = useState([]);
-  const [selectedTimeSlot, setSelectedTimeSlot] = useState("");
+  const [timeSlots, setTimeSlots] = useState([]);
   const theme = useTheme();
   const { formValues, handleChange, handleBack, handleNext, variant, margin } =
     useContext(AppContext);
   const { addon, date, phone, agreenemt, grooming, idline } = formValues;
   const time = formValues.time || { value: "", required: true };
+
 
   const isError = useCallback(
     () =>
@@ -90,6 +92,8 @@ function SecondStep() {
     [formValues, addon, date, time, phone, agreenemt, grooming, idline]
   );
 
+        console.log(date)
+
   const isTimeBooking = async (date, time) => {
     try {
       const response = await axios.get("/api/v1/user/isTimeBooked", {
@@ -101,38 +105,37 @@ function SecondStep() {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
-
-      return response.data.isBooked || [];
+      return response.data.bookedTimeSlots;
     } catch (error) {
       console.error(error);
       return [];
     }
   };
 
-  const updateRoomOptions = async () => {
-    if (date && date.value) {
-      const bookedTimes = await isTimeBooking(date.value, selectedTimeSlot);
-      
-      if (Array.isArray(bookedTimes)) {
-        const updatedOptions = timeSlots.map((slot) => ({
-          value: slot,
-          disabled: bookedTimes.includes(slot),
-        }));
-        setAvailableTimeSlots(updatedOptions);
-      } else {
-        console.error('bookedTimes is not an array:', bookedTimes);
-      }
-    }
-  };
-
   useEffect(() => {
     // ตรวจสอบว่า grooming ไม่เป็น empty array
-    const groomingIsValid =
-      grooming.value.length > 0 || selectedTimeSlot !== "";
+    const groomingIsValid = grooming.value.length > 0 ;
     setIsValid(groomingIsValid);
+    const timeIsValid = time.value !== "";
+    setTimeValid(timeIsValid);
 
-    // updateRoomOptions();
-  }, [grooming, selectedTimeSlot, date]);
+    if (date && time) {
+      const updateTimeSlots = async () => {
+        const times = timeSlotsOption;
+        const isBooked = await isTimeBooking(date.value, time.value);
+  
+        const updatedOptions = times.map((slot) => ({
+          ...slot,
+          disabled: isBooked,
+        }));
+  
+        setTimeSlots(updatedOptions);
+      };
+  
+      updateTimeSlots();
+    }
+
+  }, [grooming, time, date]);
 
   return (
     <>
@@ -207,7 +210,7 @@ function SecondStep() {
             label="Date of book"
             name="date"
             type="date"
-            defaultValue={date.value}
+            // defaultValue={date.value}
             value={date.value}
             onChange={handleChange}
             required={date.required}
@@ -231,25 +234,19 @@ function SecondStep() {
             <Select
               name="time"
               value={time.value}
-              // value={selectedTimeSlot}
               onChange={handleChange}
-              // onChange={(event) => setSelectedTimeSlot(event.target.value)}
+              error={!timeValid}
               input={<OutlinedInput label="Time of book" />}
             >
               {timeSlots.map((slot) => (
-                <MenuItem key={slot} value={slot} disabled={slot.disabled}>
-                  {slot}
-                </MenuItem>
-              ))}
-              {/* {availableTimeSlots.map((slot) => (
                 <MenuItem
                   key={slot.value}
                   value={slot.value}
                   disabled={slot.disabled}
                 >
-                  {slot.value}
+                  {slot.lebel}
                 </MenuItem>
-              ))} */}
+              ))}
             </Select>
           </FormControl>
         </Grid>

@@ -4,9 +4,9 @@ import React, {
   useMemo,
   useReducer,
   useState,
-} from 'react';
-import { initialValues } from './initialValues';
-import moment from 'moment';
+} from "react";
+import { initialValues } from "./initialValues";
+import moment from "moment";
 
 const isText = /^[A-Z ]+$/i;
 const pattern = /^\d{4}-\d{2}-\d{2}$/;
@@ -17,8 +17,8 @@ const isZip = /^[0-9]{5}([- /]?[0-9]{4})?$/; // us
 const isNumber = /^\d+$/;
 
 // Applied to all fields
-const variant = 'standard';
-const margin = 'normal';
+const variant = "standard";
+const margin = "normal";
 
 export const AppContext = createContext({
   activeStep: 0,
@@ -32,17 +32,17 @@ export const AppContext = createContext({
 
 function reducer(state, action) {
   switch (action.type) {
-    case 'increase':
+    case "increase":
       return {
         ...state,
         activeStep: state.activeStep + 1,
       };
-    case 'decrease':
+    case "decrease":
       return {
         ...state,
         activeStep: state.activeStep - 1,
       };
-    case 'form-value':
+    case "form-value":
       return {
         ...state,
         formValues: {
@@ -53,7 +53,7 @@ function reducer(state, action) {
           },
         },
       };
-    case 'form-error':
+    case "form-error":
       return {
         ...state,
         formValues: {
@@ -76,77 +76,77 @@ export function StepsProvider({ children }) {
   });
 
   // Proceed to next step
-  const handleNext = useCallback(() => dispatch({ type: 'increase' }), []);
+  const handleNext = useCallback(() => dispatch({ type: "increase" }), []);
   // Go back to the previous step
-  const handleBack = useCallback(() => dispatch({ type: 'decrease' }), []);
+  const handleBack = useCallback(() => dispatch({ type: "decrease" }), []);
 
   // Handle form change
   const handleChange = useCallback((event, checked) => {
     const { type, name, value } = event.target;
-    const fieldValue = type === 'checkbox' ? checked : value;
-    dispatch({ type: 'form-value', name, fieldValue });
+    const fieldValue = type === "checkbox" ? checked : value;
 
+    dispatch({ type: "form-value", name, fieldValue });
 
     const fieldName = initialValues[name];
     if (!fieldName) return;
 
     const { required, validate, minLength, maxLength, helperText } = fieldName;
 
-    let error = '';
+    let error = "";
 
-    if (required && !fieldValue) error = 'This field is required';
+    if (required && !fieldValue) error = "This field is required";
     if (minLength && value && value.length < minLength)
       error = `Minimum ${minLength} characters is required.`;
     if (maxLength && value && value.length > maxLength)
-      error = 'Maximum length exceeded!';
+      error = "Maximum length exceeded!";
     if (validate) {
       switch (validate) {
-        case 'text':
+        case "text":
           if (value && !isText.test(value))
-            error = helperText || 'This field accepts text only.';
+            error = helperText || "This field accepts text only.";
           break;
-        case 'line':
+        case "line":
           if (value && !fieldValue)
-            error = helperText || 'This field accepts text only.';
+            error = helperText || "This field accepts text only.";
           break;
-        case 'date':
+        case "date":
           if (value && !fieldValue)
-            error = helperText || 'This field accepts text only.';
+            error = helperText || "This field accepts text only.";
           break;
-        case 'time':
+        case "time":
           if (value && !fieldValue)
-            error = helperText || 'This field accepts text only.';
+            error = helperText || "This field accepts text only.";
           break;
-        case 'number':
+        case "number":
           if (value && !isNumber.test(value))
-            error = helperText || 'This field accepts numbers only.';
+            error = helperText || "This field accepts numbers only.";
           break;
-        case 'email':
+        case "email":
           if (value && !isEmail.test(value))
-            error = helperText || 'Please enter a valid email address.';
+            error = helperText || "Please enter a valid email address.";
           break;
-        case 'phone':
+        case "phone":
           if (value && !isPhone.test(value))
             error =
               helperText ||
-              'Please enter a valid phone number. i.e: xxx-xxx-xxxx';
+              "Please enter a valid phone number. i.e: xxx-xxx-xxxx";
           break;
-        case 'zip':
+        case "zip":
           if (value && !isZip.test(value))
-            error = helperText || 'Please enter a valid zip code.';
+            error = helperText || "Please enter a valid zip code.";
           break;
-        case 'checkbox':
-          if (!checked) error = helperText || 'Please provide a valid value.';
+        case "checkbox":
+          if (!checked) error = helperText || "Please provide a valid value.";
           break;
-        case 'select':
-          if (!value) error = helperText || 'Please select a value.';
+        case "select":
+          if (!value) error = helperText || "Please select a value.";
           break;
         default:
           break;
       }
     }
 
-    dispatch({ type: 'form-error', name, error });
+    dispatch({ type: "form-error", name, error });
   }, []);
 
   const contextValue = useMemo(

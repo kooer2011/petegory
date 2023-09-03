@@ -20,7 +20,7 @@ const StyledGrooming = styled('div')(({ theme }) => ({
 
 export default function Grooming() {
   return (
-    <div className="groomCon">
+    <div>
       <NavbarHeader />
       <br />
       <motion.div

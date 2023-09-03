@@ -21,7 +21,7 @@ const Item = styled(Paper)(({ theme }) => ({
   fontSize: '16px',
   padding: theme.spacing(1),
   textAlign: 'center',
-
+  borderRadius: '30px',
   color: theme.palette.text.secondary,
 }));
 
@@ -54,7 +54,7 @@ export default function Hotelcat() {
     <Box sx={{ flexGrow: 1, padding: 3 }}>
       <Grid container spacing={1}>
         <Grid xs={4}>
-          <Item className="cathotel__image">
+          <Item className="cathotel__image" sx={{ margin: '5px' }}>
             <motion.div
               onClick={handlenavigate}
               className="box"

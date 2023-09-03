@@ -138,7 +138,7 @@ function NavbarHeader() {
                 md: 'flex',
                 transition: 'color 0.3s ease', // Add the transition property
                 '&:hover': {
-                  color: 'gray', // Change to the color you want on hover
+                  color: '#7e0306', // Change to the color you want on hover
                 },
               },
             }}

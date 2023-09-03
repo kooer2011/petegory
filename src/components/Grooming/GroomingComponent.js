@@ -20,6 +20,7 @@ const Item = styled(Paper)(({ theme }) => ({
   fontSize: '16px',
   padding: theme.spacing(1),
   textAlign: 'center',
+  borderRadius: '30px',
   color: theme.palette.text.secondary,
 }));
 
@@ -61,7 +62,13 @@ export default function GroomingComponent() {
       <br />
       <Grid container spacing={2}>
         <Grid item xs={8}>
-          <Item className="cathotel__image">
+          <Item
+            className="cathotel__image"
+            sx={{
+              boxShadow:
+                'rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px',
+            }}
+          >
             <img
               className="grroming__imgs fade-in"
               src={img2}
@@ -89,7 +96,7 @@ export default function GroomingComponent() {
           </Item>
         </Grid>
         <Grid item xs={4}>
-          <Item className="cathotel__image">
+          <Item className="cathotel__image" sx={{ margin: '5px' }}>
             <motion.div
               onClick={handlenavigate}
               className="box"

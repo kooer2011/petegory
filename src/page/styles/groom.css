@@ -4,265 +4,27 @@
     url('../../fonts/Caveat-VariableFont_wght.ttf') format('ttf');
 }
 
-.grooming__container {
-  padding: 0;
-  margin: 0;
-  display: block;
+.image__grooming {
+  width: 100%;
+  height: auto;
+  max-width: 500px; /* Set a maximum width for smaller screens */
 }
-.grooming-page {
-  height: 1024px;
-  position: relative;
-  width: 1440px;
-  margin: 0 auto;
-  padding: 0;
+@media (min-width: 768px) {
+  /* Increase the maximum width for larger screens */
+  .carousel-image {
+    max-width: 800px;
+  }
 }
-
-.grooming-page .title {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  left: 432px;
-  position: absolute;
-  top: 72px;
-  width: 641px;
-}
-
-.grooming-page .text-wrapper {
-  color: #292f36;
-  font-size: 48px;
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: 60px;
-  margin-top: -1px;
-  position: relative;
-  white-space: nowrap;
-  width: fit-content;
-}
-
-.grooming-page .overlap {
-  background-color: #ffffff;
-  border: 1px solid;
-  border-color: #000000;
-  border-radius: 40px;
-  box-shadow: 10px 10px 4px #00000040;
-  height: 623px;
-  left: 80px;
-  position: absolute;
-  top: 201px;
-  width: 498px;
-}
-
-.grooming-page .detailrate-grooms {
-  height: 572px;
-  left: 19px;
-  object-fit: cover;
-  position: absolute;
-  top: 23px;
-  width: 450px;
-}
-
-.grooming-page .overlap-group {
-  background-color: #ffffff;
-  border: 1px solid;
-  border-color: #000000;
-  border-radius: 40px;
-  box-shadow: 10px 10px 4px #00000040;
-  height: 255px;
-  left: 949px;
-  position: absolute;
-  top: 231px;
-  width: 379px;
-}
-
-.grooming-page .group {
-  height: 65px;
-  left: 8px;
-  position: absolute;
-  top: 150px;
-  width: 180px;
-}
-
-.grooming-page .div-wrapper {
-  background-color: #fffaee;
-  border-radius: 40px;
-  box-shadow: 10px 10px 4px #00000040;
-  height: 65px;
-  position: relative;
-  width: 178px;
-}
-
-.grooming-page .div {
-  color: #000000;
-  font-family: 'DM Serif Display-Italic', Helvetica;
-  font-size: 24px;
-  font-style: italic;
-  font-weight: 400;
-  height: 33px;
-  left: 24px;
-  letter-spacing: 0.48px;
-  line-height: 30px;
-  position: absolute;
-  text-align: center;
-  top: 16px;
-  white-space: nowrap;
-  width: 130px;
-}
-
-.grooming-page .overlap-2 {
-  height: 122px;
-  left: 14px;
-  position: absolute;
-  top: 8px;
-  width: 351px;
-}
-
-.grooming-page .text-wrapper-2 {
-  color: #292f36;
-  font-family: 'DM Serif Display-Regular', Helvetica;
-  font-size: 20px;
-  font-weight: 400;
-  height: 70px;
-  left: 3px;
-  letter-spacing: 0;
-  line-height: 25px;
-  position: absolute;
-  margin-top: 20px;
+.overlap-group {
+  color: black;
   font-weight: bold;
-  width: 232px;
+  font-size: 1.2rem;
+}
+.item-hover-effect:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Change the box shadow on hover */
 }
 
-.grooming-page .pet-egory {
-  color: #000000;
-  font-family: 'DM Serif Display-Italic', Helvetica;
-  font-size: 14px;
-  font-style: italic;
-  font-weight: 400;
-  height: 54px;
-  left: 0;
-  letter-spacing: 0.28px;
-  line-height: 17.5px;
-  position: absolute;
-  top: 68px;
-  width: 351px;
-}
-
-.grooming-page .text-wrapper-3 {
-  color: #000000;
-  font-family: 'DM Serif Display-Regular', Helvetica;
-  font-size: 36px;
-  font-weight: 400;
-  height: 45px;
-  left: 649px;
-  letter-spacing: 0;
-  line-height: 45px;
-  position: absolute;
-  top: 550px;
-  white-space: nowrap;
-}
-
-.grooming-page .element {
-  height: 196px;
-  left: 1237px;
-  object-fit: cover;
-  position: absolute;
-  top: 642px;
-  width: 187px;
-}
-
-.grooming-page .img {
-  height: 196px;
-  left: 617px;
-  object-fit: cover;
-  position: absolute;
-  top: 642px;
-  width: 187px;
-}
-
-.grooming-page .img-2 {
-  height: 196px;
-  left: 829px;
-  position: absolute;
-  top: 642px;
-  width: 187px;
-}
-
-.grooming-page .element-2 {
-  height: 196px;
-  left: 1033px;
-  object-fit: cover;
-  position: absolute;
-  top: 642px;
-  width: 187px;
-}
-
-.grooming-page .rectangle {
-  background-color: #d9d9d9;
-  height: 3px;
-  left: 652px;
-  position: absolute;
-  top: 601px;
-  width: 442px;
-}
-
-/* Media query for screens smaller than 1440px */
-@media (max-width: 1439px) {
-  .grooming-page {
-    width: 100%; /* Make it full width for screens smaller than 1440px */
-    padding: 20px; /* Add padding for better spacing on smaller screens */
-  }
-
-  .grooming-page .title {
-    left: 10px; /* Adjust the left position for smaller screens */
-    width: calc(
-      100% - 20px
-    ); /* Make the width 100% minus some padding for smaller screens */
-    text-align: center; /* Center the text on smaller screens */
-  }
-
-  .grooming-page .text-wrapper {
-    font-size: 36px; /* Reduce font size for smaller screens */
-    line-height: 45px; /* Adjust line height for smaller screens */
-  }
-}
-@media (max-width: 768px) {
-  .grooming-page {
-    height: auto; /* Allow the height to adjust based on content for tablets */
-  }
-
-  .grooming-page .title {
-    left: 10px; /* Adjust the left position for smaller screens */
-    width: calc(
-      100% - 20px
-    ); /* Make the width 100% minus some padding for smaller screens */
-    text-align: center; /* Center the text on smaller screens */
-  }
-
-  .grooming-page .text-wrapper {
-    font-size: 36px; /* Reduce font size for smaller screens */
-    line-height: 45px; /* Adjust line height for smaller screens */
-  }
-  .grooming-page .overlap,
-  .grooming-page .detailrate-grooms {
-    width: 100%; /* Make them full width for smaller screens */
-    left: 0; /* Remove left position for smaller screens */
-    height: auto;
-    position: relative;
-  }
-  .grooming-page .overlap-group {
-    width: 100%;
-    left: 0;
-    height: auto;
-    position: relative;
-  }
-  .overlap__footer {
-    position: static;
-  }
-  .grooming__container {
-    position: static;
-  }
-}
-
-element,
+*/ element,
 .img,
 .img-2,
 .element-2 {
@@ -325,4 +87,9 @@ element,
 /* Add a hover effect to the image within the "overlap" container */
 .detailrate-grooms {
   transition: transform 0.3s ease; /* Add a smooth transition for scaling */
+}
+
+.image-hover__Grooming {
+  transform: scale(1.1); /* Scale the image up on hover */
+  filter: grayscale(100%); /* Apply grayscale filter on hover to change color */
 }

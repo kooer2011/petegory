@@ -42,6 +42,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Gallery from './page/Admin/Gallery';
 import CreateGallery from './page/Admin/CreateGallery';
 import EditGallery from './page/Admin/EditGallery';
+import BookingGrooming from './page/BookingGrooming.js';
 function App() {
   const { loading } = useSelector(state => state.alerts);
   return (
@@ -51,6 +52,7 @@ function App() {
       ) : (
         <AnimatePresence>
           <Routes>
+            <Route path="/bookedgroom" element={<BookingGrooming />} />
             <Route
               path="/signup"
               element={

@@ -33,7 +33,6 @@ function GroomBooking() {
           </Paper>
         </Container>
       </motion.div>
-      <Footer />
     </>
   );
 }

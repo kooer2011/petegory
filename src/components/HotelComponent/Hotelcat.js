@@ -26,14 +26,6 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 // Define the hover effect styles
-const hoverButtonStyles = {
-  backgroundColor: '#FF4081', // Change to your desired hover color
-  color: 'white',
-  transition: 'background-color 0.3s ease, color 0.3s ease',
-  '&:hover': {
-    backgroundColor: '#E91E63', // Change to your desired hover color
-  },
-};
 
 export default function Hotelcat() {
   const [open, setOpen] = React.useState(false);

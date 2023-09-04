@@ -33,6 +33,7 @@ export default function Confirm() {
         params: {
           time,
           date,
+          grooming,
         },
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -58,7 +59,7 @@ export default function Confirm() {
       return form;
     });
 
-    const isTimeAlreadyBooked = await isTimeBooking(time.value, date.value);
+    const isTimeAlreadyBooked = await isTimeBooking(time.value, date.value, grooming.value);
 
     if (isTimeAlreadyBooked) {
       message.error('This time is already booked.');

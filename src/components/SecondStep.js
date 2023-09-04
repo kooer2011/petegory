@@ -1,20 +1,20 @@
-import React, { useCallback, useContext, useState, useEffect } from 'react';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormHelperText from '@mui/material/FormHelperText';
-import Checkbox from '@mui/material/Checkbox';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { AppContext } from '../page/Context';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import { useTheme } from '@mui/material/styles';
-import Chip from '@mui/material/Chip';
-import MenuItem from '@mui/material/MenuItem';
-import { DatePicker } from 'antd';
-import { FormControl, InputLabel, Typography } from '@mui/material';
-import axios from 'axios';
+import React, { useCallback, useContext, useState, useEffect } from "react";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormHelperText from "@mui/material/FormHelperText";
+import Checkbox from "@mui/material/Checkbox";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { AppContext } from "../page/Context";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import { useTheme } from "@mui/material/styles";
+import Chip from "@mui/material/Chip";
+import MenuItem from "@mui/material/MenuItem";
+import { DatePicker } from "antd";
+import { FormControl, InputLabel, Typography } from "@mui/material";
+import axios from "axios";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -28,29 +28,14 @@ const MenuProps = {
 };
 
 const names = [
-  'ตัดเล็บ+ตะไบเล็บ',
-  'เช็ดหู',
-  'ฟอกน้ำยา Malaceb เชื้อรา',
-  'ฟอกน้ำยา Hexine ลดแบคทีเรีย',
-  'แปรงฟัน',
+  "ตัดเล็บ+ตะไบเล็บ",
+  "เช็ดหู",
+  "ฟอกน้ำยา Malaceb เชื้อรา",
+  "ฟอกน้ำยา Hexine ลดแบคทีเรีย",
+  "แปรงฟัน",
 ];
 
-const timeSlotsOption = [
-  { value: '09:00', label: '09:00' },
-  { value: '10:00', label: '10:00' },
-  { value: '11:00', label: '11:00' },
-  { value: '12:00', label: '12:00' },
-  { value: '13:00', label: '13:00' },
-  { value: '14:00', label: '14:00' },
-  { value: '15:00', label: '15:00' },
-  { value: '16:00', label: '16:00' },
-  { value: '17:00', label: '17:00' },
-  { value: '18:00', label: '18:00' },
-  { value: '19:00', label: '19:00' },
-  { value: '20:00', label: '20:00' },
-];
-
-const groomdetail = ['อาบน้ำ', 'ตัดขน'];
+const groomdetail = ["อาบน้ำ", "ตัดขน"];
 
 function getStyles(name, personName, theme) {
   return {
@@ -62,10 +47,30 @@ function getStyles(name, personName, theme) {
 }
 
 function SecondStep() {
+  const timeSlotsOption = [
+    { value: "09:00", label: "09:00" },
+    { value: "10:00", label: "10:00" },
+    { value: "11:00", label: "11:00" },
+    { value: "12:00", label: "12:00" },
+    { value: "13:00", label: "13:00" },
+    { value: "14:00", label: "14:00" },
+    { value: "15:00", label: "15:00" },
+    { value: "16:00", label: "16:00" },
+    { value: "17:00", label: "17:00" },
+    { value: "18:00", label: "18:00" },
+    { value: "19:00", label: "19:00" },
+    { value: "20:00", label: "20:00" },
+  ];
+
   const [isValid, setIsValid] = useState(true);
   const [timeValid, setTimeValid] = useState(true);
   const [personName, setPersonName] = React.useState([]);
   const [timeSlots, setTimeSlots] = useState([]);
+
+  const [bookedTimeSlots, setBookedTimeSlots] = useState([]);
+
+  console.log(timeSlots);
+
   const theme = useTheme();
   const { formValues, handleChange, handleBack, handleNext, variant, margin } =
     useContext(AppContext);
@@ -83,47 +88,47 @@ function SecondStep() {
         grooming,
         idline,
       }).some(
-        name =>
+        (name) =>
           (formValues[name].required && !formValues[name].value) ||
           formValues[name].error
       ),
     [formValues, addon, date, time, phone, agreenemt, grooming, idline]
   );
 
-  // const isTimeBooking = async (date, time) => {
-  //   try {
-  //     console.log('date:', date);
-  //     console.log('time:', time);
-  //     const response = await axios.get('/api/v1/user/isTimeBooked', {
-  //       params: {
-  //         date,
-  //         time,
-  //       },
-  //       headers: {
-  //         Authorization: `Bearer ${localStorage.getItem('token')}`,
-  //       },
-  //     });
-  //     console.log('isBooked:', response.data.bookedTimeSlots);
-  //     return response.data.bookedTimeSlots || [];
-  //   } catch (error) {
-  //     console.error(error);
-  //     return [];
-  //   }
-  // };
+  const isTimeBooking = async (date, time, grooming, timeSlots) => {
+    try {
+      const response = await axios.get("/api/v1/user/isTimeBooked", {
+        params: {
+          date,
+          time,
+          grooming,
+        },
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      return response.data.bookedTimeSlots || [];
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  };
 
   useEffect(() => {
     // ตรวจสอบว่า grooming ไม่เป็น empty array
     const groomingIsValid = grooming.value.length > 0;
     setIsValid(groomingIsValid);
-    const timeIsValid = time.value !== '';
+    const timeIsValid = time.value !== "";
     setTimeValid(timeIsValid);
   }, [grooming, time]);
+
 
   return (
     <>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Typography variant="h7" style={{ color: 'rgba(0, 0, 0, 0.5)' }}>
+          <Typography variant="h7" style={{ color: "rgba(0, 0, 0, 0.5)" }}>
             บริการหลัก
           </Typography>
           <Select
@@ -143,7 +148,7 @@ function SecondStep() {
             <MenuItem value="" disabled>
               <em>โปรดเลือกข้อมูล</em>
             </MenuItem>
-            {groomdetail.map(groom => (
+            {groomdetail.map((groom) => (
               <MenuItem
                 key={groom}
                 value={groom}
@@ -155,7 +160,7 @@ function SecondStep() {
           </Select>
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="h7" style={{ color: 'rgba(0, 0, 0, 0.5)' }}>
+          <Typography variant="h7" style={{ color: "rgba(0, 0, 0, 0.5)" }}>
             บริการเสริม
           </Typography>
           <Select
@@ -170,7 +175,7 @@ function SecondStep() {
             input={<OutlinedInput label="Name" />}
             MenuProps={MenuProps}
           >
-            {names.map(name => (
+            {names.map((name) => (
               <MenuItem
                 key={name}
                 value={name}
@@ -220,7 +225,7 @@ function SecondStep() {
               error={!timeValid}
               input={<OutlinedInput label="Time of book" />}
             >
-              {timeSlotsOption.map(slot => (
+              {timeSlotsOption.map((slot) => (
                 <MenuItem
                   key={slot.value}
                   value={slot.value}
@@ -281,7 +286,7 @@ function SecondStep() {
         </Grid>
       </Grid>
 
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 3 }}>
+      <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 3 }}>
         <Button onClick={handleBack} sx={{ mr: 1 }}>
           Back
         </Button>

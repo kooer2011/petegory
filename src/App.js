@@ -37,8 +37,11 @@ import EditBooking from './page/Admin/EditBooking';
 import EditHotel from './page/Admin/EditHotel';
 import News from './page/Admin/News';
 import CreateNews from './page/Admin/CreateNews';
-import { motion, AnimatePresence } from 'framer-motion';
 import EditNews from './page/Admin/EditNews';
+import { motion, AnimatePresence } from 'framer-motion';
+import Gallery from './page/Admin/Gallery';
+import CreateGallery from './page/Admin/CreateGallery';
+import EditGallery from './page/Admin/EditGallery';
 function App() {
   const { loading } = useSelector(state => state.alerts);
   return (
@@ -231,6 +234,30 @@ function App() {
               element={
                 <PrivateRoute>
                   <EditNews />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/admin/dashboard/gallery"
+              element={
+                <PrivateRoute>
+                  <Gallery />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/creategallery"
+              element={
+                <PrivateRoute>
+                  <CreateGallery />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/editGall/:id"
+              element={
+                <PrivateRoute>
+                  <EditGallery />
                 </PrivateRoute>
               }
             />

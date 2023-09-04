@@ -25,6 +25,11 @@ export const employeeMenu = [
     icon: 'fa-solid fa-newspaper',
   },
   {
+    name: 'Gallery',
+    path: '/admin/dashboard/gallery',
+    icon: 'fa-solid fa-images',
+  },
+  {
     name: 'All Bookings',
     path: '/admin/dashboard/all-bookings',
     icon: 'fa-solid fa-calendar-days',
@@ -61,6 +66,11 @@ export const adminMenu = [
     name: 'News',
     path: '/admin/dashboard/news',
     icon: 'fa-solid fa-newspaper',
+  },
+  {
+    name: 'Gallery',
+    path: '/admin/dashboard/gallery',
+    icon: 'fa-solid fa-images',
   },
   {
     name: 'All Bookings',

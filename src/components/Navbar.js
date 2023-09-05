@@ -81,7 +81,7 @@ function NavbarHeader() {
   };
   const link = {
     textDecoration: 'none', // Remove underline
-    color: '#C0392B', // Set text color
+    color: 'brown', // Set text color
     fontWeight: 'bold', // Add bold font weight
     fontFamily: 'CaveatVarialbleFont',
   };
@@ -90,7 +90,7 @@ function NavbarHeader() {
     <AppBar
       position="static"
       sx={{
-        background: 'white',
+        background: '#d7d0c8', // ตั้งค่าสีพื้นหลังเป็น #d7d0c8
         color: 'black',
         opacity: isNavbarVisible ? 1 : 0,
         transition: 'opacity 0.3s ease',

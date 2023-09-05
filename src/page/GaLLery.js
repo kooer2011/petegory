@@ -13,7 +13,7 @@ const StyledGrooming = styled('div')(({ theme }) => ({
 
 function GaLLery() {
   return (
-    <div className="container__gallery">
+    <div className="container__gallery" style={{ backgroundColor: '#d7d0c8' }}>
       <NavbarHeader />
       <motion.div
         initial={{ opacity: 0, x: 100 }} // Initial animation state (sliding from right)

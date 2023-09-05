@@ -7,6 +7,9 @@
 }
 .txtHead {
   font-family: MamuBold;
+  text-align: center;
+  font-size: 50px;
+  margin-bottom: 0;
 }
 
 .about {
@@ -68,4 +71,10 @@ h1 {
   .about .col-sm-5 h6 span {
     font-size: 30px;
   }
+}
+.hotel__page {
+  background-color: #d7d0c8;
+}
+.hotel__page2 {
+  background-color: #d7d0c8;
 }

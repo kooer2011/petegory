@@ -22,8 +22,9 @@ import promotion from '../imgs/grooming1.jpg';
 import Typography from '@mui/material/Typography';
 import { motion, useScroll } from 'framer-motion';
 import { Carousel } from 'antd';
+import '../index.css';
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  backgroundColor: 'transparent',
   ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: 'center',
@@ -32,7 +33,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function Grooming() {
   return (
-    <>
+    <div className="goom__page">
       <NavbarHeader />
       <motion.div
         initial={{ opacity: 0, x: 100 }} // Initial animation state (sliding from right)
@@ -40,44 +41,32 @@ export default function Grooming() {
         exit={{ opacity: 0, x: -100 }} // Animation when a page exits (slide to left and fade-out)
         transition={{ duration: 0.5 }} // Animation duration
       >
-        <Box sx={{ flexGrow: 1, marginTop: '20px' }}>
+        <Box
+          sx={{
+            flexGrow: 1,
+            marginTop: '20px',
+          }}
+        >
           <h2>GLOOMING</h2>
           <hr />
-          <Grid container spacing={2}>
-            <Grid style={{ marginTop: '100px' }} xs={6}>
-              <Item
-                style={{
-                  boxShadow:
-                    'rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset',
-                }}
-              >
-                <Carousel className="groom_sliderimage" autoplay={1000}>
-                  <img
-                    className="image__grooming group"
-                    alt="Detailrate grooms"
-                    src={img3}
-                    style={{
-                      width: '800px',
-                      height: '800px',
-                      maxWidth: '100%',
-                      height: 'auto',
-                    }}
-                  />
-                  <img
-                    className="image__grooming group"
-                    alt="Detailrate grooms"
-                    src={promotion}
-                    style={{
-                      width: '800px',
-                      height: '800px',
-                      maxWidth: '100%',
-                      height: 'auto',
-                    }}
-                  />
-                </Carousel>
-              </Item>
-            </Grid>
-            <Grid xs={5.5} style={{ marginLeft: '10px', marginTop: '50px' }}>
+          <Grid
+            container
+            spacing={2}
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Grid
+              xs={12}
+              sm={6}
+              style={{
+                marginLeft: '10px',
+                marginTop: '50px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
               <motion.div
                 className="box"
                 whileHover={{ scale: 1.2 }}
@@ -88,14 +77,13 @@ export default function Grooming() {
                   border: '1px solid black',
                   borderRadius: '50px',
                   width: '300px',
-                  float: 'right',
                 }}
               >
                 <h3>BOOKING NOW</h3>
               </motion.div>
 
               <Grid
-                xs={30}
+                xs={12}
                 style={{
                   marginTop: '50px',
                   flexDirection: 'row',
@@ -129,65 +117,38 @@ export default function Grooming() {
                 </Item>
               </Grid>
             </Grid>
-            <Grid xs={100} style={{ marginTop: '50px' }}>
-              <div
+
+            <Grid style={{ marginTop: '20px' }} xs={12} sm={6}>
+              <Item
                 style={{
-                  textAlign: ' center',
+                  boxShadow:
+                    'rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset',
                 }}
-                className="text-wrapper-3"
               >
-                <h3>Photo</h3>
-                <hr />
-              </div>
-              <Item>
-                <img
-                  className="group"
-                  src={dogimg}
-                  style={{
-                    maxWidth: '300px',
-                    maxHeight: '300px',
-                    width: '100%',
-                    height: 'auto',
-
-                    margin: '5px',
-                  }}
-                />
-                <img
-                  className="group"
-                  src={dogimg2}
-                  style={{
-                    maxWidth: '300px',
-                    maxHeight: '300px',
-                    width: '100%',
-                    height: 'auto',
-
-                    margin: '5px',
-                  }}
-                />
-                <img
-                  className="group"
-                  src={catimg}
-                  style={{
-                    maxWidth: '300px',
-                    maxHeight: '300px',
-                    width: '100%',
-                    height: 'auto',
-
-                    margin: '5px',
-                  }}
-                />
-                <img
-                  className="group"
-                  src={catimg2}
-                  style={{
-                    maxWidth: '300px',
-                    maxHeight: '300px',
-                    width: '100%',
-                    height: 'auto',
-
-                    margin: '5px',
-                  }}
-                />
+                <Carousel className="groom_sliderimage" autoplay={500}>
+                  <img
+                    className="image__grooming group"
+                    alt="Detailrate grooms"
+                    src={img3}
+                    style={{
+                      width: '800px',
+                      height: '800px',
+                      maxWidth: '100%',
+                      height: 'auto',
+                    }}
+                  />
+                  <img
+                    className="image__grooming group"
+                    alt="Detailrate grooms"
+                    src={promotion}
+                    style={{
+                      width: '800px',
+                      height: '800px',
+                      maxWidth: '100%',
+                      height: 'auto',
+                    }}
+                  />
+                </Carousel>
               </Item>
             </Grid>
           </Grid>
@@ -195,6 +156,6 @@ export default function Grooming() {
       </motion.div>
 
       <Footer />
-    </>
+    </div>
   );
 }

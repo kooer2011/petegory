@@ -2,20 +2,20 @@
   border-radius: 10% 30% 50% 70%;
 }
 .cathotel_detail {
-  background-color: #102c57;
-  color: #ffff;
+  background-color: #ba9950;
+  color: #952323;
 }
 /* Hotelcat.css */
 
 .cathotel__image:hover {
-  background-color: #102c57; /* Change to your desired hover color */
+  background-color: #000; /* Change to your desired hover color */
   color: white;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Add hover effect to the text inside cathotel_detail */
 .cathotel_detail:hover {
-  background-color: #102c57; /* Change to your desired hover color */
+  background-color: #000; /* Change to your desired hover color */
   color: white;
   transition: background-color 0.3s ease, color 0.3s ease;
 }

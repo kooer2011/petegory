@@ -43,6 +43,7 @@ import Gallery from './page/Admin/Gallery';
 import CreateGallery from './page/Admin/CreateGallery';
 import EditGallery from './page/Admin/EditGallery';
 import BookingGrooming from './page/BookingGrooming.js';
+import HoTel from './page/Hotel';
 function App() {
   const { loading } = useSelector(state => state.alerts);
   return (
@@ -97,7 +98,7 @@ function App() {
                 </PrivateRoute>
               }
             />
-            <Route path="/hotel" element={<HotelPage />} />
+            <Route path="/hotel" element={<HoTel />} />
 
             <Route
               path="/hotel/detail-booking"

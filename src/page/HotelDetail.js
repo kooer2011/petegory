@@ -11,6 +11,7 @@ import condi3 from '../imgs/condi3.jpg';
 import condi4 from '../imgs/condi4.jpg';
 import condi5 from '../imgs/condi5.jpg';
 import { styled } from '@mui/material/styles';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCircleChevronLeft,
@@ -19,12 +20,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import './styles/HotelDetail.css';
+import './styles/Hotel.css';
 import Footer from '../components/Footer/Footer';
 import BookingHotel from './BookingHotel';
-
-const StyledGrooming = styled('div')(({ theme }) => ({
-  marginTop: theme.spacing(4), // Adjust the margin as needed
-}));
 
 const HotelDetail = () => {
   const images = [
@@ -71,7 +69,7 @@ const HotelDetail = () => {
   }, []);
 
   return (
-    <>
+    <div className="hotel__page">
       <NavbarHeader />
       <br />
       <section className="d-flex flex-md-row justify-content-around">
@@ -117,7 +115,7 @@ const HotelDetail = () => {
       </section>
 
       <Footer />
-    </>
+    </div>
   );
 };
 

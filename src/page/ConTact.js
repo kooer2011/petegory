@@ -15,7 +15,7 @@ function ConTact() {
     AOS.init({ duration: 2000 });
   }, []);
   return (
-    <div>
+    <div style={{ backgroundColor: '#d7d0c8' }}>
       <NavbarHeader />
       <motion.div
         initial={{ opacity: 0, x: 100 }} // Initial animation state (sliding from right)

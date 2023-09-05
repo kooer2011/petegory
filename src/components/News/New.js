@@ -10,10 +10,8 @@ import imgs3 from '../../imgs/poster3.jpg';
 import './Grid.css';
 import axios from 'axios';
 
-
-
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: '#DAC0A3',
+  backgroundColor: 'transparent',
   ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: 'center',
@@ -49,18 +47,18 @@ export default function BasicGrid() {
 
   const getNews = async () => {
     try {
-      const res = await axios.get('api/v1/user/getNews')
+      const res = await axios.get('api/v1/user/getNews');
       if (res.data.success) {
         setNews(res.data.data);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     getNews();
-  }, [])
+  }, []);
 
   return (
     <>
@@ -72,21 +70,19 @@ export default function BasicGrid() {
           justifyContent: 'center',
           alignItems: 'center',
           padding: 1,
-          
         }}
       >
         <Grid container spacing={2}>
-
-        {news.map((data, i) => (
-          <Grid item xs={12} sm={6} md={4}>
-            <Item onClick={() => handleImageClick(data.image)}>
-              <img
-                className="img-hover-effect"
-                src={`http://localhost:3000/images/${data.image}`}
-                alt="Image"
-              />
-            </Item>
-          </Grid>
+          {news.map((data, i) => (
+            <Grid item xs={12} sm={6} md={4}>
+              <Item onClick={() => handleImageClick(data.image)}>
+                <img
+                  className="img-hover-effect"
+                  src={`http://localhost:3000/images/${data.image}`}
+                  alt="Image"
+                />
+              </Item>
+            </Grid>
           ))}
         </Grid>
       </Box>

@@ -36,7 +36,7 @@ const Userpage = () => {
     AOS.init({ duration: 2000 });
   }, []);
   return (
-    <div className='homepage'>
+    <div className="homepage">
       <TokenExpirationChecker
         token={token}
         onTokenExpired={handleTokenExpired}
@@ -45,7 +45,7 @@ const Userpage = () => {
         className="progress-bar"
         style={{ scaleX: scrollYProgress }}
       />
-      <section>
+      <section className="page_navebarsection">
         <NavbarHeader />
       </section>
       <motion.div
@@ -54,20 +54,21 @@ const Userpage = () => {
         exit={{ opacity: 0, x: -100 }} // Animation when a page exits
         transition={{ duration: 0.5 }} // Animation duration
       >
-        <br />
         <section className="dialog__section" data-aos="fade">
           <UncontrolledExample />
         </section>
         <br />
         <div className="custom_text">
           <TypeAnimation
-            sequence={['NEW', 100]}
+            sequence={['NEW', 1000]}
             wrapper="span"
             speed={50}
             style={{
               fontSize: '2em',
               display: 'inline-block',
               fontFamily: 'ChakraPetchBold',
+              color: 'black',
+              fontWeight: 'bold',
             }}
             repeat={Infinity}
           />
@@ -79,13 +80,15 @@ const Userpage = () => {
         <br />
         <div className="custom_text">
           <TypeAnimation
-            sequence={['GROOMING', 100]}
+            sequence={['GROOMING', 1000]}
             wrapper="span"
             speed={50}
             style={{
               fontSize: '2em',
               display: 'inline-block',
               fontFamily: 'ChakraPetchBold',
+              color: 'black',
+              fontWeight: 'bold',
             }}
             repeat={Infinity}
           />
@@ -97,13 +100,15 @@ const Userpage = () => {
         <br />
         <div className="custom_text">
           <TypeAnimation
-            sequence={['CATHOTEL', 100]}
+            sequence={['CATHOTEL', 1000]}
             wrapper="span"
             speed={50}
             style={{
               fontSize: '2em',
               display: 'inline-block',
               fontFamily: 'ChakraPetchBold',
+              color: 'black',
+              fontWeight: 'bold',
             }}
             repeat={Infinity}
           />
@@ -115,13 +120,15 @@ const Userpage = () => {
         <br />
         <div className="custom_text">
           <TypeAnimation
-            sequence={['GALLERY', 100]}
+            sequence={['GALLERY', 1000]}
             wrapper="span"
             speed={50}
             style={{
               fontSize: '2em',
               display: 'inline-block',
               fontFamily: 'ChakraPetchBold',
+              color: 'black',
+              fontWeight: 'bold',
             }}
             repeat={Infinity}
           />
@@ -136,8 +143,13 @@ const Userpage = () => {
         </div>
         <div>
           <FloatButton.BackTop
-            tooltip={<div>Back to top</div>}
+            tooltip={
+              <div style={{ backgroundColor: 'black', color: 'white' }}>
+                Back to top
+              </div>
+            }
             type="primary"
+            style={{ backgroundColor: 'black', color: 'white', border: 'none' }}
           />
         </div>
 

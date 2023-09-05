@@ -13,7 +13,7 @@ import { motion } from 'framer-motion';
 import './Grooming.css';
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: '#DAC0A3',
+  backgroundColor: 'transparent',
   ...theme.typography.body2,
   fontFamily: 'CaveatVarialbleFont',
   fontWeight: 'bold',
@@ -24,14 +24,16 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const hoverButtonStyles = {
-  backgroundColor: '#FF4081', // Change to your desired hover color
-  color: 'white',
-  transition: 'background-color 0.3s ease, color 0.3s ease',
-  '&:hover': {
-    backgroundColor: '#E91E63', // Change to your desired hover color
-  },
-};
+const Item1 = styled(Paper)(({ theme }) => ({
+  backgroundColor: 'transparent',
+  ...theme.typography.body2,
+  fontFamily: 'CaveatVarialbleFont',
+  fontWeight: 'bold',
+  fontSize: '5rem',
+
+  padding: theme.spacing(1),
+  textAlign: 'center',
+}));
 
 export default function GroomingComponent() {
   const navigate = useNavigate();
@@ -96,7 +98,16 @@ export default function GroomingComponent() {
           </Item>
         </Grid>
         <Grid item xs={4}>
-          <Item className="cathotel__image" sx={{ margin: '5px' }}>
+          <Item
+            className="cathotel__image"
+            sx={{
+              margin: '5px',
+              color: 'black',
+              fontSize: '1rem',
+              border: '1px solid black',
+              borderRadius: '10px',
+            }}
+          >
             <motion.div
               onClick={handlenavigate}
               className="box"
@@ -107,10 +118,27 @@ export default function GroomingComponent() {
               BOOKING NOW
             </motion.div>
           </Item>
-          <Item className="cathotel__image">
+          <Item
+            sx={{
+              color: 'black',
+              border: '1px solid black',
+              borderRadius: '10px',
+            }}
+            className="cathotel__image"
+          >
             Petegory บริการอาบน้ำตัดขนสำหรับ สุนัข และ แมว ของคุณ
             มีบริการเสริมให้เลือกมากมาย ให้เลือก
           </Item>
+          <Item1
+            className="cathotel__image"
+            sx={{
+              marginTop: '50px',
+              border: '1px solid black',
+              borderRadius: '10px',
+            }}
+          >
+            01
+          </Item1>
         </Grid>
       </Grid>
       <Dialog open={open} onClose={handleCloseModal} maxWidth="md">

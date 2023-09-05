@@ -14,7 +14,7 @@ import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import './Hotelcat.css';
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: '#DAC0A3',
+  backgroundColor: 'transparent',
   ...theme.typography.body2,
   fontFamily: 'CaveatVarialbleFont',
   fontWeight: 'bold',
@@ -23,6 +23,16 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
   borderRadius: '30px',
   color: theme.palette.text.secondary,
+}));
+
+const Item1 = styled(Paper)(({ theme }) => ({
+  ...theme.typography.body2,
+  fontFamily: 'CaveatVarialbleFont',
+  fontWeight: 'bold',
+  fontSize: '5rem',
+  backgroundColor: 'transparent',
+  padding: theme.spacing(1),
+  textAlign: 'center',
 }));
 
 // Define the hover effect styles
@@ -46,7 +56,15 @@ export default function Hotelcat() {
     <Box sx={{ flexGrow: 1, padding: 3 }}>
       <Grid container spacing={1}>
         <Grid xs={4}>
-          <Item className="cathotel__image" sx={{ margin: '5px' }}>
+          <Item
+            className="cathotel__image"
+            sx={{
+              margin: '5px',
+              color: 'black',
+              border: '1px solid black',
+              borderRadius: '10px',
+            }}
+          >
             <motion.div
               onClick={handlenavigate}
               className="box"
@@ -57,15 +75,38 @@ export default function Hotelcat() {
               BOOKING NOW
             </motion.div>
           </Item>
-          <Item className="cathotel__image ">
+          <Item
+            className="cathotel__image "
+            sx={{
+              color: 'black',
+              border: '1px solid black',
+              borderRadius: '10px',
+            }}
+          >
             <p>
               บริการโรงแรม แมว มีหลาย ระดับ ห้อง ให้เลือก มากมาย พร้อมคนดูแล
               ที่มีคุณภาพ{' '}
             </p>
           </Item>
+          <Item1
+            className="cathotel__image"
+            sx={{
+              marginTop: '50px',
+              border: '1px solid black',
+              borderRadius: '10px',
+            }}
+          >
+            02
+          </Item1>
         </Grid>
         <Grid xs={8}>
-          <Item className="cathotel__image">
+          <Item
+            sx={{
+              boxShadow:
+                'rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px',
+            }}
+            className="cathotel__image"
+          >
             <img
               width="100%"
               height="auto"

@@ -1,6 +1,11 @@
 .userProfile {
-    display: grid;
-    grid-template-columns: auto;
-    text-align: center;
-    margin-top: 50px;
+  display: grid;
+  grid-template-columns: auto;
+  text-align: center;
+  margin-top: 50px;
+}
+.text-info {
+  color: brown;
+  font-weight: bold;
+  font-size: 1.3rem;
 }

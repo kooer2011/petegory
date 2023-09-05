@@ -1,76 +1,81 @@
 .userprofile {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    background-image: url('../../../imgs/bg_profile.jpg');
-    background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #9f978d;
 }
 
 .userprofilein {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 10vh;
+  gap: 20px;
+}
+
+.userprofile .userprofilein .left {
+  width: 20%;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  background-color: #d7d0c8;
+  border: 1px solid rgb(207, 207, 207);
+  border-radius: 5px;
+  min-height: 50vh;
+}
+
+.userprofile .userprofilein .right {
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  width: 60%;
+  background-color: #d7d0c8;
+  border: 1px solid rgb(207, 207, 207);
+  border-radius: 5px;
+  min-height: 50vh;
+}
+
+@media (max-width: 1000px) {
+  .userprofile .userprofilein .left {
+    width: 30%;
+
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 5px;
+    min-height: 50vh;
+  }
+
+  .userprofilein {
     display: flex;
     width: 100%;
     justify-content: center;
     margin-top: 10vh;
-    gap: 20px;
-}
-
-.userprofile .userprofilein .left {
-    width: 20%;
-    background-color: #fff;
-    border: 1px solid rgb(207, 207, 207);
-    border-radius: 5px;
-    min-height: 50vh;
-}
-
-.userprofile .userprofilein .right {
-    width: 60%;
-    background-color: #fff;
-    border: 1px solid rgb(207, 207, 207);
-    border-radius: 5px;
-    min-height: 50vh;
+    gap: 10px;
+  }
 }
 
 @media (max-width: 1000px) {
-    .userprofile .userprofilein .left {
-        width: 30%;
-        /* background-color: aqua; */
-        border: 1px solid rgb(207, 207, 207);
-        border-radius: 5px;
-        min-height: 50vh;
-    }
+  .userprofile .userprofilein .left {
+    width: 30%;
+    /* background-color: aqua; */
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 5px;
+    min-height: 50vh;
+  }
+  .userprofile .userprofilein .right {
+    width: 68%;
+    /* background-color: aqua; */
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 5px;
+    min-height: 50vh;
+  }
 
-    .userprofilein {
-        display: flex;
-        width: 100%;
-        justify-content: center;
-        margin-top: 10vh;
-        gap: 10px;
-    }
-}
-
-@media (max-width: 1000px){
-    .userprofile .userprofilein .left {
-        width: 30%;
-        /* background-color: aqua; */
-        border: 1px solid rgb(207, 207, 207);
-        border-radius: 5px;
-        min-height: 50vh;
-    }
-    .userprofile .userprofilein .right {
-        width: 68%;
-        /* background-color: aqua; */
-        border: 1px solid rgb(207, 207, 207);
-        border-radius: 5px;
-        min-height: 50vh;
-    }
-
-    .userprofilein {
-        display: flex;
-        width: 100%;
-        justify-content: center;
-        margin-top: 10vh;
-        gap: 10px;
-    }
+  .userprofilein {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 10vh;
+    gap: 10px;
+  }
 }
 
 /* @media (max-width: 800px) {
@@ -88,33 +93,33 @@
     }
 } */
 
-@media (max-width: 500px){
-    .userprofilein {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        justify-content: center;
-        margin-top: 10vh;
-        gap: 20px;
-    }
+@media (max-width: 500px) {
+  .userprofilein {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    margin-top: 10vh;
+    gap: 20px;
+  }
 
-    .userprofile .userprofilein .left {
-        width: 97%;
-        /* background-color: aqua; */
-        border: 1px solid rgb(207, 207, 207);
-        border-radius: 5px;
-        /* min-height: 50vh; */
-        align-self: center;
-        min-height: 0;
-    }
+  .userprofile .userprofilein .left {
+    width: 97%;
+    /* background-color: aqua; */
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 5px;
+    /* min-height: 50vh; */
+    align-self: center;
+    min-height: 0;
+  }
 
-    .userprofile .userprofilein .right {
-        width: 97%;
-        /* background-color: aqua; */
-        border: 1px solid rgb(207, 207, 207);
-        border-radius: 5px;
-        /* min-height: 50vh; */
-        align-self: center;
-        min-height: 0;
-    }
+  .userprofile .userprofilein .right {
+    width: 97%;
+    /* background-color: aqua; */
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 5px;
+    /* min-height: 50vh; */
+    align-self: center;
+    min-height: 0;
+  }
 }

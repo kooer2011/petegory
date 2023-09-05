@@ -220,7 +220,7 @@ const MyBooking = () => {
 
   return (
     <div style={linkStyle} className="booking">
-      <h2 className="mt-0">Your Booking</h2>
+      <h2 className="mt-0">YOUR BOOKING</h2>
       <Tabs>
         <Tabs.TabPane tab={'Hotel'} key={0}>
           <Table

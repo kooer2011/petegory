@@ -1,107 +1,108 @@
 .galleryWrap {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
-    max-width: 620px;
-    margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  max-width: 620px;
+  margin: 0 auto;
 }
 
 .galleryWrap .single {
-    width: 200px;
-    cursor: pointer;
+  width: 200px;
+  cursor: pointer;
 }
 
 .galleryWrap .single img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 .galleryWrap .single img:hover {
-    transform: scale(1.02);
+  transform: scale(1.02);
 }
 
 .sliderWrap {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 999;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 .sliderWrap .btnClose,
 .sliderWrap .btnPrev,
 .sliderWrap .btnNext {
-    position: fixed;
-    cursor: pointer;
-    opacity: 0.6;
-    color: #fff;
-    z-index: 9999;
+  position: fixed;
+  cursor: pointer;
+
+  opacity: 0.6;
+  color: #fff;
+  z-index: 9999;
 }
 
 .btnNext:hover,
 .btnPrev:hover,
 .btnClose:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
 .sliderWrap .btnClose {
-    top: 40px;
-    right: 40px;
-    font-size: 30px;
+  top: 40px;
+  right: 40px;
+  font-size: 30px;
 }
 
 .sliderWrap .btnPrev {
-    top: 50%;
-    transform: translateY(-50%);
-    left: 40px;
-    font-size: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 40px;
+  font-size: 30px;
 }
 
 .sliderWrap .btnNext {
-    top: 50%;
-    transform: translateY(-50%);
-    right: 40px;
-    font-size: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 40px;
+  font-size: 30px;
 }
 
 .fullScreenImage {
-    width: calc(80% - 40px);
-    height: calc(100% - 40px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .fullScreenImage img {
-    max-width: 80%;
-    max-height: 100%;
-    pointer-events: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    /* object-fit: cover; */
+  max-width: 100%;
+  max-height: 100%;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* object-fit: cover; */
 }
 
 .form-btn {
-    width: 250px !important;
-    margin-top: 30px !important;
+  width: 250px !important;
+  margin-top: 30px !important;
 }
 
 .bookBG {
-    background-color: navajowhite;
-    border-radius: 15px;
+  background-color: navajowhite;
+  border-radius: 15px;
 }
 
 @media (max-width: 768px) {
-    .d-flex {
-        flex-direction: column;
-    }
+  .d-flex {
+    flex-direction: column;
+  }
 }

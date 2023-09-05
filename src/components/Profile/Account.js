@@ -39,22 +39,31 @@ const Account = () => {
       {user ? (
         <div>
           <h2 style={linkStyle} className="text-center text-black mb-4">
-            Personal Profile
+            <h2>PERSONAL PROFILE</h2>
           </h2>
           <div style={linkStyle} className="userProfile">
             <div className="mb-3">
               <p className="text-black fs-5 fw-bold">
-                Name: <span className="text-info">{user.name}</span>
+                Name:{' '}
+                <span style={{ color: 'brown', fontWeight: 'bold' }}>
+                  {user.name}
+                </span>
               </p>
             </div>
             <div className="mb-3">
               <p className="text-black fs-5 fw-bold">
-                Email: <span className="text-info">{user.email}</span>
+                Email:{' '}
+                <span style={{ color: 'brown', fontWeight: 'bold' }}>
+                  {user.email}
+                </span>
               </p>
             </div>
             <div className="mb-3">
               <p className="text-black fs-5 fw-bold">
-                Phone: <span className="text-info">{user.phone}</span>
+                Phone:{' '}
+                <span style={{ color: 'brown', fontWeight: 'bold' }}>
+                  {user.phone}
+                </span>
               </p>
             </div>
             <div>

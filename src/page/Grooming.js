@@ -22,6 +22,7 @@ import promotion from '../imgs/grooming1.jpg';
 import Typography from '@mui/material/Typography';
 import { motion, useScroll } from 'framer-motion';
 import { Carousel } from 'antd';
+import { Link, useNavigate } from 'react-router-dom';
 import '../index.css';
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: 'transparent',
@@ -32,6 +33,12 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function Grooming() {
+  const navigate = useNavigate();
+  const handlenavigate = () => {
+    navigate('/grooming/booking');
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className="goom__page">
       <NavbarHeader />
@@ -78,6 +85,7 @@ export default function Grooming() {
                   borderRadius: '50px',
                   width: '300px',
                 }}
+                onClick={handlenavigate}
               >
                 <h3>BOOKING NOW</h3>
               </motion.div>

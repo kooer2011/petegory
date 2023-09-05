@@ -10,7 +10,7 @@ import Dashboard from './page/Dashboard';
 import Create from './page/Create';
 import Userpage from './page/Userpage';
 import HotelDetail from './page/HotelDetail';
-import GroomBooking from './page/GroomBooking';
+
 import HotelCreate from './page/HotelCreate';
 import { useSelector } from 'react-redux';
 import Spinner from './components/Spinner';
@@ -32,7 +32,7 @@ import ResetPassword from './components/Profile/ResetPassword';
 import EditUser from './page/Admin/EditUser';
 import EditEmployee from './page/Admin/EditEmployee';
 import AllBookings from './page/Admin/AllBookings';
-import { StepsProvider } from './page/Context';
+
 import EditBooking from './page/Admin/EditBooking';
 import EditHotel from './page/Admin/EditHotel';
 import News from './page/Admin/News';
@@ -53,7 +53,6 @@ function App() {
       ) : (
         <AnimatePresence>
           <Routes>
-            <Route path="/bookedgroom" element={<BookingGrooming />} />
             <Route
               path="/signup"
               element={
@@ -92,9 +91,7 @@ function App() {
               path="/grooming/booking"
               element={
                 <PrivateRoute>
-                  <StepsProvider>
-                    <GroomBooking />
-                  </StepsProvider>
+                  <BookingGrooming />
                 </PrivateRoute>
               }
             />

@@ -156,6 +156,24 @@ const MyBooking = () => {
       dataIndex: 'pet_type',
     },
     {
+      title: 'Breed',
+      dataIndex: 'breed',
+    },
+    {
+      title: 'Services',
+      dataIndex: 'grooming',
+      render: (text, record) => (
+        <div style={{ maxWidth: '250px' }}>
+          {record.grooming.map((item, index) => (
+            <span key={index}>
+              {item}
+              {index < record.grooming.length - 1 && ', '}
+            </span>
+          ))}
+        </div>
+      ),
+    },
+    {
       title: 'Add on',
       dataIndex: 'addon',
       render: (text, record) => (
@@ -172,7 +190,7 @@ const MyBooking = () => {
     {
       title: 'Date',
       dataIndex: 'date',
-      render: date => moment(date).format('DD-MM-YYYY'),
+      // render: date => moment(date).format('DD-MM-YYYY'),
     },
     {
       title: 'Time',

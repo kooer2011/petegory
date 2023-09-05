@@ -359,10 +359,10 @@ const AllBookings = () => {
       },
       render: (text, record) => (
         <div className="fw-bold">
-          {text === 'cat' && (
+          {text === 'Cat' && (
             <span className="text-info text p-2 rounded-1">Cat</span>
           )}
-          {text === 'dog' && (
+          {text === 'Dog' && (
             <span className="text-warning text p-2 rounded-1">Dog</span>
           )}
         </div>
@@ -406,7 +406,7 @@ const AllBookings = () => {
     {
       title: 'Date',
       dataIndex: 'date',
-      render: date => moment(date).format('DD-MM-YYYY'),
+      // render: date => moment(date).format('DD-MM-YYYY'),
     },
     {
       title: 'Time',

@@ -15,18 +15,12 @@
 }
 
 .btnSub {
-  background-color: #ad813e;
-  color: #fff;
+  background-color: #ff314a;
+  color: white;
   max-width: 10rem;
-  border-style: solid;
   padding: 0.5rem;
-  border-width: 0.1rem;
   text-transform: uppercase;
   border-radius: 8px;
-}
-.btnSub:hover {
-  transform: scale(0.9);
-  border: 1px solid black;
 }
 
 @keyframes shift-rightwards {

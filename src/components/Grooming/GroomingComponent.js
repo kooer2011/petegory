@@ -13,7 +13,7 @@ import { motion } from 'framer-motion';
 import './Grooming.css';
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: 'transparent',
+  backgroundColor: '#eee',
   ...theme.typography.body2,
   fontFamily: 'CaveatVarialbleFont',
   fontWeight: 'bold',
@@ -25,7 +25,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const Item1 = styled(Paper)(({ theme }) => ({
-  backgroundColor: 'transparent',
+  backgroundColor: '#eee',
   ...theme.typography.body2,
   fontFamily: 'CaveatVarialbleFont',
   fontWeight: 'bold',
@@ -33,6 +33,18 @@ const Item1 = styled(Paper)(({ theme }) => ({
 
   padding: theme.spacing(1),
   textAlign: 'center',
+}));
+const Item2 = styled(Paper)(({ theme }) => ({
+  backgroundColor: '#FF314A',
+  ...theme.typography.body2,
+  fontFamily: 'CaveatVarialbleFont',
+  fontWeight: 'bold',
+  fontSize: '1rem',
+  width: '100%',
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  boxShadow: 'none',
+  borderRadius: '100px',
 }));
 
 export default function GroomingComponent() {
@@ -64,13 +76,7 @@ export default function GroomingComponent() {
       <br />
       <Grid container spacing={2}>
         <Grid item xs={8}>
-          <Item
-            className="cathotel__image"
-            sx={{
-              boxShadow:
-                'rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px',
-            }}
-          >
+          <Item className="">
             <img
               className="grroming__imgs fade-in"
               src={img2}
@@ -98,31 +104,26 @@ export default function GroomingComponent() {
           </Item>
         </Grid>
         <Grid item xs={4}>
-          <Item
-            className="cathotel__image"
-            sx={{
-              margin: '5px',
-              color: 'black',
-              fontSize: '1rem',
-              border: '1px solid black',
-              borderRadius: '10px',
-            }}
+          <motion.div
+            onClick={handlenavigate}
+            className="box"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 17 }}
           >
-            <motion.div
-              onClick={handlenavigate}
-              className="box"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+            <Item2
+              sx={{
+                margin: '5px',
+                color: 'white',
+                width: '100%',
+              }}
             >
               BOOKING NOW
-            </motion.div>
-          </Item>
+            </Item2>
+          </motion.div>
           <Item
             sx={{
               color: 'black',
-              border: '1px solid black',
-              borderRadius: '10px',
             }}
             className="cathotel__image"
           >
@@ -133,8 +134,6 @@ export default function GroomingComponent() {
             className="cathotel__image"
             sx={{
               marginTop: '50px',
-              border: '1px solid black',
-              borderRadius: '10px',
             }}
           >
             01

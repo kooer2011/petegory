@@ -80,17 +80,17 @@ function NavbarHeader() {
     fontFamily: 'CaveatVarialbleFont',
   };
   const link = {
-    textDecoration: 'none', // Remove underline
-    color: 'brown', // Set text color
-    fontWeight: 'bold', // Add bold font weight
+    textDecoration: 'none',
+    color: 'white',
+    fontWeight: 'bold',
     fontFamily: 'CaveatVarialbleFont',
   };
 
   return (
     <AppBar
-      position="static"
+      position="sticky"
       sx={{
-        background: '#d7d0c8', // ตั้งค่าสีพื้นหลังเป็น #d7d0c8
+        background: 'white',
         color: 'black',
         opacity: isNavbarVisible ? 1 : 0,
         transition: 'opacity 0.3s ease',
@@ -127,7 +127,7 @@ function NavbarHeader() {
             }}
           >
             <Link style={linkStyle} to="/">
-              PETEGORY
+              <span style={{ color: '#FF314A' }}>PETE</span>GORY
             </Link>
           </Typography>
 
@@ -169,13 +169,19 @@ function NavbarHeader() {
               </Link>
             </Button>
             {user ? (
-              <Button className="profile">
+              <Button
+                style={{ backgroundColor: '#FF314A', borderRadius: '50px' }}
+                className="profile"
+              >
                 <Link style={link} to="/profile/account">
                   {user.name}
                 </Link>
               </Button>
             ) : (
-              <Button className="link-hover signin">
+              <Button
+                style={{ backgroundColor: '#FF314A', borderRadius: '50px' }}
+                className="link-hover signin"
+              >
                 <Link style={link} to="/login">
                   LOGIN
                 </Link>

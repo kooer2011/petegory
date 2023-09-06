@@ -19,18 +19,17 @@
   color: rgb(0, 0, 0);
 }
 
-.usersidebar i .s1 :hover {
-  background: black;
+.usersidebar .s1:hover {
   border-radius: 5px;
   cursor: pointer;
-  color: white;
+  color: black;
 }
 
 .usersidebar .s2 {
-  background-color: #e7e7e7a8;
+  background-color: white;
   border-radius: 5px;
   cursor: pointer;
-  color: gray;
+  color: #ff314a;
 }
 
 .txtstyle {

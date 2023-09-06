@@ -39,10 +39,14 @@ function HoTel() {
         <NavbarHeader />
         <motion.div>
           <section className="info">
-            <h2>CATHOTEL</h2>
+            <h2 style={{ color: 'black', fontFamily: 'ChakraPetchBold' }}>
+              CATHOTEL
+            </h2>
             <hr />
             <div className=" fs-5 p-4 mt-0" data-aos="fade-up">
-              <h2>เงื่อนไขการเข้าใช้บริการ</h2>
+              <h2 style={{ color: '#FF314A', fontFamily: 'ChakraPetchBold' }}>
+                เงื่อนไขการเข้าใช้บริการ
+              </h2>
               <p className="d-flex justify-content-center">
                 1.น้องแมวต้องมีอายุ 4
                 เดือนขึ้นไปและได้รับวัคซีนป้องกันโรคติดต่อพื้นฐานครบแล้ว
@@ -68,7 +72,8 @@ function HoTel() {
                   </div>
                   <div className="col-sm-5">
                     <h6>
-                      About <span>{data.type}</span>
+                      About{' '}
+                      <span style={{ color: '#FF314A' }}>{data.type}</span>
                     </h6>
                     <p>
                       <strong>
@@ -93,9 +98,18 @@ function HoTel() {
                 </div>
               </div>
             ))}
-            <div className="alert p-5" data-aos="fade-up">
+            <div
+              style={{ color: '#FF314A', fontFamily: 'ChakraPetchBold' }}
+              className="alert p-5"
+              data-aos="fade-up"
+            >
               <div className="text-danger fs-4 ">
-                <span className="head__alert fw-bold fs-1">*โปรดอ่าน*</span>
+                <span
+                  className="head__alert fw-bold fs-1"
+                  style={{ color: '#FF314A', fontFamily: 'ChakraPetchBold' }}
+                >
+                  *โปรดอ่าน*
+                </span>
                 <br />
                 -หากเจ้าของทิ้ง/ไม่มารับน้องแมว จะถูกดำเนินคดีกฎหมาย ตาม
                 พ.ร.บ.คุ้มครองสัตว์

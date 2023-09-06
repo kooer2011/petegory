@@ -11,11 +11,9 @@ import './Grid.css';
 import axios from 'axios';
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: 'transparent',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
+  backgroundColor: '#eee',
+  padding: theme.spacing(2),
   textAlign: 'center',
-  color: theme.palette.text.secondary,
 }));
 
 const modalStyle = {

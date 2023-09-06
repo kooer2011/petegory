@@ -39,13 +39,13 @@ const Account = () => {
       {user ? (
         <div>
           <h2 style={linkStyle} className="text-center text-black mb-4">
-            <h2>PERSONAL PROFILE</h2>
+            <h2 style={{ color: 'black' }}>PERSONAL PROFILE</h2>
           </h2>
           <div style={linkStyle} className="userProfile">
             <div className="mb-3">
               <p className="text-black fs-5 fw-bold">
                 Name:{' '}
-                <span style={{ color: 'brown', fontWeight: 'bold' }}>
+                <span style={{ color: '#FF314A', fontWeight: 'bold' }}>
                   {user.name}
                 </span>
               </p>
@@ -53,7 +53,7 @@ const Account = () => {
             <div className="mb-3">
               <p className="text-black fs-5 fw-bold">
                 Email:{' '}
-                <span style={{ color: 'brown', fontWeight: 'bold' }}>
+                <span style={{ color: '#FF314A', fontWeight: 'bold' }}>
                   {user.email}
                 </span>
               </p>
@@ -61,7 +61,7 @@ const Account = () => {
             <div className="mb-3">
               <p className="text-black fs-5 fw-bold">
                 Phone:{' '}
-                <span style={{ color: 'brown', fontWeight: 'bold' }}>
+                <span style={{ color: '#FF314A', fontWeight: 'bold' }}>
                   {user.phone}
                 </span>
               </p>

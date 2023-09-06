@@ -14,7 +14,7 @@ import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import './Hotelcat.css';
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: 'transparent',
+  backgroundColor: '#eee',
   ...theme.typography.body2,
   fontFamily: 'CaveatVarialbleFont',
   fontWeight: 'bold',
@@ -26,16 +26,28 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const Item1 = styled(Paper)(({ theme }) => ({
+  backgroundColor: '#eee',
   ...theme.typography.body2,
   fontFamily: 'CaveatVarialbleFont',
   fontWeight: 'bold',
   fontSize: '5rem',
-  backgroundColor: 'transparent',
+
   padding: theme.spacing(1),
   textAlign: 'center',
 }));
 
-// Define the hover effect styles
+const Item2 = styled(Paper)(({ theme }) => ({
+  backgroundColor: '#FF314A',
+  ...theme.typography.body2,
+  fontFamily: 'CaveatVarialbleFont',
+  fontWeight: 'bold',
+  fontSize: '1rem',
+  width: '100%',
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  boxShadow: 'none',
+  borderRadius: '100px',
+}));
 
 export default function Hotelcat() {
   const [open, setOpen] = React.useState(false);
@@ -56,31 +68,27 @@ export default function Hotelcat() {
     <Box sx={{ flexGrow: 1, padding: 3 }}>
       <Grid container spacing={1}>
         <Grid xs={4}>
-          <Item
-            className="cathotel__image"
-            sx={{
-              margin: '5px',
-              color: 'black',
-              border: '1px solid black',
-              borderRadius: '10px',
-            }}
+          <motion.div
+            onClick={handlenavigate}
+            className="box"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 17 }}
           >
-            <motion.div
-              onClick={handlenavigate}
-              className="box"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+            <Item2
+              sx={{
+                margin: '5px',
+                color: 'white',
+                width: '100%',
+              }}
             >
               BOOKING NOW
-            </motion.div>
-          </Item>
+            </Item2>
+          </motion.div>
           <Item
             className="cathotel__image "
             sx={{
               color: 'black',
-              border: '1px solid black',
-              borderRadius: '10px',
             }}
           >
             <p>
@@ -92,21 +100,13 @@ export default function Hotelcat() {
             className="cathotel__image"
             sx={{
               marginTop: '50px',
-              border: '1px solid black',
-              borderRadius: '10px',
             }}
           >
             02
           </Item1>
         </Grid>
         <Grid xs={8}>
-          <Item
-            sx={{
-              boxShadow:
-                'rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px',
-            }}
-            className="cathotel__image"
-          >
+          <Item className="cathotel__image">
             <img
               width="100%"
               height="auto"

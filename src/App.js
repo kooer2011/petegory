@@ -46,6 +46,7 @@ import BookingGrooming from './page/BookingGrooming.js';
 import HoTel from './page/Hotel';
 function App() {
   const { loading } = useSelector(state => state.alerts);
+  const { user } = useSelector(state => state.user);
   return (
     <Router>
       {loading ? (
@@ -108,6 +109,7 @@ function App() {
 
             <Route path="/contact" element={<ConTact />} />
             <Route path="/gallery" element={<GaLLery />} />
+
             <Route
               path="/profile/:activepage"
               element={
@@ -121,7 +123,11 @@ function App() {
               path="/admin/dashboard"
               element={
                 <PrivateRoute>
-                  <Dashboard />
+                  {user?.isAdmin || user?.isEmployee ? (
+                    <Dashboard />
+                  ) : (
+                    <Error />
+                  )}
                 </PrivateRoute>
               }
             />
@@ -129,7 +135,7 @@ function App() {
               path="/admin/dashboard/users"
               element={
                 <PrivateRoute>
-                  <Users />
+                  {user?.isAdmin || user?.isEmployee ? <Users /> : <Error />}
                 </PrivateRoute>
               }
             />
@@ -137,7 +143,7 @@ function App() {
               path="/newusers"
               element={
                 <PrivateRoute>
-                  <AddUser />
+                  {user?.isAdmin || user?.isEmployee ? <AddUser /> : <Error />}
                 </PrivateRoute>
               }
             />
@@ -145,7 +151,7 @@ function App() {
               path="/edituser/:id"
               element={
                 <PrivateRoute>
-                  <EditUser />
+                  {user?.isAdmin || user?.isEmployee ? <EditUser /> : <Error />}
                 </PrivateRoute>
               }
             />
@@ -153,7 +159,11 @@ function App() {
               path="/admin/dashboard/employees"
               element={
                 <PrivateRoute>
-                  <Employees />
+                  {user?.isAdmin || user?.isEmployee ? (
+                    <Employees />
+                  ) : (
+                    <Error />
+                  )}
                 </PrivateRoute>
               }
             />
@@ -161,7 +171,11 @@ function App() {
               path="/newemployees"
               element={
                 <PrivateRoute>
-                  <AddEmployees />
+                  {user?.isAdmin || user?.isEmployee ? (
+                    <AddEmployees />
+                  ) : (
+                    <Error />
+                  )}
                 </PrivateRoute>
               }
             />
@@ -169,7 +183,11 @@ function App() {
               path="/editemployee/:id"
               element={
                 <PrivateRoute>
-                  <EditEmployee />
+                  {user?.isAdmin || user?.isEmployee ? (
+                    <EditEmployee />
+                  ) : (
+                    <Error />
+                  )}
                 </PrivateRoute>
               }
             />
@@ -177,7 +195,7 @@ function App() {
               path="/admin/dashboard/users/create"
               element={
                 <PrivateRoute>
-                  <Create />
+                  {user?.isAdmin || user?.isEmployee ? <Create /> : <Error />}
                 </PrivateRoute>
               }
             />
@@ -185,7 +203,7 @@ function App() {
               path="/admin/dashboard/hotel"
               element={
                 <PrivateRoute>
-                  <Hotels />
+                  {user?.isAdmin || user?.isEmployee ? <Hotels /> : <Error />}
                 </PrivateRoute>
               }
             />
@@ -193,7 +211,11 @@ function App() {
               path="/admin/dashboard/create-hotel"
               element={
                 <PrivateRoute>
-                  <HotelCreate />
+                  {user?.isAdmin || user?.isEmployee ? (
+                    <HotelCreate />
+                  ) : (
+                    <Error />
+                  )}
                 </PrivateRoute>
               }
             />
@@ -201,7 +223,11 @@ function App() {
               path="/edithotel/:id"
               element={
                 <PrivateRoute>
-                  <EditHotel />
+                  {user?.isAdmin || user?.isEmployee ? (
+                    <EditHotel />
+                  ) : (
+                    <Error />
+                  )}
                 </PrivateRoute>
               }
             />
@@ -209,7 +235,11 @@ function App() {
               path="/admin/dashboard/notification"
               element={
                 <PrivateRoute>
-                  <NotificationPage />
+                  {user?.isAdmin || user?.isEmployee ? (
+                    <NotificationPage />
+                  ) : (
+                    <Error />
+                  )}
                 </PrivateRoute>
               }
             />
@@ -217,7 +247,7 @@ function App() {
               path="/admin/dashboard/news"
               element={
                 <PrivateRoute>
-                  <News />
+                  {user?.isAdmin || user?.isEmployee ? <News /> : <Error />}
                 </PrivateRoute>
               }
             />
@@ -225,7 +255,11 @@ function App() {
               path="/createnews"
               element={
                 <PrivateRoute>
-                  <CreateNews />
+                  {user?.isAdmin || user?.isEmployee ? (
+                    <CreateNews />
+                  ) : (
+                    <Error />
+                  )}
                 </PrivateRoute>
               }
             />
@@ -233,7 +267,7 @@ function App() {
               path="/editNews/:id"
               element={
                 <PrivateRoute>
-                  <EditNews />
+                  {user?.isAdmin || user?.isEmployee ? <EditNews /> : <Error />}
                 </PrivateRoute>
               }
             />
@@ -241,7 +275,7 @@ function App() {
               path="/admin/dashboard/gallery"
               element={
                 <PrivateRoute>
-                  <Gallery />
+                  {user?.isAdmin || user?.isEmployee ? <Gallery /> : <Error />}
                 </PrivateRoute>
               }
             />
@@ -249,7 +283,11 @@ function App() {
               path="/creategallery"
               element={
                 <PrivateRoute>
-                  <CreateGallery />
+                  {user?.isAdmin || user?.isEmployee ? (
+                    <CreateGallery />
+                  ) : (
+                    <Error />
+                  )}
                 </PrivateRoute>
               }
             />
@@ -257,7 +295,11 @@ function App() {
               path="/editGall/:id"
               element={
                 <PrivateRoute>
-                  <EditGallery />
+                  {user?.isAdmin || user?.isEmployee ? (
+                    <EditGallery />
+                  ) : (
+                    <Error />
+                  )}
                 </PrivateRoute>
               }
             />
@@ -265,7 +307,11 @@ function App() {
               path="/admin/dashboard/all-bookings"
               element={
                 <PrivateRoute>
-                  <AllBookings />
+                  {user?.isAdmin || user?.isEmployee ? (
+                    <AllBookings />
+                  ) : (
+                    <Error />
+                  )}
                 </PrivateRoute>
               }
             />
@@ -273,7 +319,11 @@ function App() {
               path="/editbookhotel/:id"
               element={
                 <PrivateRoute>
-                  <EditBooking />
+                  {user?.isAdmin || user?.isEmployee ? (
+                    <EditBooking />
+                  ) : (
+                    <Error />
+                  )}
                 </PrivateRoute>
               }
             />

@@ -1,7 +1,7 @@
 .step {
   width: 100%;
   max-width: 500px;
-  border: 1px solid rgb(155, 154, 154);
+  background-color: #eee;
   padding: 15px;
   margin: 10px;
   box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
@@ -22,5 +22,4 @@
 .bookinggroom_container {
   margin: 0;
   padding: 0;
-  background-color: #9f978d;
 }

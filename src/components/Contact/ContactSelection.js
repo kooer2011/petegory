@@ -9,7 +9,7 @@ import { Form, Input, message } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-
+import { motion } from 'framer-motion';
 function ContactSelection() {
   const handleSend = async values => {
     try {
@@ -45,37 +45,62 @@ function ContactSelection() {
     <Container className="mb-3">
       <Row className="mb-5 mt-3">
         <Col lg="12">
-          <h2 className="text-center">Contact Us</h2>
+          <h2
+            className="text-center"
+            style={{ color: 'black', fontFamily: 'ChakraPetchBold' }}
+          >
+            Contact Us
+          </h2>
           <hr className="t_border my-4 ml-0 text-left" />
         </Col>
       </Row>
       <Row className="sec_sp">
         <Col lg="5" className="mb-5">
-          <h3 className="color_sec py-4">Get in touch</h3>
+          <h3
+            style={{ color: '#FF314A', fontFamily: 'CaveatVarialbleFont' }}
+            className="color_sec py-4"
+          >
+            Get in touch
+          </h3>
           <div className="d-flex">
-            <i class="fa-solid fa-envelope fa-2x" />
+            <i
+              style={{ color: '#FF314A' }}
+              class="fa-solid fa-envelope fa-2x"
+            />
             <div className="ms-5">
-              <strong>Email</strong>
+              <strong style={{ fontFamily: 'CaveatVarialbleFont' }}>
+                Email
+              </strong>
               <br />
-              <p>petegory.grooming@gmail.com</p>
+              <p style={{ fontFamily: 'CaveatVarialbleFont' }}>
+                petegory.grooming@gmail.com
+              </p>
             </div>
           </div>
           <br />
           <div className="d-flex">
-            <i class="fa-solid fa-phone-volume fa-2x"></i>
+            <i
+              style={{ color: '#FF314A' }}
+              class="fa-solid fa-phone-volume fa-2x"
+            ></i>
             <div className="ms-5">
-              <strong>Tel</strong>
+              <strong style={{ fontFamily: 'CaveatVarialbleFont' }}>Tel</strong>
               <br />
-              <p>081 106 7896</p>
+              <p style={{ fontFamily: 'CaveatVarialbleFont' }}>081 106 7896</p>
             </div>
           </div>
           <br />
           <div className="d-flex">
-            <i class="fa-solid fa-map-location-dot fa-2x"></i>
+            <i
+              style={{ color: '#FF314A' }}
+              class="fa-solid fa-map-location-dot fa-2x"
+            ></i>
             <div className="ms-5">
-              <strong>Address</strong>
+              <strong style={{ fontFamily: 'CaveatVarialbleFont' }}>
+                Address
+              </strong>
               <br />
-              <p>
+              <p style={{ fontFamily: 'CaveatVarialbleFont' }}>
                 โครงการ U-AVENUE, Amphoe Kamphaeng Saen, Thailand, Nakhon Pathom
                 73140
               </p>
@@ -101,10 +126,10 @@ function ContactSelection() {
             </Form.Item>
             <div className="mt-4">
               {/* <Col lg="12" className="form-group"> */}
+
               <button className="btnSub w-50" type="submit">
                 <i class="fa-solid fa-location-arrow" /> send
               </button>
-              {/* </Col> */}
             </div>
           </Form>
         </Col>

@@ -13,7 +13,7 @@ const StyledGrooming = styled('div')(({ theme }) => ({
 
 function GaLLery() {
   return (
-    <div className="container__gallery" style={{ backgroundColor: '#d7d0c8' }}>
+    <div className="container__gallery">
       <NavbarHeader />
       <motion.div
         initial={{ opacity: 0, x: 100 }} // Initial animation state (sliding from right)
@@ -21,7 +21,7 @@ function GaLLery() {
         exit={{ opacity: 0, x: -100 }} // Animation when a page exits (slide to left and fade-out)
         transition={{ duration: 0.5 }} // Animation duration
       >
-        <h2>GALLERY</h2>
+        <h2 style={{ color: 'black' }}>GALLERY</h2>
         <Row className="mb-5 mt-3">
           <hr className="t_border my-4 ml-0 text-left" />
         </Row>

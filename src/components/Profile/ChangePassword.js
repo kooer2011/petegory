@@ -43,7 +43,7 @@ const ChangePassword = () => {
 
   return (
     <div style={linkStyle} className="account">
-      <h2>CHANGE PASSWORD</h2>
+      <h2 style={{ color: '#FF314A' }}>CHANGE PASSWORD</h2>
       <Form layout="vertical" onFinish={onFinish} className="form">
         <Col
           xs={{ span: 24, offset: 0 }}

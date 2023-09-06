@@ -2,7 +2,7 @@
   margin: 5px;
 }
 .grroming__imgs:hover {
-  transform: scale(1.5); /* Increase size on hover */
+  transform: scale(1.05); /* Increase size on hover */
   transition: transform 0.4s ease-in-out; /* Add a smooth transition */
 }
 .grooming__section .MuiButton-root:hover {
@@ -59,7 +59,6 @@
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 .box {
-  background: var(--accent);
   cursor: pointer;
 }
 .detail__grooming {

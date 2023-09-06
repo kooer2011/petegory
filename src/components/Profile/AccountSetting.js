@@ -30,7 +30,7 @@ const AccountSetting = () => {
 
   return (
     <div style={linkStyle} className="account">
-      <h2>{user?.name}</h2>
+      <h2 style={{ color: '#FF314A' }}>{user?.name}</h2>
       <Form layout="vertical" className="form" onFinish={onSubmit}>
         <Col
           xs={{ span: 24, offset: 0 }}

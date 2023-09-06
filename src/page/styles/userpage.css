@@ -6,17 +6,19 @@
 .profile_section {
   font-family: CaveatVarialbleFont;
 }
+.main-content {
+  position: relative;
+
+  z-index: 5;
+}
 .read-the-docs {
   color: #888;
 }
 .homepage {
   padding: 0;
   margin: 0;
-  background-color: #d7d0c8;
-  -webkit-font-smoothing: antialiased;
 }
 .page_navebarsection {
-  background-color: #9f978d;
 }
 .grid__section {
 }
@@ -27,18 +29,21 @@
   text-align: center;
 }
 .grooming__section {
-  background-color: #9f978d;
 }
 .hotelcat__section {
 }
-.gallery__sections {
-  border: 1px solid red;
+.gallery__section {
+  background-color: #eee;
+  border-radius: 20px;
 }
 .custom_text {
   text-align: center;
 }
 .backTop {
   background-color: #102c57;
+}
+.contact__section {
+  background-color: #eee;
 }
 
 /* NewsHeader.css */

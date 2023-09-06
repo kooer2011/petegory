@@ -2,8 +2,15 @@
   font-family: 'MamuBold';
   src: local('MamuBold'), url('../../fonts/MamuBold.ttf') format('ttf');
 }
+
+@font-face {
+  font-family: 'ChakraPetchBold';
+  src: local('ChakraPetchBold'),
+    url('../../fonts/ChakraPetch-Bold.ttf ') format('ttf');
+}
+
 .info {
-  font-family: MamuBold;
+  font-family: ChakraPetchBold;
 }
 .txtHead {
   font-family: MamuBold;
@@ -73,8 +80,6 @@ h1 {
   }
 }
 .hotel__page {
-  background-color: #d7d0c8;
 }
 .hotel__page2 {
-  background-color: #d7d0c8;
 }

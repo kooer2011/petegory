@@ -14,11 +14,11 @@ import TokenExpirationChecker from '../components/CheckToken/TokenExpirationChec
 import BasicGrid from '../components/News/New';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-
 import { TypeAnimation } from 'react-type-animation';
 
 import { motion, useScroll } from 'framer-motion';
 import Hotelcat from '../components/HotelComponent/Hotelcat';
+
 const Userpage = () => {
   const { scrollYProgress } = useScroll();
   const [token, setToken] = useState(localStorage.getItem('token'));
@@ -41,18 +41,16 @@ const Userpage = () => {
         token={token}
         onTokenExpired={handleTokenExpired}
       />
-      <motion.div
-        className="progress-bar"
-        style={{ scaleX: scrollYProgress }}
-      />
+
       <section className="page_navebarsection">
         <NavbarHeader />
       </section>
+
       <motion.div
-        initial={{ opacity: 0, x: 100 }} // Initial animation state
-        animate={{ opacity: 1, x: 0 }} // Animation when a new page enters
-        exit={{ opacity: 0, x: -100 }} // Animation when a page exits
-        transition={{ duration: 0.5 }} // Animation duration
+        initial={{ opacity: 0, x: 100 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -100 }}
+        transition={{ duration: 0.5 }}
       >
         <section className="dialog__section" data-aos="fade">
           <UncontrolledExample />
@@ -60,7 +58,7 @@ const Userpage = () => {
         <br />
         <div className="custom_text">
           <TypeAnimation
-            sequence={['NEW', 1000]}
+            sequence={(['NEWS', 1000], ['ข่าวสาร', 1000])}
             wrapper="span"
             speed={50}
             style={{
@@ -80,7 +78,7 @@ const Userpage = () => {
         <br />
         <div className="custom_text">
           <TypeAnimation
-            sequence={['GROOMING', 1000]}
+            sequence={(['GROOMING', 1000], ['บริการ อาบน้ำ ตัดขน', 1000])}
             wrapper="span"
             speed={50}
             style={{
@@ -100,7 +98,7 @@ const Userpage = () => {
         <br />
         <div className="custom_text">
           <TypeAnimation
-            sequence={['CATHOTEL', 1000]}
+            sequence={(['CATHOTEL', 1000], ['โรงแรมแมว', 3000])}
             wrapper="span"
             speed={50}
             style={{
@@ -138,18 +136,18 @@ const Userpage = () => {
           <Gallr />
         </div>
         <br />
-        <div data-aos="fade-up">
+        <div className="contact__section" data-aos="fade-up">
           <ContactSelection />
         </div>
         <div>
           <FloatButton.BackTop
+            style={{ backgroundColor: 'red' }}
             tooltip={
               <div style={{ backgroundColor: 'black', color: 'white' }}>
                 Back to top
               </div>
             }
             type="primary"
-            style={{ backgroundColor: 'black', color: 'white', border: 'none' }}
           />
         </div>
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import {
   Steps,
   Form,
@@ -9,62 +9,62 @@ import {
   Col,
   Select,
   message,
-} from "antd";
-import "./styles/bookedgroom.css";
-import { ProfileOutlined, CheckCircleOutlined } from "@ant-design/icons";
-import NavbarHeader from "../components/Navbar";
-import moment from "moment";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { hideLoading, showLoading } from "../redux/features/alertSlice";
-import { useDispatch, useSelector } from "react-redux";
-import Footer from "../components/Footer/Footer";
+} from 'antd';
+import './styles/bookedgroom.css';
+import { ProfileOutlined, CheckCircleOutlined } from '@ant-design/icons';
+import NavbarHeader from '../components/Navbar';
+import moment from 'moment';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { hideLoading, showLoading } from '../redux/features/alertSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import Footer from '../components/Footer/Footer';
 
 const { Option } = Select;
 
 const timeSlotsOption = [
-  { value: "9:00", label: "9:00" },
-  { value: "10:00", label: "10:00" },
-  { value: "11:00", label: "11:00" },
-  { value: "12:00", label: "12:00" },
-  { value: "13:00", label: "13:00" },
-  { value: "14:00", label: "14:00" },
-  { value: "15:00", label: "15:00" },
-  { value: "16:00", label: "16:00" },
-  { value: "17:00", label: "17:00" },
-  { value: "18:00", label: "18:00" },
-  { value: "19:00", label: "19:00" },
-  { value: "20:00", label: "20:00" },
+  { value: '9:00', label: '9:00' },
+  { value: '10:00', label: '10:00' },
+  { value: '11:00', label: '11:00' },
+  { value: '12:00', label: '12:00' },
+  { value: '13:00', label: '13:00' },
+  { value: '14:00', label: '14:00' },
+  { value: '15:00', label: '15:00' },
+  { value: '16:00', label: '16:00' },
+  { value: '17:00', label: '17:00' },
+  { value: '18:00', label: '18:00' },
+  { value: '19:00', label: '19:00' },
+  { value: '20:00', label: '20:00' },
 ];
 
 const BookingGrooming = () => {
-  const { user } = useSelector((state) => state.user);
+  const { user } = useSelector(state => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [current, setCurrent] = useState(0);
   const [personalDetails, setPersonalDetails] = useState(null);
   const [serviceDetails, setServiceDetails] = useState(null);
-  const [userId, setUserId] = useState("");
-  const [date, setDate] = useState("");
-  console.log("date select: ", date);
+  const [userId, setUserId] = useState('');
+  const [date, setDate] = useState('');
+  console.log('date select: ', date);
   // const [time, setTime] = useState("");
 
   const [timeSlots, setTimeSlots] = useState([]);
 
-  const dateFormat = "DD/MM/YYYY";
-  const timeFormat = "HH:mm";
+  const dateFormat = 'DD/MM/YYYY';
+  const timeFormat = 'HH:mm';
 
-  const onSubmitPersonalForm = (values) => {
+  const onSubmitPersonalForm = values => {
     setPersonalDetails(values);
     setCurrent(1);
   };
-  const onSubmitSerciveForm = (values) => {
+  const onSubmitSerciveForm = values => {
     setServiceDetails(values);
     setCurrent(2);
   };
-  const handleDateChange = (dateString) => {
-    const formattedDate = moment(dateString, dateFormat).format("DD-MM-YYYY");
+  const handleDateChange = dateString => {
+    const formattedDate = moment(dateString, dateFormat).format('DD-MM-YYYY');
     setDate(formattedDate);
     console.log(date);
   };
@@ -76,13 +76,13 @@ const BookingGrooming = () => {
 
   const isTimeBooking = async (time, date) => {
     try {
-      const response = await axios.get("/api/v1/user/isTimeBooked", {
+      const response = await axios.get('/api/v1/user/isTimeBooked', {
         params: {
           time,
           date,
         },
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
 
@@ -92,7 +92,7 @@ const BookingGrooming = () => {
       return false;
     }
   };
-  const handleSubmit = async (values) => {
+  const handleSubmit = async values => {
     try {
       dispatch(showLoading());
 
@@ -100,12 +100,12 @@ const BookingGrooming = () => {
 
       if (isTimeAlreadyBooked) {
         dispatch(hideLoading());
-        message.error("This time is already booked.");
+        message.error('This time is already booked.');
         return;
       }
 
       const res = await axios.post(
-        "/api/v1/user/bookGrooming",
+        '/api/v1/user/bookGrooming',
         {
           ...values,
           userId: user._id,
@@ -114,7 +114,7 @@ const BookingGrooming = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
         }
       );
@@ -123,7 +123,7 @@ const BookingGrooming = () => {
 
       // api google sheet
       await axios.post(
-        "https://sheet.best/api/sheets/045a6e1f-dd99-49d1-9afb-4159a0084ecc",
+        'https://sheet.best/api/sheets/045a6e1f-dd99-49d1-9afb-4159a0084ecc',
         {
           ...values,
           date: date,
@@ -132,7 +132,7 @@ const BookingGrooming = () => {
 
       if (res.data.success) {
         message.success(res.data.message);
-        navigate("/");
+        navigate('/');
       } else {
         message.error(res.data.message);
       }
@@ -166,7 +166,7 @@ const BookingGrooming = () => {
     }
   }, [user, date]);
 
-  const handleChange = (dateString) => {
+  const handleChange = dateString => {
     handleDateChange(dateString);
   };
 
@@ -190,7 +190,7 @@ const BookingGrooming = () => {
     />,
     <Confirm initialValues={initialValues} onFinish={handleSubmit} />,
   ];
-  const isStepDisables = (stepNumber) => {
+  const isStepDisables = stepNumber => {
     if (stepNumber === 0) {
       return false;
     }
@@ -205,7 +205,7 @@ const BookingGrooming = () => {
     <div className="bookinggroom_container">
       <NavbarHeader />
       <div className="app">
-        <div style={{ backgroundColor: "#d7d0c8" }} className="step">
+        <div style={{ backgroundColor: '#eee' }} className="step">
           <Steps className="head" onChange={setCurrent} current={current}>
             <Steps.Step
               disabled={isStepDisables(0)}
@@ -232,29 +232,29 @@ const BookingGrooming = () => {
 
 //////////////////
 function PersonalForm({ onFinish, initialValues }) {
-  const provinceData = ["cat", "dog"];
+  const provinceData = ['cat', 'dog'];
   const petData = {
-    cat: ["แมวขนสั้น", "แมวขนยาว"],
+    cat: ['แมวขนสั้น', 'แมวขนยาว'],
     dog: [
-      "ปอม",
-      "ชิวาว่า",
-      "พุดเดิ้ล",
-      "ชิสุห์",
-      "คอร์กี้",
-      "โกลเด้น",
-      "ไซบีเรียน",
-      "ซามอยด์",
-      "ขนยาว/บาง",
+      'ปอม',
+      'ชิวาว่า',
+      'พุดเดิ้ล',
+      'ชิสุห์',
+      'คอร์กี้',
+      'โกลเด้น',
+      'ไซบีเรียน',
+      'ซามอยด์',
+      'ขนยาว/บาง',
     ],
   };
 
   const [pets, setPets] = useState(petData[provinceData[0]]);
   const [secondPet, setSecondPet] = useState(petData[provinceData[0]]);
-  const handleProvinceChange = (value) => {
+  const handleProvinceChange = value => {
     setPets(petData[value]);
     setSecondPet(petData[value][0]);
   };
-  const onSecondPetChange = (value) => {
+  const onSecondPetChange = value => {
     setSecondPet(value);
   };
   return (
@@ -264,7 +264,7 @@ function PersonalForm({ onFinish, initialValues }) {
           <Form.Item
             className="me-3"
             name="PetName"
-            rules={[{ message: "Please enter your pet name", required: true }]}
+            rules={[{ message: 'Please enter your pet name', required: true }]}
           >
             <Input type="text" placeholder="Pet Name" />
           </Form.Item>
@@ -272,7 +272,7 @@ function PersonalForm({ onFinish, initialValues }) {
         <Col xs={24} md={24} lg={12}>
           <Form.Item
             name="Name"
-            rules={[{ message: "Please enter your name", required: true }]}
+            rules={[{ message: 'Please enter your name', required: true }]}
           >
             <Input type="text" placeholder="Name" />
           </Form.Item>
@@ -283,13 +283,13 @@ function PersonalForm({ onFinish, initialValues }) {
         <Col xs={24} md={24} lg={12}>
           <Form.Item
             name="pet_type"
-            rules={[{ message: "Please select pet type", required: true }]}
+            rules={[{ message: 'Please select pet type', required: true }]}
           >
             <Select
               placeholder="Select pet type"
               value={provinceData[0]}
               onChange={handleProvinceChange}
-              options={provinceData.map((province) => ({
+              options={provinceData.map(province => ({
                 label: province,
                 value: province,
               }))}
@@ -304,13 +304,13 @@ function PersonalForm({ onFinish, initialValues }) {
           <Form.Item
             className="me-3"
             name="breed"
-            rules={[{ message: "Please select breed", required: true }]}
+            rules={[{ message: 'Please select breed', required: true }]}
           >
             <Select
-            placeholder="Select breed"
+              placeholder="Select breed"
               value={secondPet}
               onChange={onSecondPetChange}
-              options={pets.map((pet) => ({
+              options={pets.map(pet => ({
                 label: pet,
                 value: pet,
               }))}
@@ -379,7 +379,12 @@ function PersonalForm({ onFinish, initialValues }) {
         </Col>
       </Row>
 
-      <Button type="primary" htmlType="submit" className="float-end">
+      <Button
+        style={{ backgroundColor: '#FF314A' }}
+        type="primary"
+        htmlType="submit"
+        className="float-end"
+      >
         Continue
       </Button>
     </Form>
@@ -397,12 +402,18 @@ function ServiceForm({
     // เรียกใช้งาน onChange ที่ถูกส่งมาจาก parent component
     onChange(dateString, date);
   };
+  const [date, setDate] = useState('');
+  const handleDateChange = dateString => {
+    const formattedDate = moment(dateString, dateFormat).format('DD-MM-YYYY');
+    setDate(formattedDate);
+    console.log(date);
+  };
 
   return (
     <Form onFinish={onFinish} initialValues={initialValues}>
       <Form.Item
         name="grooming"
-        rules={[{ message: "Please select service", required: true }]}
+        rules={[{ message: 'Please select service', required: true }]}
       >
         <Select placeholder="บริการหลัก" mode="multiple">
           <Option value="อาบน้ำ">อาบน้ำ</Option>
@@ -426,24 +437,22 @@ function ServiceForm({
 
       <Form.Item
         name="date"
-        rules={[{ message: "Please select date", required: true }]}
+        rules={[{ message: 'Please select date', required: true }]}
       >
         <DatePicker
           format={dateFormat}
           placeholder="select date"
-          disabledDate={(current) =>
-            current && current < moment().startOf("day")
-          }
-          onChange={handleChange}
+          disabledDate={current => current && current < moment().startOf('day')}
+          onChange={handleDateChange}
         />
       </Form.Item>
 
       <Form.Item
         name="time"
-        rules={[{ message: "Please select time", required: true }]}
+        rules={[{ message: 'Please select time', required: true }]}
       >
         <Select placeholder="Select Time">
-          {timeSlots.map((time) => (
+          {timeSlots.map(time => (
             <Option
               key={time.value}
               value={time.value}
@@ -459,7 +468,7 @@ function ServiceForm({
         name="phone"
         rules={[
           {
-            message: "Please enter a 10-digit phone number.",
+            message: 'Please enter a 10-digit phone number.',
             required: true,
             len: 10,
           },
@@ -470,11 +479,16 @@ function ServiceForm({
 
       <Form.Item
         name="idline"
-        rules={[{ message: "Please enter your line id", required: true }]}
+        rules={[{ message: 'Please enter your line id', required: true }]}
       >
         <Input type="text" placeholder="line ID" />
       </Form.Item>
-      <Button type="primary" htmlType="submit" className="float-end">
+      <Button
+        style={{ backgroundColor: '#FF314A' }}
+        type="primary"
+        htmlType="submit"
+        className="float-end"
+      >
         Continue
       </Button>
     </Form>
@@ -487,10 +501,10 @@ function Confirm({ initialValues, onFinish }) {
       <Form initialValues={initialValues} onFinish={onFinish}>
         <div
           style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-evenly",
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-evenly',
           }}
         >
           <Form.Item name="PetName">
@@ -506,10 +520,10 @@ function Confirm({ initialValues, onFinish }) {
 
         <div
           style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-evenly",
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-evenly',
           }}
         >
           <Form.Item name="breed">
@@ -524,7 +538,7 @@ function Confirm({ initialValues, onFinish }) {
         </div>
         <hr />
 
-        <div style={{ textAlign: "center" }}>
+        <div style={{ textAlign: 'center' }}>
           <Form.Item name="grooming">
             <strong>Services</strong>
             <Input
@@ -535,7 +549,7 @@ function Confirm({ initialValues, onFinish }) {
           </Form.Item>
         </div>
 
-        <div style={{ textAlign: "center" }}>
+        <div style={{ textAlign: 'center' }}>
           <Form.Item name="addon">
             <strong>Add-on</strong>
             <Input
@@ -549,17 +563,18 @@ function Confirm({ initialValues, onFinish }) {
 
         <div
           style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-evenly",
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-evenly',
           }}
         >
           <Form.Item name="date">
             <strong>Date</strong>
             <Input
               disabled
-              value={moment(initialValues.date).format("DD-MM-YYYY")}
+              // value={moment(initialValues.date).format('DD-MM-YYYY')}
+              value={initialValues.date}
             />
           </Form.Item>
 
@@ -567,17 +582,17 @@ function Confirm({ initialValues, onFinish }) {
             <strong>Time</strong>
             <Input
               disabled
-              value={moment(initialValues.time, "HH:mm").format("HH:mm")}
+              value={moment(initialValues.time, 'HH:mm').format('HH:mm')}
             />
           </Form.Item>
         </div>
 
         <div
           style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-evenly",
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-evenly',
           }}
         >
           <Form.Item name="phone">
@@ -590,7 +605,12 @@ function Confirm({ initialValues, onFinish }) {
             <Input disabled value={initialValues.idline} />
           </Form.Item>
         </div>
-        <Button type="primary" htmlType="submit" className="float-end">
+        <Button
+          style={{ backgroundColor: '#FF314A' }}
+          type="primary"
+          htmlType="submit"
+          className="float-end"
+        >
           Confirm
         </Button>
       </Form>

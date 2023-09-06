@@ -10,8 +10,17 @@ const CreateNews = () => {
     image: '',
   });
   const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!data.image) {
+      // ถ้าไม่มีรูปที่เลือก
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "กรุณาเลือกรูปภาพ",
+      });
+      return;
+    }
     try {
-      e.preventDefault();
       const formData = new FormData();
       formData.append('filename', data.image);
       axios.post('/api/v1/admin/createNews', formData, {

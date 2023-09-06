@@ -211,7 +211,7 @@ const AllBookings = () => {
       filteredValue: [searchText],
       onFilter: (value, record) => {
         return (
-          (String(record.name).toLowerCase().includes(value.toLowerCase()) ||
+          (String(record.Name).toLowerCase().includes(value.toLowerCase()) ||
             String(record.PetName)
               .toLowerCase()
               .includes(value.toLowerCase()) ||
@@ -359,11 +359,11 @@ const AllBookings = () => {
       },
       render: (text, record) => (
         <div className="fw-bold">
-          {text === 'Cat' && (
-            <span className="text-info text p-2 rounded-1">Cat</span>
+          {text === 'cat' && (
+            <span className="text-primary">Cat</span>
           )}
-          {text === 'Dog' && (
-            <span className="text-warning text p-2 rounded-1">Dog</span>
+          {text === 'dog' && (
+            <span className="text-warning">Dog</span>
           )}
         </div>
       ),

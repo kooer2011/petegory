@@ -74,9 +74,9 @@ const EditBooking = ({ bookingId, onClose }) => {
       const res = await axios.put(
         `/api/v1/admin/updateBookHotel/${bookingId}`,
         {
-          startDate:updatedStartDate,
-          endDate:updatedEndDate,
-          time:updatedTime,
+          startDate: updatedStartDate,
+          endDate: updatedEndDate,
+          time: updatedTime,
         },
         {
           headers: {
@@ -125,6 +125,9 @@ const EditBooking = ({ bookingId, onClose }) => {
               <DatePicker
                 format={dateFormat}
                 onChange={handleStartDateChange}
+                disabledDate={(current) =>
+                  current && current < moment().startOf("day")
+                }
               />
             </Form.Item>
             <Form.Item
@@ -133,12 +136,25 @@ const EditBooking = ({ bookingId, onClose }) => {
               required
               rules={[{ required: true, message: "Select Date" }]}
             >
-              <DatePicker format={dateFormat} onChange={handleEndDateChange} />
+              <DatePicker
+                format={dateFormat}
+                onChange={handleEndDateChange}
+                disabledDate={(current) =>
+                  current && current < moment().startOf("day")
+                }
+              />
             </Form.Item>
           </Row>
 
           <Form.Item label="Check-in Time" name="time" required>
-            <TimePicker format={timeFormat} onChange={handleTimeChange} />
+            <TimePicker
+              format={timeFormat}
+              onChange={handleTimeChange}
+              hideDisabledOptions
+              disabledHours={() =>
+                [...Array(24).keys()].filter((h) => h < 9 || h > 20)
+              }
+            />
           </Form.Item>
 
           <Col xs={24} md={24} lg={8}>

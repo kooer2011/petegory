@@ -53,7 +53,7 @@ const EditBookedGrooming = ({ bookingId, onClose }) => {
       form.setFieldsValue({
         userId: user.userId,
         date: moment(user.date),
-        time: moment(user.time, 'HH:mm'),
+        time: moment(user.time, "HH:mm"),
         grooming: user.grooming,
         addon: user.addon,
       });
@@ -65,10 +65,10 @@ const EditBookedGrooming = ({ bookingId, onClose }) => {
   const handleUpdate = async () => {
     try {
       // ตรวจสอบว่าค่าวันที่ไม่ถูกกำหนดในฟอร์ม ให้ใช้ค่าวันที่เดิม
-      const updatedDate = form.getFieldValue('date').format("DD-MM-YYYY")
-      const updatedTime = form.getFieldValue('time').format("HH:mm");
-      const updatedGrooming = form.getFieldValue('grooming');
-      const updatedAddon = form.getFieldValue('addon');
+      const updatedDate = form.getFieldValue("date").format("DD-MM-YYYY");
+      const updatedTime = form.getFieldValue("time").format("HH:mm");
+      const updatedGrooming = form.getFieldValue("grooming");
+      const updatedAddon = form.getFieldValue("addon");
 
       const res = await axios.put(
         `/api/v1/admin/updateBookGrooming/${bookingId}`,
@@ -122,7 +122,12 @@ const EditBookedGrooming = ({ bookingId, onClose }) => {
               required
               rules={[{ required: true, message: "Select Date" }]}
             >
-              <DatePicker format={dateFormat}  />
+              <DatePicker
+                format={dateFormat}
+                disabledDate={(current) =>
+                  current && current < moment().startOf("day")
+                }
+              />
             </Form.Item>
             <Form.Item
               label="Time"
@@ -130,7 +135,13 @@ const EditBookedGrooming = ({ bookingId, onClose }) => {
               required
               rules={[{ required: true, message: "Select Date" }]}
             >
-              <TimePicker format={timeFormat} />
+              <TimePicker
+                format={timeFormat}
+                hideDisabledOptions
+                disabledHours={() =>
+                  [...Array(24).keys()].filter((h) => h < 9 || h > 20)
+                }
+              />
             </Form.Item>
           </Row>
           <Form.Item label="Service" name="grooming" required>

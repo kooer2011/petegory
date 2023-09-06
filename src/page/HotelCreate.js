@@ -19,8 +19,16 @@ const HotelCreate = () => {
   });
 
   const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!data.image) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "กรุณากรอกข้อมูลให้ครบถ้วน",
+      });
+      return;
+    }
     try {
-      e.preventDefault();
       const formData = new FormData();
       formData.append("type", data.type);
       formData.append("price", data.price);

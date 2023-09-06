@@ -208,12 +208,12 @@ const Dashboard = () => {
         </div>
       </div>
       <div className=" pt-2 pb-3 border shadow-sm w-100 justify-content-center">
-        <h3 className="p-2 m-2 mt-0 text-info fw-bold">รายการจองล่าสุด</h3>
+        <h3 className="p-2 m-2 mt-0 text-info fw-bold fs-3">รายการจองล่าสุด</h3>
         <div className="w-100">
           <Table 
             columns={columns}
             dataSource={bookingHistory}
-            pagination={{pageSize: 3}}
+            pagination={{pageSize: 5}}
           />
         </div>
       </div>

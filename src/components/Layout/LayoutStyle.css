@@ -82,3 +82,18 @@
 .active i {
     color: #5C4033;
 }
+
+@media (max-width: 900px) {
+    .sidebar {
+        width: 70px; 
+        overflow-x: hidden;
+        transition: width 0.3s;
+    }
+    .sidebar.open {
+        /* Sidebar styles when it's open (responsive) */
+        width: 250px; /* Width of the open sidebar */
+    }
+    .manage{
+        display: none;
+    }
+}

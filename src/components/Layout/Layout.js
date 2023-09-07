@@ -1,19 +1,20 @@
-import React from 'react';
-import '../Layout/LayoutStyle.css';
-import { adminMenu, employeeMenu } from '../../data/DataPath';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { Badge, message } from 'antd';
+import React from "react";
+import "../Layout/LayoutStyle.css";
+import { adminMenu, employeeMenu } from "../../data/DataPath";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Badge, message } from "antd";
 
 const Layout = ({ children }) => {
   const location = useLocation();
-  const { user } = useSelector(state => state.user);
+  const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
+
 
   const handleLogout = () => {
     localStorage.clear();
-    message.success('Logout Successfully');
-    navigate('/');
+    message.success("Logout Successfully");
+    navigate("/");
   };
 
   // const SidebarMenu = user?.isAdmin ? adminMenu : employeeMenu;
@@ -53,11 +54,11 @@ const Layout = ({ children }) => {
           </div>
           <div className="content">
             <div className="header">
-              <div className="header-content" style={{ cursor: 'pointer' }}>
+              <div className="header-content" style={{ cursor: "pointer" }}>
                 <Badge
                   count={user && user.notification.length}
                   onClick={() => {
-                    navigate('/admin/dashboard/notification');
+                    navigate("/admin/dashboard/notification");
                   }}
                 >
                   <i class="fa-solid fa-bell" />

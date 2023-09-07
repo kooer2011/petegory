@@ -7,6 +7,7 @@ import { showLoading, hideLoading } from "../redux/features/alertSlice";
 import { Link } from "react-router-dom";
 import NavbarHeader from "../components/Navbar";
 import AOS from 'aos'
+import Swal from 'sweetalert2';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -18,9 +19,21 @@ const Login = () => {
       dispatch(hideLoading());
       if (res.data.success) {
         localStorage.setItem("token", res.data.token);
-        message.success("Login Successfully");
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Login success',
+          showConfirmButton: false,
+          timer: 1500,
+        });
       } else {
-        message.error(res.data.message);
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: res.data.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     } catch (error) {
       dispatch(hideLoading());

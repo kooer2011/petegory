@@ -7,3 +7,12 @@
 .bgtablecolors {
   background-color: transparent;
 }
+
+@media (max-width: 768px) {
+  .ant-table {
+    font-size: 12px; /* ปรับขนาดตัวอักษรเพื่อให้พอดีกับขนาดหน้าจอ */
+  }
+  .ant-table {
+    overflow-x: auto;
+  }
+}

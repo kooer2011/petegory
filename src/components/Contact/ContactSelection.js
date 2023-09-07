@@ -111,17 +111,17 @@ function ContactSelection() {
           <Form className="contact__form w-100" onFinish={handleSend}>
             <Row className="mb-3">
               <Col lg="6" className="form-group">
-                <Form.Item name="name" required>
+                <Form.Item name="name" required rules={[{required: true, message: 'Please enter your name'}]}>
                   <Input placeholder="Name" type="text" />
                 </Form.Item>
               </Col>
               <Col lg="6" className="form-group">
-                <Form.Item name="email" required>
+                <Form.Item name="email" required rules={[{required: true, message: 'Please enter email'}]}>
                   <Input placeholder="Email" type="email" />
                 </Form.Item>
               </Col>
             </Row>
-            <Form.Item name="message" required>
+            <Form.Item name="message" required rules={[{required: true, message: 'Please input someting'}]}>
               <TextArea placeholder="Message" rows="5"></TextArea>
             </Form.Item>
             <div className="mt-4">

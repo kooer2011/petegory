@@ -4,6 +4,7 @@ import { Col, Form, Input, message } from 'antd';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const AccountSetting = () => {
   const { user } = useSelector(state => state.user);
@@ -15,7 +16,14 @@ const AccountSetting = () => {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       if (res.data.success) {
-        message.success(res.data.message);
+        // message.success(res.data.message);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: res.data.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate('/profile/account');
       }
     } catch (error) {
@@ -55,8 +63,8 @@ const AccountSetting = () => {
           md={{ span: 24, offset: 0 }}
           lg={{ span: 15, offset: 5 }}
         >
-          <Form.Item label="Phone" name="phone">
-            <Input type="text" placeholder="Your Phone Number" />
+          <Form.Item label="Phone" name="phone" rules={[{len: 10, message: 'Please enter a 10-digit phone number.'}]}>
+            <Input type="number" placeholder="Your Phone Number" />
           </Form.Item>
         </Col>
 

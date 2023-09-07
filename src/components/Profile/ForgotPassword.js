@@ -19,7 +19,13 @@ const ForgotPassword = () => {
           timer: 2000,
         });
       } else {
-        message.error(res.data.message);
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: res.data.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     } catch (error) {
       console.log(error);

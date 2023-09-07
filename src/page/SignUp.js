@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux'
 import { showLoading,hideLoading } from '../redux/features/alertSlice'
 import NavbarHeader from '../components/Navbar'
 import AOS from 'aos'
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
 
@@ -20,9 +21,22 @@ const SignUp = () => {
       dispatch(hideLoading());
       if(res.data.success){
         message.success('Register Successfully')
+         Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Register Successfully',
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate('/login')
       } else {
-        message.error(res.data.message)
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: res.data.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     } catch (error) {
       dispatch(hideLoading());

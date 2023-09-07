@@ -88,7 +88,7 @@ function NavbarHeader() {
 
   return (
     <AppBar
-      position="sticky"
+      position="static"
       sx={{
         background: 'white',
         color: 'black',
@@ -264,15 +264,16 @@ function NavbarHeader() {
                 fontFamily: 'ChakraPetchBold', // Add fontFamily style here
               }}
             >
+
               {user ? (
                 <Button className="profile">
-                  <Link style={link} to="/profile/account">
+                  <Link style={{color: 'red', textDecoration: 'none', fontWeight: 'bold', fontFamily: 'CaveatVarialbleFont'}} to="/profile/account">
                     {user.name}
                   </Link>
                 </Button>
               ) : (
                 <Button className="link-hover signin">
-                  <Link style={link} to="/login">
+                  <Link style={{color: 'red', textDecoration: 'none', fontWeight: 'bold', fontFamily: 'CaveatVarialbleFont'}} to="/login">
                     LOGIN
                   </Link>
                 </Button>

@@ -260,7 +260,7 @@ const BookingHotel = () => {
               format={dateFormat}
               onChange={handleStartDateChange}
               disabledDate={current =>
-                current && current < moment().startOf('day')
+                current && current < moment().startOf('day') || current.day() === 1
               }
             />
           </Form.Item>
@@ -274,7 +274,7 @@ const BookingHotel = () => {
               format={dateFormat}
               onChange={handleEndDateChange}
               disabledDate={current =>
-                current && current < moment().startOf('day')
+                current && current < moment().startOf('day') || current.day() === 1
               }
             />
           </Form.Item>

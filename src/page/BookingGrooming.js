@@ -188,7 +188,7 @@ const BookingGrooming = () => {
       onChange={handleChange}
       timeSlots={timeSlots}
     />,
-    <Confirm initialValues={initialValues} onFinish={handleSubmit} />,
+    <Confirm initialValues={initialValues} onFinish={handleSubmit} date={date} />,
   ];
   const isStepDisables = stepNumber => {
     if (stepNumber === 0) {
@@ -402,12 +402,6 @@ function ServiceForm({
     // เรียกใช้งาน onChange ที่ถูกส่งมาจาก parent component
     onChange(dateString, date);
   };
-  const [date, setDate] = useState('');
-  const handleDateChange = dateString => {
-    const formattedDate = moment(dateString, dateFormat).format('DD-MM-YYYY');
-    setDate(formattedDate);
-    console.log(date);
-  };
 
   return (
     <Form onFinish={onFinish} initialValues={initialValues}>
@@ -442,8 +436,8 @@ function ServiceForm({
         <DatePicker
           format={dateFormat}
           placeholder="select date"
-          disabledDate={current => current && current < moment().startOf('day')}
-          onChange={handleDateChange}
+          disabledDate={current => current && current < moment().startOf('day') || current.day() === 1}
+          onChange={handleChange}
         />
       </Form.Item>
 
@@ -495,7 +489,7 @@ function ServiceForm({
   );
 }
 
-function Confirm({ initialValues, onFinish }) {
+function Confirm({ initialValues, onFinish, date }) {
   return (
     <div>
       <Form initialValues={initialValues} onFinish={onFinish}>
@@ -574,7 +568,7 @@ function Confirm({ initialValues, onFinish }) {
             <Input
               disabled
               // value={moment(initialValues.date).format('DD-MM-YYYY')}
-              value={initialValues.date}
+              value={moment(date, 'DD-MM-YYYY').format('DD-MM-YYYY')}
             />
           </Form.Item>
 

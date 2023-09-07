@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Col, Form, Input, message } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const ChangePassword = () => {
   const navigate = useNavigate();
@@ -24,14 +25,26 @@ const ChangePassword = () => {
       );
 
       if (response.data.message === 'Password changed successfully') {
-        message.success('Password changed successfully');
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Password changed successfully',
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate('/profile/account');
       } else {
         message.error('Failed to change password');
       }
     } catch (error) {
       console.error(error);
-      message.error('Someting Went Wrong');
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Incorrect old password',
+        showConfirmButton: false,
+        timer: 1500,
+      });
     } finally {
       setLoading(false);
     }

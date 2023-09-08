@@ -40,7 +40,7 @@ function HoTel() {
         <motion.div>
           <section className="info">
             <h2 style={{ color: 'black', fontFamily: 'ChakraPetchBold' }}>
-              CATHOTEL
+              CAT HOTEL
             </h2>
             <hr />
             <div className=" fs-5 p-4 mt-0" data-aos="fade-up">

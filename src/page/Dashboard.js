@@ -173,47 +173,54 @@ const Dashboard = () => {
     //       </div>
     //   ),
     // }
-
   ];
 
   return (
     <Layout>
-      <div className="p-3 d-flex justify-content-around mt-3">
-        <div className="px-3 pt-2 pb-3 border shadow-sm w-25 bg-light">
-          <div className="text-center pb-1 p-2">
-            <h4>Users</h4>
+      <div className="p-3 mt-3">
+        <div className="row">
+          <div className="col-12 col-md-4 mb-3">
+            <div className="px-3 pt-2 pb-3 border shadow-sm bg-light">
+              <div className="text-center pb-1 p-2">
+                <h4>Users</h4>
+              </div>
+              <hr />
+              <div className="">
+                <h5 className="text-center">Total: {userCount}</h5>
+              </div>
+            </div>
           </div>
-          <hr />
-          <div className="">
-            <h5 className="text-center">Total: {userCount}</h5>
+          <div className="col-12 col-md-4 mb-3">
+            <div className="px-3 pt-2 pb-3 border shadow-sm bg-light">
+              <div className="text-center pb-1 p-2">
+                <h4>Grooming Booking</h4>
+              </div>
+              <hr />
+              <div className="">
+                <h5 className="text-center">Total: {groomingCount} </h5>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="px-3 pt-2 pb-3 border shadow-sm w-25 bg-light">
-          <div className="text-center pb-1 p-2">
-            <h4>Grooming Booking</h4>
-          </div>
-          <hr />
-          <div className="">
-            <h5 className="text-center">Total: {groomingCount} </h5>
-          </div>
-        </div>
-        <div className="px-3 pt-2 pb-3 border shadow-sm w-25 bg-light ">
-          <div className="text-center pb-1 p-2">
-            <h4>Hotel Booking</h4>
-          </div>
-          <hr />
-          <div className="">
-            <h5 className="text-center">Total: {hotelBookingCount}</h5>
+          <div className="col-12 col-md-4 mb-3">
+            <div className="px-3 pt-2 pb-3 border shadow-sm bg-light">
+              <div className="text-center pb-1 p-2">
+                <h4>Hotel Booking</h4>
+              </div>
+              <hr />
+              <div className="">
+                <h5 className="text-center">Total: {hotelBookingCount}</h5>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       <div className=" pt-2 pb-3 border shadow-sm w-100 justify-content-center">
         <h3 className="p-2 m-2 mt-0 text-info fw-bold fs-3">รายการจองล่าสุด</h3>
         <div className="w-100">
-          <Table 
+          <Table
             columns={columns}
             dataSource={bookingHistory}
-            pagination={{pageSize: 5}}
+            pagination={{ pageSize: 5 }}
           />
         </div>
       </div>

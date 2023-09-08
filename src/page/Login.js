@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import NavbarHeader from "../components/Navbar";
 import AOS from 'aos'
 import Swal from 'sweetalert2';
-
+import { motion } from "framer-motion";
 const Login = () => {
   const dispatch = useDispatch();
 
@@ -52,7 +52,7 @@ const Login = () => {
       <div className="main-content">
       <div className="login">
         <Form className="loginForm" onFinish={finishHandle} data-aos='zoom-in'>
-          <Typography.Title>Login</Typography.Title>
+          <Typography.Title  style={{ color: 'black', fontFamily: 'ChakraPetchBold' }}>Login</Typography.Title>
           <Form.Item
             name="email"
             rules={[
@@ -79,10 +79,17 @@ const Login = () => {
               placeholder="Enter Your Password"
             />
           </Form.Item>
+
           <div className="mb-2 mt-0 float-end fs-6">
             <Link to="/forgot-password">Forgot Password?</Link>
           </div>
-          <button type={"submit"}>Login</button>
+
+        
+              <button type={"submit"}>Login</button>
+            
+          
+         
+            
 
           <Divider style={{ borderColor: "black" }}>or</Divider>
 

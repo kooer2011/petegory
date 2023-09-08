@@ -49,7 +49,7 @@ function ContactSelection() {
             className="text-center"
             style={{ color: 'black', fontFamily: 'ChakraPetchBold' }}
           >
-            Contact Us
+            CONTACT US
           </h2>
           <hr className="t_border my-4 ml-0 text-left" />
         </Col>

@@ -108,7 +108,7 @@ export default function GroomingComponent() {
             onClick={handlenavigate}
             className="box"
             whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            whileTap={{ scale: 0.9 }}_
             transition={{ type: 'spring', stiffness: 400, damping: 17 }}
           >
             <Item2

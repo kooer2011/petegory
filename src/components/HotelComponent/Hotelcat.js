@@ -105,6 +105,8 @@ export default function Hotelcat() {
             02
           </Item1>
         </Grid>
+        
+       
         <Grid xs={8}>
           <Item className="cathotel__image">
             <img
@@ -121,7 +123,9 @@ export default function Hotelcat() {
               onClick={handleOpenModal}
             />
           </Item>
+          
         </Grid>
+       
       </Grid>
 
       <Dialog open={open} onClose={handleCloseModal} maxWidth="md">
@@ -136,6 +140,7 @@ export default function Hotelcat() {
         </DialogTitle>
         <DialogContent>
           <img src={imgs1} style={{ maxWidth: '100%' }} alt="Hotel" />
+          
         </DialogContent>
       </Dialog>
     </Box>

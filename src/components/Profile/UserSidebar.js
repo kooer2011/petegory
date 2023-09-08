@@ -9,6 +9,14 @@ const UserSidebar = ({ activepage }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const linkStyle = {
+    textDecoration: 'none', // Remove underline
+    color: 'black', // Set text color
+  
+    
+  };
+
+
   const handleLogout = () => {
     dispatch(showLoading());
     localStorage.clear();
@@ -21,13 +29,13 @@ const UserSidebar = ({ activepage }) => {
       {activepage === "account" ? (
         <div className="s2">
           <i class="fa-regular fa-circle-user"></i>
-          <span>Account</span>
+          <span style={linkStyle}>Account</span>
         </div>
       ) : (
         <Link to="/profile/account" className="txtstyle">
           <div className="s1">
             <i class="fa-regular fa-circle-user"></i>
-            <span>Account</span>
+            <span style={linkStyle}>Account</span>
           </div>
         </Link>
       )}
@@ -35,13 +43,13 @@ const UserSidebar = ({ activepage }) => {
       {activepage === "mybooking" ? (
         <div className="s2">
           <i class="fa-solid fa-clock-rotate-left"></i>
-          <span>My Booking</span>
+          <span style={linkStyle}>My Booking</span>
         </div>
       ) : (
         <Link to="/profile/mybooking" className="txtstyle">
           <div className="s1">
             <i class="fa-solid fa-clock-rotate-left"></i>
-            <span>My Booking</span>
+            <span style={linkStyle}>My Booking</span>
           </div>
         </Link>
       )}
@@ -49,13 +57,13 @@ const UserSidebar = ({ activepage }) => {
       {activepage === "changepassword" ? (
         <div className="s2">
           <i class="fa-regular fa-eye"></i>
-          <span>Change Password</span>
+          <span style={linkStyle}>Change Password</span>
         </div>
       ) : (
         <Link to="/profile/changepassword" className="txtstyle">
           <div className="s1">
             <i class="fa-regular fa-eye"></i>
-            <span>Change Password</span>
+            <span style={linkStyle}>Change Password</span>
           </div>
         </Link>
       )}
@@ -63,13 +71,13 @@ const UserSidebar = ({ activepage }) => {
       {activepage === "accountSetting" ? (
         <div className="s2">
           <i class="fa-solid fa-gear"></i>
-          <span>AccountSetting</span>
+          <span style={linkStyle}>AccountSetting</span>
         </div>
       ) : (
         <Link to="/profile/accountSetting" className="txtstyle">
           <div className="s1">
             <i class="fa-solid fa-gear"></i>
-            <span>AccountSetting</span>
+            <span style={linkStyle}>AccountSetting</span>
           </div>
         </Link>
       )}
@@ -78,20 +86,20 @@ const UserSidebar = ({ activepage }) => {
         (activepage === "dashboard" ? (
           <div className="s2">
             <i className="fa-solid fa-gauge"></i>
-            <span>Dashboard</span>
+            <span style={linkStyle}>Dashboard</span>
           </div>
         ) : (
           <Link to="/admin/dashboard" className="txtstyle">
             <div className="s1">
               <i className="fa-solid fa-gauge"></i>
-              <span>Dashboard</span>
+              <span style={linkStyle}>Dashboard</span>
             </div>
           </Link>
         ))}
 
       <div className="s1" onClick={handleLogout}>
         <i class="fa-solid fa-right-from-bracket"></i>
-        <span>Logout</span>
+        <Link style={linkStyle} >Logout</Link>
       </div>
     </div>
   );

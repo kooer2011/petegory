@@ -59,7 +59,7 @@ export default function Grooming() {
               style={{ color: 'black', fontFamily: 'ChakraPetchBold' }}
               className="header__grooming"
             >
-              GLOOMING
+              GROOMING
             </h2>
             <hr />
             <Grid

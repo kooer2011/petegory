@@ -1,53 +1,65 @@
 .login {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-    background: url('../../imgs/wallcat.jpg');
-    background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  /* background-color: #ffe1e5; */
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url('../../imgs/7757278.jpg');
+  background-size: 150%;
+  background-position: center;
 }
 
 .loginForm {
-    background-color: rgba(255, 255, 255, 0.33);
-    box-shadow: 0px 8px 32px 0 rgba(153, 76, 0, 0.3);
-    backdrop-filter: blur(3px);
-    padding: 25px;
-    border-radius: 16px;
-    width: 80%;
-    max-width: 400px;
-    align-items: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  backdrop-filter: blur (3px);
+  padding: 25px;
+  border-radius: 16px;
+  width: 80%;
+  max-width: 400px;
+  align-items: center;
+}
+.loginForm button {
+  background-color: #ff314a;
+  color: #fefefe;
+  transition: background-color 0.3s, color 0.3s; /* Add a smooth transition effect */
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.loginForm button:hover {
+  background-color: #ffffff; /* Change background color on hover */
+  color: #000000; /* Change text color on hover */
+  border: 1px solid black;
 }
 
 h1 {
-    font-size: 3.5rem;
-    font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    color: black;
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: black;
 }
 
 .login button {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 1rem;
-    color: black;
-    outline: none;
-    background: #fefefe;
-    cursor: pointer;
-    transition: 0.3s linear;
-    margin-top: 10px;
-    margin-bottom: 0;
-}
-
-.login button:hover {
-    background: #000;
-    color: #fefefe;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: white;
+  outline: none;
+  background: #ff314a;
+  cursor: pointer;
+  transition: 0.3s linear;
+  margin-top: 10px;
+  margin-bottom: 0;
 }
 
 .input {
-    padding: 10px;
+  padding: 10px;
 }

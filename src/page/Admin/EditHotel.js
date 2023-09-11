@@ -83,7 +83,7 @@ const EditHotel = () => {
   return (
     <Layout>
       <div className="d-flex flex-column align-items-center pt-4">
-        <h2>Add Hotel</h2>
+        <h2>Edit Hotel</h2>
         <form class="row g-3 w-50" onSubmit={handleUpdate} encType="multipart/form-data">
           <div class="col-12">
             <label for="inputName" class="form-label">

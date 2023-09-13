@@ -145,3 +145,14 @@
   src: local('ChakraPetchBold'),
     url('../../fonts/ChakraPetch-Bold.ttf ') format('ttf');
 }
+
+
+.fullscreen-modal {
+  width: 100%;
+}
+
+.fullscreen-content iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}

@@ -5,15 +5,14 @@ import Gallr from "../components/Gallery/Gallr";
 import Footer from "../components/Footer/Footer";
 import GroomingComponent from "../components/Grooming/GroomingComponent";
 import ContactSelection from "../components/Contact/ContactSelection";
-import { FloatButton } from "antd";
-import { Link, useNavigate } from "react-router-dom";
+import { FloatButton, Modal } from "antd";
+import { useNavigate } from "react-router-dom";
 import "./styles/userpage.css"; // Import the CSS file
 import TokenExpirationChecker from "../components/CheckToken/TokenExpirationChecker";
 import BasicGrid from "../components/News/New";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { TypeAnimation } from "react-type-animation";
-
 import { motion, useScroll } from "framer-motion";
 import Hotelcat from "../components/HotelComponent/Hotelcat";
 import {
@@ -30,6 +29,14 @@ const Userpage = () => {
   const handlenavigate = () => {
     navigate("/hotel");
   };
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+  const [lineLink, setLineLink] = useState("https://line.me/R/ti/p/@706mfqsc");
 
   const handleTokenExpired = () => {
     localStorage.removeItem("token");
@@ -163,8 +170,9 @@ const Userpage = () => {
                   Line
                 </div>
               }
-              href="https://line.me/R/ti/p/@706mfqsc"
-              target="_blank"
+              // href="https://line.me/R/ti/p/@706mfqsc"
+              // target="_blank"
+              onClick={showModal}
             />
           </FloatButton.Group>
 
@@ -178,6 +186,18 @@ const Userpage = () => {
             type="primary"
           />
         </div>
+        <Modal
+          title="Line QR Code"
+          visible={isModalVisible}
+          onCancel={handleCancel}
+          footer={null}
+          className="fullscreen-modal"
+        >
+          <div style={{width: '100%', height: '70vh'}}>
+            <iframe src="https://line.me/R/ti/p/@706mfqsc" className="w-100 h-100"></iframe>
+
+          </div>
+        </Modal>
 
         <Footer />
       </motion.div>

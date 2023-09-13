@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Layout from '../../components/Layout/Layout';
 import { Table, Tabs, Input, Modal, message, Select } from 'antd';
 import axios from 'axios';
-import moment from 'moment';
-import { useNavigate } from 'react-router-dom';
 import EditBooking from './EditBooking';
 import EditBookedGrooming from './EditBookedGrooming';
 import Swal from 'sweetalert2';
+import './style/allBooking.css'
+import moment from 'moment';
 
 const AllBookings = () => {
   const [bookedHotels, setBookedHotels] = useState([]);
@@ -211,11 +211,15 @@ const AllBookings = () => {
       filteredValue: [searchText],
       onFilter: (value, record) => {
         return (
-          (String(record.Name).toLowerCase().includes(value.toLowerCase()) ||
+          (String(record.Name)
+            .toLowerCase()
+            .includes(value.toLowerCase()) ||
             String(record.PetName)
               .toLowerCase()
               .includes(value.toLowerCase()) ||
-            String(record.phone).toLowerCase().includes(value.toLowerCase()) ||
+            String(record.phone)
+              .toLowerCase()
+              .includes(value.toLowerCase()) ||
             String(record.roomType)
               .toLowerCase()
               .includes(value.toLowerCase()) ||
@@ -266,6 +270,16 @@ const AllBookings = () => {
       dataIndex: 'time',
       filteredValue: [searchText],
       // render: (time) => moment(time).format("HH:mm"),
+    },
+    {
+      title: 'Information',
+      dataIndex: 'petinfo',
+      filteredValue: [searchText],
+      render: (text, record) => (
+        <div style={{ maxWidth: '170px' }}>
+          {record.petinfo}
+        </div>
+      ),
     },
     {
       title: 'Status',
@@ -481,7 +495,7 @@ const AllBookings = () => {
               onChange={e => setSearchText(e.target.value)}
             />
             <Select
-              style={{ marginLeft: '10px' }}
+              className='filter'
               placeholder="Filter Status"
               onChange={value => Filter(value, 'status')}
               allowClear
@@ -490,7 +504,7 @@ const AllBookings = () => {
               <Select.Option value="success">Success</Select.Option>
             </Select>
             <Select
-              style={{ marginLeft: '10px' }}
+              className='filter'
               placeholder="Filter Pet"
               onChange={value => Filter(value, 'pet_type')}
               allowClear
@@ -501,7 +515,7 @@ const AllBookings = () => {
             <a
               href="https://docs.google.com/spreadsheets/d/1BN3LENidjKQr-HWtIsI1VQOK1gVRz4HufAk8R2N-wVE/edit#gid=0"
               target="_blank"
-              className="w-50 ms-3 d-flex align-items-center text-decoration-none"
+              className="w-50 ms-3 d-flex align-items-center text-decoration-none filter"
             >
               เพิ่มเวลาการจอง
             </a>
@@ -522,7 +536,7 @@ const AllBookings = () => {
               onChange={e => setSearchText(e.target.value)}
             />
             <Select
-              style={{ marginLeft: '10px' }}
+              className='filter'
               placeholder="Filter Status"
               onChange={setStatusFilter}
               allowClear
@@ -533,7 +547,7 @@ const AllBookings = () => {
             <a
               href="https://docs.google.com/spreadsheets/d/14kwdx9zkKZ7a61OgtSdXPBCTBzb2vH36HkZUVlcjkZM/edit#gid=0"
               target="_blank"
-              className="w-50 ms-3 d-flex align-items-center text-decoration-none"
+              className="w-50 ms-3 d-flex align-items-center text-decoration-none filter"
             >
               เพิ่มเวลาการจอง
             </a>

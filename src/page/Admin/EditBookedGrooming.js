@@ -52,7 +52,7 @@ const EditBookedGrooming = ({ bookingId, onClose }) => {
 
       form.setFieldsValue({
         userId: user.userId,
-        date: moment(user.date),
+        date: moment(user.date, "DD-MM-YYYY"),
         time: moment(user.time, "HH:mm"),
         grooming: user.grooming,
         addon: user.addon,
@@ -107,7 +107,7 @@ const EditBookedGrooming = ({ bookingId, onClose }) => {
         form={form}
         onFinish={handleUpdate}
       >
-        <h2 className="text-center">Edit Grooming hotel</h2>
+        <h2 className="text-center">Edit Booking Grooming</h2>
         <br />
         <div className="ms-4">
           <Col xs={24} md={12} lg={15}>

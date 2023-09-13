@@ -76,7 +76,7 @@ const AddEmployees = () => {
           >
             <Select placeholder="Select a role">
               <Option value="barber">Barber</Option>
-              <Option value="user">User</Option>
+              <Option value="admin">Admin</Option>
             </Select>
           </Form.Item>
           <Form.Item

@@ -16,7 +16,6 @@ const AccountSetting = () => {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       if (res.data.success) {
-        // message.success(res.data.message);
         Swal.fire({
           position: 'center',
           icon: 'success',

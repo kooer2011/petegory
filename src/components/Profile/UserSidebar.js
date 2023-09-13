@@ -3,6 +3,8 @@ import "./style/UserSidebar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../../redux/features/alertSlice";
+import Swal from 'sweetalert2';
+
 
 const UserSidebar = ({ activepage }) => {
   const { user } = useSelector((state) => state.user);
@@ -12,16 +14,20 @@ const UserSidebar = ({ activepage }) => {
   const linkStyle = {
     textDecoration: 'none', // Remove underline
     color: 'black', // Set text color
-  
-    
   };
-
 
   const handleLogout = () => {
     dispatch(showLoading());
     localStorage.clear();
     dispatch(hideLoading());
     navigate("/");
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Logout Success',
+      showConfirmButton: false,
+      timer: 1500,
+    });
     window.location.reload();
   };
   return (

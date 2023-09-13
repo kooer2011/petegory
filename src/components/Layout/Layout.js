@@ -4,6 +4,7 @@ import { adminMenu, employeeMenu } from "../../data/DataPath";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Badge, message, Drawer } from "antd";
+import Swal from 'sweetalert2';
 
 const Layout = ({ children }) => {
   const location = useLocation();
@@ -12,8 +13,14 @@ const Layout = ({ children }) => {
 
   const handleLogout = () => {
     localStorage.clear();
-    message.success("Logout Successfully");
     navigate("/");
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Logout Success',
+      showConfirmButton: false,
+      timer: 1500,
+    });
   };
 
   // const SidebarMenu = user?.isAdmin ? adminMenu : employeeMenu;

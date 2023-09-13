@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
 import UncontrolledExample from "../components/Carousel/CarouSel";
-import GridExample from "../components/Card/Card";
 import NavbarHeader from "../components/Navbar";
 import Gallr from "../components/Gallery/Gallr";
 import Footer from "../components/Footer/Footer";
 import GroomingComponent from "../components/Grooming/GroomingComponent";
-import HoTel from "./Hotel";
 import ContactSelection from "../components/Contact/ContactSelection";
 import { FloatButton } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import "./styles/userpage.css"; // Import the CSS file
 import TokenExpirationChecker from "../components/CheckToken/TokenExpirationChecker";
-import AlertDialog from "../components/dialog/Dialog";
 import BasicGrid from "../components/News/New";
 import AOS from "aos";
 import "aos/dist/aos.css";

@@ -21,7 +21,7 @@ const ResetPassword = () => {
         Swal.fire({
           position: 'center',
           icon: 'success',
-          title: 'Reset Password Success',
+          title: 'รีเซ็ตรหัสผ่านสำเร็จ',
           showConfirmButton: false,
           timer: 1500,
         });
@@ -37,7 +37,7 @@ const ResetPassword = () => {
       }
     } catch (error) {
       console.log(error);
-      message.error('Error for Reset');
+      message.error('เกิดข้อผิดพลาด');
     }
   };
 

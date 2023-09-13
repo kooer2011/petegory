@@ -46,7 +46,7 @@ const EditNews = () => {
       }
     } catch (error) {
       console.error(error);
-      message.error("Update News Error");
+      message.error("ไม่สามารถแก้ไขข้อมูลได้");
     }
   };
 

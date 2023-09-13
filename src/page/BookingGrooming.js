@@ -100,7 +100,7 @@ const BookingGrooming = () => {
 
       if (isTimeAlreadyBooked) {
         dispatch(hideLoading());
-        message.error('This time is already booked.');
+        message.error('เวลานี้มีการจองแล้ว!');
         return;
       }
 

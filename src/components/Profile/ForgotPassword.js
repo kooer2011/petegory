@@ -14,7 +14,7 @@ const ForgotPassword = () => {
         Swal.fire({
           position: 'center',
           icon: 'success',
-          title: 'Check Your Email',
+          title: 'โปรดเช็คอีเมลล์ของคุณ',
           showConfirmButton: false,
           timer: 2000,
         });
@@ -29,7 +29,7 @@ const ForgotPassword = () => {
       }
     } catch (error) {
       console.log(error);
-      message.error('Send Email Error');
+      message.error('ส่งอีเมลล์ผิดพลาด');
     }
   };
 

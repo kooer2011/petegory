@@ -43,7 +43,7 @@ const EditUser = () => {
       }
     } catch (error) {
       console.error(error);
-      message.error("Update User Error");
+      message.error("ไม่สามารถแก้ไขข้อมูลได้");
     }
   };
 

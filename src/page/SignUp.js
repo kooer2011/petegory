@@ -20,7 +20,6 @@ const SignUp = () => {
       const res = await axios.post('/api/v1/user/signup', values)
       dispatch(hideLoading());
       if(res.data.success){
-        message.success('Register Successfully')
          Swal.fire({
           position: 'center',
           icon: 'success',
@@ -41,7 +40,7 @@ const SignUp = () => {
     } catch (error) {
       dispatch(hideLoading());
       console.log(error)
-      message.error('Someting Went Wrong')
+      message.error('มีบางอย่างผิดพลาด')
     }
   }
 
@@ -60,7 +59,7 @@ const SignUp = () => {
           rules={[
             {
               required: true,
-              message: 'Please enter valid name'
+              message: 'Please enter your name'
             }
           ]}
         >

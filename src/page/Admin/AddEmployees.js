@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { showLoading, hideLoading } from "../../redux/features/alertSlice";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const { Option } = Select;
 
@@ -17,7 +18,13 @@ const AddEmployees = () => {
       const res = await axios.post("/api/v1/user/signup", values);
       dispatch(hideLoading());
       if (res.data.success) {
-        message.success("Add New Employee");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "เพิ่มพนักงานใหม่แล้ว",
+          showConfirmButton: false,
+          timer: 1000,
+        });
         navigate("/admin/dashboard/users");
       } else {
         message.error(res.data.message);

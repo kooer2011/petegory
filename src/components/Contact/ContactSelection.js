@@ -22,7 +22,7 @@ function ContactSelection() {
         Swal.fire({
           position: 'center',
           icon: 'success',
-          title: 'thank you',
+          title: 'ขอบคุณ',
           showConfirmButton: false,
           timer: 1500,
         });
@@ -32,7 +32,7 @@ function ContactSelection() {
         Swal.fire({
           position: 'center',
           icon: 'error',
-          title: 'Please Login!',
+          title: 'โปรดเข้าสู่ระบบ',
           showConfirmButton: false,
           timer: 1500,
         });

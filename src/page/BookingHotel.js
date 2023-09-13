@@ -89,13 +89,13 @@ const BookingHotel = () => {
       // ตรวจสอบว่าผู้ใช้ได้ทำการเลือก Room Type และ Room Number แล้ว
       if (!selectedRoomType) {
         dispatch(hideLoading());
-        message.error('Please select a Room Type.');
+        message.error('โปรดเลือกประเภทห้อง');
         return;
       }
 
       if (!values.roomNumber) {
         dispatch(hideLoading());
-        message.error('Please select a Room Number.');
+        message.error('โปรดเลือกห้องพัก');
         return;
       }
 

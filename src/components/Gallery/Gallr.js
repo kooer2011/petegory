@@ -1,27 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
-import img1 from "../../imgs/cat2.jpg";
-import img2 from "../../imgs/cat_cow.jpg";
-import img3 from "../../imgs/cat3.jpg";
-import img4 from "../../imgs/cat4.jpg";
-import img5 from "../../imgs/dog.jpg";
-import img6 from "../../imgs/dog2.jpg";
-import img7 from "../../imgs/dog3.jpg";
-import img8 from "../../imgs/dog4.jpg";
 import "./Gallr.css";
 
 const Gallr = () => {
-  const data = [
-    { id: 1, imgSrc: img1 },
-    { id: 2, imgSrc: img2 },
-    { id: 3, imgSrc: img3 },
-    { id: 4, imgSrc: img4 },
-    { id: 5, imgSrc: img5 },
-    { id: 6, imgSrc: img6 },
-    { id: 7, imgSrc: img7 },
-    { id: 8, imgSrc: img8 },
-  ];
 
   const [gallery, setGallery] = useState([]);
 

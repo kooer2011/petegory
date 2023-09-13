@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { showLoading, hideLoading } from "../../redux/features/alertSlice";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const AddUser = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,13 @@ const AddUser = () => {
       const res = await axios.post("/api/v1/user/signup", values);
       dispatch(hideLoading());
       if (res.data.success) {
-        message.success("Add New User");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "เพิ่มผู้ใช้ใหม่แล้ว",
+          showConfirmButton: false,
+          timer: 1000,
+        });
         navigate("/admin/dashboard/users");
       } else {
         message.error(res.data.message);
@@ -23,7 +30,7 @@ const AddUser = () => {
     } catch (error) {
       dispatch(hideLoading());
       console.log(error);
-      message.error("Someting Went Wrong");
+      message.error("มีบางอย่างผิดพลาด");
     }
   };
   return (

@@ -8,7 +8,6 @@ import { Row, message } from "antd";
 const EditHotel = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  // const [value, setValue] = useState({});
   const [value, setValue] = useState({
     type: "",
     price: "",
@@ -39,16 +38,6 @@ const EditHotel = () => {
     try {
       e.preventDefault();
 
-      // const data = {
-      //   type: value.type,
-      //   price: value.price,
-      //   title1: value.title1,
-      //   title2: value.title2,
-      //   title3: value.title3,
-      //   title4: value.title4,
-      //   title5: value.title5,
-      //   image: value.image,
-      // };
       const data = new FormData();
       data.append("type", value.type);
       data.append("price", value.price);
@@ -195,13 +184,6 @@ const EditHotel = () => {
               name="filename"
               placeholder="Select Image"
               onChange={(e) => setValue({ ...value, image: e.target.files[0] })}
-              // onChange={(e) => {
-              //   const selectedImage = e.target.files[0];
-              //   setValue((prevValue) => ({
-              //     ...prevValue,
-              //     image: selectedImage,
-              //   }));
-              // }}
             />
 
             <button type="submit" class="btn btn-primary w-25">

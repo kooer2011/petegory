@@ -11,15 +11,8 @@ import ChangePassword from './ChangePassword';
 import AccountSetting from './AccountSetting';
 import { motion, useScroll } from 'framer-motion';
 const Profile = () => {
-  const navigate = useNavigate();
-  const { user } = useSelector(state => state.user);
   const { activepage } = useParams();
 
-  const handleLogout = () => {
-    localStorage.clear();
-    message.success('Logout Successfully');
-    navigate('/');
-  };
 
   return (
     <div className="userprofile">

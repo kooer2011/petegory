@@ -3,19 +3,13 @@ import axios from "axios";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "../index.css";
 import Layout from "../components/Layout/Layout";
-import { Modal, Table } from "antd";
-import ViewBookingDetail from "./Admin/ViewBookingDetail";
-import { useNavigate } from "react-router-dom";
+import { Table } from "antd";
 
 const Dashboard = () => {
-  const navigate = useNavigate();
   const [userCount, setUserCount] = useState(0);
   const [hotelBookingCount, setHotelBookingCount] = useState(0);
   const [groomingCount, setGroomingBookingCount] = useState(0);
   const [bookingHistory, setBookingHistory] = useState([]);
-
-  const [selectedBooking, setSelectedBooking] = useState(null);
-  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const getUserCount = async () => {
     try {
@@ -100,19 +94,6 @@ const Dashboard = () => {
     }
   };
 
-  // const handleView = (userId) => {
-  //   setSelectedBooking(userId);
-  //   showModal();
-  // };
-
-  // const showModal = () => {
-  //   setIsModalVisible(true);
-  // };
-  const handleCancel = () => {
-    setSelectedBooking(null);
-    setIsModalVisible(false);
-  };
-
   useEffect(() => {
     getUserData();
     getUserCount();
@@ -159,20 +140,6 @@ const Dashboard = () => {
         </div>
       ),
     },
-    // {
-    //   title: "Actions",
-    //   dataIndex: "actions",
-    //   render: (text, record) => (
-    //       <div className="m-1">
-    //         <button
-    //           className="btn btn-primary"
-    //           onClick={() => handleView(record._id)}
-    //         >
-    //           View
-    //         </button>
-    //       </div>
-    //   ),
-    // }
   ];
 
   return (
@@ -214,6 +181,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+      
       <div className=" pt-2 pb-3 border shadow-sm w-100 justify-content-center">
         <h3 className="p-2 m-2 mt-0 text-info fw-bold fs-3">รายการจองล่าสุด</h3>
         <div className="w-100">
@@ -224,9 +192,6 @@ const Dashboard = () => {
           />
         </div>
       </div>
-      <Modal visible={isModalVisible} onCancel={handleCancel} footer={null}>
-        <ViewBookingDetail bookingId={selectedBooking} onClose={handleCancel} />
-      </Modal>
     </Layout>
   );
 };

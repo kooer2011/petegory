@@ -32,13 +32,13 @@ const Login = () => {
           icon: 'error',
           title: res.data.message,
           showConfirmButton: false,
-          timer: 1500,
+          timer: 2000,
         });
       }
     } catch (error) {
       dispatch(hideLoading());
       console.log(error);
-      message.error("Someting Went Wrong");
+      message.error("มีบางอย่างผิดพลาด");
     }
   };
 

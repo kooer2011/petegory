@@ -6,8 +6,6 @@ import GrooMing from './page/Grooming';
 import ConTact from './page/ConTact';
 import GaLLery from './page/GaLLery';
 import Dashboard from './page/Dashboard';
-// import Users from './page/Users';
-import Create from './page/Create';
 import Userpage from './page/Userpage';
 import HotelDetail from './page/HotelDetail';
 
@@ -17,7 +15,6 @@ import Spinner from './components/Spinner';
 import PrivateRoute from './components/ProtectedRoute/PrivateRoute';
 import PublicRoute from './components/ProtectedRoute/PublicRoute';
 import Profile from './components/Profile/Profile';
-import HotelPage from './components/Hotel/HotelPage';
 import NotificationPage from './page/NotificationPage';
 import Users from './page/Admin/Users';
 import Employees from './page/Admin/Employees';
@@ -188,14 +185,6 @@ function App() {
                   ) : (
                     <Error />
                   )}
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/admin/dashboard/users/create"
-              element={
-                <PrivateRoute>
-                  {user?.isAdmin || user?.isEmployee ? <Create /> : <Error />}
                 </PrivateRoute>
               }
             />

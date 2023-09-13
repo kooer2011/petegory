@@ -28,20 +28,20 @@ const ChangePassword = () => {
         Swal.fire({
           position: 'center',
           icon: 'success',
-          title: 'Password changed successfully',
+          title: 'เปลี่ยนรหัสผ่านสำเร็จ',
           showConfirmButton: false,
           timer: 1500,
         });
         navigate('/profile/account');
       } else {
-        message.error('Failed to change password');
+        message.error('ไม่สามารถเปลี่ยนรหัสผ่านได้');
       }
     } catch (error) {
       console.error(error);
       Swal.fire({
         position: 'center',
         icon: 'error',
-        title: 'Incorrect old password',
+        title: 'รหัสผ่านเก่าไม่ถูกต้อง',
         showConfirmButton: false,
         timer: 1500,
       });

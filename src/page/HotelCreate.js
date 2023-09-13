@@ -46,7 +46,7 @@ const HotelCreate = () => {
       Swal.fire({
         position: "center",
         icon: "success",
-        title: "Created has been success",
+        title: "เพิ่มข้อมูลสำเร็จ",
         showConfirmButton: false,
         timer: 1000,
       });

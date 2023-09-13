@@ -47,8 +47,8 @@ export default function PrivateRoute ({ children }) {
   } else {
     Swal.fire({
       icon: 'error',
-      title: 'Something went wrong!',
-      text: 'Please Login.',
+      title: 'มีบางอย่างผิดพลาด',
+      text: 'โปรดเข้าสู่ระบบ',
     })
     // return <Navigate to='/login' />
     return user ? children : <Navigate to="/login" />;

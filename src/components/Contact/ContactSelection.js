@@ -125,8 +125,6 @@ function ContactSelection() {
               <TextArea placeholder="Message" rows="5"></TextArea>
             </Form.Item>
             <div className="mt-4">
-              {/* <Col lg="12" className="form-group"> */}
-
               <button className="btnSub w-50" type="submit">
                 <i class="fa-solid fa-location-arrow" /> send
               </button>

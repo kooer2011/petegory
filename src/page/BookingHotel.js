@@ -15,6 +15,7 @@ import { hideLoading, showLoading } from "../redux/features/alertSlice";
 import axios from "axios";
 import moment from "moment";
 import TextArea from "antd/es/input/TextArea";
+import AOS from "aos";
 
 const { Option } = Select;
 
@@ -198,11 +199,14 @@ const BookingHotel = () => {
     }
   }, [selectedRoomType, startDate, endDate, user]);
 
+  useEffect(() => {
+    AOS.init({ duration: 2000 });
+  }, []);
+
   return (
-    <div className="mt-3 bookBG">
+    <div className="mt-3 bookBG" data-aos="fade">
       <Form layout="vertical" onFinish={handleSubmit} className="m-3">
         <h1 className="text-center">Booking hotel</h1>
-
         <Row>
             <Form.Item
               label="Name"
@@ -334,9 +338,8 @@ const BookingHotel = () => {
           required
           rules={[{ required: true, message: "กรุณากรอกสุขภาพสัตว์เลี้ยงของคุณ" }]}
         >
-          <TextArea placeholder="ข้อมูลสุขภาพสัตว์เลี้ยง" rows="3" />
+          <TextArea placeholder="ข้อมูลสุขภาพสัตว์เลี้ยง" rows="3" style={{ resize: "none" }}  ></TextArea>
         </Form.Item>
-
         <Col xs={24} md={24} lg={8}>
           <button className="btn btn-primary form-btn" type="submit">
             Submit

@@ -131,8 +131,6 @@ const BookingHotel = () => {
           },
         }
       );
-      console.log(values);
-      dispatch(hideLoading());
 
       //api google sheet
       await axios.post(
@@ -144,6 +142,8 @@ const BookingHotel = () => {
           time: checkInTime,
         }
       );
+
+      dispatch(hideLoading());
 
       if (res.data.success) {
         message.success(res.data.message);

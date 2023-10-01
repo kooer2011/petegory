@@ -121,13 +121,19 @@ const BookingGrooming = () => {
       );
 
       // api google sheet
-      await axios.post(
-        "https://sheet.best/api/sheets/045a6e1f-dd99-49d1-9afb-4159a0084ecc",
-        {
-          ...values,
+      const URL = "https://api.sheety.co/4c46d85387de0a2dbc603c2af92a036f/bookedGroomingApi/sheet1"
+      let body = {
+        sheet1: {
+          name: values.Name,
+          petName: values.PetName,
+          breed: values.breed,
+          phone: values.phone,
+          petType: values.pet_type,
           date: date,
-        }
-      );
+          time: values.time
+        },
+      };
+      await axios.post(URL,body )
 
       dispatch(hideLoading());
 

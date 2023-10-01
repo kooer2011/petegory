@@ -133,15 +133,22 @@ const BookingHotel = () => {
       );
 
       //api google sheet
-      await axios.post(
-        "https://sheet.best/api/sheets/cf3ac1d9-a6ba-40bd-9fd9-3644b116aaf8",
-        {
-          ...values,
+      const googleAppsScriptURL =
+        "https://api.sheety.co/4c46d85387de0a2dbc603c2af92a036f/bookedHotelApi/sheet1";
+      let body = {
+        sheet1: {
+          name: values.Name,
+          petName: values.PetName,
+          phone: values.phone,
+          roomType: values.roomType,
+          roomNumber: values.roomNumber,
           startDate: startDate,
           endDate: endDate,
           time: checkInTime,
-        }
-      );
+        },
+      };
+      await axios.post(googleAppsScriptURL,body);
+      console.log(body)
 
       dispatch(hideLoading());
 
@@ -208,22 +215,22 @@ const BookingHotel = () => {
       <Form layout="vertical" onFinish={handleSubmit} className="m-3">
         <h1 className="text-center">Booking hotel</h1>
         <Row>
-            <Form.Item
-              label="Name"
-              name="Name"
-              required
-              rules={[{ required: true }]}
-            >
-              <Input type="text" placeholder="your name" />
-            </Form.Item>
-            <Form.Item
-              label="PetName"
-              name="PetName"
-              required
-              rules={[{ required: true }]}
-            >
-              <Input type="text" placeholder="your petname" />
-            </Form.Item>
+          <Form.Item
+            label="Name"
+            name="Name"
+            required
+            rules={[{ required: true }]}
+          >
+            <Input type="text" placeholder="your name" />
+          </Form.Item>
+          <Form.Item
+            label="PetName"
+            name="PetName"
+            required
+            rules={[{ required: true }]}
+          >
+            <Input type="text" placeholder="your petname" />
+          </Form.Item>
         </Row>
         <Row>
           <Form.Item
@@ -336,9 +343,15 @@ const BookingHotel = () => {
           label="Pet Information"
           name="petinfo"
           required
-          rules={[{ required: true, message: "กรุณากรอกสุขภาพสัตว์เลี้ยงของคุณ" }]}
+          rules={[
+            { required: true, message: "กรุณากรอกสุขภาพสัตว์เลี้ยงของคุณ" },
+          ]}
         >
-          <TextArea placeholder="ข้อมูลสุขภาพสัตว์เลี้ยง" rows="3" style={{ resize: "none" }}  ></TextArea>
+          <TextArea
+            placeholder="ข้อมูลสุขภาพสัตว์เลี้ยง"
+            rows="3"
+            style={{ resize: "none" }}
+          ></TextArea>
         </Form.Item>
         <Col xs={24} md={24} lg={8}>
           <button className="btn btn-primary form-btn" type="submit">

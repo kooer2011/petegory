@@ -66,7 +66,7 @@ const Account = () => {
                 </span>
               </p>
             </div>
-            <div>
+            <div className='mb-3'>
               <button className="btn btn-warning" type="submit" onClick={edit}>
                 Edit Profile
               </button>

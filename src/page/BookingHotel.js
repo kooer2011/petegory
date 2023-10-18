@@ -147,8 +147,8 @@ const BookingHotel = () => {
           time: checkInTime,
         },
       };
-      await axios.post(googleAppsScriptURL,body);
-      console.log(body)
+      await axios.post(googleAppsScriptURL, body);
+      console.log(body);
 
       dispatch(hideLoading());
 

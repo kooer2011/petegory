@@ -4,9 +4,6 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Modal from '@mui/material/Modal'; // Import Modal component
-import imgs1 from '../../imgs/poster1.jpg';
-import imgs2 from '../../imgs/poster2.jpg';
-import imgs3 from '../../imgs/poster3.jpg';
 import './Grid.css';
 import axios from 'axios';
 

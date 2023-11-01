@@ -75,7 +75,7 @@ const EditEmployee = () => {
             label="Phone"
             name="phone"
             required
-            rules={[{ required: true }]}
+            rules={[{ required: true },{ len: 10, message: "Phone number must be exactly 10 digits" },]}
           >
             <Input type="number" placeholder="input phone" />
           </Form.Item>
@@ -87,7 +87,7 @@ const EditEmployee = () => {
           >
             <Select placeholder="Select a role">
               <Option value="barber">Barber</Option>
-              <Option value="user">User</Option>
+              <Option value="cashier">Cashier</Option>
             </Select>
           </Form.Item>
           <button className="btn btn-primary form-btn" type="submit">

@@ -83,7 +83,13 @@ const AddEmployees = () => {
             label="Password"
             name="password"
             required
-            rules={[{ required: true }]}
+            rules={[
+              { required: true },
+              {
+                min: 6,
+                message: 'Password must be at least 6 characters.',
+              },
+            ]}
           >
             <Input.Password type="text" placeholder="input password" />
           </Form.Item>

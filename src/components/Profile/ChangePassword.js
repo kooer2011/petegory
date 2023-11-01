@@ -8,12 +8,19 @@ const ChangePassword = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
-  const onFinish = async values => {
+  const onFinish = async (values) => {
     setLoading(true);
     try {
-      const response = await axios.post(
-        '/api/v1/user/changePassword',
-        {
+      if (values.oldPassword === values.newPassword) {
+        Swal.fire({
+          position: 'center',
+          icon: 'warning',
+          title: 'รหัสผ่านซ้ำกัน',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      } else {
+        const response = await axios.post('/api/v1/user/changePassword', {
           oldPassword: values.oldPassword,
           newPassword: values.newPassword,
         },
@@ -21,20 +28,20 @@ const ChangePassword = () => {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
-        }
-      );
-
-      if (response.data.message === 'Password changed successfully') {
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'เปลี่ยนรหัสผ่านสำเร็จ',
-          showConfirmButton: false,
-          timer: 1500,
         });
-        navigate('/profile/account');
-      } else {
-        message.error('ไม่สามารถเปลี่ยนรหัสผ่านได้');
+  
+        if (response.data.message === 'Password changed successfully') {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'เปลี่ยนรหัสผ่านสำเร็จ',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate('/profile/account');
+        } else {
+          message.error('ไม่สามารถเปลี่ยนรหัสผ่านได้');
+        }
       }
     } catch (error) {
       console.error(error);
@@ -83,6 +90,10 @@ const ChangePassword = () => {
             label="New Password"
             rules={[
               { required: true, message: 'Please enter your new password' },
+              {
+                min: 6,
+                message: 'Password must be at least 6 characters.',
+              },
             ]}
           >
             <Input.Password placeholder="New Password" />

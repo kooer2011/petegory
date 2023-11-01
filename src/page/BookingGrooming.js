@@ -262,6 +262,7 @@ function PersonalForm({ onFinish, initialValues }) {
 
   const [pets, setPets] = useState(petData[provinceData[0]]);
   const [secondPet, setSecondPet] = useState(petData[provinceData[0]]);
+  const { user } = useSelector((state) => state.user);
   const handleProvinceChange = (value) => {
     setPets(petData[value]);
     setSecondPet(petData[value][0]);
@@ -277,6 +278,7 @@ function PersonalForm({ onFinish, initialValues }) {
             className="me-3"
             name="PetName"
             rules={[{ message: "Please enter your pet name", required: true }]}
+            style={{ width: "90%" }}
           >
             <Input type="text" placeholder="Pet Name" />
           </Form.Item>
@@ -285,8 +287,10 @@ function PersonalForm({ onFinish, initialValues }) {
           <Form.Item
             name="Name"
             rules={[{ message: "Please enter your name", required: true }]}
+            initialValue={user?.name}
+            style={{ width: "90%" }}
           >
-            <Input type="text" placeholder="Name" />
+            <Input type="text" placeholder="Name" disabled />
           </Form.Item>
         </Col>
       </Row>
@@ -296,6 +300,7 @@ function PersonalForm({ onFinish, initialValues }) {
           <Form.Item
             name="pet_type"
             rules={[{ message: "Please select pet type", required: true }]}
+            style={{ width: "90%" }}
           >
             <Select
               placeholder="Select pet type"
@@ -314,6 +319,7 @@ function PersonalForm({ onFinish, initialValues }) {
             className="me-3"
             name="breed"
             rules={[{ message: "Please select breed", required: true }]}
+            style={{ width: "90%" }}
           >
             <Select
               placeholder="Select breed"

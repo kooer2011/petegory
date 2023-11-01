@@ -97,8 +97,12 @@ const SignUp = () => {
           rules={[
             {
               required: true,
-              message: 'Please enter your password'
-            }
+              message: 'Please enter your password',
+            },
+            {
+              min: 6,
+              message: 'Password must be at least 6 characters.',
+            },
           ]}
         >
         <Input.Password className='input' placeholder='Enter Your Password' />

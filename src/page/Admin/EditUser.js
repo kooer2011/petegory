@@ -64,11 +64,14 @@ const EditUser = () => {
           <Form.Item label="Email" name="email">
             <Input type="text" placeholder="input email" />
           </Form.Item>
-          <Form.Item label="Phone" name="phone">
-            <Input
-              type="number"
-              placeholder="input phone"
-            />
+          <Form.Item
+            label="Phone"
+            name="phone"
+            rules={[
+              { len: 10, message: "Phone number must be exactly 10 digits" },
+            ]}
+          >
+            <Input type="number" placeholder="input phone" />
           </Form.Item>
           <button className="btn btn-primary form-btn" type="submit">
             Update

@@ -57,6 +57,10 @@ const ResetPassword = () => {
                 required: true,
                 message: 'Please enter new password',
               },
+              {
+                min: 6,
+                message: 'Password must be at least 6 characters.',
+              },
             ]}
           >
             <Input.Password

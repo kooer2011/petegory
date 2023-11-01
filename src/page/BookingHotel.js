@@ -16,7 +16,7 @@ import axios from "axios";
 import moment from "moment";
 import TextArea from "antd/es/input/TextArea";
 import AOS from "aos";
-
+import { motion, useScroll } from 'framer-motion';
 const { Option } = Select;
 
 const roomOptionsByType = {
@@ -213,15 +213,16 @@ const BookingHotel = () => {
   return (
     <div className="mt-3 bookBG" data-aos="fade">
       <Form layout="vertical" onFinish={handleSubmit} className="m-3">
-        <h1 className="text-center">Booking hotel</h1>
+        <h3 className="text-center" style={{fontFamily:'ChakraPetchBold',fontWeight:'bold'}}>Booking hotel</h3>
         <Row>
           <Form.Item
             label="Name"
             name="Name"
             required
             rules={[{ required: true }]}
+            initialValue={user?.name}
           >
-            <Input type="text" placeholder="your name" />
+            <Input type="text" placeholder="your name" disabled />
           </Form.Item>
           <Form.Item
             label="PetName"
@@ -354,9 +355,17 @@ const BookingHotel = () => {
           ></TextArea>
         </Form.Item>
         <Col xs={24} md={24} lg={8}>
-          <button className="btn btn-primary form-btn" type="submit">
+          <motion.div
+         
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+         >
+            <button className="btn btn-primary form-btn" style={{backgroundColor:'#FF314A'}} type="submit">
             Submit
           </button>
+          </motion.div>
+          
         </Col>
       </Form>
     </div>

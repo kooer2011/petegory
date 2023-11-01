@@ -25,6 +25,16 @@ const AccountSetting = () => {
         });
         navigate('/profile/account');
       }
+      else {
+        Swal.fire({
+          position: 'center',
+          icon: 'warning',
+          title: 'Email นี้ถูกใช้แล้ว',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+      window.location.reload();
     } catch (error) {
       console.log(error);
       message.error('error update');

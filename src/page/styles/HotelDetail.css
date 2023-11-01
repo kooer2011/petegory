@@ -1,3 +1,15 @@
+
+@font-face {
+  font-family: 'MamuBold';
+  src: local('MamuBold'), url('../../fonts/MamuBold.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'ChakraPetchBold';
+  src: local('ChakraPetchBold'),
+    url('../../fonts/ChakraPetch-Bold.ttf ') format('ttf');
+}
+
 .galleryWrap {
   display: flex;
   flex-wrap: wrap;
@@ -97,8 +109,9 @@
 }
 
 .bookBG {
-  background-color: navajowhite;
+  background-color: #eee;
   border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 @media (max-width: 768px) {

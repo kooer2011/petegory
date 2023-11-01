@@ -91,6 +91,7 @@ function HoTel() {
                     <button
                       className="btn btn-primary float-end"
                       onClick={handleClick}
+                      style={{backgroundColor:'#FF314A'}}
                     >
                       Read More or Booking
                     </button>

@@ -121,7 +121,7 @@ const EditHotel = () => {
           <Row>
             <div class="w-50">
               <label for="title" class="form-label">
-                <strong>Title2</strong>
+                <strong>Detail1</strong>
               </label>
               <input
                 type="text"
@@ -134,7 +134,7 @@ const EditHotel = () => {
             </div>
             <div class="w-50">
               <label for="title" class="form-label">
-                <strong>Title3</strong>
+                <strong>Detail2</strong>
               </label>
               <input
                 type="text"
@@ -148,7 +148,7 @@ const EditHotel = () => {
           </Row>
           <div class="col-12">
             <label for="title" class="form-label">
-              <strong>Title4</strong>
+              <strong>Detail3</strong>
             </label>
             <input
               type="text"
@@ -161,7 +161,7 @@ const EditHotel = () => {
           </div>
           <div class="col-12">
             <label for="title" class="form-label">
-              <strong>Title5</strong>
+              <strong>Detail4</strong>
             </label>
             <input
               type="text"

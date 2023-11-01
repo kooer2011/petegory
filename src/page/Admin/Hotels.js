@@ -89,19 +89,19 @@ const Hotels = () => {
       dataIndex: 'title1',
     },
     {
-      title: 'title',
+      title: 'Detail 1',
       dataIndex: 'title2',
     },
     {
-      title: 'title',
+      title: 'Detail 2',
       dataIndex: 'title3',
     },
     {
-      title: 'title',
+      title: 'Detail 3',
       dataIndex: 'title4',
     },
     {
-      title: 'title',
+      title: 'Detail 4',
       dataIndex: 'title5',
     },
     {
